@@ -36,7 +36,7 @@
         Dim val As Integer = 0               ' Current progress
         Dim barColor As Color = Color.Blue   ' Color of progress meter
 
-        Progress_system.Value = Progress_system.Value + 1
+        Progress_system.Value = Progress_system.Value + 100
 
 
     End Sub
