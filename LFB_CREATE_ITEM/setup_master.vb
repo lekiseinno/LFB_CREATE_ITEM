@@ -9,67 +9,36 @@
 
     Private Sub setup_master_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         set_footers()
-        cmds()
+
+        loader()
+
+
     End Sub
 
     Private Sub timer_datenow_Tick(sender As Object, e As EventArgs) Handles timer_datenow.Tick
         lb_datenow.Text = Now.ToString("dd-MM-yyyy HH:mm:ss")
     End Sub
 
-
     Sub set_footers()
+
         lb_computerName.Text = "Computername : " & Net.Dns.GetHostName()
-        'array ipaddress
-        lb_IPAddress.Text = "IPV4 : " & Net.Dns.GetHostByName(Net.Dns.GetHostName()).AddressList(3).ToString()
-    End Sub
 
-
-    Sub get_IP()
-
-        Dim strHostName As String
-
-        Dim strIPAddress As String
-
-
-
-        strHostName = Net.Dns.GetHostName()
-
-        strIPAddress = Net.Dns.GetHostByName(strHostName).AddressList(3).ToString()
-
-
-        MessageBox.Show("Host Name: " & strHostName & "; IP Address: " & strIPAddress)
-
+        lb_IPAddress.Text = ""
+        For i As Integer = 0 To Net.Dns.GetHostByName(Net.Dns.GetHostName()).AddressList().Length - 1
+            lb_IPAddress.Text &= " IP" & i & ": " & Net.Dns.GetHostByName(Net.Dns.GetHostName()).AddressList(i).ToString() & "  |  "
+        Next
     End Sub
 
 
 
+    Sub loader()
+        Dim min As Integer = 0               ' Minimum value for progress rangePrivate max As Integer = 100             ' Maximum value for progress range
+        Dim val As Integer = 0               ' Current progress
+        Dim barColor As Color = Color.Blue   ' Color of progress meter
 
-    Sub cmds()
-        Dim CMDprocess As New Process
-        Dim StartInfo As New System.Diagnostics.ProcessStartInfo
-        StartInfo.FileName = "cmd"
-        StartInfo.CreateNoWindow = True
-        StartInfo.RedirectStandardInput = True
-        StartInfo.RedirectStandardOutput = True
-        StartInfo.UseShellExecute = False
-        CMDprocess.StartInfo = StartInfo
-        CMDprocess.Start()
-
-        Dim SR As System.IO.StreamReader = CMDprocess.StandardOutput
-        Dim SW As System.IO.StreamWriter = CMDprocess.StandardInput
-
-        'SW.WriteLine("ping 8.8.8.8")
-
-        'SW.WriteLine("exit")
-
-        MsgBox(SR.ReadToEnd)
-
-        SW.Close()
-        SR.Close()
+        Progress_system.Value = Progress_system.Value + 1
 
 
-        ' Process.Start("cmd", "/c reg query HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\TeamViewer /v ClientID")
-        ' Dim id = Process.Start("cmd", "/c reg query HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\TeamViewer /v ClientID").ToString()
-        ' MsgBox(output)
     End Sub
+
 End Class

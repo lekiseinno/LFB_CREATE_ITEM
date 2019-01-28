@@ -33,21 +33,23 @@ Partial Class setup_master
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.footer = New System.Windows.Forms.StatusStrip()
         Me.lb_datenow = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.lb_computerName = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel5 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lb_IPAddress = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lb_AnyDesk = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lb_TeamView = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lb_computerName = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'header
@@ -69,34 +71,34 @@ Partial Class setup_master
         'ConnectDataBaseToolStripMenuItem
         '
         Me.ConnectDataBaseToolStripMenuItem.Name = "ConnectDataBaseToolStripMenuItem"
-        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConnectDataBaseToolStripMenuItem.Text = "Connect DataBase"
         '
         'ConnectionToolStripMenuItem
         '
         Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
-        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConnectionToolStripMenuItem.Text = "Cechk Connection"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(169, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(169, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
         '
         'footer
         '
-        Me.footer.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lb_datenow, Me.ToolStripStatusLabel4, Me.lb_computerName, Me.ToolStripStatusLabel5, Me.lb_IPAddress, Me.ToolStripStatusLabel1, Me.lb_AnyDesk, Me.ToolStripStatusLabel2, Me.lb_TeamView, Me.ToolStripStatusLabel3, Me.ToolStripProgressBar1})
+        Me.footer.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lb_datenow, Me.ToolStripStatusLabel4, Me.lb_computerName, Me.ToolStripStatusLabel5, Me.lb_IPAddress, Me.Progress_system})
         Me.footer.Location = New System.Drawing.Point(0, 707)
         Me.footer.Name = "footer"
         Me.footer.Size = New System.Drawing.Size(1350, 22)
@@ -108,76 +110,6 @@ Partial Class setup_master
         Me.lb_datenow.Name = "lb_datenow"
         Me.lb_datenow.Size = New System.Drawing.Size(68, 17)
         Me.lb_datenow.Text = "lb_datenow"
-        '
-        'ToolStripStatusLabel5
-        '
-        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
-        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(16, 17)
-        Me.ToolStripStatusLabel5.Text = " | "
-        '
-        'lb_IPAddress
-        '
-        Me.lb_IPAddress.Name = "lb_IPAddress"
-        Me.lb_IPAddress.Size = New System.Drawing.Size(73, 17)
-        Me.lb_IPAddress.Text = "lb_IPAddress"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(16, 17)
-        Me.ToolStripStatusLabel1.Text = " | "
-        '
-        'lb_AnyDesk
-        '
-        Me.lb_AnyDesk.Name = "lb_AnyDesk"
-        Me.lb_AnyDesk.Size = New System.Drawing.Size(68, 17)
-        Me.lb_AnyDesk.Text = "lb_AnyDesk"
-        '
-        'ToolStripStatusLabel2
-        '
-        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(16, 17)
-        Me.ToolStripStatusLabel2.Text = " | "
-        '
-        'lb_TeamView
-        '
-        Me.lb_TeamView.Name = "lb_TeamView"
-        Me.lb_TeamView.Size = New System.Drawing.Size(76, 17)
-        Me.lb_TeamView.Text = "lb_TeamView"
-        '
-        'ToolStripStatusLabel3
-        '
-        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(16, 17)
-        Me.ToolStripStatusLabel3.Text = " | "
-        '
-        'ToolStripProgressBar1
-        '
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
-        '
-        'timer_datenow
-        '
-        Me.timer_datenow.Enabled = True
-        Me.timer_datenow.Interval = 1000
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 27)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(200, 673)
-        Me.GroupBox1.TabIndex = 2
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Location = New System.Drawing.Point(214, 27)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1128, 673)
-        Me.GroupBox2.TabIndex = 3
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "GroupBox2"
         '
         'ToolStripStatusLabel4
         '
@@ -191,11 +123,95 @@ Partial Class setup_master
         Me.lb_computerName.Size = New System.Drawing.Size(106, 17)
         Me.lb_computerName.Text = "lb_computerName"
         '
+        'ToolStripStatusLabel5
+        '
+        Me.ToolStripStatusLabel5.Name = "ToolStripStatusLabel5"
+        Me.ToolStripStatusLabel5.Size = New System.Drawing.Size(16, 17)
+        Me.ToolStripStatusLabel5.Text = " | "
+        '
+        'lb_IPAddress
+        '
+        Me.lb_IPAddress.Name = "lb_IPAddress"
+        Me.lb_IPAddress.Size = New System.Drawing.Size(73, 17)
+        Me.lb_IPAddress.Text = "lb_IPAddress"
+        '
+        'Progress_system
+        '
+        Me.Progress_system.Name = "Progress_system"
+        Me.Progress_system.Size = New System.Drawing.Size(100, 16)
+        '
+        'timer_datenow
+        '
+        Me.timer_datenow.Enabled = True
+        Me.timer_datenow.Interval = 1000
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 27)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(200, 673)
+        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = " Menu "
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label1)
+        Me.GroupBox2.Controls.Add(Me.Button1)
+        Me.GroupBox2.Location = New System.Drawing.Point(214, 27)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1128, 60)
+        Me.GroupBox2.TabIndex = 3
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = " Header "
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.DataGridView1)
+        Me.GroupBox3.Location = New System.Drawing.Point(214, 87)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(1128, 613)
+        Me.GroupBox3.TabIndex = 4
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = " Content "
+        '
+        'Button1
+        '
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.memorycard
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(972, 13)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(150, 40)
+        Me.Button1.TabIndex = 99
+        Me.Button1.Text = "Save"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(51, 18)
+        Me.Label1.TabIndex = 100
+        Me.Label1.Text = "Label1"
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 19)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(1127, 594)
+        Me.DataGridView1.TabIndex = 0
+        '
         'setup_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.footer)
@@ -212,6 +228,10 @@ Partial Class setup_master
         Me.header.PerformLayout()
         Me.footer.ResumeLayout(False)
         Me.footer.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -225,13 +245,8 @@ Partial Class setup_master
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents footer As StatusStrip
     Friend WithEvents lb_IPAddress As ToolStripStatusLabel
-    Friend WithEvents lb_AnyDesk As ToolStripStatusLabel
-    Friend WithEvents lb_TeamView As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents ConnectDataBaseToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
-    Friend WithEvents ToolStripProgressBar1 As ToolStripProgressBar
+    Friend WithEvents Progress_system As ToolStripProgressBar
     Friend WithEvents lb_datenow As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
     Friend WithEvents timer_datenow As Timer
@@ -239,4 +254,8 @@ Partial Class setup_master
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
     Friend WithEvents lb_computerName As ToolStripStatusLabel
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents DataGridView1 As DataGridView
 End Class
