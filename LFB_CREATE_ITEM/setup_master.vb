@@ -8,11 +8,8 @@
     End Sub
 
     Private Sub setup_master_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         set_footers()
-
-        loader()
-        's
-
 
     End Sub
 
@@ -30,16 +27,5 @@
         Next
     End Sub
 
-
-
-    Sub loader()
-        Dim min As Integer = 0               ' Minimum value for progress rangePrivate max As Integer = 100             ' Maximum value for progress range
-        Dim val As Integer = 0               ' Current progress
-        Dim barColor As Color = Color.Blue   ' Color of progress meter
-
-        Progress_system.Value = Progress_system.Value + 100
-
-
-    End Sub
 
 End Class
