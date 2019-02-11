@@ -8,9 +8,7 @@
     End Sub
 
     Private Sub setup_master_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         set_footers()
-
     End Sub
 
     Private Sub timer_datenow_Tick(sender As Object, e As EventArgs) Handles timer_datenow.Tick
@@ -26,6 +24,37 @@
             lb_IPAddress.Text &= " IP" & i & ": " & Net.Dns.GetHostByName(Net.Dns.GetHostName()).AddressList(i).ToString() & "  |  "
         Next
     End Sub
+
+    Private Sub btn_PL_Click(sender As Object, e As EventArgs) Handles btn_PL.Click
+
+        fix_frm(frm_PL, frm_cus)
+
+    End Sub
+
+    Private Sub btn_cus_Click(sender As Object, e As EventArgs) Handles btn_cus.Click
+
+        fix_frm(frm_cus, frm_PL)
+
+    End Sub
+
+
+    Sub fix_frm(frm, x_frm)
+        frm.TopLevel = False
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Visible = False
+        panel_main.Controls.Add(frm)
+
+        'If frm.Visible = False Then
+        'frm.Visible = True
+        'Else
+        'frm.Visible = False
+        'End If
+
+        frm.show()
+        x_frm.hide()
+
+    End Sub
+
 
 
 End Class

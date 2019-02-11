@@ -76,6 +76,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_cus.Designer.vb">
+      <DependentUpon>frm_cus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_cus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PL.Designer.vb">
+      <DependentUpon>frm_PL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_PL.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="setup_master.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +113,12 @@
     <Compile Include="setup_conf.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frm_cus.resx">
+      <DependentUpon>frm_cus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_PL.resx">
+      <DependentUpon>frm_PL.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -125,6 +143,9 @@
     <None Include="Resources\conn.ini" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\contacts.png" />
+    <None Include="Resources\compose.png" />
+    <None Include="Resources\folder.png" />
     <Content Include="Resources\ico.ico" />
     <None Include="Resources\memorycard.png" />
   </ItemGroup>

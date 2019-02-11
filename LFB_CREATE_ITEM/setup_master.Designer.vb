@@ -40,16 +40,16 @@ Partial Class setup_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_PL = New System.Windows.Forms.Button()
+        Me.btn_cus = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btn_save = New System.Windows.Forms.Button()
+        Me.panel_main = New System.Windows.Forms.Panel()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'header
@@ -57,7 +57,7 @@ Partial Class setup_master
         Me.header.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.header.Location = New System.Drawing.Point(0, 0)
         Me.header.Name = "header"
-        Me.header.Size = New System.Drawing.Size(1350, 24)
+        Me.header.Size = New System.Drawing.Size(1264, 24)
         Me.header.TabIndex = 0
         Me.header.Text = "MenuStrip1"
         '
@@ -71,37 +71,37 @@ Partial Class setup_master
         'ConnectDataBaseToolStripMenuItem
         '
         Me.ConnectDataBaseToolStripMenuItem.Name = "ConnectDataBaseToolStripMenuItem"
-        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.ConnectDataBaseToolStripMenuItem.Text = "Connect DataBase"
         '
         'ConnectionToolStripMenuItem
         '
         Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
-        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.ConnectionToolStripMenuItem.Text = "Cechk Connection"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(169, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(169, 6)
         '
         'footer
         '
         Me.footer.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lb_datenow, Me.ToolStripStatusLabel4, Me.lb_computerName, Me.ToolStripStatusLabel5, Me.lb_IPAddress, Me.Progress_system})
-        Me.footer.Location = New System.Drawing.Point(0, 707)
+        Me.footer.Location = New System.Drawing.Point(0, 619)
         Me.footer.Name = "footer"
-        Me.footer.Size = New System.Drawing.Size(1350, 22)
+        Me.footer.Size = New System.Drawing.Size(1264, 22)
         Me.footer.TabIndex = 1
         Me.footer.Text = "StatusStrip1"
         '
@@ -147,46 +147,53 @@ Partial Class setup_master
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btn_PL)
+        Me.GroupBox1.Controls.Add(Me.btn_cus)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 27)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(200, 673)
+        Me.GroupBox1.Size = New System.Drawing.Size(200, 589)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Menu "
         '
+        'btn_PL
+        '
+        Me.btn_PL.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_PL.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_PL.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.folder
+        Me.btn_PL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_PL.Location = New System.Drawing.Point(4, 75)
+        Me.btn_PL.Name = "btn_PL"
+        Me.btn_PL.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_PL.Size = New System.Drawing.Size(190, 50)
+        Me.btn_PL.TabIndex = 101
+        Me.btn_PL.Text = "PL"
+        Me.btn_PL.UseVisualStyleBackColor = True
+        '
+        'btn_cus
+        '
+        Me.btn_cus.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_cus.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_cus.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.contacts
+        Me.btn_cus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_cus.Location = New System.Drawing.Point(4, 19)
+        Me.btn_cus.Name = "btn_cus"
+        Me.btn_cus.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_cus.Size = New System.Drawing.Size(190, 50)
+        Me.btn_cus.TabIndex = 100
+        Me.btn_cus.Text = "ลูกค้า"
+        Me.btn_cus.UseVisualStyleBackColor = True
+        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.Button1)
+        Me.GroupBox2.Controls.Add(Me.btn_save)
         Me.GroupBox2.Location = New System.Drawing.Point(214, 27)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1128, 60)
+        Me.GroupBox2.Size = New System.Drawing.Size(1042, 60)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = " Header "
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.DataGridView1)
-        Me.GroupBox3.Location = New System.Drawing.Point(214, 87)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1128, 613)
-        Me.GroupBox3.TabIndex = 4
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = " Content "
-        '
-        'Button1
-        '
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.memorycard
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(972, 13)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(150, 40)
-        Me.Button1.TabIndex = 99
-        Me.Button1.Text = "Save"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -198,29 +205,43 @@ Partial Class setup_master
         Me.Label1.TabIndex = 100
         Me.Label1.Text = "Label1"
         '
-        'DataGridView1
+        'btn_save
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 19)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1127, 594)
-        Me.DataGridView1.TabIndex = 0
+        Me.btn_save.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_save.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_save.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.memorycard
+        Me.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_save.Location = New System.Drawing.Point(887, 13)
+        Me.btn_save.Name = "btn_save"
+        Me.btn_save.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_save.Size = New System.Drawing.Size(150, 40)
+        Me.btn_save.TabIndex = 99
+        Me.btn_save.Text = "บันทึก"
+        Me.btn_save.UseVisualStyleBackColor = True
+        '
+        'panel_main
+        '
+        Me.panel_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panel_main.Location = New System.Drawing.Point(214, 93)
+        Me.panel_main.Name = "panel_main"
+        Me.panel_main.Size = New System.Drawing.Size(1042, 520)
+        Me.panel_main.TabIndex = 4
         '
         'setup_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1350, 729)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox2)
+        Me.ClientSize = New System.Drawing.Size(1264, 641)
+        Me.Controls.Add(Me.panel_main)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.header)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.header
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1366, 768)
-        Me.MinimumSize = New System.Drawing.Size(1366, 768)
+        Me.MaximumSize = New System.Drawing.Size(1280, 680)
+        Me.MinimumSize = New System.Drawing.Size(1280, 680)
         Me.Name = "setup_master"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Config - Master"
@@ -228,10 +249,9 @@ Partial Class setup_master
         Me.header.PerformLayout()
         Me.footer.ResumeLayout(False)
         Me.footer.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -254,8 +274,9 @@ Partial Class setup_master
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
     Friend WithEvents lb_computerName As ToolStripStatusLabel
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_save As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents btn_cus As Button
+    Friend WithEvents btn_PL As Button
+    Friend WithEvents panel_main As Panel
 End Class
