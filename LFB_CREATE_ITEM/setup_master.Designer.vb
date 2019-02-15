@@ -42,7 +42,7 @@ Partial Class setup_master
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btn_PL = New System.Windows.Forms.Button()
         Me.btn_cus = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GB_header = New System.Windows.Forms.GroupBox()
         Me.panel_main = New System.Windows.Forms.Panel()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
@@ -146,9 +146,9 @@ Partial Class setup_master
         '
         Me.GroupBox1.Controls.Add(Me.btn_PL)
         Me.GroupBox1.Controls.Add(Me.btn_cus)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 27)
+        Me.GroupBox1.Location = New System.Drawing.Point(4, 22)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(180, 677)
+        Me.GroupBox1.Size = New System.Drawing.Size(184, 682)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Menu "
@@ -181,14 +181,14 @@ Partial Class setup_master
         Me.btn_cus.Text = "ลูกค้า"
         Me.btn_cus.UseVisualStyleBackColor = True
         '
-        'GroupBox2
+        'GB_header
         '
-        Me.GroupBox2.Location = New System.Drawing.Point(192, 22)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1155, 278)
-        Me.GroupBox2.TabIndex = 3
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = " Header "
+        Me.GB_header.Location = New System.Drawing.Point(192, 22)
+        Me.GB_header.Name = "GB_header"
+        Me.GB_header.Size = New System.Drawing.Size(1155, 278)
+        Me.GB_header.TabIndex = 3
+        Me.GB_header.TabStop = False
+        Me.GB_header.Text = " Header "
         '
         'panel_main
         '
@@ -207,7 +207,7 @@ Partial Class setup_master
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.header)
-        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GB_header)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.header
         Me.MaximizeBox = False
@@ -240,7 +240,7 @@ Partial Class setup_master
     Friend WithEvents ToolStripStatusLabel5 As ToolStripStatusLabel
     Friend WithEvents timer_datenow As Timer
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GB_header As GroupBox
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
     Friend WithEvents lb_computerName As ToolStripStatusLabel
     Friend WithEvents btn_cus As Button

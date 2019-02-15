@@ -88,6 +88,18 @@
     <Compile Include="data_PL.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_cus.Designer.vb">
+      <DependentUpon>frm_cus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_cus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_PL.Designer.vb">
+      <DependentUpon>frm_PL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_PL.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="setup_master.vb">
       <SubType>Form</SubType>
     </Compile>

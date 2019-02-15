@@ -30,21 +30,21 @@ Partial Class data_cus
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label1.Location = New System.Drawing.Point(369, 151)
+        Me.Label1.Location = New System.Drawing.Point(481, 131)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(198, 42)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "FRM_CUS"
         '
-        'frm_cus
+        'data_cus
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(1042, 520)
+        Me.ClientSize = New System.Drawing.Size(1155, 400)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "frm_cus"
+        Me.Name = "data_cus"
         Me.Text = "frm_cus"
         Me.ResumeLayout(False)
         Me.PerformLayout()
