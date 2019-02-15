@@ -76,16 +76,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frm_cus.Designer.vb">
-      <DependentUpon>frm_cus.vb</DependentUpon>
+    <Compile Include="data_cus.Designer.vb">
+      <DependentUpon>data_cus.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_cus.vb">
+    <Compile Include="data_cus.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_PL.Designer.vb">
-      <DependentUpon>frm_PL.vb</DependentUpon>
+    <Compile Include="data_PL.Designer.vb">
+      <DependentUpon>data_PL.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_PL.vb">
+    <Compile Include="data_PL.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="setup_master.vb">
@@ -113,11 +113,11 @@
     <Compile Include="setup_conf.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frm_cus.resx">
-      <DependentUpon>frm_cus.vb</DependentUpon>
+    <EmbeddedResource Include="data_cus.resx">
+      <DependentUpon>data_cus.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_PL.resx">
-      <DependentUpon>frm_PL.vb</DependentUpon>
+    <EmbeddedResource Include="data_PL.resx">
+      <DependentUpon>data_PL.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

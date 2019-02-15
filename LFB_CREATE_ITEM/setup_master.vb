@@ -27,13 +27,13 @@
 
     Private Sub btn_PL_Click(sender As Object, e As EventArgs) Handles btn_PL.Click
 
-        fix_frm(frm_PL, frm_cus)
+        fix_frm(data_PL, data_cus)
 
     End Sub
 
     Private Sub btn_cus_Click(sender As Object, e As EventArgs) Handles btn_cus.Click
 
-        fix_frm(frm_cus, frm_PL)
+        fix_frm(data_cus, data_PL)
 
     End Sub
 
@@ -44,11 +44,6 @@
         frm.Visible = False
         panel_main.Controls.Add(frm)
 
-        'If frm.Visible = False Then
-        'frm.Visible = True
-        'Else
-        'frm.Visible = False
-        'End If
 
         frm.show()
         x_frm.hide()

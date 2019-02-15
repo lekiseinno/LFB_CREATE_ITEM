@@ -43,13 +43,10 @@ Partial Class setup_master
         Me.btn_PL = New System.Windows.Forms.Button()
         Me.btn_cus = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.btn_save = New System.Windows.Forms.Button()
         Me.panel_main = New System.Windows.Forms.Panel()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'header
@@ -57,7 +54,7 @@ Partial Class setup_master
         Me.header.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.header.Location = New System.Drawing.Point(0, 0)
         Me.header.Name = "header"
-        Me.header.Size = New System.Drawing.Size(1264, 24)
+        Me.header.Size = New System.Drawing.Size(1350, 24)
         Me.header.TabIndex = 0
         Me.header.Text = "MenuStrip1"
         '
@@ -99,9 +96,9 @@ Partial Class setup_master
         'footer
         '
         Me.footer.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lb_datenow, Me.ToolStripStatusLabel4, Me.lb_computerName, Me.ToolStripStatusLabel5, Me.lb_IPAddress, Me.Progress_system})
-        Me.footer.Location = New System.Drawing.Point(0, 619)
+        Me.footer.Location = New System.Drawing.Point(0, 707)
         Me.footer.Name = "footer"
-        Me.footer.Size = New System.Drawing.Size(1264, 22)
+        Me.footer.Size = New System.Drawing.Size(1350, 22)
         Me.footer.TabIndex = 1
         Me.footer.Text = "StatusStrip1"
         '
@@ -151,7 +148,7 @@ Partial Class setup_master
         Me.GroupBox1.Controls.Add(Me.btn_cus)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 27)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(200, 589)
+        Me.GroupBox1.Size = New System.Drawing.Size(180, 677)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Menu "
@@ -162,10 +159,10 @@ Partial Class setup_master
         Me.btn_PL.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_PL.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.folder
         Me.btn_PL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_PL.Location = New System.Drawing.Point(4, 75)
+        Me.btn_PL.Location = New System.Drawing.Point(6, 75)
         Me.btn_PL.Name = "btn_PL"
         Me.btn_PL.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_PL.Size = New System.Drawing.Size(190, 50)
+        Me.btn_PL.Size = New System.Drawing.Size(168, 50)
         Me.btn_PL.TabIndex = 101
         Me.btn_PL.Text = "PL"
         Me.btn_PL.UseVisualStyleBackColor = True
@@ -176,72 +173,46 @@ Partial Class setup_master
         Me.btn_cus.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_cus.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.contacts
         Me.btn_cus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_cus.Location = New System.Drawing.Point(4, 19)
+        Me.btn_cus.Location = New System.Drawing.Point(6, 19)
         Me.btn_cus.Name = "btn_cus"
         Me.btn_cus.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_cus.Size = New System.Drawing.Size(190, 50)
+        Me.btn_cus.Size = New System.Drawing.Size(168, 50)
         Me.btn_cus.TabIndex = 100
         Me.btn_cus.Text = "ลูกค้า"
         Me.btn_cus.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.btn_save)
-        Me.GroupBox2.Location = New System.Drawing.Point(214, 27)
+        Me.GroupBox2.Location = New System.Drawing.Point(192, 22)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1042, 60)
+        Me.GroupBox2.Size = New System.Drawing.Size(1155, 278)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = " Header "
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(51, 18)
-        Me.Label1.TabIndex = 100
-        Me.Label1.Text = "Label1"
-        '
-        'btn_save
-        '
-        Me.btn_save.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_save.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btn_save.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.memorycard
-        Me.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_save.Location = New System.Drawing.Point(887, 13)
-        Me.btn_save.Name = "btn_save"
-        Me.btn_save.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_save.Size = New System.Drawing.Size(150, 40)
-        Me.btn_save.TabIndex = 99
-        Me.btn_save.Text = "บันทึก"
-        Me.btn_save.UseVisualStyleBackColor = True
-        '
         'panel_main
         '
         Me.panel_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel_main.Location = New System.Drawing.Point(214, 93)
+        Me.panel_main.Location = New System.Drawing.Point(192, 304)
         Me.panel_main.Name = "panel_main"
-        Me.panel_main.Size = New System.Drawing.Size(1042, 520)
+        Me.panel_main.Size = New System.Drawing.Size(1155, 400)
         Me.panel_main.TabIndex = 4
         '
         'setup_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1264, 641)
+        Me.ClientSize = New System.Drawing.Size(1350, 729)
         Me.Controls.Add(Me.panel_main)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.header)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.header
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1280, 680)
-        Me.MinimumSize = New System.Drawing.Size(1280, 680)
+        Me.MaximumSize = New System.Drawing.Size(1366, 768)
+        Me.MinimumSize = New System.Drawing.Size(1366, 768)
         Me.Name = "setup_master"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Config - Master"
@@ -250,8 +221,6 @@ Partial Class setup_master
         Me.footer.ResumeLayout(False)
         Me.footer.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -274,8 +243,6 @@ Partial Class setup_master
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
     Friend WithEvents lb_computerName As ToolStripStatusLabel
-    Friend WithEvents btn_save As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents btn_cus As Button
     Friend WithEvents btn_PL As Button
     Friend WithEvents panel_main As Panel
