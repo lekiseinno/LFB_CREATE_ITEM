@@ -131,6 +131,12 @@
     <EmbeddedResource Include="data_PL.resx">
       <DependentUpon>data_PL.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_cus.resx">
+      <DependentUpon>frm_cus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_PL.resx">
+      <DependentUpon>frm_PL.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

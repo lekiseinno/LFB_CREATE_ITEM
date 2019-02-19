@@ -27,22 +27,38 @@
 
     Private Sub btn_PL_Click(sender As Object, e As EventArgs) Handles btn_PL.Click
 
-        fix_frm(data_PL, data_cus)
+        customize_datagrid(data_PL, data_cus)
+        customize_frm(frm_PL, frm_cus)
 
     End Sub
 
     Private Sub btn_cus_Click(sender As Object, e As EventArgs) Handles btn_cus.Click
 
-        fix_frm(data_cus, data_PL)
+        customize_datagrid(data_cus, data_PL)
+        customize_frm(frm_cus, frm_PL)
 
     End Sub
 
 
-    Sub fix_frm(frm, x_frm)
+    Sub customize_datagrid(frm, x_frm)
+
         frm.TopLevel = False
         frm.FormBorderStyle = FormBorderStyle.None
         frm.Visible = False
-        panel_main.Controls.Add(frm)
+        panel_datagrid.Controls.Add(frm)
+
+
+        frm.show()
+        x_frm.hide()
+
+    End Sub
+
+    Sub customize_frm(frm, x_frm)
+
+        frm.TopLevel = False
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Visible = False
+        panel_frm.Controls.Add(frm)
 
 
         frm.show()

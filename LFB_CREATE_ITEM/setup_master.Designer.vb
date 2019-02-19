@@ -43,10 +43,12 @@ Partial Class setup_master
         Me.btn_PL = New System.Windows.Forms.Button()
         Me.btn_cus = New System.Windows.Forms.Button()
         Me.GB_header = New System.Windows.Forms.GroupBox()
-        Me.panel_main = New System.Windows.Forms.Panel()
+        Me.panel_frm = New System.Windows.Forms.Panel()
+        Me.panel_datagrid = New System.Windows.Forms.Panel()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GB_header.SuspendLayout()
         Me.SuspendLayout()
         '
         'header
@@ -183,6 +185,7 @@ Partial Class setup_master
         '
         'GB_header
         '
+        Me.GB_header.Controls.Add(Me.panel_frm)
         Me.GB_header.Location = New System.Drawing.Point(192, 22)
         Me.GB_header.Name = "GB_header"
         Me.GB_header.Size = New System.Drawing.Size(1155, 278)
@@ -190,20 +193,27 @@ Partial Class setup_master
         Me.GB_header.TabStop = False
         Me.GB_header.Text = " Header "
         '
-        'panel_main
+        'panel_frm
         '
-        Me.panel_main.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel_main.Location = New System.Drawing.Point(192, 304)
-        Me.panel_main.Name = "panel_main"
-        Me.panel_main.Size = New System.Drawing.Size(1155, 400)
-        Me.panel_main.TabIndex = 4
+        Me.panel_frm.Location = New System.Drawing.Point(1, 19)
+        Me.panel_frm.Name = "panel_frm"
+        Me.panel_frm.Size = New System.Drawing.Size(1152, 257)
+        Me.panel_frm.TabIndex = 0
+        '
+        'panel_datagrid
+        '
+        Me.panel_datagrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panel_datagrid.Location = New System.Drawing.Point(192, 304)
+        Me.panel_datagrid.Name = "panel_datagrid"
+        Me.panel_datagrid.Size = New System.Drawing.Size(1155, 400)
+        Me.panel_datagrid.TabIndex = 4
         '
         'setup_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1350, 729)
-        Me.Controls.Add(Me.panel_main)
+        Me.Controls.Add(Me.panel_datagrid)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.header)
@@ -221,6 +231,7 @@ Partial Class setup_master
         Me.footer.ResumeLayout(False)
         Me.footer.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GB_header.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -245,5 +256,6 @@ Partial Class setup_master
     Friend WithEvents lb_computerName As ToolStripStatusLabel
     Friend WithEvents btn_cus As Button
     Friend WithEvents btn_PL As Button
-    Friend WithEvents panel_main As Panel
+    Friend WithEvents panel_datagrid As Panel
+    Friend WithEvents panel_frm As Panel
 End Class
