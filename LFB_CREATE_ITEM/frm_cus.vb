@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System
+Imports System.IO
 Imports System.Data
 Imports System.Data.OleDb
 Imports System.Data.SqlClient
@@ -43,7 +44,7 @@ Public Class frm_cus
 
         'OK
         'MyConnection = New OleDb.OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" & filePath & "';Extended Properties='Excel 8.0;HDR=YES;IMEX=1;';")
-        MyConnection = New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filePath + ";Extended Properties=Excel 12.0;")
+        MyConnection = New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Extended Properties='Excel 12.0;HDR=YES;IMEX=1';DATA SOURCE=E:\_backup18022019\Desktop\Item List.xlsx;")
 
 
 
