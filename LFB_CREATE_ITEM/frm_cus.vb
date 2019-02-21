@@ -5,55 +5,37 @@ Imports System.Data.OleDb
 Imports System.Data.SqlClient
 
 Public Class frm_cus
-    Private Sub btn_browse_file_Click(sender As Object, e As EventArgs) Handles btn_browse_file.Click
-
-
-        Dim strFolderPath As String = Application.StartupPath + "/myFile/"
-
-        Dim dlg As New OpenFileDialog()
-        dlg.Multiselect = False
-        dlg.Filter = "Excel Files (*.csv , *.xls , *.xlsx) |*.csv;*.xls;*.xlsx;*.xlsm | All files (*.*)|*.*"
-
-
-
-        If dlg.ShowDialog() = DialogResult.OK Then
-            '*** Create Folder
-            If Not Directory.Exists(strFolderPath) Then
-                Directory.CreateDirectory(strFolderPath)
-            End If
-
-            '*** Save File
-            Dim filePath As String = dlg.FileName
-            Dim fileName As String = Path.GetFileName(filePath)
-            'MsgBox(filePath)
-            txt_pathfile.Text = filePath
-
-            set_data_on_grid(data_cus.DataGrid_Cus, filePath)
-        End If
+    Private Sub frm_cus_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
+    Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
 
 
-    Sub set_data_on_grid(datagrid, filePath)
-        Dim MyConnection As OleDbConnection
-        Dim DtSet As DataSet
-        Dim MyCommand As OleDbDataAdapter
+        Try
+            Dim command As New SqlCommand
+
+            command.CommandText = "INSERT INTO [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer] (Customer_Code, Customer_Codess, Customer_Name) VALUES (@Name, @Property, @Value)"
+
+            command.Parameters.Add("@Name")
+            command.Parameters.Add("@Property")
+            command.Parameters.Add("@Value")
+            connection.Open()
+
+            command.Connection = connection
+
+            For i As Integer = 0 To data_cus.DataGrid_Cus.Rows.Count - 1
+                command.Parameters(0).Value = data_cus.DataGrid_Cus.Rows(i).Cells(0).Value
+                command.Parameters(1).Value = data_cus.DataGrid_Cus.Rows(i).Cells(1).Value
+                command.Parameters(2).Value = data_cus.DataGrid_Cus.Rows(i).Cells(2).Value
+                command.ExecuteNonQuery()
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
 
 
 
-        'OK
-        'MyConnection = New OleDb.OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" & filePath & "';Extended Properties='Excel 8.0;HDR=YES;IMEX=1;';")
-        MyConnection = New OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Extended Properties='Excel 12.0;HDR=YES;IMEX=1';DATA SOURCE=E:\_backup18022019\Desktop\Item List.xlsx;")
-
-
-
-        MyCommand = New OleDbDataAdapter("select * from [Sheet1$]", MyConnection)
-        MyCommand.TableMappings.Add("Table", "Net-informations.com")
-        DtSet = New DataSet
-        MyCommand.Fill(DtSet)
-        datagrid.DataSource = DtSet.Tables(0)
-        MyConnection.Close()
     End Sub
 
 

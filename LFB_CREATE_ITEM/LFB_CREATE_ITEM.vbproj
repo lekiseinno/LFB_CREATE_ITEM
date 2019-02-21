@@ -194,6 +194,7 @@
     <None Include="Resources\conn.ini" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\x.png" />
     <None Include="Resources\contacts.png" />
     <None Include="Resources\compose.png" />
     <None Include="Resources\folder.png" />
