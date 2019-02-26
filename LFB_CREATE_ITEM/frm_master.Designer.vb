@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class setup_master
+Partial Class frm_master
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class setup_master
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(setup_master))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_master))
         Me.header = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConnectDataBaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,6 +40,8 @@ Partial Class setup_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_input = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btn_PL = New System.Windows.Forms.Button()
         Me.btn_cus = New System.Windows.Forms.Button()
         Me.GB_header = New System.Windows.Forms.GroupBox()
@@ -48,6 +50,7 @@ Partial Class setup_master
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.GB_header.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -146,8 +149,8 @@ Partial Class setup_master
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btn_PL)
-        Me.GroupBox1.Controls.Add(Me.btn_cus)
+        Me.GroupBox1.Controls.Add(Me.btn_input)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Location = New System.Drawing.Point(4, 22)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(184, 682)
@@ -155,16 +158,41 @@ Partial Class setup_master
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Menu "
         '
+        'btn_input
+        '
+        Me.btn_input.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_input.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_input.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
+        Me.btn_input.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_input.Location = New System.Drawing.Point(12, 19)
+        Me.btn_input.Name = "btn_input"
+        Me.btn_input.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_input.Size = New System.Drawing.Size(160, 50)
+        Me.btn_input.TabIndex = 103
+        Me.btn_input.Text = "IN Put"
+        Me.btn_input.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.btn_PL)
+        Me.GroupBox2.Controls.Add(Me.btn_cus)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 543)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(172, 133)
+        Me.GroupBox2.TabIndex = 102
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "  C o n f i g  "
+        '
         'btn_PL
         '
         Me.btn_PL.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_PL.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_PL.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_PL.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.folder
         Me.btn_PL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_PL.Location = New System.Drawing.Point(6, 75)
         Me.btn_PL.Name = "btn_PL"
         Me.btn_PL.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_PL.Size = New System.Drawing.Size(168, 50)
+        Me.btn_PL.Size = New System.Drawing.Size(160, 50)
         Me.btn_PL.TabIndex = 101
         Me.btn_PL.Text = "PL"
         Me.btn_PL.UseVisualStyleBackColor = True
@@ -172,13 +200,13 @@ Partial Class setup_master
         'btn_cus
         '
         Me.btn_cus.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_cus.Font = New System.Drawing.Font("Sukhumvit Set", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_cus.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_cus.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.contacts
         Me.btn_cus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_cus.Location = New System.Drawing.Point(6, 19)
         Me.btn_cus.Name = "btn_cus"
         Me.btn_cus.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_cus.Size = New System.Drawing.Size(168, 50)
+        Me.btn_cus.Size = New System.Drawing.Size(160, 50)
         Me.btn_cus.TabIndex = 100
         Me.btn_cus.Text = "ลูกค้า"
         Me.btn_cus.UseVisualStyleBackColor = True
@@ -208,7 +236,7 @@ Partial Class setup_master
         Me.panel_datagrid.Size = New System.Drawing.Size(1155, 400)
         Me.panel_datagrid.TabIndex = 4
         '
-        'setup_master
+        'frm_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -223,14 +251,15 @@ Partial Class setup_master
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1366, 768)
         Me.MinimumSize = New System.Drawing.Size(1366, 768)
-        Me.Name = "setup_master"
+        Me.Name = "frm_master"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Config - Master"
+        Me.Text = "LFB ::"
         Me.header.ResumeLayout(False)
         Me.header.PerformLayout()
         Me.footer.ResumeLayout(False)
         Me.footer.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
         Me.GB_header.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -258,4 +287,6 @@ Partial Class setup_master
     Friend WithEvents btn_PL As Button
     Friend WithEvents panel_datagrid As Panel
     Friend WithEvents panel_frm As Panel
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents btn_input As Button
 End Class
