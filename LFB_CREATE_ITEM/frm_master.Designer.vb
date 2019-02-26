@@ -40,6 +40,7 @@ Partial Class frm_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_input = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btn_PL = New System.Windows.Forms.Button()
@@ -149,6 +150,7 @@ Partial Class frm_master
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btn_report)
         Me.GroupBox1.Controls.Add(Me.btn_input)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Location = New System.Drawing.Point(4, 22)
@@ -157,6 +159,20 @@ Partial Class frm_master
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Menu "
+        '
+        'btn_report
+        '
+        Me.btn_report.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_report.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_report.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
+        Me.btn_report.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_report.Location = New System.Drawing.Point(12, 75)
+        Me.btn_report.Name = "btn_report"
+        Me.btn_report.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_report.Size = New System.Drawing.Size(160, 50)
+        Me.btn_report.TabIndex = 104
+        Me.btn_report.Text = "Report"
+        Me.btn_report.UseVisualStyleBackColor = True
         '
         'btn_input
         '
@@ -289,4 +305,5 @@ Partial Class frm_master
     Friend WithEvents panel_frm As Panel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents btn_input As Button
+    Friend WithEvents btn_report As Button
 End Class

@@ -58,6 +58,10 @@
     End Sub
 
 
+
+
+
+
     Sub customize_datagrid(frm, x_frm)
 
         frm.TopLevel = False
@@ -86,6 +90,11 @@
         Next
     End Sub
 
+    Private Sub btn_report_Click(sender As Object, e As EventArgs) Handles btn_report.Click
+        MessageBox.Show("Access denied",
+            "Warning !!",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error)
 
-
+    End Sub
 End Class
