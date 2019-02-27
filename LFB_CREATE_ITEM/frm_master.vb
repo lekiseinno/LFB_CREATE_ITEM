@@ -10,6 +10,10 @@
     End Sub
 
     Private Sub setup_master_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'path_resource.Text = setup_conf.fileserver
+
+
         set_footers()
     End Sub
 
@@ -95,6 +99,10 @@
             "Warning !!",
             MessageBoxButtons.OK,
             MessageBoxIcon.Error)
+
+    End Sub
+
+    Private Sub ConnectDataBaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectDataBaseToolStripMenuItem.Click
 
     End Sub
 End Class

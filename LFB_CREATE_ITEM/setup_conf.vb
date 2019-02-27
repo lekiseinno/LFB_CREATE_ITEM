@@ -3,18 +3,21 @@ Imports System.IO
 
 Public Module setup_conf
 
-    Public fileconn As String = "\Resources\conn.ini"
+    'Public fileconn As String = "\Resources\conn.ini"
+
+    Public fileconn As String = My.Resources.conn
 
     'For Dev
     Public fileserver As String = (Application.StartupPath).Substring(0, (Application.StartupPath).Length - 10) + fileconn
 
     'For Client
-    'Public fileserver As String = (Application.StartupPath) & fineconf
-    'Public fileserver As String = My.Application.Info.DirectoryPath & fineconf
+    'Public fileserver As String = (Application.StartupPath) & fileconn
+    'Public fileserver As String = My.Application.Info.DirectoryPath & fileconn
 
     Public connection As SqlConnection = New SqlConnection(get_connectionstring)
 
     Public Function get_connectionstring() As String
+
         Dim connectionstring As String = ""
 
         Dim SV As String
@@ -30,6 +33,7 @@ Public Module setup_conf
                 PW = line(2)
                 DB = line(3)
                 connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
+
             Else
                 Dim objStreamWriter As StreamWriter = New StreamWriter(fileserver)
                 objStreamWriter.WriteLine("1")
@@ -40,9 +44,11 @@ Public Module setup_conf
             End If
         End If
         Return connectionstring
+
     End Function
 
     Function chk_connection()
+        
         Dim MS As String = ""
         connection.Open()
         If connection.State = ConnectionState.Open Then

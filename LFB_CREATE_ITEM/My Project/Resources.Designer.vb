@@ -81,6 +81,18 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to 192.168.110.125
+        '''innovation
+        '''Inno20i9
+        '''LFB_ITEM$.
+        '''</summary>
+        Friend ReadOnly Property conn() As String
+            Get
+                Return ResourceManager.GetString("conn", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property contacts() As System.Drawing.Bitmap
