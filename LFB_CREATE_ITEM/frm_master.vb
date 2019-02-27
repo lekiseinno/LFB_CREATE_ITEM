@@ -6,7 +6,7 @@
     End Sub
 
     Private Sub ConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionToolStripMenuItem.Click
-        MsgBox(setup_conf.chk_connection())
+        MsgBox(chk_connection())
     End Sub
 
     Private Sub setup_master_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -105,4 +105,9 @@
     Private Sub ConnectDataBaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectDataBaseToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
 End Class
