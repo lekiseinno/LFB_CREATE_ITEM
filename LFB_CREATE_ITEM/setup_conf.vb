@@ -4,7 +4,7 @@ Imports System.Text
 
 Public Module setup_conf
 
-    Public fileconn As String = "\conn.txt"
+    'Public fileconn As String = "\Resources\conn.ini"
 
     'Public fileconn As String = My.Resources.conn
 
