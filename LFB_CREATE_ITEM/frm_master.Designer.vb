@@ -31,6 +31,8 @@ Partial Class frm_master
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.path_resource = New System.Windows.Forms.ToolStripMenuItem()
         Me.footer = New System.Windows.Forms.StatusStrip()
         Me.lb_datenow = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -40,16 +42,14 @@ Partial Class frm_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_report = New System.Windows.Forms.Button()
+        Me.btn_input = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btn_PL = New System.Windows.Forms.Button()
+        Me.btn_cus = New System.Windows.Forms.Button()
         Me.GB_header = New System.Windows.Forms.GroupBox()
         Me.panel_frm = New System.Windows.Forms.Panel()
         Me.panel_datagrid = New System.Windows.Forms.Panel()
-        Me.btn_report = New System.Windows.Forms.Button()
-        Me.btn_input = New System.Windows.Forms.Button()
-        Me.btn_PL = New System.Windows.Forms.Button()
-        Me.btn_cus = New System.Windows.Forms.Button()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.path_resource = New System.Windows.Forms.ToolStripMenuItem()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -76,30 +76,43 @@ Partial Class frm_master
         'ConnectDataBaseToolStripMenuItem
         '
         Me.ConnectDataBaseToolStripMenuItem.Name = "ConnectDataBaseToolStripMenuItem"
-        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.ConnectDataBaseToolStripMenuItem.Text = "Connect DataBase"
         '
         'ConnectionToolStripMenuItem
         '
         Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
-        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.ConnectionToolStripMenuItem.Text = "Cechk Connection"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(169, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(169, 6)
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.path_resource})
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(42, 20)
+        Me.HelpToolStripMenuItem.Text = "help"
+        '
+        'path_resource
+        '
+        Me.path_resource.Name = "path_resource"
+        Me.path_resource.Size = New System.Drawing.Size(180, 22)
+        Me.path_resource.Text = "path_resource"
         '
         'footer
         '
@@ -162,42 +175,6 @@ Partial Class frm_master
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " Menu "
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.btn_PL)
-        Me.GroupBox2.Controls.Add(Me.btn_cus)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 543)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(172, 133)
-        Me.GroupBox2.TabIndex = 102
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "  C o n f i g  "
-        '
-        'GB_header
-        '
-        Me.GB_header.Controls.Add(Me.panel_frm)
-        Me.GB_header.Location = New System.Drawing.Point(192, 22)
-        Me.GB_header.Name = "GB_header"
-        Me.GB_header.Size = New System.Drawing.Size(1155, 278)
-        Me.GB_header.TabIndex = 3
-        Me.GB_header.TabStop = False
-        Me.GB_header.Text = " Header "
-        '
-        'panel_frm
-        '
-        Me.panel_frm.Location = New System.Drawing.Point(1, 19)
-        Me.panel_frm.Name = "panel_frm"
-        Me.panel_frm.Size = New System.Drawing.Size(1152, 257)
-        Me.panel_frm.TabIndex = 0
-        '
-        'panel_datagrid
-        '
-        Me.panel_datagrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel_datagrid.Location = New System.Drawing.Point(192, 304)
-        Me.panel_datagrid.Name = "panel_datagrid"
-        Me.panel_datagrid.Size = New System.Drawing.Size(1155, 400)
-        Me.panel_datagrid.TabIndex = 4
-        '
         'btn_report
         '
         Me.btn_report.Cursor = System.Windows.Forms.Cursors.Hand
@@ -225,6 +202,17 @@ Partial Class frm_master
         Me.btn_input.TabIndex = 103
         Me.btn_input.Text = "IN Put"
         Me.btn_input.UseVisualStyleBackColor = True
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.btn_PL)
+        Me.GroupBox2.Controls.Add(Me.btn_cus)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 543)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(172, 133)
+        Me.GroupBox2.TabIndex = 102
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "  C o n f i g  "
         '
         'btn_PL
         '
@@ -254,18 +242,30 @@ Partial Class frm_master
         Me.btn_cus.Text = "ลูกค้า"
         Me.btn_cus.UseVisualStyleBackColor = True
         '
-        'HelpToolStripMenuItem
+        'GB_header
         '
-        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.path_resource})
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(42, 20)
-        Me.HelpToolStripMenuItem.Text = "help"
+        Me.GB_header.Controls.Add(Me.panel_frm)
+        Me.GB_header.Location = New System.Drawing.Point(192, 22)
+        Me.GB_header.Name = "GB_header"
+        Me.GB_header.Size = New System.Drawing.Size(1155, 278)
+        Me.GB_header.TabIndex = 3
+        Me.GB_header.TabStop = False
+        Me.GB_header.Text = " Header "
         '
-        'path_resource
+        'panel_frm
         '
-        Me.path_resource.Name = "path_resource"
-        Me.path_resource.Size = New System.Drawing.Size(180, 22)
-        Me.path_resource.Text = "path_resource"
+        Me.panel_frm.Location = New System.Drawing.Point(1, 19)
+        Me.panel_frm.Name = "panel_frm"
+        Me.panel_frm.Size = New System.Drawing.Size(1152, 257)
+        Me.panel_frm.TabIndex = 0
+        '
+        'panel_datagrid
+        '
+        Me.panel_datagrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panel_datagrid.Location = New System.Drawing.Point(192, 304)
+        Me.panel_datagrid.Name = "panel_datagrid"
+        Me.panel_datagrid.Size = New System.Drawing.Size(1155, 400)
+        Me.panel_datagrid.TabIndex = 4
         '
         'frm_master
         '
