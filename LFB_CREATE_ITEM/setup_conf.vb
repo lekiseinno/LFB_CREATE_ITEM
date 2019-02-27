@@ -3,9 +3,9 @@ Imports System.IO
 
 Public Module setup_conf
 
-    'Public fileconn As String = "\Resources\conn.ini"
+    Public fileconn As String = "\Resources\conn.ini"
 
-    Public fileconn As String = My.Resources.conn
+    'Public fileconn As String = My.Resources.conn
 
     'For Dev
     Public fileserver As String = (Application.StartupPath).Substring(0, (Application.StartupPath).Length - 10) + fileconn
