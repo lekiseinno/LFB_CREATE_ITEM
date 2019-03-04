@@ -9,7 +9,7 @@ Public Class data_cus
     Sub get_data(datagrid)
         Try
             Dim sql As String
-            sql = "SELECT  LFB_ITEM$_Customer.[Customer_Code] ,LFB_ITEM$_Customer.[Customer_Codess] ,LFB_ITEM$_Customer.[Customer_Name] FROM LFB_ITEM$_Customer"
+            sql = "SELECT  LFB_ITEM$_Customer.[Customer_Code] ,LFB_ITEM$_Customer.[Customer_Codess] ,LFB_ITEM$_Customer.[Customer_Name] FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer]"
             Dim query As New SqlCommand(sql, connection)
             Dim dataadapter As New SqlDataAdapter(query)
             Dim ds As New DataSet()

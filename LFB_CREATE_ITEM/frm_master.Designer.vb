@@ -31,6 +31,18 @@ Partial Class frm_master
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ConfigToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GradeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PathToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lb_OnDev = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.dev_path_resource = New System.Windows.Forms.ToolStripMenuItem()
+        Me.dev_path_startup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.lb_OnClient = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.client_path_resource = New System.Windows.Forms.ToolStripMenuItem()
+        Me.client_path_startup = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.get_versions = New System.Windows.Forms.ToolStripMenuItem()
         Me.footer = New System.Windows.Forms.StatusStrip()
@@ -45,21 +57,14 @@ Partial Class frm_master
         Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_input = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btn_supply = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btn_grade_gram = New System.Windows.Forms.Button()
         Me.btn_PL = New System.Windows.Forms.Button()
         Me.btn_cus = New System.Windows.Forms.Button()
         Me.GB_header = New System.Windows.Forms.GroupBox()
         Me.panel_frm = New System.Windows.Forms.Panel()
         Me.panel_datagrid = New System.Windows.Forms.Panel()
-        Me.PathToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.dev_path_resource = New System.Windows.Forms.ToolStripMenuItem()
-        Me.dev_path_startup = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.lb_OnDev = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lb_OnClient = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.client_path_resource = New System.Windows.Forms.ToolStripMenuItem()
-        Me.client_path_startup = New System.Windows.Forms.ToolStripMenuItem()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -69,7 +74,7 @@ Partial Class frm_master
         '
         'header
         '
-        Me.header.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem, Me.PathToolStripMenuItem})
+        Me.header.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ConfigToolStripMenuItem, Me.PathToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.header.Location = New System.Drawing.Point(0, 0)
         Me.header.Name = "header"
         Me.header.Size = New System.Drawing.Size(1350, 24)
@@ -111,17 +116,88 @@ Partial Class frm_master
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(169, 6)
         '
+        'ConfigToolStripMenuItem
+        '
+        Me.ConfigToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GradeToolStripMenuItem})
+        Me.ConfigToolStripMenuItem.Name = "ConfigToolStripMenuItem"
+        Me.ConfigToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
+        Me.ConfigToolStripMenuItem.Text = "Config"
+        '
+        'GradeToolStripMenuItem
+        '
+        Me.GradeToolStripMenuItem.Name = "GradeToolStripMenuItem"
+        Me.GradeToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.GradeToolStripMenuItem.Text = "เกรด กระดาษ"
+        '
+        'PathToolStripMenuItem
+        '
+        Me.PathToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lb_OnDev, Me.ToolStripSeparator3, Me.dev_path_resource, Me.dev_path_startup, Me.ToolStripSeparator4, Me.lb_OnClient, Me.ToolStripSeparator5, Me.client_path_resource, Me.client_path_startup})
+        Me.PathToolStripMenuItem.Name = "PathToolStripMenuItem"
+        Me.PathToolStripMenuItem.Size = New System.Drawing.Size(43, 20)
+        Me.PathToolStripMenuItem.Text = "Path"
+        '
+        'lb_OnDev
+        '
+        Me.lb_OnDev.Name = "lb_OnDev"
+        Me.lb_OnDev.Size = New System.Drawing.Size(182, 22)
+        Me.lb_OnDev.Text = "On Dev."
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(179, 6)
+        '
+        'dev_path_resource
+        '
+        Me.dev_path_resource.Name = "dev_path_resource"
+        Me.dev_path_resource.Size = New System.Drawing.Size(182, 22)
+        Me.dev_path_resource.Text = "dev_path_resource"
+        '
+        'dev_path_startup
+        '
+        Me.dev_path_startup.Name = "dev_path_startup"
+        Me.dev_path_startup.Size = New System.Drawing.Size(182, 22)
+        Me.dev_path_startup.Text = "dev_path_startup"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(179, 6)
+        '
+        'lb_OnClient
+        '
+        Me.lb_OnClient.Name = "lb_OnClient"
+        Me.lb_OnClient.Size = New System.Drawing.Size(182, 22)
+        Me.lb_OnClient.Text = "On Client"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(179, 6)
+        '
+        'client_path_resource
+        '
+        Me.client_path_resource.Name = "client_path_resource"
+        Me.client_path_resource.Size = New System.Drawing.Size(182, 22)
+        Me.client_path_resource.Text = "client_path_resource"
+        '
+        'client_path_startup
+        '
+        Me.client_path_startup.Name = "client_path_startup"
+        Me.client_path_startup.Size = New System.Drawing.Size(182, 22)
+        Me.client_path_startup.Text = "client_path_startup"
+        '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.get_versions})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(42, 20)
-        Me.HelpToolStripMenuItem.Text = "help"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
         '
         'get_versions
         '
         Me.get_versions.Name = "get_versions"
-        Me.get_versions.Size = New System.Drawing.Size(180, 22)
+        Me.get_versions.Size = New System.Drawing.Size(139, 22)
         Me.get_versions.Text = "get_versions"
         '
         'footer
@@ -183,7 +259,7 @@ Partial Class frm_master
         Me.GroupBox1.Size = New System.Drawing.Size(184, 682)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = " Menu "
+        Me.GroupBox1.Text = " M e n u "
         '
         'btn_report
         '
@@ -191,10 +267,10 @@ Partial Class frm_master
         Me.btn_report.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_report.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
         Me.btn_report.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_report.Location = New System.Drawing.Point(12, 75)
+        Me.btn_report.Location = New System.Drawing.Point(6, 75)
         Me.btn_report.Name = "btn_report"
         Me.btn_report.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_report.Size = New System.Drawing.Size(160, 50)
+        Me.btn_report.Size = New System.Drawing.Size(172, 50)
         Me.btn_report.TabIndex = 104
         Me.btn_report.Text = "Report"
         Me.btn_report.UseVisualStyleBackColor = True
@@ -205,35 +281,72 @@ Partial Class frm_master
         Me.btn_input.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_input.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
         Me.btn_input.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_input.Location = New System.Drawing.Point(12, 19)
+        Me.btn_input.Location = New System.Drawing.Point(6, 19)
         Me.btn_input.Name = "btn_input"
         Me.btn_input.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_input.Size = New System.Drawing.Size(160, 50)
+        Me.btn_input.Size = New System.Drawing.Size(172, 50)
         Me.btn_input.TabIndex = 103
         Me.btn_input.Text = "IN Put"
         Me.btn_input.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.btn_supply)
+        Me.GroupBox2.Controls.Add(Me.Button2)
+        Me.GroupBox2.Controls.Add(Me.btn_grade_gram)
         Me.GroupBox2.Controls.Add(Me.btn_PL)
         Me.GroupBox2.Controls.Add(Me.btn_cus)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 543)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 131)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(172, 133)
+        Me.GroupBox2.Size = New System.Drawing.Size(172, 545)
         Me.GroupBox2.TabIndex = 102
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "  C o n f i g  "
         '
+        'btn_supply
+        '
+        Me.btn_supply.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_supply.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_supply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_supply.Location = New System.Drawing.Point(6, 439)
+        Me.btn_supply.Name = "btn_supply"
+        Me.btn_supply.Size = New System.Drawing.Size(160, 30)
+        Me.btn_supply.TabIndex = 104
+        Me.btn_supply.Text = "Supplier"
+        Me.btn_supply.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button2.Location = New System.Drawing.Point(6, 53)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(160, 30)
+        Me.Button2.TabIndex = 103
+        Me.Button2.Text = "bbb"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'btn_grade_gram
+        '
+        Me.btn_grade_gram.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_grade_gram.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_grade_gram.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_grade_gram.Location = New System.Drawing.Point(6, 19)
+        Me.btn_grade_gram.Name = "btn_grade_gram"
+        Me.btn_grade_gram.Size = New System.Drawing.Size(160, 30)
+        Me.btn_grade_gram.TabIndex = 102
+        Me.btn_grade_gram.Text = "Grade Gram"
+        Me.btn_grade_gram.UseVisualStyleBackColor = True
+        '
         'btn_PL
         '
         Me.btn_PL.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_PL.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btn_PL.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.folder
+        Me.btn_PL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_PL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_PL.Location = New System.Drawing.Point(6, 75)
+        Me.btn_PL.Location = New System.Drawing.Point(6, 509)
         Me.btn_PL.Name = "btn_PL"
-        Me.btn_PL.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_PL.Size = New System.Drawing.Size(160, 50)
+        Me.btn_PL.Size = New System.Drawing.Size(160, 30)
         Me.btn_PL.TabIndex = 101
         Me.btn_PL.Text = "PL"
         Me.btn_PL.UseVisualStyleBackColor = True
@@ -241,15 +354,13 @@ Partial Class frm_master
         'btn_cus
         '
         Me.btn_cus.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_cus.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btn_cus.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.contacts
+        Me.btn_cus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_cus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_cus.Location = New System.Drawing.Point(6, 19)
+        Me.btn_cus.Location = New System.Drawing.Point(6, 475)
         Me.btn_cus.Name = "btn_cus"
-        Me.btn_cus.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_cus.Size = New System.Drawing.Size(160, 50)
+        Me.btn_cus.Size = New System.Drawing.Size(160, 30)
         Me.btn_cus.TabIndex = 100
-        Me.btn_cus.Text = "ลูกค้า"
+        Me.btn_cus.Text = "Customer"
         Me.btn_cus.UseVisualStyleBackColor = True
         '
         'GB_header
@@ -277,64 +388,6 @@ Partial Class frm_master
         Me.panel_datagrid.Size = New System.Drawing.Size(1155, 400)
         Me.panel_datagrid.TabIndex = 4
         '
-        'PathToolStripMenuItem
-        '
-        Me.PathToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lb_OnDev, Me.ToolStripSeparator3, Me.dev_path_resource, Me.dev_path_startup, Me.ToolStripSeparator4, Me.lb_OnClient, Me.ToolStripSeparator5, Me.client_path_resource, Me.client_path_startup})
-        Me.PathToolStripMenuItem.Name = "PathToolStripMenuItem"
-        Me.PathToolStripMenuItem.Size = New System.Drawing.Size(43, 20)
-        Me.PathToolStripMenuItem.Text = "path"
-        '
-        'dev_path_resource
-        '
-        Me.dev_path_resource.Name = "dev_path_resource"
-        Me.dev_path_resource.Size = New System.Drawing.Size(182, 22)
-        Me.dev_path_resource.Text = "dev_path_resource"
-        '
-        'dev_path_startup
-        '
-        Me.dev_path_startup.Name = "dev_path_startup"
-        Me.dev_path_startup.Size = New System.Drawing.Size(182, 22)
-        Me.dev_path_startup.Text = "dev_path_startup"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(179, 6)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(179, 6)
-        '
-        'lb_OnDev
-        '
-        Me.lb_OnDev.Name = "lb_OnDev"
-        Me.lb_OnDev.Size = New System.Drawing.Size(182, 22)
-        Me.lb_OnDev.Text = "On Dev."
-        '
-        'lb_OnClient
-        '
-        Me.lb_OnClient.Name = "lb_OnClient"
-        Me.lb_OnClient.Size = New System.Drawing.Size(182, 22)
-        Me.lb_OnClient.Text = "On Client"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(179, 6)
-        '
-        'client_path_resource
-        '
-        Me.client_path_resource.Name = "client_path_resource"
-        Me.client_path_resource.Size = New System.Drawing.Size(182, 22)
-        Me.client_path_resource.Text = "client_path_resource"
-        '
-        'client_path_startup
-        '
-        Me.client_path_startup.Name = "client_path_startup"
-        Me.client_path_startup.Size = New System.Drawing.Size(182, 22)
-        Me.client_path_startup.Text = "client_path_startup"
-        '
         'frm_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -353,6 +406,7 @@ Partial Class frm_master
         Me.Name = "frm_master"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LFB ::"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.header.ResumeLayout(False)
         Me.header.PerformLayout()
         Me.footer.ResumeLayout(False)
@@ -401,4 +455,9 @@ Partial Class frm_master
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents client_path_resource As ToolStripMenuItem
     Friend WithEvents client_path_startup As ToolStripMenuItem
+    Friend WithEvents Button2 As Button
+    Friend WithEvents btn_grade_gram As Button
+    Friend WithEvents ConfigToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GradeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btn_supply As Button
 End Class
