@@ -81,11 +81,10 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Data Source=192.168.110.125;
-        '''User ID=innovation;
-        '''Password=Inno20i9;
-        '''Initial Catalog=LFB_ITEM$;
-        '''Persist Security Info=True;.
+        '''  Looks up a localized string similar to 192.168.110.125
+        '''innovation
+        '''Inno20i9
+        '''LFB_ITEM$.
         '''</summary>
         Friend ReadOnly Property conn() As String
             Get

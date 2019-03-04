@@ -11,8 +11,19 @@
 
     Private Sub setup_master_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        path_resource.Text = setup_conf.fileserver
+        'get_versions.Text = setup_conf.fileserver
+        get_versions.Text = "versions 0.1 [ on build ]"
 
+        dev_path_resource.Text = setup_conf.fileconn
+        dev_path_startup.Text = setup_conf.fileserver
+
+        client_path_resource.Text = setup_conf.file_resource1
+        client_path_startup.Text = setup_conf.file_resource2
+
+
+
+        lb_OnClient.Enabled = False
+        lb_OnDev.Enabled = False
 
         set_footers()
     End Sub

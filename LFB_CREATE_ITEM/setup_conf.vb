@@ -1,54 +1,30 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
-Imports System.Text
 
 Public Module setup_conf
 
-    'Public fileconn As String = "\Resources\conn.ini"
-
-    'Public fileconn As String = My.Resources.conn
+    Public fileconn As String = "\Resources\conn.ini"
 
     'For Dev
-    ' Public fileserver As String = (Application.StartupPath).Substring(0, (Application.StartupPath).Length - 10) + fileconn
+    Public fileserver As String = (Application.StartupPath).Substring(0, (Application.StartupPath).Length - 10) + fileconn
 
     'For Client
-    Public fileserver As String = (Application.StartupPath) & fileconn
-    'Public fileserver As String = My.Application.Info.DirectoryPath & fileconn
+    'Public fileserver As String = (Application.StartupPath) & fineconf
+    'Public fileserver As String = My.Application.Info.DirectoryPath & fineconf
+
+    Public file_resource1 As String = (Application.StartupPath) & fileconn
+    Public file_resource2 As String = My.Application.Info.DirectoryPath & fileconn
 
     Public connection As SqlConnection = New SqlConnection(get_connectionstring)
 
     Public Function get_connectionstring() As String
-
-        Dim connetionString As String = ""
+        Dim connectionstring As String = ""
 
         'Dim SV As String
         'Dim UA As String
         'Dim PW As String
         'Dim DB As String
 
-
-        'MsgBox(fileserver)
-        Try
-            Dim path As String = fileserver
-            Dim istr As String = ""
-            '  If Not File.Exists(path) Then Exit Sub
-            Dim fn As FileStream = New FileStream(path, FileMode.Open)
-            Dim sr As StreamReader = New StreamReader(fn, Encoding.Default)
-            Do While sr.Peek() >= 0
-
-                istr = sr.ReadLine()
-
-                connetionString = connetionString & istr
-
-            Loop
-
-            fn.Close()
-        Catch ex As Exception
-            MsgBox(ex)
-        End Try
-
-
-        'connectionstring = "Data Source=" & "192.168.110.125" & ";Initial Catalog=" & "LFB_ITEM$" & ";Persist Security Info=True;User ID=" & "innovation" & ";Password=" & "Inno20i9"
         'If File.Exists(fileserver) Then
         '    Dim line() As String = IO.File.ReadAllLines(fileserver)
         '    If line.LongLength = 4 Then
@@ -57,7 +33,6 @@ Public Module setup_conf
         '        PW = line(2)
         '        DB = line(3)
         '        connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
-
         '    Else
         '        Dim objStreamWriter As StreamWriter = New StreamWriter(fileserver)
         '        objStreamWriter.WriteLine("1")
@@ -69,12 +44,17 @@ Public Module setup_conf
         'End If
 
 
-        Return connetionString
+        Dim SV As String = "192.168.110.125"
+        Dim UA As String = "innovation"
+        Dim PW As String = "Inno20i9"
+        Dim DB As String = "LFB_ITEM$"
 
+        connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
+
+        Return connectionstring
     End Function
 
     Function chk_connection()
-
         Dim MS As String = ""
         connection.Open()
         If connection.State = ConnectionState.Open Then
