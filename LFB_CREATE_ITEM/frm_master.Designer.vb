@@ -406,7 +406,6 @@ Partial Class frm_master
         Me.Name = "frm_master"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LFB ::"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.header.ResumeLayout(False)
         Me.header.PerformLayout()
         Me.footer.ResumeLayout(False)

@@ -51,7 +51,7 @@ Partial Class data_PL
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(894, 4)
+        Me.Label1.Location = New System.Drawing.Point(893, 4)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 13)
         Me.Label1.TabIndex = 7
@@ -59,7 +59,7 @@ Partial Class data_PL
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(953, 1)
+        Me.txt_search.Location = New System.Drawing.Point(952, 1)
         Me.txt_search.Name = "txt_search"
         Me.txt_search.Size = New System.Drawing.Size(200, 20)
         Me.txt_search.TabIndex = 6

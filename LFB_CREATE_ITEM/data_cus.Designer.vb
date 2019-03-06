@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class data_cus
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,14 @@ Partial Class data_cus
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.DataGrid_Cus = New System.Windows.Forms.DataGridView()
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btn_copy = New System.Windows.Forms.Button()
         Me.btn_excel = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGrid_Cus, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,7 +41,7 @@ Partial Class data_cus
         '
         'txt_search
         '
-        Me.txt_search.Location = New System.Drawing.Point(953, 1)
+        Me.txt_search.Location = New System.Drawing.Point(952, 1)
         Me.txt_search.Name = "txt_search"
         Me.txt_search.Size = New System.Drawing.Size(200, 20)
         Me.txt_search.TabIndex = 1
@@ -48,7 +49,7 @@ Partial Class data_cus
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(894, 4)
+        Me.Label1.Location = New System.Drawing.Point(893, 4)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 13)
         Me.Label1.TabIndex = 2
@@ -58,19 +59,28 @@ Partial Class data_cus
         '
         Me.btn_copy.Location = New System.Drawing.Point(0, 0)
         Me.btn_copy.Name = "btn_copy"
-        Me.btn_copy.Size = New System.Drawing.Size(100, 22)
+        Me.btn_copy.Size = New System.Drawing.Size(80, 22)
         Me.btn_copy.TabIndex = 3
         Me.btn_copy.Text = "Copy"
         Me.btn_copy.UseVisualStyleBackColor = True
         '
         'btn_excel
         '
-        Me.btn_excel.Location = New System.Drawing.Point(99, 0)
+        Me.btn_excel.Location = New System.Drawing.Point(79, 0)
         Me.btn_excel.Name = "btn_excel"
-        Me.btn_excel.Size = New System.Drawing.Size(100, 22)
+        Me.btn_excel.Size = New System.Drawing.Size(130, 22)
         Me.btn_excel.TabIndex = 4
-        Me.btn_excel.Text = "Export Excel"
+        Me.btn_excel.Text = "Export Excel (*.xlsx)"
         Me.btn_excel.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(208, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(130, 22)
+        Me.Button1.TabIndex = 5
+        Me.Button1.Text = "Export Excel (*.csv)"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'data_cus
         '
@@ -78,6 +88,7 @@ Partial Class data_cus
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1155, 400)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btn_excel)
         Me.Controls.Add(Me.btn_copy)
         Me.Controls.Add(Me.Label1)
@@ -97,4 +108,5 @@ Partial Class data_cus
     Friend WithEvents Label1 As Label
     Friend WithEvents btn_copy As Button
     Friend WithEvents btn_excel As Button
+    Friend WithEvents Button1 As Button
 End Class

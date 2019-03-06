@@ -23,6 +23,8 @@ Partial Class frm_input
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_excel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -34,12 +36,32 @@ Partial Class frm_input
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "frm_input"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(1023, 235)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(130, 22)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Export Excel (*.csv)"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'btn_excel
+        '
+        Me.btn_excel.Location = New System.Drawing.Point(894, 235)
+        Me.btn_excel.Name = "btn_excel"
+        Me.btn_excel.Size = New System.Drawing.Size(130, 22)
+        Me.btn_excel.TabIndex = 6
+        Me.btn_excel.Text = "Export Excel (*.xlsx)"
+        Me.btn_excel.UseVisualStyleBackColor = True
+        '
         'frm_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Info
-        Me.ClientSize = New System.Drawing.Size(1155, 257)
+        Me.ClientSize = New System.Drawing.Size(1153, 257)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btn_excel)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frm_input"
@@ -50,4 +72,6 @@ Partial Class frm_input
     End Sub
 
     Friend WithEvents Label1 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_excel As Button
 End Class
