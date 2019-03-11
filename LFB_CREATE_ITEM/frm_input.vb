@@ -9,7 +9,7 @@ Public Class frm_input
 
 
 
-    Private Sub btn_excel_Click(sender As Object, e As EventArgs) Handles btn_excel.Click
+    Private Sub btn_excel_Click(sender As Object, e As EventArgs)
         Try
             Dim xlApp As Microsoft.Office.Interop.Excel.Application
             Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
@@ -58,4 +58,5 @@ Public Class frm_input
             GC.Collect()
         End Try
     End Sub
+
 End Class

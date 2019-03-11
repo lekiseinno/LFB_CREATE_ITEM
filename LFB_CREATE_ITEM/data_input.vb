@@ -2,7 +2,12 @@
 
 Public Class data_input
     Private Sub data_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        get_data(DataGrid_input)
+        'get_data(DataGrid_input)
+
+
+        Me.Tab_main.BackColor = Color.Blue
+
+
     End Sub
     Sub get_data(datagrid)
         Try
@@ -44,7 +49,11 @@ Public Class data_input
         End Try
     End Sub
 
-    Private Sub DataGrid_PL_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrid_input.CellClick
+    Private Sub DataGrid_PL_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrid_bom_header.CellClick
         'MsgBox()
+    End Sub
+
+    Private Sub btn_excel_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class
