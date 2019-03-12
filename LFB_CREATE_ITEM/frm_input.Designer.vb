@@ -505,7 +505,7 @@ Partial Class frm_input
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(630, 175)
+        Me.Label25.Location = New System.Drawing.Point(632, 175)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(52, 26)
         Me.Label25.TabIndex = 61
@@ -523,7 +523,7 @@ Partial Class frm_input
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(874, 102)
+        Me.Label26.Location = New System.Drawing.Point(868, 104)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(64, 26)
         Me.Label26.TabIndex = 63
@@ -541,7 +541,7 @@ Partial Class frm_input
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(885, 131)
+        Me.Label27.Location = New System.Drawing.Point(880, 132)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(52, 26)
         Me.Label27.TabIndex = 65
@@ -559,7 +559,7 @@ Partial Class frm_input
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(881, 83)
+        Me.Label28.Location = New System.Drawing.Point(883, 83)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(49, 13)
         Me.Label28.TabIndex = 67
@@ -576,7 +576,7 @@ Partial Class frm_input
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(856, 27)
+        Me.Label29.Location = New System.Drawing.Point(858, 27)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(74, 13)
         Me.Label29.TabIndex = 69
@@ -593,7 +593,7 @@ Partial Class frm_input
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(864, 55)
+        Me.Label30.Location = New System.Drawing.Point(866, 55)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(66, 13)
         Me.Label30.TabIndex = 71
@@ -610,7 +610,7 @@ Partial Class frm_input
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(880, 167)
+        Me.Label31.Location = New System.Drawing.Point(883, 167)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(52, 13)
         Me.Label31.TabIndex = 73

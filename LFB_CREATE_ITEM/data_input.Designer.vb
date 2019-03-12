@@ -107,7 +107,7 @@ Partial Class data_input
         Me.Tab_bom_header.Padding = New System.Windows.Forms.Padding(3)
         Me.Tab_bom_header.Size = New System.Drawing.Size(1145, 373)
         Me.Tab_bom_header.TabIndex = 0
-        Me.Tab_bom_header.Text = "B O M  H e a d e r"
+        Me.Tab_bom_header.Text = "BOM  H e a d e r"
         '
         'Tab_bom_line
         '
@@ -117,7 +117,7 @@ Partial Class data_input
         Me.Tab_bom_line.Padding = New System.Windows.Forms.Padding(3)
         Me.Tab_bom_line.Size = New System.Drawing.Size(1145, 373)
         Me.Tab_bom_line.TabIndex = 1
-        Me.Tab_bom_line.Text = "BOM Line"
+        Me.Tab_bom_line.Text = "BOM  L i n e"
         Me.Tab_bom_line.UseVisualStyleBackColor = True
         '
         'DataGrid_bom_line
@@ -136,7 +136,7 @@ Partial Class data_input
         Me.Tab_default_dimension.Padding = New System.Windows.Forms.Padding(3)
         Me.Tab_default_dimension.Size = New System.Drawing.Size(1145, 373)
         Me.Tab_default_dimension.TabIndex = 2
-        Me.Tab_default_dimension.Text = "Default Dimension"
+        Me.Tab_default_dimension.Text = "Default  Dimension"
         Me.Tab_default_dimension.UseVisualStyleBackColor = True
         '
         'DataGrid_Default_dimension
@@ -155,7 +155,7 @@ Partial Class data_input
         Me.Tab_item_master.Padding = New System.Windows.Forms.Padding(3)
         Me.Tab_item_master.Size = New System.Drawing.Size(1145, 373)
         Me.Tab_item_master.TabIndex = 3
-        Me.Tab_item_master.Text = "Item Master"
+        Me.Tab_item_master.Text = "Item  Master"
         Me.Tab_item_master.UseVisualStyleBackColor = True
         '
         'DataGrid_Item_master
