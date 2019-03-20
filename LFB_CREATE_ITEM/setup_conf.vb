@@ -67,4 +67,66 @@ Public Module setup_conf
         connection.Close()
         Return MS
     End Function
+
+
+
+    Sub gen_excel(datagridname, filename)
+
+        Try
+
+            'Me.Cursor = Cursors.WaitCursor
+
+            Dim xlApp As Microsoft.Office.Interop.Excel.Application
+            Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
+            Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
+            Dim misValue As Object = System.Reflection.Missing.Value
+            Dim i As Integer
+            Dim j As Integer
+            xlApp = New Microsoft.Office.Interop.Excel.Application
+            xlWorkBook = xlApp.Workbooks.Add(misValue)
+            xlWorkSheet = xlWorkBook.Sheets("sheet1")
+            xlWorkSheet.Columns.AutoFit()
+
+            For i = 0 To datagridname.RowCount - 2
+                For j = 0 To datagridname.ColumnCount - 1
+                    For k As Integer = 1 To datagridname.Columns.Count
+                        xlWorkSheet.Cells(1, k) = datagridname.Columns(k - 1).HeaderText
+                        xlWorkSheet.Cells(i + 2, j + 1) = datagridname(j, i).Value.ToString()
+                    Next
+                Next
+            Next
+
+            xlWorkSheet.SaveAs((filename))
+            xlWorkBook.Close()
+            xlApp.Quit()
+
+
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(xlWorkSheet)
+
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+    End Sub
+
+    Private Sub releaseObject(ByVal obj As Object)
+        Try
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
+            obj = Nothing
+        Catch ex As Exception
+            obj = Nothing
+        Finally
+            GC.Collect()
+        End Try
+    End Sub
+
+
+
+
+
+
 End Module

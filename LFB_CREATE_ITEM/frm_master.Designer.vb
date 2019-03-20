@@ -54,6 +54,8 @@ Partial Class frm_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_excelfile = New System.Windows.Forms.Button()
+        Me.btn_item = New System.Windows.Forms.Button()
         Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_input = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -251,6 +253,8 @@ Partial Class frm_master
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btn_excelfile)
+        Me.GroupBox1.Controls.Add(Me.btn_item)
         Me.GroupBox1.Controls.Add(Me.btn_report)
         Me.GroupBox1.Controls.Add(Me.btn_input)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
@@ -260,6 +264,34 @@ Partial Class frm_master
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " M e n u "
+        '
+        'btn_excelfile
+        '
+        Me.btn_excelfile.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_excelfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_excelfile.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
+        Me.btn_excelfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_excelfile.Location = New System.Drawing.Point(6, 244)
+        Me.btn_excelfile.Name = "btn_excelfile"
+        Me.btn_excelfile.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_excelfile.Size = New System.Drawing.Size(172, 50)
+        Me.btn_excelfile.TabIndex = 106
+        Me.btn_excelfile.Text = "Excel File"
+        Me.btn_excelfile.UseVisualStyleBackColor = True
+        '
+        'btn_item
+        '
+        Me.btn_item.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_item.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_item.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
+        Me.btn_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_item.Location = New System.Drawing.Point(6, 188)
+        Me.btn_item.Name = "btn_item"
+        Me.btn_item.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_item.Size = New System.Drawing.Size(172, 50)
+        Me.btn_item.TabIndex = 105
+        Me.btn_item.Text = "iTem"
+        Me.btn_item.UseVisualStyleBackColor = True
         '
         'btn_report
         '
@@ -296,9 +328,9 @@ Partial Class frm_master
         Me.GroupBox2.Controls.Add(Me.btn_grade_gram)
         Me.GroupBox2.Controls.Add(Me.btn_PL)
         Me.GroupBox2.Controls.Add(Me.btn_cus)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 131)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 364)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(172, 545)
+        Me.GroupBox2.Size = New System.Drawing.Size(172, 312)
         Me.GroupBox2.TabIndex = 102
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "  C o n f i g  "
@@ -308,7 +340,7 @@ Partial Class frm_master
         Me.btn_supply.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_supply.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_supply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_supply.Location = New System.Drawing.Point(6, 439)
+        Me.btn_supply.Location = New System.Drawing.Point(6, 201)
         Me.btn_supply.Name = "btn_supply"
         Me.btn_supply.Size = New System.Drawing.Size(160, 30)
         Me.btn_supply.TabIndex = 104
@@ -344,7 +376,7 @@ Partial Class frm_master
         Me.btn_PL.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_PL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_PL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_PL.Location = New System.Drawing.Point(6, 509)
+        Me.btn_PL.Location = New System.Drawing.Point(6, 273)
         Me.btn_PL.Name = "btn_PL"
         Me.btn_PL.Size = New System.Drawing.Size(160, 30)
         Me.btn_PL.TabIndex = 101
@@ -356,7 +388,7 @@ Partial Class frm_master
         Me.btn_cus.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_cus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_cus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_cus.Location = New System.Drawing.Point(6, 475)
+        Me.btn_cus.Location = New System.Drawing.Point(6, 237)
         Me.btn_cus.Name = "btn_cus"
         Me.btn_cus.Size = New System.Drawing.Size(160, 30)
         Me.btn_cus.TabIndex = 100
@@ -460,4 +492,6 @@ Partial Class frm_master
     Friend WithEvents ConfigToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GradeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_supply As Button
+    Friend WithEvents btn_item As Button
+    Friend WithEvents btn_excelfile As Button
 End Class

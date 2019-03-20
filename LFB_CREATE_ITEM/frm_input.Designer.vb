@@ -38,11 +38,11 @@ Partial Class frm_input
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
-        Me.TextBox10 = New System.Windows.Forms.TextBox()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
-        Me.TextBox12 = New System.Windows.Forms.TextBox()
-        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.txt_F1 = New System.Windows.Forms.TextBox()
+        Me.txt_F2 = New System.Windows.Forms.TextBox()
+        Me.txt_F3 = New System.Windows.Forms.TextBox()
+        Me.txt_F4 = New System.Windows.Forms.TextBox()
+        Me.txt_F5 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -224,50 +224,50 @@ Partial Class frm_input
         Me.TextBox8.Size = New System.Drawing.Size(128, 22)
         Me.TextBox8.TabIndex = 25
         '
-        'TextBox9
+        'txt_F1
         '
-        Me.TextBox9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(233, Byte), Integer))
-        Me.TextBox9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox9.Location = New System.Drawing.Point(264, 22)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(60, 22)
-        Me.TextBox9.TabIndex = 27
+        Me.txt_F1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(227, Byte), Integer), CType(CType(233, Byte), Integer))
+        Me.txt_F1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_F1.Location = New System.Drawing.Point(264, 22)
+        Me.txt_F1.Name = "txt_F1"
+        Me.txt_F1.Size = New System.Drawing.Size(60, 22)
+        Me.txt_F1.TabIndex = 27
         '
-        'TextBox10
+        'txt_F2
         '
-        Me.TextBox10.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(213, Byte), Integer), CType(CType(233, Byte), Integer))
-        Me.TextBox10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox10.Location = New System.Drawing.Point(328, 22)
-        Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(60, 22)
-        Me.TextBox10.TabIndex = 28
+        Me.txt_F2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(213, Byte), Integer), CType(CType(233, Byte), Integer))
+        Me.txt_F2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_F2.Location = New System.Drawing.Point(328, 22)
+        Me.txt_F2.Name = "txt_F2"
+        Me.txt_F2.Size = New System.Drawing.Size(60, 22)
+        Me.txt_F2.TabIndex = 28
         '
-        'TextBox11
+        'txt_F3
         '
-        Me.TextBox11.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(183, Byte), Integer))
-        Me.TextBox11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox11.Location = New System.Drawing.Point(392, 22)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(60, 22)
-        Me.TextBox11.TabIndex = 29
+        Me.txt_F3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(184, Byte), Integer), CType(CType(183, Byte), Integer))
+        Me.txt_F3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_F3.Location = New System.Drawing.Point(392, 22)
+        Me.txt_F3.Name = "txt_F3"
+        Me.txt_F3.Size = New System.Drawing.Size(60, 22)
+        Me.txt_F3.TabIndex = 29
         '
-        'TextBox12
+        'txt_F4
         '
-        Me.TextBox12.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
-        Me.TextBox12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox12.Location = New System.Drawing.Point(456, 22)
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(60, 22)
-        Me.TextBox12.TabIndex = 30
+        Me.txt_F4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(129, Byte), Integer), CType(CType(129, Byte), Integer))
+        Me.txt_F4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_F4.Location = New System.Drawing.Point(456, 22)
+        Me.txt_F4.Name = "txt_F4"
+        Me.txt_F4.Size = New System.Drawing.Size(60, 22)
+        Me.txt_F4.TabIndex = 30
         '
-        'TextBox13
+        'txt_F5
         '
-        Me.TextBox13.BackColor = System.Drawing.Color.FromArgb(CType(CType(209, Byte), Integer), CType(CType(106, Byte), Integer), CType(CType(106, Byte), Integer))
-        Me.TextBox13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox13.Location = New System.Drawing.Point(520, 22)
-        Me.TextBox13.Name = "TextBox13"
-        Me.TextBox13.Size = New System.Drawing.Size(60, 22)
-        Me.TextBox13.TabIndex = 31
+        Me.txt_F5.BackColor = System.Drawing.Color.FromArgb(CType(CType(209, Byte), Integer), CType(CType(106, Byte), Integer), CType(CType(106, Byte), Integer))
+        Me.txt_F5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_F5.Location = New System.Drawing.Point(520, 22)
+        Me.txt_F5.Name = "txt_F5"
+        Me.txt_F5.Size = New System.Drawing.Size(60, 22)
+        Me.txt_F5.TabIndex = 31
         '
         'Label9
         '
@@ -698,11 +698,11 @@ Partial Class frm_input
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.TextBox13)
-        Me.Controls.Add(Me.TextBox12)
-        Me.Controls.Add(Me.TextBox11)
-        Me.Controls.Add(Me.TextBox10)
-        Me.Controls.Add(Me.TextBox9)
+        Me.Controls.Add(Me.txt_F5)
+        Me.Controls.Add(Me.txt_F4)
+        Me.Controls.Add(Me.txt_F3)
+        Me.Controls.Add(Me.txt_F2)
+        Me.Controls.Add(Me.txt_F1)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.Label7)
@@ -742,11 +742,11 @@ Partial Class frm_input
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox8 As TextBox
-    Friend WithEvents TextBox9 As TextBox
-    Friend WithEvents TextBox10 As TextBox
-    Friend WithEvents TextBox11 As TextBox
-    Friend WithEvents TextBox12 As TextBox
-    Friend WithEvents TextBox13 As TextBox
+    Friend WithEvents txt_F1 As TextBox
+    Friend WithEvents txt_F2 As TextBox
+    Friend WithEvents txt_F3 As TextBox
+    Friend WithEvents txt_F4 As TextBox
+    Friend WithEvents txt_F5 As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents Label11 As Label
