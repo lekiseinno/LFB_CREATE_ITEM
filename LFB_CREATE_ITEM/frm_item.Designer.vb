@@ -214,11 +214,11 @@ Partial Class frm_item
         '
         'btn_add_datagrid_item
         '
-        Me.btn_add_datagrid_item.Location = New System.Drawing.Point(1061, 165)
+        Me.btn_add_datagrid_item.Location = New System.Drawing.Point(1061, 172)
         Me.btn_add_datagrid_item.Name = "btn_add_datagrid_item"
-        Me.btn_add_datagrid_item.Size = New System.Drawing.Size(80, 80)
+        Me.btn_add_datagrid_item.Size = New System.Drawing.Size(80, 49)
         Me.btn_add_datagrid_item.TabIndex = 47
-        Me.btn_add_datagrid_item.Text = "Button1"
+        Me.btn_add_datagrid_item.Text = "Create"
         Me.btn_add_datagrid_item.UseVisualStyleBackColor = True
         '
         'btn_clear
