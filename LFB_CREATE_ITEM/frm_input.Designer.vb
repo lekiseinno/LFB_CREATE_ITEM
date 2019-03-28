@@ -22,13 +22,13 @@ Partial Class frm_input
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.txt_pono = New System.Windows.Forms.TextBox()
+        Me.txt_no = New System.Windows.Forms.TextBox()
+        Me.txt_type = New System.Windows.Forms.TextBox()
+        Me.txt_width = New System.Windows.Forms.TextBox()
+        Me.txt_workinch = New System.Windows.Forms.TextBox()
+        Me.txt_cut = New System.Windows.Forms.TextBox()
+        Me.txt_long = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -37,7 +37,7 @@ Partial Class frm_input
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.txt_cutoff = New System.Windows.Forms.TextBox()
         Me.txt_F1 = New System.Windows.Forms.TextBox()
         Me.txt_F2 = New System.Windows.Forms.TextBox()
         Me.txt_F3 = New System.Windows.Forms.TextBox()
@@ -50,104 +50,111 @@ Partial Class frm_input
         Me.Label13 = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.TextBox14 = New System.Windows.Forms.TextBox()
+        Me.txt_trim = New System.Windows.Forms.TextBox()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.TextBox16 = New System.Windows.Forms.TextBox()
+        Me.txt_paper = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.TextBox17 = New System.Windows.Forms.TextBox()
+        Me.txt_lon = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.txt_count = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.txt_count_cut = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.TextBox20 = New System.Windows.Forms.TextBox()
+        Me.txt_duedate = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.TextBox21 = New System.Windows.Forms.TextBox()
+        Me.txt_pl = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
-        Me.TextBox22 = New System.Windows.Forms.TextBox()
+        Me.txt_pl_sp = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.TextBox23 = New System.Windows.Forms.TextBox()
+        Me.txt_pl_net = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.TextBox24 = New System.Windows.Forms.TextBox()
+        Me.txt_net_unit = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.TextBox25 = New System.Windows.Forms.TextBox()
+        Me.txt_met = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.TextBox26 = New System.Windows.Forms.TextBox()
+        Me.txt_meth = New System.Windows.Forms.TextBox()
         Me.Label27 = New System.Windows.Forms.Label()
-        Me.TextBox27 = New System.Windows.Forms.TextBox()
+        Me.txt_meth2 = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
-        Me.TextBox28 = New System.Windows.Forms.TextBox()
+        Me.txt_discount = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
-        Me.TextBox29 = New System.Windows.Forms.TextBox()
+        Me.txt_sumdiscount = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.TextBox30 = New System.Windows.Forms.TextBox()
+        Me.txt_price = New System.Windows.Forms.TextBox()
         Me.Label31 = New System.Windows.Forms.Label()
-        Me.TextBox31 = New System.Windows.Forms.TextBox()
+        Me.txt_note = New System.Windows.Forms.TextBox()
         Me.btn_clear = New System.Windows.Forms.Button()
         Me.btn_add = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txt_customer = New System.Windows.Forms.ComboBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'txt_pono
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(112, 4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox1.TabIndex = 11
+        Me.txt_pono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_pono.Location = New System.Drawing.Point(112, 39)
+        Me.txt_pono.Name = "txt_pono"
+        Me.txt_pono.Size = New System.Drawing.Size(128, 22)
+        Me.txt_pono.TabIndex = 11
         '
-        'TextBox2
+        'txt_no
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(112, 34)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox2.TabIndex = 12
+        Me.txt_no.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_no.Location = New System.Drawing.Point(112, 69)
+        Me.txt_no.Name = "txt_no"
+        Me.txt_no.Size = New System.Drawing.Size(128, 22)
+        Me.txt_no.TabIndex = 12
         '
-        'TextBox3
+        'txt_type
         '
-        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(112, 60)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox3.TabIndex = 13
+        Me.txt_type.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_type.Location = New System.Drawing.Point(112, 95)
+        Me.txt_type.Name = "txt_type"
+        Me.txt_type.Size = New System.Drawing.Size(128, 22)
+        Me.txt_type.TabIndex = 13
         '
-        'TextBox4
+        'txt_width
         '
-        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(112, 90)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox4.TabIndex = 14
+        Me.txt_width.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_width.Location = New System.Drawing.Point(112, 125)
+        Me.txt_width.Name = "txt_width"
+        Me.txt_width.Size = New System.Drawing.Size(128, 22)
+        Me.txt_width.TabIndex = 14
         '
-        'TextBox5
+        'txt_workinch
         '
-        Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(112, 116)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox5.TabIndex = 15
+        Me.txt_workinch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_workinch.Location = New System.Drawing.Point(112, 151)
+        Me.txt_workinch.Name = "txt_workinch"
+        Me.txt_workinch.Size = New System.Drawing.Size(128, 22)
+        Me.txt_workinch.TabIndex = 15
         '
-        'TextBox6
+        'txt_cut
         '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(112, 142)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox6.TabIndex = 16
+        Me.txt_cut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_cut.Location = New System.Drawing.Point(112, 177)
+        Me.txt_cut.Name = "txt_cut"
+        Me.txt_cut.Size = New System.Drawing.Size(128, 22)
+        Me.txt_cut.TabIndex = 16
         '
-        'TextBox7
+        'txt_long
         '
-        Me.TextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox7.Location = New System.Drawing.Point(112, 168)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox7.TabIndex = 17
+        Me.txt_long.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_long.Location = New System.Drawing.Point(112, 203)
+        Me.txt_long.Name = "txt_long"
+        Me.txt_long.Size = New System.Drawing.Size(128, 22)
+        Me.txt_long.TabIndex = 17
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 39)
+        Me.Label1.Location = New System.Drawing.Point(6, 74)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(105, 13)
         Me.Label1.TabIndex = 18
@@ -156,7 +163,7 @@ Partial Class frm_input
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 65)
+        Me.Label2.Location = New System.Drawing.Point(6, 100)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(104, 13)
         Me.Label2.TabIndex = 19
@@ -165,7 +172,7 @@ Partial Class frm_input
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 9)
+        Me.Label3.Location = New System.Drawing.Point(6, 44)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(105, 13)
         Me.Label3.TabIndex = 20
@@ -174,7 +181,7 @@ Partial Class frm_input
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 95)
+        Me.Label4.Location = New System.Drawing.Point(6, 130)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(102, 13)
         Me.Label4.TabIndex = 21
@@ -183,7 +190,7 @@ Partial Class frm_input
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 121)
+        Me.Label5.Location = New System.Drawing.Point(6, 156)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(106, 13)
         Me.Label5.TabIndex = 22
@@ -192,7 +199,7 @@ Partial Class frm_input
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 147)
+        Me.Label6.Location = New System.Drawing.Point(6, 182)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(103, 13)
         Me.Label6.TabIndex = 23
@@ -201,7 +208,7 @@ Partial Class frm_input
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 173)
+        Me.Label7.Location = New System.Drawing.Point(6, 208)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(103, 13)
         Me.Label7.TabIndex = 24
@@ -210,19 +217,19 @@ Partial Class frm_input
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 199)
+        Me.Label8.Location = New System.Drawing.Point(6, 234)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(100, 13)
+        Me.Label8.Size = New System.Drawing.Size(105, 13)
         Me.Label8.TabIndex = 26
-        Me.Label8.Text = "หน้าผ่าลึก . . . . . . . ."
+        Me.Label8.Text = "หน้าผ่าเล็ก . . . . . . . ."
         '
-        'TextBox8
+        'txt_cutoff
         '
-        Me.TextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox8.Location = New System.Drawing.Point(112, 194)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox8.TabIndex = 25
+        Me.txt_cutoff.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_cutoff.Location = New System.Drawing.Point(112, 229)
+        Me.txt_cutoff.Name = "txt_cutoff"
+        Me.txt_cutoff.Size = New System.Drawing.Size(128, 22)
+        Me.txt_cutoff.TabIndex = 25
         '
         'txt_F1
         '
@@ -327,19 +334,19 @@ Partial Class frm_input
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(261, 101)
+        Me.Label14.Location = New System.Drawing.Point(261, 125)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(129, 13)
         Me.Label14.TabIndex = 39
         Me.Label14.Text = "Trim . . . . . . . . . . . . . . . . ."
         '
-        'TextBox14
+        'txt_trim
         '
-        Me.TextBox14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox14.Location = New System.Drawing.Point(392, 96)
-        Me.TextBox14.Name = "TextBox14"
-        Me.TextBox14.Size = New System.Drawing.Size(188, 22)
-        Me.TextBox14.TabIndex = 38
+        Me.txt_trim.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_trim.Location = New System.Drawing.Point(392, 119)
+        Me.txt_trim.Name = "txt_trim"
+        Me.txt_trim.Size = New System.Drawing.Size(188, 22)
+        Me.txt_trim.TabIndex = 38
         '
         'TextBox15
         '
@@ -352,36 +359,38 @@ Partial Class frm_input
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(261, 49)
+        Me.Label16.Location = New System.Drawing.Point(261, 77)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(138, 13)
         Me.Label16.TabIndex = 43
         Me.Label16.Text = "Paper Combination / สั่งผลิต"
         '
-        'TextBox16
+        'txt_paper
         '
-        Me.TextBox16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox16.Location = New System.Drawing.Point(264, 66)
-        Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.Size = New System.Drawing.Size(316, 22)
-        Me.TextBox16.TabIndex = 42
+        Me.txt_paper.BackColor = System.Drawing.Color.Maroon
+        Me.txt_paper.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_paper.Location = New System.Drawing.Point(264, 229)
+        Me.txt_paper.Name = "txt_paper"
+        Me.txt_paper.Size = New System.Drawing.Size(316, 22)
+        Me.txt_paper.TabIndex = 42
+        Me.txt_paper.Text = "not use"
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(261, 126)
+        Me.Label17.Location = New System.Drawing.Point(261, 53)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(129, 13)
         Me.Label17.TabIndex = 45
         Me.Label17.Text = "ลอน . . . . . . . . . . . . . . . . ."
         '
-        'TextBox17
+        'txt_lon
         '
-        Me.TextBox17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox17.Location = New System.Drawing.Point(392, 121)
-        Me.TextBox17.Name = "TextBox17"
-        Me.TextBox17.Size = New System.Drawing.Size(188, 22)
-        Me.TextBox17.TabIndex = 44
+        Me.txt_lon.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_lon.Location = New System.Drawing.Point(392, 48)
+        Me.txt_lon.Name = "txt_lon"
+        Me.txt_lon.Size = New System.Drawing.Size(188, 22)
+        Me.txt_lon.TabIndex = 44
         '
         'Label18
         '
@@ -392,13 +401,13 @@ Partial Class frm_input
         Me.Label18.TabIndex = 47
         Me.Label18.Text = "จำนวนเต็ม . . . . . . . . . . . ."
         '
-        'TextBox18
+        'txt_count
         '
-        Me.TextBox18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox18.Location = New System.Drawing.Point(392, 147)
-        Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.Size = New System.Drawing.Size(188, 22)
-        Me.TextBox18.TabIndex = 46
+        Me.txt_count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_count.Location = New System.Drawing.Point(392, 147)
+        Me.txt_count.Name = "txt_count"
+        Me.txt_count.Size = New System.Drawing.Size(188, 22)
+        Me.txt_count.TabIndex = 46
         '
         'Label19
         '
@@ -409,13 +418,13 @@ Partial Class frm_input
         Me.Label19.TabIndex = 49
         Me.Label19.Text = "จำนวนแผ่นลึก . . . . . . . . ."
         '
-        'TextBox19
+        'txt_count_cut
         '
-        Me.TextBox19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox19.Location = New System.Drawing.Point(392, 173)
-        Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New System.Drawing.Size(188, 22)
-        Me.TextBox19.TabIndex = 48
+        Me.txt_count_cut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_count_cut.Location = New System.Drawing.Point(392, 173)
+        Me.txt_count_cut.Name = "txt_count_cut"
+        Me.txt_count_cut.Size = New System.Drawing.Size(188, 22)
+        Me.txt_count_cut.TabIndex = 48
         '
         'Label20
         '
@@ -426,13 +435,13 @@ Partial Class frm_input
         Me.Label20.TabIndex = 51
         Me.Label20.Text = "Due ส่งของ . . . . . . . . . . . ."
         '
-        'TextBox20
+        'txt_duedate
         '
-        Me.TextBox20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox20.Location = New System.Drawing.Point(392, 199)
-        Me.TextBox20.Name = "TextBox20"
-        Me.TextBox20.Size = New System.Drawing.Size(188, 22)
-        Me.TextBox20.TabIndex = 50
+        Me.txt_duedate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_duedate.Location = New System.Drawing.Point(392, 199)
+        Me.txt_duedate.Name = "txt_duedate"
+        Me.txt_duedate.Size = New System.Drawing.Size(188, 22)
+        Me.txt_duedate.TabIndex = 50
         '
         'Label21
         '
@@ -443,13 +452,13 @@ Partial Class frm_input
         Me.Label21.TabIndex = 53
         Me.Label21.Text = "P/L"
         '
-        'TextBox21
+        'txt_pl
         '
-        Me.TextBox21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox21.Location = New System.Drawing.Point(686, 66)
-        Me.TextBox21.Name = "TextBox21"
-        Me.TextBox21.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox21.TabIndex = 52
+        Me.txt_pl.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_pl.Location = New System.Drawing.Point(686, 66)
+        Me.txt_pl.Name = "txt_pl"
+        Me.txt_pl.Size = New System.Drawing.Size(128, 22)
+        Me.txt_pl.TabIndex = 52
         '
         'Label22
         '
@@ -460,13 +469,13 @@ Partial Class frm_input
         Me.Label22.TabIndex = 55
         Me.Label22.Text = "Special P/L"
         '
-        'TextBox22
+        'txt_pl_sp
         '
-        Me.TextBox22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox22.Location = New System.Drawing.Point(686, 92)
-        Me.TextBox22.Name = "TextBox22"
-        Me.TextBox22.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox22.TabIndex = 54
+        Me.txt_pl_sp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_pl_sp.Location = New System.Drawing.Point(686, 92)
+        Me.txt_pl_sp.Name = "txt_pl_sp"
+        Me.txt_pl_sp.Size = New System.Drawing.Size(128, 22)
+        Me.txt_pl_sp.TabIndex = 54
         '
         'Label23
         '
@@ -477,13 +486,13 @@ Partial Class frm_input
         Me.Label23.TabIndex = 57
         Me.Label23.Text = "Net P/L"
         '
-        'TextBox23
+        'txt_pl_net
         '
-        Me.TextBox23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox23.Location = New System.Drawing.Point(686, 120)
-        Me.TextBox23.Name = "TextBox23"
-        Me.TextBox23.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox23.TabIndex = 56
+        Me.txt_pl_net.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_pl_net.Location = New System.Drawing.Point(686, 120)
+        Me.txt_pl_net.Name = "txt_pl_net"
+        Me.txt_pl_net.Size = New System.Drawing.Size(128, 22)
+        Me.txt_pl_net.TabIndex = 56
         '
         'Label24
         '
@@ -494,13 +503,13 @@ Partial Class frm_input
         Me.Label24.TabIndex = 59
         Me.Label24.Text = "Net Unit Price"
         '
-        'TextBox24
+        'txt_net_unit
         '
-        Me.TextBox24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox24.Location = New System.Drawing.Point(686, 148)
-        Me.TextBox24.Name = "TextBox24"
-        Me.TextBox24.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox24.TabIndex = 58
+        Me.txt_net_unit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_net_unit.Location = New System.Drawing.Point(686, 148)
+        Me.txt_net_unit.Name = "txt_net_unit"
+        Me.txt_net_unit.Size = New System.Drawing.Size(128, 22)
+        Me.txt_net_unit.TabIndex = 58
         '
         'Label25
         '
@@ -512,13 +521,13 @@ Partial Class frm_input
         Me.Label25.Text = "เมตรรวม" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "หาส่วนลด"
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TextBox25
+        'txt_met
         '
-        Me.TextBox25.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox25.Location = New System.Drawing.Point(686, 177)
-        Me.TextBox25.Name = "TextBox25"
-        Me.TextBox25.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox25.TabIndex = 60
+        Me.txt_met.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_met.Location = New System.Drawing.Point(686, 177)
+        Me.txt_met.Name = "txt_met"
+        Me.txt_met.Size = New System.Drawing.Size(128, 22)
+        Me.txt_met.TabIndex = 60
         '
         'Label26
         '
@@ -530,13 +539,13 @@ Partial Class frm_input
         Me.Label26.Text = "เมตรรวม" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "เดินงานพ่วง"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TextBox26
+        'txt_meth
         '
-        Me.TextBox26.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox26.Location = New System.Drawing.Point(938, 106)
-        Me.TextBox26.Name = "TextBox26"
-        Me.TextBox26.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox26.TabIndex = 62
+        Me.txt_meth.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_meth.Location = New System.Drawing.Point(938, 106)
+        Me.txt_meth.Name = "txt_meth"
+        Me.txt_meth.Size = New System.Drawing.Size(128, 22)
+        Me.txt_meth.TabIndex = 62
         '
         'Label27
         '
@@ -548,13 +557,13 @@ Partial Class frm_input
         Me.Label27.Text = "เมตรรวม" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "หาส่วนลด"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TextBox27
+        'txt_meth2
         '
-        Me.TextBox27.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox27.Location = New System.Drawing.Point(938, 134)
-        Me.TextBox27.Name = "TextBox27"
-        Me.TextBox27.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox27.TabIndex = 64
+        Me.txt_meth2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_meth2.Location = New System.Drawing.Point(938, 134)
+        Me.txt_meth2.Name = "txt_meth2"
+        Me.txt_meth2.Size = New System.Drawing.Size(128, 22)
+        Me.txt_meth2.TabIndex = 64
         '
         'Label28
         '
@@ -565,13 +574,13 @@ Partial Class frm_input
         Me.Label28.TabIndex = 67
         Me.Label28.Text = "Discount"
         '
-        'TextBox28
+        'txt_discount
         '
-        Me.TextBox28.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox28.Location = New System.Drawing.Point(938, 78)
-        Me.TextBox28.Name = "TextBox28"
-        Me.TextBox28.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox28.TabIndex = 66
+        Me.txt_discount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_discount.Location = New System.Drawing.Point(938, 78)
+        Me.txt_discount.Name = "txt_discount"
+        Me.txt_discount.Size = New System.Drawing.Size(128, 22)
+        Me.txt_discount.TabIndex = 66
         '
         'Label29
         '
@@ -582,13 +591,13 @@ Partial Class frm_input
         Me.Label29.TabIndex = 69
         Me.Label29.Text = "ส่วนลด เงินสด"
         '
-        'TextBox29
+        'txt_sumdiscount
         '
-        Me.TextBox29.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox29.Location = New System.Drawing.Point(938, 22)
-        Me.TextBox29.Name = "TextBox29"
-        Me.TextBox29.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox29.TabIndex = 68
+        Me.txt_sumdiscount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_sumdiscount.Location = New System.Drawing.Point(938, 22)
+        Me.txt_sumdiscount.Name = "txt_sumdiscount"
+        Me.txt_sumdiscount.Size = New System.Drawing.Size(128, 22)
+        Me.txt_sumdiscount.TabIndex = 68
         '
         'Label30
         '
@@ -599,13 +608,13 @@ Partial Class frm_input
         Me.Label30.TabIndex = 71
         Me.Label30.Text = "ราคาต่อแผ่น"
         '
-        'TextBox30
+        'txt_price
         '
-        Me.TextBox30.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox30.Location = New System.Drawing.Point(938, 50)
-        Me.TextBox30.Name = "TextBox30"
-        Me.TextBox30.Size = New System.Drawing.Size(128, 22)
-        Me.TextBox30.TabIndex = 70
+        Me.txt_price.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_price.Location = New System.Drawing.Point(938, 50)
+        Me.txt_price.Name = "txt_price"
+        Me.txt_price.Size = New System.Drawing.Size(128, 22)
+        Me.txt_price.TabIndex = 70
         '
         'Label31
         '
@@ -616,14 +625,14 @@ Partial Class frm_input
         Me.Label31.TabIndex = 73
         Me.Label31.Text = "หมายเหตุ"
         '
-        'TextBox31
+        'txt_note
         '
-        Me.TextBox31.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.TextBox31.Location = New System.Drawing.Point(938, 162)
-        Me.TextBox31.Multiline = True
-        Me.TextBox31.Name = "TextBox31"
-        Me.TextBox31.Size = New System.Drawing.Size(203, 39)
-        Me.TextBox31.TabIndex = 72
+        Me.txt_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_note.Location = New System.Drawing.Point(938, 162)
+        Me.txt_note.Multiline = True
+        Me.txt_note.Name = "txt_note"
+        Me.txt_note.Size = New System.Drawing.Size(203, 39)
+        Me.txt_note.TabIndex = 72
         '
         'btn_clear
         '
@@ -649,49 +658,108 @@ Partial Class frm_input
         Me.btn_add.Text = "Generate"
         Me.btn_add.UseVisualStyleBackColor = False
         '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(6, 13)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(98, 13)
+        Me.Label15.TabIndex = 77
+        Me.Label15.Text = "ลูกค้า . . . . . . . . . . ."
+        '
+        'txt_customer
+        '
+        Me.txt_customer.FormattingEnabled = True
+        Me.txt_customer.Location = New System.Drawing.Point(112, 10)
+        Me.txt_customer.Name = "txt_customer"
+        Me.txt_customer.Size = New System.Drawing.Size(128, 21)
+        Me.txt_customer.TabIndex = 78
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(264, 93)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(60, 20)
+        Me.TextBox1.TabIndex = 79
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(328, 93)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(60, 20)
+        Me.TextBox2.TabIndex = 80
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(392, 93)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(60, 20)
+        Me.TextBox3.TabIndex = 81
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(456, 93)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(60, 20)
+        Me.TextBox4.TabIndex = 82
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(520, 93)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(60, 20)
+        Me.TextBox5.TabIndex = 83
+        '
         'frm_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(251, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1153, 257)
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txt_customer)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.btn_add)
         Me.Controls.Add(Me.btn_clear)
         Me.Controls.Add(Me.Label31)
-        Me.Controls.Add(Me.TextBox31)
+        Me.Controls.Add(Me.txt_note)
         Me.Controls.Add(Me.Label30)
-        Me.Controls.Add(Me.TextBox30)
+        Me.Controls.Add(Me.txt_price)
         Me.Controls.Add(Me.Label29)
-        Me.Controls.Add(Me.TextBox29)
+        Me.Controls.Add(Me.txt_sumdiscount)
         Me.Controls.Add(Me.Label28)
-        Me.Controls.Add(Me.TextBox28)
+        Me.Controls.Add(Me.txt_discount)
         Me.Controls.Add(Me.Label27)
-        Me.Controls.Add(Me.TextBox27)
+        Me.Controls.Add(Me.txt_meth2)
         Me.Controls.Add(Me.Label26)
-        Me.Controls.Add(Me.TextBox26)
+        Me.Controls.Add(Me.txt_meth)
         Me.Controls.Add(Me.Label25)
-        Me.Controls.Add(Me.TextBox25)
+        Me.Controls.Add(Me.txt_met)
         Me.Controls.Add(Me.Label24)
-        Me.Controls.Add(Me.TextBox24)
+        Me.Controls.Add(Me.txt_net_unit)
         Me.Controls.Add(Me.Label23)
-        Me.Controls.Add(Me.TextBox23)
+        Me.Controls.Add(Me.txt_pl_net)
         Me.Controls.Add(Me.Label22)
-        Me.Controls.Add(Me.TextBox22)
+        Me.Controls.Add(Me.txt_pl_sp)
         Me.Controls.Add(Me.Label21)
-        Me.Controls.Add(Me.TextBox21)
+        Me.Controls.Add(Me.txt_pl)
         Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.TextBox20)
+        Me.Controls.Add(Me.txt_duedate)
         Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.TextBox19)
+        Me.Controls.Add(Me.txt_count_cut)
         Me.Controls.Add(Me.Label18)
-        Me.Controls.Add(Me.TextBox18)
+        Me.Controls.Add(Me.txt_count)
         Me.Controls.Add(Me.Label17)
-        Me.Controls.Add(Me.TextBox17)
+        Me.Controls.Add(Me.txt_lon)
         Me.Controls.Add(Me.Label16)
-        Me.Controls.Add(Me.TextBox16)
+        Me.Controls.Add(Me.txt_paper)
         Me.Controls.Add(Me.TextBox15)
         Me.Controls.Add(Me.Label14)
-        Me.Controls.Add(Me.TextBox14)
+        Me.Controls.Add(Me.txt_trim)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
@@ -704,7 +772,7 @@ Partial Class frm_input
         Me.Controls.Add(Me.txt_F2)
         Me.Controls.Add(Me.txt_F1)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.txt_cutoff)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -712,13 +780,13 @@ Partial Class frm_input
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox7)
-        Me.Controls.Add(Me.TextBox6)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txt_long)
+        Me.Controls.Add(Me.txt_cut)
+        Me.Controls.Add(Me.txt_workinch)
+        Me.Controls.Add(Me.txt_width)
+        Me.Controls.Add(Me.txt_type)
+        Me.Controls.Add(Me.txt_no)
+        Me.Controls.Add(Me.txt_pono)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frm_input"
         Me.Text = "frm_input"
@@ -726,13 +794,13 @@ Partial Class frm_input
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents txt_pono As TextBox
+    Friend WithEvents txt_no As TextBox
+    Friend WithEvents txt_type As TextBox
+    Friend WithEvents txt_width As TextBox
+    Friend WithEvents txt_workinch As TextBox
+    Friend WithEvents txt_cut As TextBox
+    Friend WithEvents txt_long As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
@@ -741,7 +809,7 @@ Partial Class frm_input
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents txt_cutoff As TextBox
     Friend WithEvents txt_F1 As TextBox
     Friend WithEvents txt_F2 As TextBox
     Friend WithEvents txt_F3 As TextBox
@@ -754,40 +822,47 @@ Partial Class frm_input
     Friend WithEvents Label13 As Label
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents TextBox14 As TextBox
+    Friend WithEvents txt_trim As TextBox
     Friend WithEvents TextBox15 As TextBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents TextBox16 As TextBox
+    Friend WithEvents txt_paper As TextBox
     Friend WithEvents Label17 As Label
-    Friend WithEvents TextBox17 As TextBox
+    Friend WithEvents txt_lon As TextBox
     Friend WithEvents Label18 As Label
-    Friend WithEvents TextBox18 As TextBox
+    Friend WithEvents txt_count As TextBox
     Friend WithEvents Label19 As Label
-    Friend WithEvents TextBox19 As TextBox
+    Friend WithEvents txt_count_cut As TextBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents TextBox20 As TextBox
+    Friend WithEvents txt_duedate As TextBox
     Friend WithEvents Label21 As Label
-    Friend WithEvents TextBox21 As TextBox
+    Friend WithEvents txt_pl As TextBox
     Friend WithEvents Label22 As Label
-    Friend WithEvents TextBox22 As TextBox
+    Friend WithEvents txt_pl_sp As TextBox
     Friend WithEvents Label23 As Label
-    Friend WithEvents TextBox23 As TextBox
+    Friend WithEvents txt_pl_net As TextBox
     Friend WithEvents Label24 As Label
-    Friend WithEvents TextBox24 As TextBox
+    Friend WithEvents txt_net_unit As TextBox
     Friend WithEvents Label25 As Label
-    Friend WithEvents TextBox25 As TextBox
+    Friend WithEvents txt_met As TextBox
     Friend WithEvents Label26 As Label
-    Friend WithEvents TextBox26 As TextBox
+    Friend WithEvents txt_meth As TextBox
     Friend WithEvents Label27 As Label
-    Friend WithEvents TextBox27 As TextBox
+    Friend WithEvents txt_meth2 As TextBox
     Friend WithEvents Label28 As Label
-    Friend WithEvents TextBox28 As TextBox
+    Friend WithEvents txt_discount As TextBox
     Friend WithEvents Label29 As Label
-    Friend WithEvents TextBox29 As TextBox
+    Friend WithEvents txt_sumdiscount As TextBox
     Friend WithEvents Label30 As Label
-    Friend WithEvents TextBox30 As TextBox
+    Friend WithEvents txt_price As TextBox
     Friend WithEvents Label31 As Label
-    Friend WithEvents TextBox31 As TextBox
+    Friend WithEvents txt_note As TextBox
     Friend WithEvents btn_clear As Button
     Friend WithEvents btn_add As Button
+    Friend WithEvents Label15 As Label
+    Friend WithEvents txt_customer As ComboBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TextBox5 As TextBox
 End Class

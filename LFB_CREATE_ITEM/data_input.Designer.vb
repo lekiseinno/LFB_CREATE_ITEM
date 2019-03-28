@@ -22,7 +22,65 @@ Partial Class data_input
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_excel = New System.Windows.Forms.Button()
+        Me.btn_copy = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txt_search = New System.Windows.Forms.TextBox()
+        Me.DataGrid_input = New System.Windows.Forms.DataGridView()
+        CType(Me.DataGrid_input, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(208, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(130, 22)
+        Me.Button1.TabIndex = 17
+        Me.Button1.Text = "Export Excel (*.csv)"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'btn_excel
+        '
+        Me.btn_excel.Location = New System.Drawing.Point(79, 0)
+        Me.btn_excel.Name = "btn_excel"
+        Me.btn_excel.Size = New System.Drawing.Size(130, 22)
+        Me.btn_excel.TabIndex = 16
+        Me.btn_excel.Text = "Export Excel (*.xlsx)"
+        Me.btn_excel.UseVisualStyleBackColor = True
+        '
+        'btn_copy
+        '
+        Me.btn_copy.Location = New System.Drawing.Point(0, 0)
+        Me.btn_copy.Name = "btn_copy"
+        Me.btn_copy.Size = New System.Drawing.Size(80, 22)
+        Me.btn_copy.TabIndex = 15
+        Me.btn_copy.Text = "Copy"
+        Me.btn_copy.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(894, 4)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(59, 13)
+        Me.Label1.TabIndex = 14
+        Me.Label1.Text = "Search . . ."
+        '
+        'txt_search
+        '
+        Me.txt_search.Location = New System.Drawing.Point(953, 1)
+        Me.txt_search.Name = "txt_search"
+        Me.txt_search.Size = New System.Drawing.Size(200, 20)
+        Me.txt_search.TabIndex = 13
+        '
+        'DataGrid_input
+        '
+        Me.DataGrid_input.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGrid_input.Location = New System.Drawing.Point(0, 22)
+        Me.DataGrid_input.Name = "DataGrid_input"
+        Me.DataGrid_input.Size = New System.Drawing.Size(1153, 378)
+        Me.DataGrid_input.TabIndex = 12
         '
         'data_input
         '
@@ -30,10 +88,25 @@ Partial Class data_input
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1155, 400)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btn_excel)
+        Me.Controls.Add(Me.btn_copy)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txt_search)
+        Me.Controls.Add(Me.DataGrid_input)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "data_input"
         Me.Text = "data_input"
+        CType(Me.DataGrid_input, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
+
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_excel As Button
+    Friend WithEvents btn_copy As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents txt_search As TextBox
+    Friend WithEvents DataGrid_input As DataGridView
 End Class
