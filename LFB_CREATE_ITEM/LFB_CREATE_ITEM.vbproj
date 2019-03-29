@@ -222,6 +222,9 @@
     <EmbeddedResource Include="frm_cus.resx">
       <DependentUpon>frm_cus.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_excel_file.resx">
+      <DependentUpon>frm_excel_file.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_input.resx">
       <DependentUpon>frm_input.vb</DependentUpon>
     </EmbeddedResource>
@@ -267,7 +270,6 @@
     <None Include="Resources\compose.png" />
     <None Include="Resources\folder.png" />
     <None Include="Resources\compose1.png" />
-    <Content Include="Resources\conn.txt" />
     <Content Include="Resources\ico.ico" />
     <None Include="Resources\memorycard.png" />
   </ItemGroup>

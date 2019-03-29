@@ -44,9 +44,16 @@ Public Module setup_conf
         'End If
 
 
-        Dim SV As String = "192.168.110.125"
-        Dim UA As String = "innovation"
-        Dim PW As String = "Inno20i9"
+        'Dim SV As String = "192.168.110.125"
+        'Dim UA As String = "innovation"
+        'Dim PW As String = "Inno20i9"
+        'Dim DB As String = "LFB_ITEM$"
+
+
+
+        Dim SV As String = "127.0.0.1"
+        Dim UA As String = "sa"
+        Dim PW As String = "Passw0rd@1"
         Dim DB As String = "LFB_ITEM$"
 
         connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
@@ -126,7 +133,17 @@ Public Module setup_conf
 
 
 
+    Sub gen_txt()
+        Dim nowstring = Now.ToString("yyyyMMdd_HHmm")
+        Dim filePath = "D:\create_item\" + nowstring + "_code.txt"
 
-
+        Using writer As New System.IO.StreamWriter(filePath)
+            For row As Integer = 0 To data_excelfile.DataGrid_codetxt.RowCount - 2
+                For col As Integer = 0 To data_excelfile.DataGrid_codetxt.ColumnCount - 1
+                    writer.WriteLine(data_excelfile.DataGrid_codetxt.Rows(row).Cells(col).Value)
+                Next
+            Next
+        End Using
+    End Sub
 
 End Module

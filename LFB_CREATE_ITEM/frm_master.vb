@@ -64,7 +64,7 @@
 
 
 
-    Sub customize_datagrid(frm, x_frm)
+    Public Sub customize_datagrid(frm, x_frm)
 
         frm.TopLevel = False
         frm.FormBorderStyle = FormBorderStyle.None
@@ -149,7 +149,7 @@
         customize_frm(frm_item, close_frm)
     End Sub
 
-    Private Sub btn_excelfile_Click(sender As Object, e As EventArgs) Handles btn_excelfile.Click
+    Private Sub btn_excelfile_Click(sender As Object, e As EventArgs) 
         close_data = {data_cus, data_input, data_item, data_PL}
         close_frm = {frm_cus, frm_input, frm_item, frm_PL}
         customize_datagrid(data_excelfile, close_data)

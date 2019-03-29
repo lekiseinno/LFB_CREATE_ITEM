@@ -25,7 +25,6 @@ Partial Class data_excelfile
         Me.lb_search = New System.Windows.Forms.Label()
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.DataGrid_bom_header = New System.Windows.Forms.DataGridView()
-        Me.btn_copy = New System.Windows.Forms.Button()
         Me.Tab_main = New System.Windows.Forms.TabControl()
         Me.Tab_bom_header = New System.Windows.Forms.TabPage()
         Me.Tab_bom_line = New System.Windows.Forms.TabPage()
@@ -36,8 +35,9 @@ Partial Class data_excelfile
         Me.DataGrid_Item_master = New System.Windows.Forms.DataGridView()
         Me.Tab_item_unit = New System.Windows.Forms.TabPage()
         Me.DataGrid_Item_unit = New System.Windows.Forms.DataGridView()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.btn_excel = New System.Windows.Forms.Button()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.DataGrid_codetxt = New System.Windows.Forms.DataGridView()
+        Me.btn_to_input = New System.Windows.Forms.Button()
         CType(Me.DataGrid_bom_header, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tab_main.SuspendLayout()
         Me.Tab_bom_header.SuspendLayout()
@@ -49,6 +49,8 @@ Partial Class data_excelfile
         CType(Me.DataGrid_Item_master, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tab_item_unit.SuspendLayout()
         CType(Me.DataGrid_Item_unit, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage1.SuspendLayout()
+        CType(Me.DataGrid_codetxt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lb_search
@@ -76,15 +78,6 @@ Partial Class data_excelfile
         Me.DataGrid_bom_header.Size = New System.Drawing.Size(1141, 369)
         Me.DataGrid_bom_header.TabIndex = 5
         '
-        'btn_copy
-        '
-        Me.btn_copy.Location = New System.Drawing.Point(801, 0)
-        Me.btn_copy.Name = "btn_copy"
-        Me.btn_copy.Size = New System.Drawing.Size(80, 22)
-        Me.btn_copy.TabIndex = 8
-        Me.btn_copy.Text = "Copy"
-        Me.btn_copy.UseVisualStyleBackColor = True
-        '
         'Tab_main
         '
         Me.Tab_main.Controls.Add(Me.Tab_bom_header)
@@ -92,6 +85,7 @@ Partial Class data_excelfile
         Me.Tab_main.Controls.Add(Me.Tab_default_dimension)
         Me.Tab_main.Controls.Add(Me.Tab_item_master)
         Me.Tab_main.Controls.Add(Me.Tab_item_unit)
+        Me.Tab_main.Controls.Add(Me.TabPage1)
         Me.Tab_main.Location = New System.Drawing.Point(2, 2)
         Me.Tab_main.Name = "Tab_main"
         Me.Tab_main.SelectedIndex = 0
@@ -185,23 +179,33 @@ Partial Class data_excelfile
         Me.DataGrid_Item_unit.Size = New System.Drawing.Size(1141, 369)
         Me.DataGrid_Item_unit.TabIndex = 0
         '
-        'Button1
+        'TabPage1
         '
-        Me.Button1.Location = New System.Drawing.Point(672, 0)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(130, 22)
-        Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Export Excel (*.csv)"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.TabPage1.Controls.Add(Me.DataGrid_codetxt)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(1145, 373)
+        Me.TabPage1.TabIndex = 5
+        Me.TabPage1.Text = "Code.txt"
+        Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'btn_excel
+        'DataGrid_codetxt
         '
-        Me.btn_excel.Location = New System.Drawing.Point(542, 0)
-        Me.btn_excel.Name = "btn_excel"
-        Me.btn_excel.Size = New System.Drawing.Size(130, 22)
-        Me.btn_excel.TabIndex = 10
-        Me.btn_excel.Text = "Export Excel (*.xlsx)"
-        Me.btn_excel.UseVisualStyleBackColor = True
+        Me.DataGrid_codetxt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGrid_codetxt.Location = New System.Drawing.Point(2, 2)
+        Me.DataGrid_codetxt.Name = "DataGrid_codetxt"
+        Me.DataGrid_codetxt.Size = New System.Drawing.Size(1141, 369)
+        Me.DataGrid_codetxt.TabIndex = 0
+        '
+        'btn_to_input
+        '
+        Me.btn_to_input.Location = New System.Drawing.Point(797, 0)
+        Me.btn_to_input.Name = "btn_to_input"
+        Me.btn_to_input.Size = New System.Drawing.Size(75, 22)
+        Me.btn_to_input.TabIndex = 10
+        Me.btn_to_input.Text = "input"
+        Me.btn_to_input.UseVisualStyleBackColor = True
         '
         'data_excelfile
         '
@@ -209,11 +213,9 @@ Partial Class data_excelfile
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1155, 400)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.btn_excel)
+        Me.Controls.Add(Me.btn_to_input)
         Me.Controls.Add(Me.lb_search)
         Me.Controls.Add(Me.txt_search)
-        Me.Controls.Add(Me.btn_copy)
         Me.Controls.Add(Me.Tab_main)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "data_excelfile"
@@ -229,6 +231,8 @@ Partial Class data_excelfile
         CType(Me.DataGrid_Item_master, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tab_item_unit.ResumeLayout(False)
         CType(Me.DataGrid_Item_unit, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage1.ResumeLayout(False)
+        CType(Me.DataGrid_codetxt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -236,7 +240,6 @@ Partial Class data_excelfile
     Friend WithEvents lb_search As Label
     Friend WithEvents txt_search As TextBox
     Friend WithEvents DataGrid_bom_header As DataGridView
-    Friend WithEvents btn_copy As Button
     Friend WithEvents Tab_main As TabControl
     Friend WithEvents Tab_bom_header As TabPage
     Friend WithEvents Tab_bom_line As TabPage
@@ -247,6 +250,7 @@ Partial Class data_excelfile
     Friend WithEvents DataGrid_Default_dimension As DataGridView
     Friend WithEvents DataGrid_Item_master As DataGridView
     Friend WithEvents DataGrid_Item_unit As DataGridView
-    Friend WithEvents Button1 As Button
-    Friend WithEvents btn_excel As Button
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents DataGrid_codetxt As DataGridView
+    Friend WithEvents btn_to_input As Button
 End Class

@@ -54,7 +54,6 @@ Partial Class frm_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btn_excelfile = New System.Windows.Forms.Button()
         Me.btn_item = New System.Windows.Forms.Button()
         Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_input = New System.Windows.Forms.Button()
@@ -253,7 +252,6 @@ Partial Class frm_master
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btn_excelfile)
         Me.GroupBox1.Controls.Add(Me.btn_item)
         Me.GroupBox1.Controls.Add(Me.btn_report)
         Me.GroupBox1.Controls.Add(Me.btn_input)
@@ -264,20 +262,6 @@ Partial Class frm_master
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " M e n u "
-        '
-        'btn_excelfile
-        '
-        Me.btn_excelfile.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btn_excelfile.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.btn_excelfile.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
-        Me.btn_excelfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_excelfile.Location = New System.Drawing.Point(6, 244)
-        Me.btn_excelfile.Name = "btn_excelfile"
-        Me.btn_excelfile.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.btn_excelfile.Size = New System.Drawing.Size(172, 50)
-        Me.btn_excelfile.TabIndex = 106
-        Me.btn_excelfile.Text = "Excel File"
-        Me.btn_excelfile.UseVisualStyleBackColor = True
         '
         'btn_item
         '
@@ -318,7 +302,7 @@ Partial Class frm_master
         Me.btn_input.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
         Me.btn_input.Size = New System.Drawing.Size(172, 50)
         Me.btn_input.TabIndex = 103
-        Me.btn_input.Text = "IN Put"
+        Me.btn_input.Text = "input"
         Me.btn_input.UseVisualStyleBackColor = True
         '
         'GroupBox2
@@ -493,5 +477,4 @@ Partial Class frm_master
     Friend WithEvents GradeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_supply As Button
     Friend WithEvents btn_item As Button
-    Friend WithEvents btn_excelfile As Button
 End Class
