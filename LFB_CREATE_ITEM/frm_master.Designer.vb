@@ -66,6 +66,7 @@ Partial Class frm_master
         Me.GB_header = New System.Windows.Forms.GroupBox()
         Me.panel_frm = New System.Windows.Forms.Panel()
         Me.panel_datagrid = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -252,6 +253,7 @@ Partial Class frm_master
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button1)
         Me.GroupBox1.Controls.Add(Me.btn_item)
         Me.GroupBox1.Controls.Add(Me.btn_report)
         Me.GroupBox1.Controls.Add(Me.btn_input)
@@ -269,7 +271,7 @@ Partial Class frm_master
         Me.btn_item.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_item.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
         Me.btn_item.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_item.Location = New System.Drawing.Point(6, 188)
+        Me.btn_item.Location = New System.Drawing.Point(6, 308)
         Me.btn_item.Name = "btn_item"
         Me.btn_item.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
         Me.btn_item.Size = New System.Drawing.Size(172, 50)
@@ -384,25 +386,39 @@ Partial Class frm_master
         Me.GB_header.Controls.Add(Me.panel_frm)
         Me.GB_header.Location = New System.Drawing.Point(192, 22)
         Me.GB_header.Name = "GB_header"
-        Me.GB_header.Size = New System.Drawing.Size(1155, 278)
+        Me.GB_header.Size = New System.Drawing.Size(1155, 348)
         Me.GB_header.TabIndex = 3
         Me.GB_header.TabStop = False
         Me.GB_header.Text = " Header "
         '
         'panel_frm
         '
-        Me.panel_frm.Location = New System.Drawing.Point(1, 19)
+        Me.panel_frm.Location = New System.Drawing.Point(2, 19)
         Me.panel_frm.Name = "panel_frm"
-        Me.panel_frm.Size = New System.Drawing.Size(1152, 257)
+        Me.panel_frm.Size = New System.Drawing.Size(1152, 327)
         Me.panel_frm.TabIndex = 0
         '
         'panel_datagrid
         '
         Me.panel_datagrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panel_datagrid.Location = New System.Drawing.Point(192, 304)
+        Me.panel_datagrid.Location = New System.Drawing.Point(192, 374)
         Me.panel_datagrid.Name = "panel_datagrid"
-        Me.panel_datagrid.Size = New System.Drawing.Size(1155, 400)
+        Me.panel_datagrid.Size = New System.Drawing.Size(1155, 330)
         Me.panel_datagrid.TabIndex = 4
+        '
+        'Button1
+        '
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Button1.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(6, 252)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(172, 50)
+        Me.Button1.TabIndex = 106
+        Me.Button1.Text = "List"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frm_master
         '
@@ -477,4 +493,5 @@ Partial Class frm_master
     Friend WithEvents GradeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_supply As Button
     Friend WithEvents btn_item As Button
+    Friend WithEvents Button1 As Button
 End Class

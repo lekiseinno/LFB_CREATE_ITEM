@@ -337,4 +337,8 @@
 
         txt_itemcode.Text = item_vat & item_lon & item_M1 & item_M2 & item_M3 & item_M4 & item_M5 & item_width & item_longs
     End Sub
+
+    Private Sub txt_itemcode_TextChanged(sender As Object, e As EventArgs) Handles txt_itemcode.TextChanged
+
+    End Sub
 End Class

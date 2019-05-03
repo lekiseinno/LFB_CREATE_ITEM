@@ -1,7 +1,4 @@
 ﻿Public Class data_item
-    Private Sub data_item_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub btn_excel_Click(sender As Object, e As EventArgs) Handles btn_excel.Click
         Dim nowstring = Now.ToString("yyyyMMdd_HHmm")

@@ -22,18 +22,19 @@ Partial Class data_input
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(data_input))
         Me.btn_csv = New System.Windows.Forms.Button()
         Me.btn_excel = New System.Windows.Forms.Button()
         Me.btn_copy = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.DataGrid_input = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.btn_print = New System.Windows.Forms.Button()
         Me.btn_to_excel = New System.Windows.Forms.Button()
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DataGrid_input, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -86,18 +87,8 @@ Partial Class data_input
         Me.DataGrid_input.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
         Me.DataGrid_input.Location = New System.Drawing.Point(0, 22)
         Me.DataGrid_input.Name = "DataGrid_input"
-        Me.DataGrid_input.Size = New System.Drawing.Size(1153, 378)
+        Me.DataGrid_input.Size = New System.Drawing.Size(1153, 306)
         Me.DataGrid_input.TabIndex = 12
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Column1"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Column2"
-        Me.Column2.Name = "Column2"
         '
         'btn_print
         '
@@ -117,16 +108,35 @@ Partial Class data_input
         Me.btn_to_excel.Text = "excel"
         Me.btn_to_excel.UseVisualStyleBackColor = True
         '
-        'PrintDialog1
+        'PrintPreviewDialog1
         '
-        Me.PrintDialog1.UseEXDialog = True
+        Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
+        Me.PrintPreviewDialog1.Enabled = True
+        Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
+        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        Me.PrintPreviewDialog1.Visible = False
+        '
+        'PrintDocument1
+        '
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "chk1"
+        Me.Column1.Name = "Column1"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "chk2"
+        Me.Column2.Name = "Column2"
         '
         'data_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(1155, 400)
+        Me.ClientSize = New System.Drawing.Size(1155, 328)
         Me.Controls.Add(Me.btn_to_excel)
         Me.Controls.Add(Me.btn_print)
         Me.Controls.Add(Me.btn_csv)
@@ -150,10 +160,10 @@ Partial Class data_input
     Friend WithEvents Label1 As Label
     Friend WithEvents txt_search As TextBox
     Friend WithEvents DataGrid_input As DataGridView
-    Friend WithEvents Column1 As DataGridViewCheckBoxColumn
-    Friend WithEvents Column2 As DataGridViewCheckBoxColumn
     Friend WithEvents btn_print As Button
     Friend WithEvents btn_to_excel As Button
-    Friend WithEvents PrintDialog1 As PrintDialog
+    Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents Column1 As DataGridViewCheckBoxColumn
+    Friend WithEvents Column2 As DataGridViewCheckBoxColumn
 End Class

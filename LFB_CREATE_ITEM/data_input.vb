@@ -1,7 +1,4 @@
 ﻿Public Class data_input
-    Private Sub data_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub btn_excel_Click(sender As Object, e As EventArgs) Handles btn_excel.Click
 
@@ -17,8 +14,8 @@
 
         setup_conf.gen_txt()
 
-
         MsgBox("Create File : Success !")
+
         Me.Cursor = Cursors.Default
 
     End Sub
@@ -32,15 +29,7 @@
         Me.Hide()
     End Sub
 
-    Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
-        PrintDialog1.Document = PrintDocument1
-        PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
-        PrintDialog1.AllowSomePages = True
-        If PrintDialog1.ShowDialog = DialogResult.OK Then
-            PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
-            PrintDocument1.Print()
-        End If
-    End Sub
+
 
     Private Sub btn_csv_Click(sender As Object, e As EventArgs) Handles btn_csv.Click
         Me.Cursor = Cursors.WaitCursor
@@ -58,5 +47,18 @@
 
         MsgBox("Create File : Success !")
         Me.Cursor = Cursors.Default
+    End Sub
+
+    Private bitmap As Bitmap
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Dim bm As New Bitmap(Me.DataGrid_input.Width, Me.DataGrid_input.Height)
+        DataGrid_input.DrawToBitmap(bm, New Rectangle(0, 0, Me.DataGrid_input.Width, Me.DataGrid_input.Height))
+        e.Graphics.DrawImage(bm, 0, 0)
+    End Sub
+
+    Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
+        PrintDocument1.DefaultPageSettings.Landscape = True
+        PrintDocument1.Print()
     End Sub
 End Class

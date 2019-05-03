@@ -23,12 +23,10 @@ Partial Class frm_input
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.txt_pono = New System.Windows.Forms.TextBox()
-        Me.txt_type = New System.Windows.Forms.TextBox()
         Me.txt_width = New System.Windows.Forms.TextBox()
         Me.txt_workinch = New System.Windows.Forms.TextBox()
         Me.txt_cut = New System.Windows.Forms.TextBox()
         Me.txt_long = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -105,413 +103,418 @@ Partial Class frm_input
         Me.txt_sub_desc = New System.Windows.Forms.TextBox()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.txt_exe = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lb_cuscode = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txt_pono
         '
-        Me.txt_pono.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_pono.Location = New System.Drawing.Point(112, 67)
+        Me.txt_pono.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_pono.Location = New System.Drawing.Point(215, 19)
         Me.txt_pono.Name = "txt_pono"
-        Me.txt_pono.Size = New System.Drawing.Size(120, 22)
-        Me.txt_pono.TabIndex = 11
-        '
-        'txt_type
-        '
-        Me.txt_type.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_type.Location = New System.Drawing.Point(112, 95)
-        Me.txt_type.Name = "txt_type"
-        Me.txt_type.Size = New System.Drawing.Size(120, 22)
-        Me.txt_type.TabIndex = 13
+        Me.txt_pono.Size = New System.Drawing.Size(100, 21)
+        Me.txt_pono.TabIndex = 3
+        Me.txt_pono.Text = "000"
         '
         'txt_width
         '
-        Me.txt_width.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_width.Location = New System.Drawing.Point(112, 125)
-        Me.txt_width.MaxLength = 32676
+        Me.txt_width.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_width.Location = New System.Drawing.Point(321, 19)
         Me.txt_width.Name = "txt_width"
-        Me.txt_width.Size = New System.Drawing.Size(120, 22)
-        Me.txt_width.TabIndex = 14
+        Me.txt_width.Size = New System.Drawing.Size(80, 21)
+        Me.txt_width.TabIndex = 4
+        Me.txt_width.Text = "2000"
         '
         'txt_workinch
         '
         Me.txt_workinch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_workinch.Location = New System.Drawing.Point(112, 151)
+        Me.txt_workinch.Location = New System.Drawing.Point(147, 240)
         Me.txt_workinch.Name = "txt_workinch"
         Me.txt_workinch.Size = New System.Drawing.Size(120, 22)
-        Me.txt_workinch.TabIndex = 15
+        Me.txt_workinch.TabIndex = 26
         '
         'txt_cut
         '
         Me.txt_cut.BackColor = System.Drawing.SystemColors.Window
         Me.txt_cut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_cut.Location = New System.Drawing.Point(112, 177)
+        Me.txt_cut.Location = New System.Drawing.Point(147, 271)
         Me.txt_cut.Name = "txt_cut"
         Me.txt_cut.Size = New System.Drawing.Size(120, 22)
-        Me.txt_cut.TabIndex = 16
+        Me.txt_cut.TabIndex = 27
         '
         'txt_long
         '
-        Me.txt_long.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_long.Location = New System.Drawing.Point(112, 203)
+        Me.txt_long.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_long.Location = New System.Drawing.Point(407, 19)
         Me.txt_long.Name = "txt_long"
-        Me.txt_long.Size = New System.Drawing.Size(78, 22)
-        Me.txt_long.TabIndex = 17
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 100)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(104, 13)
-        Me.Label2.TabIndex = 19
-        Me.Label2.Text = "แบบ . . . . . . . . . . . . "
+        Me.txt_long.Size = New System.Drawing.Size(80, 21)
+        Me.txt_long.TabIndex = 5
+        Me.txt_long.Text = "2000"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 72)
+        Me.Label3.Location = New System.Drawing.Point(212, 3)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(105, 13)
-        Me.Label3.TabIndex = 20
-        Me.Label3.Text = "PO No . . . . . . . . . . ."
+        Me.Label3.Size = New System.Drawing.Size(39, 13)
+        Me.Label3.TabIndex = 1002
+        Me.Label3.Text = "PO No"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 130)
+        Me.Label4.Location = New System.Drawing.Point(318, 3)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(102, 13)
-        Me.Label4.TabIndex = 21
-        Me.Label4.Text = "กว้าง . . . . . . . . . . . ."
+        Me.Label4.Size = New System.Drawing.Size(30, 13)
+        Me.Label4.TabIndex = 1003
+        Me.Label4.Text = "กว้าง"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 156)
+        Me.Label5.Location = New System.Drawing.Point(41, 245)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(106, 13)
-        Me.Label5.TabIndex = 22
+        Me.Label5.TabIndex = 1020
         Me.Label5.Text = "หน้าเดินงาน นิ้ว . . . ."
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 182)
+        Me.Label6.Location = New System.Drawing.Point(41, 276)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(103, 13)
-        Me.Label6.TabIndex = 23
+        Me.Label6.TabIndex = 1021
         Me.Label6.Text = "ผ่า . . . . . . . . . . . . . ."
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 208)
+        Me.Label7.Location = New System.Drawing.Point(404, 3)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(103, 13)
-        Me.Label7.TabIndex = 24
-        Me.Label7.Text = "ยาว . . . . . . . . . . . . ."
+        Me.Label7.Size = New System.Drawing.Size(25, 13)
+        Me.Label7.TabIndex = 1004
+        Me.Label7.Text = "ยาว"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 234)
+        Me.Label8.Location = New System.Drawing.Point(533, 3)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(105, 13)
-        Me.Label8.TabIndex = 26
-        Me.Label8.Text = "หน้าผ่าเล็ก . . . . . . . ."
+        Me.Label8.Size = New System.Drawing.Size(57, 13)
+        Me.Label8.TabIndex = 1005
+        Me.Label8.Text = "หน้าผ่าเล็ก"
         '
         'txt_cut_small
         '
-        Me.txt_cut_small.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_cut_small.Location = New System.Drawing.Point(112, 229)
+        Me.txt_cut_small.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_cut_small.Location = New System.Drawing.Point(534, 19)
         Me.txt_cut_small.Name = "txt_cut_small"
-        Me.txt_cut_small.Size = New System.Drawing.Size(120, 22)
-        Me.txt_cut_small.TabIndex = 25
+        Me.txt_cut_small.Size = New System.Drawing.Size(80, 21)
+        Me.txt_cut_small.TabIndex = 7
+        Me.txt_cut_small.Text = "200"
         '
         'txt_F1
         '
         Me.txt_F1.BackColor = System.Drawing.Color.FloralWhite
         Me.txt_F1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F1.Location = New System.Drawing.Point(244, 22)
+        Me.txt_F1.Location = New System.Drawing.Point(638, 19)
         Me.txt_F1.Name = "txt_F1"
-        Me.txt_F1.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F1.TabIndex = 27
+        Me.txt_F1.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F1.TabIndex = 8
         '
         'txt_F2
         '
         Me.txt_F2.BackColor = System.Drawing.Color.OldLace
         Me.txt_F2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F2.Location = New System.Drawing.Point(307, 22)
+        Me.txt_F2.Location = New System.Drawing.Point(680, 19)
         Me.txt_F2.Name = "txt_F2"
-        Me.txt_F2.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F2.TabIndex = 28
+        Me.txt_F2.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F2.TabIndex = 9
         '
         'txt_F3
         '
         Me.txt_F3.BackColor = System.Drawing.Color.Linen
         Me.txt_F3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F3.Location = New System.Drawing.Point(370, 22)
+        Me.txt_F3.Location = New System.Drawing.Point(722, 19)
         Me.txt_F3.Name = "txt_F3"
-        Me.txt_F3.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F3.TabIndex = 29
+        Me.txt_F3.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F3.TabIndex = 10
         '
         'txt_F4
         '
         Me.txt_F4.BackColor = System.Drawing.Color.AntiqueWhite
         Me.txt_F4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F4.Location = New System.Drawing.Point(433, 22)
+        Me.txt_F4.Location = New System.Drawing.Point(764, 19)
         Me.txt_F4.Name = "txt_F4"
-        Me.txt_F4.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F4.TabIndex = 30
+        Me.txt_F4.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F4.TabIndex = 11
         '
         'txt_F5
         '
         Me.txt_F5.BackColor = System.Drawing.Color.PapayaWhip
         Me.txt_F5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F5.Location = New System.Drawing.Point(496, 22)
+        Me.txt_F5.Location = New System.Drawing.Point(806, 19)
         Me.txt_F5.Name = "txt_F5"
-        Me.txt_F5.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F5.TabIndex = 31
+        Me.txt_F5.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F5.TabIndex = 12
         '
         'Label9
         '
-        Me.Label9.Location = New System.Drawing.Point(241, 2)
+        Me.Label9.Location = New System.Drawing.Point(635, 1)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(63, 17)
-        Me.Label9.TabIndex = 32
+        Me.Label9.Size = New System.Drawing.Size(43, 17)
+        Me.Label9.TabIndex = 1006
         Me.Label9.Text = "F1"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label10
         '
-        Me.Label10.Location = New System.Drawing.Point(305, 4)
+        Me.Label10.Location = New System.Drawing.Point(677, 1)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(63, 17)
-        Me.Label10.TabIndex = 33
+        Me.Label10.Size = New System.Drawing.Size(43, 17)
+        Me.Label10.TabIndex = 1007
         Me.Label10.Text = "F2"
         Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label11
         '
-        Me.Label11.Location = New System.Drawing.Point(367, 2)
+        Me.Label11.Location = New System.Drawing.Point(719, 1)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(63, 17)
-        Me.Label11.TabIndex = 34
+        Me.Label11.Size = New System.Drawing.Size(43, 17)
+        Me.Label11.TabIndex = 1008
         Me.Label11.Text = "F3"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label12
         '
-        Me.Label12.Location = New System.Drawing.Point(430, 4)
+        Me.Label12.Location = New System.Drawing.Point(761, 1)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(63, 17)
-        Me.Label12.TabIndex = 35
+        Me.Label12.Size = New System.Drawing.Size(43, 17)
+        Me.Label12.TabIndex = 1009
         Me.Label12.Text = "F4"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label13
         '
-        Me.Label13.Location = New System.Drawing.Point(493, 2)
+        Me.Label13.Location = New System.Drawing.Point(803, 1)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(63, 17)
-        Me.Label13.TabIndex = 36
+        Me.Label13.Size = New System.Drawing.Size(43, 17)
+        Me.Label13.TabIndex = 1010
         Me.Label13.Text = "F5"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'chk_checked
         '
         Me.chk_checked.AutoSize = True
-        Me.chk_checked.Location = New System.Drawing.Point(622, 59)
+        Me.chk_checked.Location = New System.Drawing.Point(1074, 28)
         Me.chk_checked.Name = "chk_checked"
         Me.chk_checked.Size = New System.Drawing.Size(69, 17)
-        Me.chk_checked.TabIndex = 37
+        Me.chk_checked.TabIndex = 2003
         Me.chk_checked.Text = "Checked"
         Me.chk_checked.UseVisualStyleBackColor = True
+        Me.chk_checked.Visible = False
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(241, 156)
+        Me.Label14.Location = New System.Drawing.Point(42, 217)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(129, 13)
-        Me.Label14.TabIndex = 39
-        Me.Label14.Text = "Trim . . . . . . . . . . . . . . . . ."
+        Me.Label14.Size = New System.Drawing.Size(78, 13)
+        Me.Label14.TabIndex = 1019
+        Me.Label14.Text = "Trim . . . . . . . . "
         '
         'txt_trim
         '
+        Me.txt_trim.BackColor = System.Drawing.SystemColors.Window
         Me.txt_trim.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_trim.Location = New System.Drawing.Point(372, 150)
+        Me.txt_trim.Location = New System.Drawing.Point(147, 212)
         Me.txt_trim.Name = "txt_trim"
         Me.txt_trim.Size = New System.Drawing.Size(120, 22)
-        Me.txt_trim.TabIndex = 38
+        Me.txt_trim.TabIndex = 25
         '
         'txt_chk_txt
         '
         Me.txt_chk_txt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_chk_txt.Location = New System.Drawing.Point(695, 55)
+        Me.txt_chk_txt.Location = New System.Drawing.Point(1074, 45)
         Me.txt_chk_txt.Name = "txt_chk_txt"
-        Me.txt_chk_txt.Size = New System.Drawing.Size(120, 22)
+        Me.txt_chk_txt.Size = New System.Drawing.Size(67, 22)
         Me.txt_chk_txt.TabIndex = 40
+        Me.txt_chk_txt.Visible = False
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(241, 84)
+        Me.Label16.Location = New System.Drawing.Point(109, 54)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(138, 13)
-        Me.Label16.TabIndex = 43
+        Me.Label16.TabIndex = 1015
         Me.Label16.Text = "Paper Combination / สั่งผลิต"
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(241, 61)
+        Me.Label17.Location = New System.Drawing.Point(2, 54)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(129, 13)
-        Me.Label17.TabIndex = 45
-        Me.Label17.Text = "ลอน . . . . . . . . . . . . . . . . ."
+        Me.Label17.Size = New System.Drawing.Size(27, 13)
+        Me.Label17.TabIndex = 1014
+        Me.Label17.Text = "ลอน"
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(241, 183)
+        Me.Label18.Location = New System.Drawing.Point(426, 54)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(131, 13)
-        Me.Label18.TabIndex = 47
-        Me.Label18.Text = "จำนวนเต็ม . . . . . . . . . . . ."
+        Me.Label18.Size = New System.Drawing.Size(59, 13)
+        Me.Label18.TabIndex = 1016
+        Me.Label18.Text = "จำนวนเต็ม"
         '
         'txt_count
         '
-        Me.txt_count.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_count.Location = New System.Drawing.Point(372, 178)
+        Me.txt_count.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_count.Location = New System.Drawing.Point(429, 70)
         Me.txt_count.Name = "txt_count"
-        Me.txt_count.Size = New System.Drawing.Size(120, 22)
-        Me.txt_count.TabIndex = 46
+        Me.txt_count.Size = New System.Drawing.Size(120, 21)
+        Me.txt_count.TabIndex = 22
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(241, 209)
+        Me.Label19.Location = New System.Drawing.Point(44, 304)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(129, 13)
-        Me.Label19.TabIndex = 49
-        Me.Label19.Text = "จำนวนแผ่นเล็ก . . . . . . . ."
+        Me.Label19.Size = New System.Drawing.Size(102, 13)
+        Me.Label19.TabIndex = 1022
+        Me.Label19.Text = "จำนวนแผ่นเล็ก . . . "
         '
         'txt_count_cut
         '
         Me.txt_count_cut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_count_cut.Location = New System.Drawing.Point(372, 204)
+        Me.txt_count_cut.Location = New System.Drawing.Point(147, 299)
         Me.txt_count_cut.Name = "txt_count_cut"
         Me.txt_count_cut.Size = New System.Drawing.Size(120, 22)
-        Me.txt_count_cut.TabIndex = 48
+        Me.txt_count_cut.TabIndex = 28
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(241, 235)
+        Me.Label20.Location = New System.Drawing.Point(552, 54)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(130, 13)
-        Me.Label20.TabIndex = 51
-        Me.Label20.Text = "Due ส่งของ . . . . . . . . . . . ."
+        Me.Label20.Size = New System.Drawing.Size(58, 13)
+        Me.Label20.TabIndex = 1017
+        Me.Label20.Text = "Due ส่งของ"
         '
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(628, 116)
+        Me.Label21.Location = New System.Drawing.Point(372, 191)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(25, 13)
-        Me.Label21.TabIndex = 53
+        Me.Label21.TabIndex = 1023
         Me.Label21.Text = "P/L"
         '
         'txt_pl
         '
         Me.txt_pl.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.txt_pl.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_pl.Location = New System.Drawing.Point(655, 110)
+        Me.txt_pl.Location = New System.Drawing.Point(399, 185)
         Me.txt_pl.Name = "txt_pl"
-        Me.txt_pl.Size = New System.Drawing.Size(120, 22)
-        Me.txt_pl.TabIndex = 52
+        Me.txt_pl.Size = New System.Drawing.Size(150, 22)
+        Me.txt_pl.TabIndex = 29
         '
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(590, 141)
+        Me.Label22.Location = New System.Drawing.Point(334, 218)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(63, 13)
-        Me.Label22.TabIndex = 55
+        Me.Label22.TabIndex = 1024
         Me.Label22.Text = "Special P/L"
         '
         'txt_pl_sp
         '
-        Me.txt_pl_sp.BackColor = System.Drawing.Color.Maroon
+        Me.txt_pl_sp.BackColor = System.Drawing.Color.Gold
         Me.txt_pl_sp.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_pl_sp.Location = New System.Drawing.Point(655, 136)
+        Me.txt_pl_sp.ForeColor = System.Drawing.SystemColors.Info
+        Me.txt_pl_sp.Location = New System.Drawing.Point(399, 213)
         Me.txt_pl_sp.Name = "txt_pl_sp"
         Me.txt_pl_sp.Size = New System.Drawing.Size(120, 22)
-        Me.txt_pl_sp.TabIndex = 54
+        Me.txt_pl_sp.TabIndex = 30
         '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(608, 169)
+        Me.Label23.Location = New System.Drawing.Point(352, 246)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(45, 13)
-        Me.Label23.TabIndex = 57
+        Me.Label23.TabIndex = 1025
         Me.Label23.Text = "Net P/L"
         '
         'txt_pl_net
         '
-        Me.txt_pl_net.BackColor = System.Drawing.Color.Maroon
-        Me.txt_pl_net.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_pl_net.Location = New System.Drawing.Point(655, 164)
+        Me.txt_pl_net.BackColor = System.Drawing.Color.LavenderBlush
+        Me.txt_pl_net.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_pl_net.ForeColor = System.Drawing.Color.Red
+        Me.txt_pl_net.Location = New System.Drawing.Point(399, 241)
         Me.txt_pl_net.Name = "txt_pl_net"
         Me.txt_pl_net.Size = New System.Drawing.Size(120, 22)
-        Me.txt_pl_net.TabIndex = 56
+        Me.txt_pl_net.TabIndex = 31
         '
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(582, 197)
+        Me.Label24.Location = New System.Drawing.Point(326, 274)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(73, 13)
-        Me.Label24.TabIndex = 59
+        Me.Label24.TabIndex = 1026
         Me.Label24.Text = "Net Unit Price"
         '
         'txt_net_unit
         '
-        Me.txt_net_unit.BackColor = System.Drawing.Color.Maroon
+        Me.txt_net_unit.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.txt_net_unit.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_net_unit.Location = New System.Drawing.Point(655, 192)
+        Me.txt_net_unit.ForeColor = System.Drawing.SystemColors.Info
+        Me.txt_net_unit.Location = New System.Drawing.Point(399, 269)
         Me.txt_net_unit.Name = "txt_net_unit"
         Me.txt_net_unit.Size = New System.Drawing.Size(120, 22)
-        Me.txt_net_unit.TabIndex = 58
+        Me.txt_net_unit.TabIndex = 32
         '
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(601, 219)
+        Me.Label25.Location = New System.Drawing.Point(345, 296)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(52, 26)
-        Me.Label25.TabIndex = 61
+        Me.Label25.TabIndex = 1027
         Me.Label25.Text = "เมตรรวม" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "หาส่วนลด"
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'txt_met
         '
-        Me.txt_met.BackColor = System.Drawing.Color.DarkOrange
+        Me.txt_met.BackColor = System.Drawing.SystemColors.Window
         Me.txt_met.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_met.Location = New System.Drawing.Point(655, 221)
+        Me.txt_met.Location = New System.Drawing.Point(399, 298)
         Me.txt_met.Name = "txt_met"
-        Me.txt_met.Size = New System.Drawing.Size(120, 22)
-        Me.txt_met.TabIndex = 60
+        Me.txt_met.Size = New System.Drawing.Size(150, 22)
+        Me.txt_met.TabIndex = 33
+        Me.txt_met.Text = "0"
         '
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(868, 104)
+        Me.Label26.Location = New System.Drawing.Point(878, 196)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(64, 26)
-        Me.Label26.TabIndex = 63
+        Me.Label26.TabIndex = 1031
         Me.Label26.Text = "เมตรรวม" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "เดินงานพ่วง"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -519,110 +522,111 @@ Partial Class frm_input
         '
         Me.txt_meth.BackColor = System.Drawing.SystemColors.Window
         Me.txt_meth.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_meth.Location = New System.Drawing.Point(938, 106)
+        Me.txt_meth.Location = New System.Drawing.Point(948, 198)
         Me.txt_meth.Name = "txt_meth"
         Me.txt_meth.Size = New System.Drawing.Size(128, 22)
-        Me.txt_meth.TabIndex = 62
+        Me.txt_meth.TabIndex = 37
         '
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(880, 132)
+        Me.Label27.Location = New System.Drawing.Point(890, 224)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(52, 26)
-        Me.Label27.TabIndex = 65
+        Me.Label27.TabIndex = 1032
         Me.Label27.Text = "เมตรรวม" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "หาส่วนลด"
         Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'txt_meth2
         '
-        Me.txt_meth2.BackColor = System.Drawing.Color.DarkOrange
+        Me.txt_meth2.BackColor = System.Drawing.SystemColors.Window
         Me.txt_meth2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_meth2.Location = New System.Drawing.Point(938, 134)
+        Me.txt_meth2.Location = New System.Drawing.Point(948, 226)
         Me.txt_meth2.Name = "txt_meth2"
         Me.txt_meth2.Size = New System.Drawing.Size(128, 22)
-        Me.txt_meth2.TabIndex = 64
+        Me.txt_meth2.TabIndex = 38
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(883, 83)
+        Me.Label28.Location = New System.Drawing.Point(893, 175)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(49, 13)
-        Me.Label28.TabIndex = 67
+        Me.Label28.TabIndex = 1030
         Me.Label28.Text = "Discount"
         '
         'txt_discount
         '
         Me.txt_discount.BackColor = System.Drawing.SystemColors.Window
         Me.txt_discount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_discount.Location = New System.Drawing.Point(938, 78)
+        Me.txt_discount.Location = New System.Drawing.Point(948, 170)
         Me.txt_discount.Name = "txt_discount"
         Me.txt_discount.Size = New System.Drawing.Size(128, 22)
-        Me.txt_discount.TabIndex = 66
+        Me.txt_discount.TabIndex = 36
         '
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(858, 27)
+        Me.Label29.Location = New System.Drawing.Point(868, 119)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(74, 13)
-        Me.Label29.TabIndex = 69
+        Me.Label29.TabIndex = 1028
         Me.Label29.Text = "ส่วนลด เงินสด"
         '
         'txt_sumdiscount
         '
-        Me.txt_sumdiscount.BackColor = System.Drawing.Color.Maroon
+        Me.txt_sumdiscount.BackColor = System.Drawing.SystemColors.InfoText
         Me.txt_sumdiscount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_sumdiscount.Location = New System.Drawing.Point(938, 22)
+        Me.txt_sumdiscount.Location = New System.Drawing.Point(948, 114)
         Me.txt_sumdiscount.Name = "txt_sumdiscount"
         Me.txt_sumdiscount.Size = New System.Drawing.Size(128, 22)
-        Me.txt_sumdiscount.TabIndex = 68
+        Me.txt_sumdiscount.TabIndex = 34
         '
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(866, 55)
+        Me.Label30.Location = New System.Drawing.Point(876, 147)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(66, 13)
-        Me.Label30.TabIndex = 71
+        Me.Label30.TabIndex = 1029
         Me.Label30.Text = "ราคาต่อแผ่น"
         '
         'txt_price
         '
-        Me.txt_price.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_price.Location = New System.Drawing.Point(938, 50)
+        Me.txt_price.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_price.ForeColor = System.Drawing.Color.Red
+        Me.txt_price.Location = New System.Drawing.Point(948, 142)
         Me.txt_price.Name = "txt_price"
         Me.txt_price.Size = New System.Drawing.Size(128, 22)
-        Me.txt_price.TabIndex = 70
+        Me.txt_price.TabIndex = 35
         '
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(883, 167)
+        Me.Label31.Location = New System.Drawing.Point(890, 259)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(52, 13)
-        Me.Label31.TabIndex = 73
+        Me.Label31.TabIndex = 1033
         Me.Label31.Text = "หมายเหตุ"
         '
         'txt_note
         '
         Me.txt_note.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_note.Location = New System.Drawing.Point(938, 162)
+        Me.txt_note.Location = New System.Drawing.Point(948, 254)
         Me.txt_note.Multiline = True
         Me.txt_note.Name = "txt_note"
         Me.txt_note.Size = New System.Drawing.Size(203, 39)
-        Me.txt_note.TabIndex = 72
+        Me.txt_note.TabIndex = 39
         '
         'btn_clear
         '
         Me.btn_clear.BackColor = System.Drawing.Color.FromArgb(CType(CType(217, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(56, Byte), Integer))
         Me.btn_clear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_clear.ForeColor = System.Drawing.Color.White
-        Me.btn_clear.Location = New System.Drawing.Point(1001, 230)
+        Me.btn_clear.Location = New System.Drawing.Point(1001, 299)
         Me.btn_clear.Name = "btn_clear"
         Me.btn_clear.Size = New System.Drawing.Size(150, 25)
-        Me.btn_clear.TabIndex = 74
+        Me.btn_clear.TabIndex = 42
         Me.btn_clear.Text = "Clear"
         Me.btn_clear.UseVisualStyleBackColor = False
         '
@@ -631,71 +635,76 @@ Partial Class frm_input
         Me.btn_add.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(196, Byte), Integer), CType(CType(145, Byte), Integer))
         Me.btn_add.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_add.ForeColor = System.Drawing.Color.Black
-        Me.btn_add.Location = New System.Drawing.Point(852, 230)
+        Me.btn_add.Location = New System.Drawing.Point(850, 299)
         Me.btn_add.Name = "btn_add"
         Me.btn_add.Size = New System.Drawing.Size(150, 25)
-        Me.btn_add.TabIndex = 75
+        Me.btn_add.TabIndex = 41
         Me.btn_add.Text = "Generate"
         Me.btn_add.UseVisualStyleBackColor = False
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(6, 41)
+        Me.Label15.Location = New System.Drawing.Point(2, 3)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(98, 13)
-        Me.Label15.TabIndex = 77
-        Me.Label15.Text = "ลูกค้า . . . . . . . . . . ."
+        Me.Label15.Size = New System.Drawing.Size(32, 13)
+        Me.Label15.TabIndex = 1000
+        Me.Label15.Text = "ลูกค้า"
         '
         'txt_customer
         '
         Me.txt_customer.FormattingEnabled = True
-        Me.txt_customer.Location = New System.Drawing.Point(112, 38)
+        Me.txt_customer.Location = New System.Drawing.Point(5, 19)
         Me.txt_customer.Name = "txt_customer"
-        Me.txt_customer.Size = New System.Drawing.Size(120, 21)
-        Me.txt_customer.TabIndex = 78
+        Me.txt_customer.Size = New System.Drawing.Size(100, 21)
+        Me.txt_customer.TabIndex = 1
         '
         'txt_paper_5
         '
-        Me.txt_paper_5.Location = New System.Drawing.Point(244, 100)
+        Me.txt_paper_5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_paper_5.Location = New System.Drawing.Point(111, 70)
         Me.txt_paper_5.Name = "txt_paper_5"
-        Me.txt_paper_5.Size = New System.Drawing.Size(60, 20)
-        Me.txt_paper_5.TabIndex = 1001
+        Me.txt_paper_5.Size = New System.Drawing.Size(60, 21)
+        Me.txt_paper_5.TabIndex = 17
         '
         'txt_paper_4
         '
-        Me.txt_paper_4.Location = New System.Drawing.Point(308, 100)
+        Me.txt_paper_4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_paper_4.Location = New System.Drawing.Point(175, 70)
         Me.txt_paper_4.Name = "txt_paper_4"
-        Me.txt_paper_4.Size = New System.Drawing.Size(60, 20)
-        Me.txt_paper_4.TabIndex = 1002
+        Me.txt_paper_4.Size = New System.Drawing.Size(60, 21)
+        Me.txt_paper_4.TabIndex = 18
         '
         'txt_paper_3
         '
-        Me.txt_paper_3.Location = New System.Drawing.Point(372, 100)
+        Me.txt_paper_3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_paper_3.Location = New System.Drawing.Point(239, 70)
         Me.txt_paper_3.Name = "txt_paper_3"
-        Me.txt_paper_3.Size = New System.Drawing.Size(60, 20)
-        Me.txt_paper_3.TabIndex = 1003
+        Me.txt_paper_3.Size = New System.Drawing.Size(60, 21)
+        Me.txt_paper_3.TabIndex = 19
         '
         'txt_paper_2
         '
-        Me.txt_paper_2.Location = New System.Drawing.Point(436, 100)
+        Me.txt_paper_2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_paper_2.Location = New System.Drawing.Point(303, 70)
         Me.txt_paper_2.Name = "txt_paper_2"
-        Me.txt_paper_2.Size = New System.Drawing.Size(60, 20)
-        Me.txt_paper_2.TabIndex = 1004
+        Me.txt_paper_2.Size = New System.Drawing.Size(60, 21)
+        Me.txt_paper_2.TabIndex = 20
         '
         'txt_paper_1
         '
-        Me.txt_paper_1.Location = New System.Drawing.Point(500, 100)
+        Me.txt_paper_1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_paper_1.Location = New System.Drawing.Point(367, 70)
         Me.txt_paper_1.Name = "txt_paper_1"
-        Me.txt_paper_1.Size = New System.Drawing.Size(56, 20)
-        Me.txt_paper_1.TabIndex = 1005
+        Me.txt_paper_1.Size = New System.Drawing.Size(56, 21)
+        Me.txt_paper_1.TabIndex = 21
         '
         'Label32
         '
-        Me.Label32.Location = New System.Drawing.Point(556, 4)
+        Me.Label32.Location = New System.Drawing.Point(845, 1)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(63, 17)
-        Me.Label32.TabIndex = 85
+        Me.Label32.Size = New System.Drawing.Size(43, 17)
+        Me.Label32.TabIndex = 1011
         Me.Label32.Text = "F6"
         Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -703,17 +712,17 @@ Partial Class frm_input
         '
         Me.txt_F6.BackColor = System.Drawing.Color.BlanchedAlmond
         Me.txt_F6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F6.Location = New System.Drawing.Point(559, 22)
+        Me.txt_F6.Location = New System.Drawing.Point(848, 19)
         Me.txt_F6.Name = "txt_F6"
-        Me.txt_F6.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F6.TabIndex = 84
+        Me.txt_F6.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F6.TabIndex = 13
         '
         'Label33
         '
-        Me.Label33.Location = New System.Drawing.Point(619, 4)
+        Me.Label33.Location = New System.Drawing.Point(890, 1)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(63, 17)
-        Me.Label33.TabIndex = 87
+        Me.Label33.Size = New System.Drawing.Size(40, 17)
+        Me.Label33.TabIndex = 1012
         Me.Label33.Text = "F7"
         Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -721,17 +730,17 @@ Partial Class frm_input
         '
         Me.txt_F7.BackColor = System.Drawing.Color.Bisque
         Me.txt_F7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F7.Location = New System.Drawing.Point(622, 22)
+        Me.txt_F7.Location = New System.Drawing.Point(890, 19)
         Me.txt_F7.Name = "txt_F7"
-        Me.txt_F7.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F7.TabIndex = 86
+        Me.txt_F7.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F7.TabIndex = 14
         '
         'Label34
         '
-        Me.Label34.Location = New System.Drawing.Point(682, 4)
+        Me.Label34.Location = New System.Drawing.Point(932, 1)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(63, 17)
-        Me.Label34.TabIndex = 89
+        Me.Label34.Size = New System.Drawing.Size(40, 17)
+        Me.Label34.TabIndex = 1013
         Me.Label34.Text = "F8"
         Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -739,115 +748,243 @@ Partial Class frm_input
         '
         Me.txt_F8.BackColor = System.Drawing.Color.PeachPuff
         Me.txt_F8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_F8.Location = New System.Drawing.Point(685, 22)
+        Me.txt_F8.Location = New System.Drawing.Point(932, 19)
         Me.txt_F8.Name = "txt_F8"
-        Me.txt_F8.Size = New System.Drawing.Size(60, 22)
-        Me.txt_F8.TabIndex = 88
+        Me.txt_F8.Size = New System.Drawing.Size(40, 22)
+        Me.txt_F8.TabIndex = 15
         '
         'txt_lon
         '
+        Me.txt_lon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.txt_lon.FormattingEnabled = True
         Me.txt_lon.Items.AddRange(New Object() {"A", "B", "C", "E", "AB", "BC"})
-        Me.txt_lon.Location = New System.Drawing.Point(376, 58)
+        Me.txt_lon.Location = New System.Drawing.Point(5, 70)
         Me.txt_lon.Name = "txt_lon"
-        Me.txt_lon.Size = New System.Drawing.Size(180, 21)
-        Me.txt_lon.TabIndex = 90
+        Me.txt_lon.Size = New System.Drawing.Size(100, 21)
+        Me.txt_lon.TabIndex = 16
         '
         'txt_search_pl
         '
         Me.txt_search_pl.Font = New System.Drawing.Font("Microsoft Sans Serif", 4.0!)
-        Me.txt_search_pl.Location = New System.Drawing.Point(244, 121)
+        Me.txt_search_pl.Location = New System.Drawing.Point(111, 93)
         Me.txt_search_pl.Name = "txt_search_pl"
         Me.txt_search_pl.ReadOnly = True
         Me.txt_search_pl.Size = New System.Drawing.Size(312, 14)
-        Me.txt_search_pl.TabIndex = 91
+        Me.txt_search_pl.TabIndex = 2000
         '
         'txt_duedate
         '
-        Me.txt_duedate.Location = New System.Drawing.Point(372, 232)
+        Me.txt_duedate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_duedate.Location = New System.Drawing.Point(555, 70)
         Me.txt_duedate.Name = "txt_duedate"
-        Me.txt_duedate.Size = New System.Drawing.Size(120, 20)
-        Me.txt_duedate.TabIndex = 92
-        Me.txt_duedate.Value = New Date(2019, 3, 28, 0, 0, 0, 0)
+        Me.txt_duedate.Size = New System.Drawing.Size(120, 21)
+        Me.txt_duedate.TabIndex = 23
+        Me.txt_duedate.Value = New Date(2019, 4, 1, 0, 0, 0, 0)
         '
         'txt_desc
         '
-        Me.txt_desc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.txt_desc.Location = New System.Drawing.Point(567, 82)
+        Me.txt_desc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_desc.Location = New System.Drawing.Point(111, 135)
         Me.txt_desc.Name = "txt_desc"
-        Me.txt_desc.Size = New System.Drawing.Size(295, 22)
-        Me.txt_desc.TabIndex = 1006
-        Me.txt_desc.Text = "txt_desc"
+        Me.txt_desc.ReadOnly = True
+        Me.txt_desc.Size = New System.Drawing.Size(312, 26)
+        Me.txt_desc.TabIndex = 2002
         '
         'txt_item_code
         '
-        Me.txt_item_code.Location = New System.Drawing.Point(973, 12)
+        Me.txt_item_code.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.txt_item_code.Location = New System.Drawing.Point(111, 113)
         Me.txt_item_code.MaxLength = 20
         Me.txt_item_code.Name = "txt_item_code"
-        Me.txt_item_code.Size = New System.Drawing.Size(178, 20)
-        Me.txt_item_code.TabIndex = 1007
-        Me.txt_item_code.Text = "txt_item_code"
+        Me.txt_item_code.ReadOnly = True
+        Me.txt_item_code.Size = New System.Drawing.Size(312, 21)
+        Me.txt_item_code.TabIndex = 2001
         '
         'Label35
         '
         Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(857, 208)
+        Me.Label35.Location = New System.Drawing.Point(712, 54)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(75, 13)
-        Me.Label35.TabIndex = 1009
+        Me.Label35.TabIndex = 1018
         Me.Label35.Text = "รูปแบบทับเส้น"
         '
         'txt_stampline
         '
+        Me.txt_stampline.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.txt_stampline.FormattingEnabled = True
         Me.txt_stampline.Items.AddRange(New Object() {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"})
-        Me.txt_stampline.Location = New System.Drawing.Point(938, 205)
+        Me.txt_stampline.Location = New System.Drawing.Point(715, 70)
         Me.txt_stampline.Name = "txt_stampline"
         Me.txt_stampline.Size = New System.Drawing.Size(128, 21)
-        Me.txt_stampline.TabIndex = 1010
+        Me.txt_stampline.TabIndex = 24
         '
         'txt_fn_find_inch_mm
         '
         Me.txt_fn_find_inch_mm.FormattingEnabled = True
-        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว", "มิล"})
-        Me.txt_fn_find_inch_mm.Location = New System.Drawing.Point(112, 5)
+        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว นิ้ว", "มิล มิล", "นิ้ว มิล", "มิล นิ้ว"})
+        Me.txt_fn_find_inch_mm.Location = New System.Drawing.Point(109, 19)
         Me.txt_fn_find_inch_mm.Name = "txt_fn_find_inch_mm"
-        Me.txt_fn_find_inch_mm.Size = New System.Drawing.Size(120, 21)
-        Me.txt_fn_find_inch_mm.TabIndex = 1011
+        Me.txt_fn_find_inch_mm.Size = New System.Drawing.Size(100, 21)
+        Me.txt_fn_find_inch_mm.TabIndex = 2
         '
         'txt_sub_desc
         '
-        Me.txt_sub_desc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
-        Me.txt_sub_desc.Location = New System.Drawing.Point(192, 203)
+        Me.txt_sub_desc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_sub_desc.Location = New System.Drawing.Point(488, 19)
         Me.txt_sub_desc.Name = "txt_sub_desc"
-        Me.txt_sub_desc.Size = New System.Drawing.Size(40, 22)
-        Me.txt_sub_desc.TabIndex = 1012
+        Me.txt_sub_desc.Size = New System.Drawing.Size(40, 21)
+        Me.txt_sub_desc.TabIndex = 6
         '
         'Label36
         '
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(6, 8)
+        Me.Label36.Location = New System.Drawing.Point(108, 3)
         Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(98, 13)
-        Me.Label36.TabIndex = 1013
-        Me.Label36.Text = "หน่วย  . . . . . . . . . ."
+        Me.Label36.Size = New System.Drawing.Size(29, 13)
+        Me.Label36.TabIndex = 1001
+        Me.Label36.Text = "แบบ"
         '
         'txt_exe
         '
         Me.txt_exe.AutoSize = True
-        Me.txt_exe.Location = New System.Drawing.Point(799, 237)
+        Me.txt_exe.Location = New System.Drawing.Point(1104, 3)
         Me.txt_exe.Name = "txt_exe"
         Me.txt_exe.Size = New System.Drawing.Size(47, 17)
         Me.txt_exe.TabIndex = 1014
         Me.txt_exe.Text = "EXE"
         Me.txt_exe.UseVisualStyleBackColor = True
+        Me.txt_exe.Visible = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(52, 118)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(53, 13)
+        Me.Label1.TabIndex = 1015
+        Me.Label1.Text = "item code"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(53, 143)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(52, 13)
+        Me.Label2.TabIndex = 1016
+        Me.Label2.Text = "item desc"
+        '
+        'lb_cuscode
+        '
+        Me.lb_cuscode.AutoSize = True
+        Me.lb_cuscode.Location = New System.Drawing.Point(1071, 90)
+        Me.lb_cuscode.Name = "lb_cuscode"
+        Me.lb_cuscode.Size = New System.Drawing.Size(62, 13)
+        Me.lb_cuscode.TabIndex = 2004
+        Me.lb_cuscode.Text = "lb_cuscode"
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(456, 94)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(27, 13)
+        Me.Label37.TabIndex = 2005
+        Me.Label37.Text = "calc"
+        Me.Label37.Visible = False
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(456, 114)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(50, 13)
+        Me.Label38.TabIndex = 2006
+        Me.Label38.Text = "รวมหาผ่า"
+        Me.Label38.Visible = False
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(456, 135)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(45, 13)
+        Me.Label39.TabIndex = 2007
+        Me.Label39.Text = "Label39"
+        Me.Label39.Visible = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(602, 111)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(244, 20)
+        Me.TextBox1.TabIndex = 2008
+        Me.TextBox1.Text = "x"
+        Me.TextBox1.Visible = False
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(602, 137)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(244, 20)
+        Me.TextBox2.TabIndex = 2009
+        Me.TextBox2.Text = "y"
+        Me.TextBox2.Visible = False
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(629, 221)
+        Me.TextBox3.Multiline = True
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(197, 51)
+        Me.TextBox3.TabIndex = 2011
+        '
+        'Label41
+        '
+        Me.Label41.AutoSize = True
+        Me.Label41.Location = New System.Drawing.Point(318, 43)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(45, 13)
+        Me.Label41.TabIndex = 2012
+        Me.Label41.Text = "Label41"
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(404, 43)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(45, 13)
+        Me.Label42.TabIndex = 2013
+        Me.Label42.Text = "Label42"
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(626, 299)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(54, 13)
+        Me.Label43.TabIndex = 2014
+        Me.Label43.Text = "ผ่าหาราคา"
+        Me.Label43.Visible = False
         '
         'frm_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightCyan
-        Me.ClientSize = New System.Drawing.Size(1153, 257)
+        Me.ClientSize = New System.Drawing.Size(1153, 326)
+        Me.Controls.Add(Me.Label43)
+        Me.Controls.Add(Me.Label42)
+        Me.Controls.Add(Me.Label41)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label39)
+        Me.Controls.Add(Me.Label38)
+        Me.Controls.Add(Me.Label37)
+        Me.Controls.Add(Me.lb_cuscode)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txt_exe)
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.txt_sub_desc)
@@ -924,12 +1061,10 @@ Partial Class frm_input
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txt_long)
         Me.Controls.Add(Me.txt_cut)
         Me.Controls.Add(Me.txt_workinch)
         Me.Controls.Add(Me.txt_width)
-        Me.Controls.Add(Me.txt_type)
         Me.Controls.Add(Me.txt_pono)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frm_input"
@@ -939,12 +1074,10 @@ Partial Class frm_input
 
     End Sub
     Friend WithEvents txt_pono As TextBox
-    Friend WithEvents txt_type As TextBox
     Friend WithEvents txt_width As TextBox
     Friend WithEvents txt_workinch As TextBox
     Friend WithEvents txt_cut As TextBox
     Friend WithEvents txt_long As TextBox
-    Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
@@ -1021,4 +1154,16 @@ Partial Class frm_input
     Friend WithEvents txt_sub_desc As TextBox
     Friend WithEvents Label36 As Label
     Friend WithEvents txt_exe As CheckBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lb_cuscode As Label
+    Friend WithEvents Label37 As Label
+    Friend WithEvents Label38 As Label
+    Friend WithEvents Label39 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label41 As Label
+    Friend WithEvents Label42 As Label
+    Friend WithEvents Label43 As Label
 End Class

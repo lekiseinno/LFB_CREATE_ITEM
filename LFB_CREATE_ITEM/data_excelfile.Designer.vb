@@ -72,10 +72,12 @@ Partial Class data_excelfile
         '
         'DataGrid_bom_header
         '
+        Me.DataGrid_bom_header.AllowUserToAddRows = False
+        Me.DataGrid_bom_header.AllowUserToDeleteRows = False
         Me.DataGrid_bom_header.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_bom_header.Location = New System.Drawing.Point(2, 2)
+        Me.DataGrid_bom_header.Location = New System.Drawing.Point(1, 2)
         Me.DataGrid_bom_header.Name = "DataGrid_bom_header"
-        Me.DataGrid_bom_header.Size = New System.Drawing.Size(1141, 369)
+        Me.DataGrid_bom_header.Size = New System.Drawing.Size(1142, 297)
         Me.DataGrid_bom_header.TabIndex = 5
         '
         'Tab_main
@@ -86,10 +88,10 @@ Partial Class data_excelfile
         Me.Tab_main.Controls.Add(Me.Tab_item_master)
         Me.Tab_main.Controls.Add(Me.Tab_item_unit)
         Me.Tab_main.Controls.Add(Me.TabPage1)
-        Me.Tab_main.Location = New System.Drawing.Point(2, 2)
+        Me.Tab_main.Location = New System.Drawing.Point(1, 1)
         Me.Tab_main.Name = "Tab_main"
         Me.Tab_main.SelectedIndex = 0
-        Me.Tab_main.Size = New System.Drawing.Size(1153, 399)
+        Me.Tab_main.Size = New System.Drawing.Size(1153, 327)
         Me.Tab_main.TabIndex = 9
         '
         'Tab_bom_header
@@ -99,7 +101,7 @@ Partial Class data_excelfile
         Me.Tab_bom_header.Location = New System.Drawing.Point(4, 22)
         Me.Tab_bom_header.Name = "Tab_bom_header"
         Me.Tab_bom_header.Padding = New System.Windows.Forms.Padding(3)
-        Me.Tab_bom_header.Size = New System.Drawing.Size(1145, 373)
+        Me.Tab_bom_header.Size = New System.Drawing.Size(1145, 301)
         Me.Tab_bom_header.TabIndex = 0
         Me.Tab_bom_header.Text = "BOM  H e a d e r"
         '
@@ -109,17 +111,19 @@ Partial Class data_excelfile
         Me.Tab_bom_line.Location = New System.Drawing.Point(4, 22)
         Me.Tab_bom_line.Name = "Tab_bom_line"
         Me.Tab_bom_line.Padding = New System.Windows.Forms.Padding(3)
-        Me.Tab_bom_line.Size = New System.Drawing.Size(1145, 373)
+        Me.Tab_bom_line.Size = New System.Drawing.Size(1145, 301)
         Me.Tab_bom_line.TabIndex = 1
         Me.Tab_bom_line.Text = "BOM  L i n e"
         Me.Tab_bom_line.UseVisualStyleBackColor = True
         '
         'DataGrid_bom_line
         '
+        Me.DataGrid_bom_line.AllowUserToAddRows = False
+        Me.DataGrid_bom_line.AllowUserToDeleteRows = False
         Me.DataGrid_bom_line.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_bom_line.Location = New System.Drawing.Point(2, 2)
+        Me.DataGrid_bom_line.Location = New System.Drawing.Point(1, 2)
         Me.DataGrid_bom_line.Name = "DataGrid_bom_line"
-        Me.DataGrid_bom_line.Size = New System.Drawing.Size(1141, 369)
+        Me.DataGrid_bom_line.Size = New System.Drawing.Size(1142, 297)
         Me.DataGrid_bom_line.TabIndex = 0
         '
         'Tab_default_dimension
@@ -128,17 +132,19 @@ Partial Class data_excelfile
         Me.Tab_default_dimension.Location = New System.Drawing.Point(4, 22)
         Me.Tab_default_dimension.Name = "Tab_default_dimension"
         Me.Tab_default_dimension.Padding = New System.Windows.Forms.Padding(3)
-        Me.Tab_default_dimension.Size = New System.Drawing.Size(1145, 373)
+        Me.Tab_default_dimension.Size = New System.Drawing.Size(1145, 301)
         Me.Tab_default_dimension.TabIndex = 2
         Me.Tab_default_dimension.Text = "Default  Dimension"
         Me.Tab_default_dimension.UseVisualStyleBackColor = True
         '
         'DataGrid_Default_dimension
         '
+        Me.DataGrid_Default_dimension.AllowUserToAddRows = False
+        Me.DataGrid_Default_dimension.AllowUserToDeleteRows = False
         Me.DataGrid_Default_dimension.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_Default_dimension.Location = New System.Drawing.Point(2, 2)
+        Me.DataGrid_Default_dimension.Location = New System.Drawing.Point(1, 2)
         Me.DataGrid_Default_dimension.Name = "DataGrid_Default_dimension"
-        Me.DataGrid_Default_dimension.Size = New System.Drawing.Size(1141, 369)
+        Me.DataGrid_Default_dimension.Size = New System.Drawing.Size(1142, 297)
         Me.DataGrid_Default_dimension.TabIndex = 0
         '
         'Tab_item_master
@@ -147,17 +153,19 @@ Partial Class data_excelfile
         Me.Tab_item_master.Location = New System.Drawing.Point(4, 22)
         Me.Tab_item_master.Name = "Tab_item_master"
         Me.Tab_item_master.Padding = New System.Windows.Forms.Padding(3)
-        Me.Tab_item_master.Size = New System.Drawing.Size(1145, 373)
+        Me.Tab_item_master.Size = New System.Drawing.Size(1145, 301)
         Me.Tab_item_master.TabIndex = 3
         Me.Tab_item_master.Text = "Item  Master"
         Me.Tab_item_master.UseVisualStyleBackColor = True
         '
         'DataGrid_Item_master
         '
+        Me.DataGrid_Item_master.AllowUserToAddRows = False
+        Me.DataGrid_Item_master.AllowUserToDeleteRows = False
         Me.DataGrid_Item_master.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_Item_master.Location = New System.Drawing.Point(2, 2)
+        Me.DataGrid_Item_master.Location = New System.Drawing.Point(1, 2)
         Me.DataGrid_Item_master.Name = "DataGrid_Item_master"
-        Me.DataGrid_Item_master.Size = New System.Drawing.Size(1141, 369)
+        Me.DataGrid_Item_master.Size = New System.Drawing.Size(1142, 297)
         Me.DataGrid_Item_master.TabIndex = 0
         '
         'Tab_item_unit
@@ -166,17 +174,19 @@ Partial Class data_excelfile
         Me.Tab_item_unit.Location = New System.Drawing.Point(4, 22)
         Me.Tab_item_unit.Name = "Tab_item_unit"
         Me.Tab_item_unit.Padding = New System.Windows.Forms.Padding(3)
-        Me.Tab_item_unit.Size = New System.Drawing.Size(1145, 373)
+        Me.Tab_item_unit.Size = New System.Drawing.Size(1145, 301)
         Me.Tab_item_unit.TabIndex = 4
         Me.Tab_item_unit.Text = "Item Unit of Messure"
         Me.Tab_item_unit.UseVisualStyleBackColor = True
         '
         'DataGrid_Item_unit
         '
+        Me.DataGrid_Item_unit.AllowUserToAddRows = False
+        Me.DataGrid_Item_unit.AllowUserToDeleteRows = False
         Me.DataGrid_Item_unit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_Item_unit.Location = New System.Drawing.Point(2, 2)
+        Me.DataGrid_Item_unit.Location = New System.Drawing.Point(1, 2)
         Me.DataGrid_Item_unit.Name = "DataGrid_Item_unit"
-        Me.DataGrid_Item_unit.Size = New System.Drawing.Size(1141, 369)
+        Me.DataGrid_Item_unit.Size = New System.Drawing.Size(1142, 297)
         Me.DataGrid_Item_unit.TabIndex = 0
         '
         'TabPage1
@@ -185,17 +195,19 @@ Partial Class data_excelfile
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1145, 373)
+        Me.TabPage1.Size = New System.Drawing.Size(1145, 301)
         Me.TabPage1.TabIndex = 5
         Me.TabPage1.Text = "Code.txt"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
         'DataGrid_codetxt
         '
+        Me.DataGrid_codetxt.AllowUserToAddRows = False
+        Me.DataGrid_codetxt.AllowUserToDeleteRows = False
         Me.DataGrid_codetxt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_codetxt.Location = New System.Drawing.Point(2, 2)
+        Me.DataGrid_codetxt.Location = New System.Drawing.Point(1, 2)
         Me.DataGrid_codetxt.Name = "DataGrid_codetxt"
-        Me.DataGrid_codetxt.Size = New System.Drawing.Size(1141, 369)
+        Me.DataGrid_codetxt.Size = New System.Drawing.Size(1142, 297)
         Me.DataGrid_codetxt.TabIndex = 0
         '
         'btn_to_input
@@ -212,7 +224,7 @@ Partial Class data_excelfile
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(1155, 400)
+        Me.ClientSize = New System.Drawing.Size(1155, 328)
         Me.Controls.Add(Me.btn_to_input)
         Me.Controls.Add(Me.lb_search)
         Me.Controls.Add(Me.txt_search)

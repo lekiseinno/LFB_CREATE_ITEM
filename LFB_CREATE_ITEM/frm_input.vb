@@ -25,7 +25,7 @@ Public Class frm_input
     Dim F6 As Integer
     Dim F7 As Integer
     Dim F8 As Integer
-    Dim find_discount As Integer
+    Dim discount As Integer
     Dim BA As Double
     Dim unit_height As Double
 
@@ -45,16 +45,31 @@ Public Class frm_input
     Dim GRADE As String
     Dim wei As Double
 
+    Dim ww
     Dim grossweight As Double
 
     Private Sub frm_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txt_item_code.Hide()
-        txt_desc.Hide()
-        txt_search_pl.Hide()
+
+        ' setup_conf.bom_header()
+
+        txt_customer.Focus()
+
+        txt_fn_find_inch_mm.Text = "มิล มิล"
+        txt_lon.Text = "B"
+
+
+
+
+
+        'txt_item_code.Hide()
+        'txt_desc.Hide()
+        ' txt_search_pl.Hide()
+
         get_item_customer()
         get_unit()
         txt_duedate.Format = DateTimePickerFormat.Custom
         txt_duedate.CustomFormat = "yyyy-MM-dd"
+        txt_duedate.Value = Now()
 
         txt_paper_1.ReadOnly = True
         txt_paper_2.ReadOnly = True
@@ -66,9 +81,7 @@ Public Class frm_input
     End Sub
     Sub get_unit()
         If txt_fn_find_inch_mm.Text = "" Then
-            txt_customer.Enabled = False
             txt_pono.Enabled = False
-            txt_type.Enabled = False
             txt_width.Enabled = False
             txt_workinch.Enabled = False
             txt_cut.Enabled = False
@@ -82,6 +95,7 @@ Public Class frm_input
         Try
 
             Dim sql As String
+
             sql = "SELECT * FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer]"
 
             Dim query As New SqlCommand(sql, connection)
@@ -89,7 +103,7 @@ Public Class frm_input
             Dim dt As New DataTable
             Dim ds As New DataSet
 
-            dataadapter.Fill(ds, "a")
+            dataadapter.Fill(ds, "Customer_Code")
 
             dt = ds.Tables(0)
 
@@ -116,7 +130,6 @@ Public Class frm_input
         End Try
     End Sub
     Private Sub btn_add_Click(sender As Object, e As EventArgs) Handles btn_add.Click
-
         If txt_item_code.Text.Length <> 20 Then
             MsgBox("Please check some field to input data!")
         Else
@@ -128,12 +141,7 @@ Public Class frm_input
             add_data_codetxt() 'OK
             add_data_item_master() 'OK
         End If
-
     End Sub
-
-
-
-
 
     Sub add_data_bom_header()
         data_excelfile.DataGrid_bom_header.ColumnCount = 4
@@ -141,9 +149,9 @@ Public Class frm_input
         data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
         data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
         data_excelfile.DataGrid_bom_header.Columns(3).Name = "Status"
-        Dim row As String()
-        row = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "0"}
-        data_excelfile.DataGrid_bom_header.Rows.Add(row)
+        Dim row3 As String()
+        row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "0"}
+        data_excelfile.DataGrid_bom_header.Rows.Add(row3)
     End Sub
     Sub add_data_bom_line()
         data_excelfile.DataGrid_bom_line.ColumnCount = 20
@@ -168,6 +176,8 @@ Public Class frm_input
         data_excelfile.DataGrid_bom_line.Columns(18).Name = "Quantity per"
         data_excelfile.DataGrid_bom_line.Columns(19).Name = "Ratio"
 
+        Dim row01 As String()
+        Dim row02 As String()
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
@@ -195,7 +205,8 @@ Public Class frm_input
         Dim sqmx1 As Double
 
 
-
+        'row01 = New String() {"Production BOM Line", "99000772"}
+        'row02 = New String() {" ", " "}
         row1 = New String() {txt_item_code.Text, "10000", " ", "item", txt_item_code.Text, "กาวแป้งสูตรsingle ", "KG", " ", " ", " ", " ", " ", "  ", "7", " ", " ", " ", " ", "Qty", " "}
         row2 = New String() {txt_item_code.Text, "20000", " ", "item", txt_item_code.Text, "กาวแผ่น          ", "KG", " ", " ", " ", " ", " ", "  ", "7", " ", " ", " ", " ", "Qty", " "}
 
@@ -303,6 +314,8 @@ Public Class frm_input
         End If
 
 
+        'data_excelfile.DataGrid_bom_line.Rows.Add(row01)
+        'data_excelfile.DataGrid_bom_line.Rows.Add(row02)
 
         If txt_lon.Text = "A" Or txt_lon.Text = "C" Then
             row3 = New String() {txt_item_code.Text, "30000", " ", "item", txt_item_code.Text, desc_bom_Line5, "KG", " ", " ", " ", " ", " ", "M5", "7", " ", " ", " ", " ", Qty5, " "}
@@ -349,36 +362,15 @@ Public Class frm_input
 
 
     End Sub
-
-
-
-
-
-
     Sub add_data_defaut_dimension_sheet()
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
         Dim row4 As String()
         Dim row5 As String()
-        'data_excelfile.DataGrid_Default_dimension.ColumnCount = 6
-        'data_excelfile.DataGrid_Default_dimension.Columns(0).Name = "Table ID"
-        'data_excelfile.DataGrid_Default_dimension.Columns(1).Name = "No."
-        'data_excelfile.DataGrid_Default_dimension.Columns(2).Name = "Dimension Code"
-        'data_excelfile.DataGrid_Default_dimension.Columns(3).Name = "Dimension Value Code"
-        'data_excelfile.DataGrid_Default_dimension.Columns(4).Name = "Value Posting"
-        'data_excelfile.DataGrid_Default_dimension.Columns(5).Name = "Table Name"
+        Dim row6 As String()
+        Dim row7 As String()
 
-        'row1 = New String() {"27", txt_item_code.Text, "COSTCENTER", "20102", "", ""}
-        'row2 = New String() {"27", txt_item_code.Text, "GRADE", ""}
-        'row3 = New String() {"27", txt_item_code.Text, "GRAM", ""}
-        'row4 = New String() {"27", txt_item_code.Text, "PPAGE", txt_width.Text}
-        'row5 = New String() {"27", txt_item_code.Text, "PROFILE", txt_lon.Text}
-        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row1)
-        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row2)
-        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row3)
-        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row4)
-        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row5)
 
 
         data_excelfile.DataGrid_Default_dimension.ColumnCount = 6
@@ -406,16 +398,21 @@ Public Class frm_input
             GRADE = myreader5.Item("f").ToString
         End If
 
-        row1 = New String() {"27", txt_item_code.Text, "COSTCENTER", "20102", "", ""}
-        row2 = New String() {"27", txt_item_code.Text, "GRADE     ", GRADE, "", ""}
-        row3 = New String() {"27", txt_item_code.Text, "GRAM      ", GRAM, "", ""}
-        row4 = New String() {"27", txt_item_code.Text, "PPAGE     ", txt_width.Text, "", ""}
-        row5 = New String() {"27", txt_item_code.Text, "PROFILE   ", txt_lon.Text, "", ""}
-        data_excelfile.DataGrid_Default_dimension.Rows.Add(row1)
-        data_excelfile.DataGrid_Default_dimension.Rows.Add(row2)
+        'row1 = New String() {"Production BOM Line", "99000772"}
+        'row2 = New String() {" ", " "}
+        row3 = New String() {"27", txt_item_code.Text, "COSTCENTER", "20102", "", ""}
+        row4 = New String() {"27", txt_item_code.Text, "GRADE     ", GRADE, "", ""}
+        row5 = New String() {"27", txt_item_code.Text, "GRAM      ", GRAM, "", ""}
+        row6 = New String() {"27", txt_item_code.Text, "PPAGE     ", txt_width.Text, "", ""}
+        row7 = New String() {"27", txt_item_code.Text, "PROFILE   ", txt_lon.Text, "", ""}
+
+        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row1)
+        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row2)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row3)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row4)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row5)
+        data_excelfile.DataGrid_Default_dimension.Rows.Add(row6)
+        data_excelfile.DataGrid_Default_dimension.Rows.Add(row7)
     End Sub
     Sub add_data_item_master()
 
@@ -575,9 +572,15 @@ Public Class frm_input
         data_excelfile.DataGrid_Item_master.Columns(62).Name = "Routing No."
         data_excelfile.DataGrid_Item_master.Columns(63).Name = "Production BOM No."
         data_excelfile.DataGrid_Item_master.Columns(64).Name = "Overhead Rate"
-        Dim row As String()
-        row = New String() {txt_item_code.Text, txt_desc.Text, "SHT", " ", FG1, "FIFO", " ", " ", (grossweight / 1000), (grossweight / 1000), "No", " ", FG1, "VAT7", "NO", "0", "0", " ", "Prod. Order", "2SHT", "SHT", "Lot-for-Lot", "Yes", "Make-to-Stock", FG1, "FGSH", "LOTALL", " ", txt_lon.Text, "", "", txt_cut.Text, "", txt_width.Text, "", txt_long.Text, txt_F1.Text, txt_F2.Text, txt_F3.Text, txt_F4.Text, txt_F5.Text, txt_F6.Text, txt_F7.Text, txt_F8.Text, (grossweight / 1000), area, "0", txt_note.Text, "0", "0", "", "", "", "", "", "", "", txt_paper_1.Text, txt_paper_2.Text, txt_paper_3.Text, txt_paper_4.Text, txt_paper_5.Text, "SHEETBOARDCORRUGATOR", txt_item_code.Text, "0"}
-        data_excelfile.DataGrid_Item_master.Rows.Add(row)
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+        ' row1 = New String() {"Item", " "}
+        ' row2 = New String() {" ", " "}
+        row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", " ", FG1, "FIFO", " ", " ", (grossweight / 1000), (grossweight / 1000), "No", " ", FG1, "VAT7", "NO", "0", "0", " ", "Prod. Order", "2SHT", "SHT", "Lot-for-Lot", "Yes", "Make-to-Stock", FG1, "FGSH", "LOTALL", " ", txt_lon.Text, "", "", txt_cut.Text, "", txt_width.Text, "", txt_long.Text, txt_F1.Text, txt_F2.Text, txt_F3.Text, txt_F4.Text, txt_F5.Text, txt_F6.Text, txt_F7.Text, txt_F8.Text, (grossweight / 1000), area, "0", txt_note.Text, "0", "0", "", "", "", "", "", "", "", txt_paper_1.Text, txt_paper_2.Text, txt_paper_3.Text, txt_paper_4.Text, txt_paper_5.Text, "SHEETBOARDCORRUGATOR", txt_item_code.Text, "0"}
+        ' data_excelfile.DataGrid_Item_master.Rows.Add(row1)
+        ' data_excelfile.DataGrid_Item_master.Rows.Add(row2)
+        data_excelfile.DataGrid_Item_master.Rows.Add(row3)
     End Sub
     Sub add_data_Item_Unit_Of_Messure_Sheet()
 
@@ -597,9 +600,15 @@ Public Class frm_input
         data_excelfile.DataGrid_Item_unit.Columns(4).Name = "Width"
         data_excelfile.DataGrid_Item_unit.Columns(5).Name = "Height"
         data_excelfile.DataGrid_Item_unit.Columns(6).Name = "Weight"
-        Dim row As String()
-        row = New String() {txt_item_code.Text, "SHT", "1", lonng, wid, unit_height, wei}
-        data_excelfile.DataGrid_Item_unit.Rows.Add(row)
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+        'row1 = New String() {"Item Unit of Measure", "5404"}
+        'row2 = New String() {" ", " "}
+        row3 = New String() {txt_item_code.Text, "SHT", "1", lonng, wid, unit_height, wei}
+        'data_excelfile.DataGrid_Item_unit.Rows.Add(row1)
+        'data_excelfile.DataGrid_Item_unit.Rows.Add(row2)
+        data_excelfile.DataGrid_Item_unit.Rows.Add(row3)
 
     End Sub
     Sub add_data_input_print()
@@ -644,10 +653,6 @@ Public Class frm_input
         data_input.DataGrid_input.Columns(36).Name = "หมายเหตุ"
 
 
-        'data_input.DataGrid_input.Columns(0).Width = 175
-        'data_input.DataGrid_input.Columns(1).Width = 400
-        'data_input.DataGrid_input.Columns(2).Width = 150
-        'data_input.DataGrid_input.Columns(3).Width = 150
 
         Dim row As String()
 
@@ -655,8 +660,8 @@ Public Class frm_input
                             False,
                             True,
                             "1",
-                            txt_type.Text,
                             txt_pono.Text,
+                            "",
                             txt_width.Text,
                             txt_workinch.Text,
                             txt_cut.Text,
@@ -699,143 +704,143 @@ Public Class frm_input
         row = New String() {txt_item_code.Text}
         data_excelfile.DataGrid_codetxt.Rows.Add(row)
     End Sub
-    Function get_m(m)
-        Dim mm As String = ""
-        If m = "" Then mm = "00"
-        If m = "A125" Then mm = "A2"
-        If m = "A150" Then mm = "A4"
-        If m = "A185" Then mm = "A6"
-        If m = "A230" Then mm = "A8"
-        If m = "PA125" Then mm = "A2"
-        If m = "PA150" Then mm = "A4"
-        If m = "PA185" Then mm = "A6"
-        If m = "PA230" Then mm = "A8"
-        If m = "HA125" Then mm = "A2"
-        If m = "HA150" Then mm = "A4"
-        If m = "HA185" Then mm = "A6"
-        If m = "HA230" Then mm = "A8"
-        If m = "KA112" Then mm = "AE"
-        If m = "KA125" Then mm = "A2"
-        If m = "KA150" Then mm = "A4"
-        If m = "KA185" Then mm = "A6"
-        If m = "KA225" Then mm = "AI"
-        If m = "KA230" Then mm = "A8"
-        If m = "KA270" Then mm = "BB"
-        If m = "A230" Then mm = "A8"
-        If m = "A112" Then mm = "AE"
-        If m = "A125" Then mm = "A2"
-        If m = "A150" Then mm = "A4"
-        If m = "A185" Then mm = "A6"
-        If m = "A225" Then mm = "AI"
-        If m = "KN125" Then mm = "A2"
-        If m = "KN150" Then mm = "A4"
-        If m = "KN185" Then mm = "A6"
-        If m = "KN230" Then mm = "A8"
-        If m = "KU125" Then mm = "U2"
-        If m = "KU150" Then mm = "U4"
-        If m = "KU185" Then mm = "U6"
-        If m = "KU230" Then mm = "U8"
-        If m = "KAC125" Then mm = "A2"
-        If m = "KAC150" Then mm = "A4"
-        If m = "KAC185" Then mm = "A6"
-        If m = "KAC230" Then mm = "A8"
-        If m = "KH175" Then mm = "KF"
-        If m = "KH200" Then mm = "KG"
-        If m = "KH250" Then mm = "K9"
-        If m = "AU125" Then mm = "U2"
-        If m = "AU185" Then mm = "U6"
-        If m = "AU230" Then mm = "U8"
-        If m = "I125" Then mm = "I2"
-        If m = "I150" Then mm = "I4"
-        If m = "I185" Then mm = "I6"
-        If m = "KQ125" Then mm = "I2"
-        If m = "KQ150" Then mm = "I4"
-        If m = "KQ185" Then mm = "I6"
-        If m = "PI125" Then mm = "I2"
-        If m = "PI150" Then mm = "I4"
-        If m = "PI185" Then mm = "I6"
-        If m = "CI125" Then mm = "I2"
-        If m = "CI150" Then mm = "I4"
-        If m = "CI185" Then mm = "I6"
-        If m = "TPI125" Then mm = "I2"
-        If m = "TPI150" Then mm = "I4"
-        If m = "TPI185" Then mm = "I6"
-        If m = "KI125" Then mm = "I2"
-        If m = "KI150" Then mm = "I4"
-        If m = "KI185" Then mm = "I6"
-        If m = "KD125" Then mm = "D2"
-        If m = "KD150" Then mm = "D4"
-        If m = "KD185" Then mm = "D6"
-        If m = "KD230" Then mm = "D8"
-        If m = "KJ125" Then mm = "J2"
-        If m = "KJ150" Then mm = "J4"
-        If m = "KJ185" Then mm = "J6"
-        If m = "KJ230" Then mm = "J8"
-        If m = "KL125" Then mm = "L2"
-        If m = "KL150" Then mm = "L4"
-        If m = "KL175" Then mm = "LF"
-        If m = "KL205" Then mm = "L7"
-        If m = "KL250" Then mm = "L9"
-        If m = "KP175" Then mm = "PF"
-        If m = "KP230" Then mm = "P8"
-        If m = "KP250" Then mm = "P9"
-        If m = "KT125" Then mm = "T2"
-        If m = "KT140" Then mm = "T3"
-        If m = "KT150" Then mm = "T4"
-        If m = "KT175" Then mm = "TF"
-        If m = "KT185" Then mm = "T6"
-        If m = "KT200" Then mm = "TG"
-        If m = "KT250" Then mm = "T9"
-        If m = "KK125" Then mm = "K2"
-        If m = "KK150" Then mm = "K4"
-        If m = "KK185" Then mm = "K6"
-        If m = "KX125" Then mm = "X2"
-        If m = "KX150" Then mm = "X4"
-        If m = "MK125" Then mm = "K2"
-        If m = "MK150" Then mm = "K4"
-        If m = "MK185" Then mm = "K6"
-        If m = "M100" Then mm = "ME"
-        If m = "M105" Then mm = "M0"
-        If m = "M107" Then mm = "M0"
-        If m = "M110" Then mm = "ML"
-        If m = "M115" Then mm = "M1"
-        If m = "M120" Then mm = "MM"
-        If m = "M125" Then mm = "M2"
-        If m = "M127" Then mm = "MK"
-        If m = "M150" Then mm = "M4"
-        If m = "M185" Then mm = "M6"
-        If m = "M190" Then mm = "MN"
-        If m = "CM105" Then mm = "M0"
-        If m = "CM107" Then mm = "M0"
-        If m = "CM115" Then mm = "M1"
-        If m = "CM125" Then mm = "M2"
-        If m = "CM150" Then mm = "M4"
-        If m = "CM185" Then mm = "M6"
-        If m = "CM127" Then mm = "MK"
-        If m = "CM100" Then mm = "ME"
-        If m = "CM110" Then mm = "ML"
-        If m = "CM120" Then mm = "MM"
-        If m = "CM190" Then mm = "MN"
-        If m = "CJ230" Then mm = "X8"
-        If m = "S150" Then mm = "S4"
-        If m = "S140" Then mm = "S3"
-        If m = "S170" Then mm = "S5"
-        If m = "KS140" Then mm = "S3"
-        If m = "KS150" Then mm = "S4"
-        If m = "KS170" Then mm = "S5"
-        If m = "KA260" Then mm = "CL"
-        If m = "TK125" Then mm = "T2"
-        If m = "TK180" Then mm = "TO"
-        If m = "TK210" Then mm = "TP"
-        If m = "MG056" Then mm = "GA"
-        If m = "SB060" Then mm = "SB"
-        If m = "NP170" Then mm = "N5"
-        If m = "NP200" Then mm = "NG"
-        If m = "NP210" Then mm = "NP"
-        If m = "NP220" Then mm = "NH"
-        If m = "NP280" Then mm = "NJ"
+    Function get_m(minput)
+        Dim m_m_m As String = ""
+        If minput = "" Then m_m_m = "00"
+        If minput = "A125" Then m_m_m = "A2"
+        If minput = "A150" Then m_m_m = "A4"
+        If minput = "A185" Then m_m_m = "A6"
+        If minput = "A230" Then m_m_m = "A8"
+        'If minput = "PA125" Then m_m_m = "A2"
+        'If minput = "PA150" Then m_m_m = "A4"
+        'If minput = "PA185" Then m_m_m = "A6"
+        'If minput = "PA230" Then m_m_m = "A8"
+        'If minput = "HA125" Then m_m_m = "A2"
+        'If minput = "HA150" Then m_m_m = "A4"
+        'If minput = "HA185" Then m_m_m = "A6"
+        'If minput = "HA230" Then m_m_m = "A8"
+        'If minput = "KA112" Then m_m_m = "AE"
+        'If minput = "KA125" Then m_m_m = "A2"
+        'If minput = "KA150" Then m_m_m = "A4"
+        'If minput = "KA185" Then m_m_m = "A6"
+        'If minput = "KA225" Then m_m_m = "AI"
+        'If minput = "KA230" Then m_m_m = "A8"
+        'If minput = "KA270" Then m_m_m = "BB"
+        If minput = "A230" Then m_m_m = "A8"
+        If minput = "A112" Then m_m_m = "AE"
+        If minput = "A125" Then m_m_m = "A2"
+        If minput = "A150" Then m_m_m = "A4"
+        If minput = "A185" Then m_m_m = "A6"
+        If minput = "A225" Then m_m_m = "AI"
+        'If minput = "KN125" Then m_m_m = "A2"
+        'If minput = "KN150" Then m_m_m = "A4"
+        'If minput = "KN185" Then m_m_m = "A6"
+        'If minput = "KN230" Then m_m_m = "A8"
+        'If minput = "KU125" Then m_m_m = "U2"
+        'If minput = "KU150" Then m_m_m = "U4"
+        'If minput = "KU185" Then m_m_m = "U6"
+        'If minput = "KU230" Then m_m_m = "U8"
+        'If minput = "KAC125" Then m_m_m = "A2"
+        'If minput = "KAC150" Then m_m_m = "A4"
+        'If minput = "KAC185" Then m_m_m = "A6"
+        'If minput = "KAC230" Then m_m_m = "A8"
+        'If minput = "KH175" Then m_m_m = "KF"
+        'If minput = "KH200" Then m_m_m = "KG"
+        'If minput = "KH250" Then m_m_m = "K9"
+        'If minput = "AU125" Then m_m_m = "U2"
+        'If minput = "AU185" Then m_m_m = "U6"
+        'If minput = "AU230" Then m_m_m = "U8"
+        If minput = "I125" Then m_m_m = "I2"
+        If minput = "I150" Then m_m_m = "I4"
+        If minput = "I185" Then m_m_m = "I6"
+        'If minput = "KQ125" Then m_m_m = "I2"
+        'If minput = "KQ150" Then m_m_m = "I4"
+        'If minput = "KQ185" Then m_m_m = "I6"
+        'If minput = "PI125" Then m_m_m = "I2"
+        'If minput = "PI150" Then m_m_m = "I4"
+        'If minput = "PI185" Then m_m_m = "I6"
+        'If minput = "CI125" Then m_m_m = "I2"
+        'If minput = "CI150" Then m_m_m = "I4"
+        'If minput = "CI185" Then m_m_m = "I6"
+        'If minput = "TPI125" Then m_m_m = "I2"
+        'If minput = "TPI150" Then m_m_m = "I4"
+        'If minput = "TPI185" Then m_m_m = "I6"
+        'If minput = "KI125" Then m_m_m = "I2"
+        'If minput = "KI150" Then m_m_m = "I4"
+        'If minput = "KI185" Then m_m_m = "I6"
+        'If minput = "KD125" Then m_m_m = "D2"
+        'If minput = "KD150" Then m_m_m = "D4"
+        'If minput = "KD185" Then m_m_m = "D6"
+        'If minput = "KD230" Then m_m_m = "D8"
+        'If minput = "KJ125" Then m_m_m = "J2"
+        'If minput = "KJ150" Then m_m_m = "J4"
+        'If minput = "KJ185" Then m_m_m = "J6"
+        'If minput = "KJ230" Then m_m_m = "J8"
+        'If minput = "KL125" Then m_m_m = "L2"
+        'If minput = "KL150" Then m_m_m = "L4"
+        'If minput = "KL175" Then m_m_m = "LF"
+        'If minput = "KL205" Then m_m_m = "L7"
+        If minput = "L250" Then m_m_m = "L9"
+        'If minput = "KP175" Then m_m_m = "PF"
+        'If minput = "KP230" Then m_m_m = "P8"
+        'If minput = "KP250" Then m_m_m = "P9"
+        'If minput = "KT125" Then m_m_m = "T2"
+        'If minput = "KT140" Then m_m_m = "T3"
+        'If minput = "KT150" Then m_m_m = "T4"
+        'If minput = "KT175" Then m_m_m = "TF"
+        'If minput = "KT185" Then m_m_m = "T6"
+        'If minput = "KT200" Then m_m_m = "TG"
+        'If minput = "KT250" Then m_m_m = "T9"
+        'If minput = "KK125" Then m_m_m = "K2"
+        'If minput = "KK150" Then m_m_m = "K4"
+        'If minput = "KK185" Then m_m_m = "K6"
+        'If minput = "KX125" Then m_m_m = "X2"
+        'If minput = "KX150" Then m_m_m = "X4"
+        'If minput = "MK125" Then m_m_m = "K2"
+        'If minput = "MK150" Then m_m_m = "K4"
+        'If minput = "MK185" Then m_m_m = "K6"
+        If minput = "M100" Then m_m_m = "ME"
+        If minput = "M105" Then m_m_m = "M0"
+        If minput = "M107" Then m_m_m = "M0"
+        If minput = "M110" Then m_m_m = "ML"
+        If minput = "M115" Then m_m_m = "M1"
+        If minput = "M120" Then m_m_m = "MM"
+        If minput = "M125" Then m_m_m = "M2"
+        If minput = "M127" Then m_m_m = "MK"
+        If minput = "M150" Then m_m_m = "M4"
+        If minput = "M185" Then m_m_m = "M6"
+        If minput = "M190" Then m_m_m = "MN"
+        'If minput = "CM105" Then m_m_m = "M0"
+        'If minput = "CM107" Then m_m_m = "M0"
+        'If minput = "CM115" Then m_m_m = "M1"
+        'If minput = "CM125" Then m_m_m = "M2"
+        'If minput = "CM150" Then m_m_m = "M4"
+        'If minput = "CM185" Then m_m_m = "M6"
+        'If minput = "CM127" Then m_m_m = "MK"
+        'If minput = "CM100" Then m_m_m = "ME"
+        'If minput = "CM110" Then m_m_m = "ML"
+        'If minput = "CM120" Then m_m_m = "MM"
+        'If minput = "CM190" Then m_m_m = "MN"
+        'If minput = "CJ230" Then m_m_m = "X8"
+        'If minput = "S150" Then m_m_m = "S4"
+        'If minput = "S140" Then m_m_m = "S3"
+        'If minput = "S170" Then m_m_m = "S5"
+        'If minput = "KS140" Then m_m_m = "S3"
+        'If minput = "KS150" Then m_m_m = "S4"
+        'If minput = "KS170" Then m_m_m = "S5"
+        'If minput = "KA260" Then m_m_m = "CL"
+        'If minput = "TK125" Then m_m_m = "T2"
+        'If minput = "TK180" Then m_m_m = "TO"
+        'If minput = "TK210" Then m_m_m = "TP"
+        'If minput = "MG056" Then m_m_m = "GA"
+        'If minput = "SB060" Then m_m_m = "SB"
+        'If minput = "NP170" Then m_m_m = "N5"
+        'If minput = "NP200" Then m_m_m = "NG"
+        'If minput = "NP210" Then m_m_m = "NP"
+        'If minput = "NP220" Then m_m_m = "NH"
+        'If minput = "NP280" Then m_m_m = "NJ"
 
-        Return mm
+        Return m_m_m
 
     End Function
 
@@ -988,7 +993,6 @@ Public Class frm_input
                     paper_1 = "/" + txt_paper_1.Text
                 End If
 
-
                 gen_item_code()
                 gen_item_des()
 
@@ -998,8 +1002,12 @@ Public Class frm_input
         End Try
     End Sub
     Private Sub txt_lon_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_lon.SelectedIndexChanged
+
         set_field()
         gen_item_code()
+        get_discounts()
+
+
     End Sub
     Private Sub txt_lon_TextChanged(sender As Object, e As EventArgs) Handles txt_lon.TextChanged
         set_field()
@@ -1031,14 +1039,22 @@ Public Class frm_input
     End Sub
     Private Sub txt_paper_1_TextChanged(sender As Object, e As EventArgs) Handles txt_paper_1.TextChanged
         If txt_paper_1.Text.Length = 4 Then
+            SendKeys.Send("{TAB}")
             Concat_pl()
         End If
     End Sub
     Sub Concat_pl()
         txt_search_pl.Text = txt_paper_5.Text + txt_paper_4.Text + txt_paper_3.Text + txt_paper_2.Text + txt_paper_1.Text
     End Sub
-    Private Sub txt_width_TextChanged(sender As Object, e As EventArgs) Handles txt_width.TextChanged
-        If txt_fn_find_inch_mm.Text = "นิ้ว" Then
+
+
+    Private Sub txt_width_LostFocus(sender As Object, e As EventArgs) Handles txt_width.LostFocus
+
+
+
+
+
+        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
             If txt_width.Text = "36" Then wid = "0930"
             If txt_width.Text = "38" Then wid = "0980"
             If txt_width.Text = "40" Then wid = "1030"
@@ -1065,74 +1081,133 @@ Public Class frm_input
             If txt_width.Text = "82" Then wid = "2100"
             If txt_width.Text = "84" Then wid = "2150"
             If txt_width.Text = "86" Then wid = "2200"
-        Else
-            wid = txt_width.Text
-        End If
-    End Sub
-    Private Sub txt_long_TextChanged(sender As Object, e As EventArgs) Handles txt_long.TextChanged
+
+            'If txt_long.Text = "36" Then lonng = "0930"
+            'If txt_long.Text = "38" Then lonng = "0980"
+            'If txt_long.Text = "40" Then lonng = "1030"
+            'If txt_long.Text = "42" Then lonng = "1080"
+            'If txt_long.Text = "44" Then lonng = "1130"
+            'If txt_long.Text = "46" Then lonng = "1180"
+            'If txt_long.Text = "48" Then lonng = "1230"
+            'If txt_long.Text = "50" Then lonng = "1280"
+            'If txt_long.Text = "52" Then lonng = "1330"
+            'If txt_long.Text = "54" Then lonng = "1390"
+            'If txt_long.Text = "56" Then lonng = "1440"
+            'If txt_long.Text = "58" Then lonng = "1490"
+            'If txt_long.Text = "60" Then lonng = "1540"
+            'If txt_long.Text = "62" Then lonng = "1590"
+            'If txt_long.Text = "64" Then lonng = "1640"
+            'If txt_long.Text = "66" Then lonng = "1690"
+            'If txt_long.Text = "68" Then lonng = "1740"
+            'If txt_long.Text = "70" Then lonng = "1790"
+            'If txt_long.Text = "72" Then lonng = "1850"
+            'If txt_long.Text = "74" Then lonng = "1900"
+            'If txt_long.Text = "76" Then lonng = "1950"
+            'If txt_long.Text = "78" Then lonng = "2000"
+            'If txt_long.Text = "80" Then lonng = "2050"
+            'If txt_long.Text = "82" Then lonng = "2100"
+            'If txt_long.Text = "84" Then lonng = "2150"
+            'If txt_long.Text = "86" Then lonng = "2200"
 
 
-        If txt_fn_find_inch_mm.Text = "นิ้ว" Then
-            If txt_long.Text = "36" Then lonng = "0930"
-            If txt_long.Text = "38" Then lonng = "0980"
-            If txt_long.Text = "40" Then lonng = "1030"
-            If txt_long.Text = "42" Then lonng = "1080"
-            If txt_long.Text = "44" Then lonng = "1130"
-            If txt_long.Text = "46" Then lonng = "1180"
-            If txt_long.Text = "48" Then lonng = "1230"
-            If txt_long.Text = "50" Then lonng = "1280"
-            If txt_long.Text = "52" Then lonng = "1330"
-            If txt_long.Text = "54" Then lonng = "1390"
-            If txt_long.Text = "56" Then lonng = "1440"
-            If txt_long.Text = "58" Then lonng = "1490"
-            If txt_long.Text = "60" Then lonng = "1540"
-            If txt_long.Text = "62" Then lonng = "1590"
-            If txt_long.Text = "64" Then lonng = "1640"
-            If txt_long.Text = "66" Then lonng = "1690"
-            If txt_long.Text = "68" Then lonng = "1740"
-            If txt_long.Text = "70" Then lonng = "1790"
-            If txt_long.Text = "72" Then lonng = "1850"
-            If txt_long.Text = "74" Then lonng = "1900"
-            If txt_long.Text = "76" Then lonng = "1950"
-            If txt_long.Text = "78" Then lonng = "2000"
-            If txt_long.Text = "80" Then lonng = "2050"
-            If txt_long.Text = "82" Then lonng = "2100"
-            If txt_long.Text = "84" Then lonng = "2150"
-            If txt_long.Text = "86" Then lonng = "2200"
-        Else
+            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
+
+        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+
+            If txt_width.Text = "36" Then wid = "0930"
+            If txt_width.Text = "38" Then wid = "0980"
+            If txt_width.Text = "40" Then wid = "1030"
+            If txt_width.Text = "42" Then wid = "1080"
+            If txt_width.Text = "44" Then wid = "1130"
+            If txt_width.Text = "46" Then wid = "1180"
+            If txt_width.Text = "48" Then wid = "1230"
+            If txt_width.Text = "50" Then wid = "1280"
+            If txt_width.Text = "52" Then wid = "1330"
+            If txt_width.Text = "54" Then wid = "1390"
+            If txt_width.Text = "56" Then wid = "1440"
+            If txt_width.Text = "58" Then wid = "1490"
+            If txt_width.Text = "60" Then wid = "1540"
+            If txt_width.Text = "62" Then wid = "1590"
+            If txt_width.Text = "64" Then wid = "1640"
+            If txt_width.Text = "66" Then wid = "1690"
+            If txt_width.Text = "68" Then wid = "1740"
+            If txt_width.Text = "70" Then wid = "1790"
+            If txt_width.Text = "72" Then wid = "1850"
+            If txt_width.Text = "74" Then wid = "1900"
+            If txt_width.Text = "76" Then wid = "1950"
+            If txt_width.Text = "78" Then wid = "2000"
+            If txt_width.Text = "80" Then wid = "2050"
+            If txt_width.Text = "82" Then wid = "2100"
+            If txt_width.Text = "84" Then wid = "2150"
+            If txt_width.Text = "86" Then wid = "2200"
             lonng = txt_long.Text
-        End If
 
+        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
+
+            'If txt_long.Text = "36" Then lonng = "0930"
+            'If txt_long.Text = "38" Then lonng = "0980"
+            'If txt_long.Text = "40" Then lonng = "1030"
+            'If txt_long.Text = "42" Then lonng = "1080"
+            'If txt_long.Text = "44" Then lonng = "1130"
+            'If txt_long.Text = "46" Then lonng = "1180"
+            'If txt_long.Text = "48" Then lonng = "1230"
+            'If txt_long.Text = "50" Then lonng = "1280"
+            'If txt_long.Text = "52" Then lonng = "1330"
+            'If txt_long.Text = "54" Then lonng = "1390"
+            'If txt_long.Text = "56" Then lonng = "1440"
+            'If txt_long.Text = "58" Then lonng = "1490"
+            'If txt_long.Text = "60" Then lonng = "1540"
+            'If txt_long.Text = "62" Then lonng = "1590"
+            'If txt_long.Text = "64" Then lonng = "1640"
+            'If txt_long.Text = "66" Then lonng = "1690"
+            'If txt_long.Text = "68" Then lonng = "1740"
+            'If txt_long.Text = "70" Then lonng = "1790"
+            'If txt_long.Text = "72" Then lonng = "1850"
+            'If txt_long.Text = "74" Then lonng = "1900"
+            'If txt_long.Text = "76" Then lonng = "1950"
+            'If txt_long.Text = "78" Then lonng = "2000"
+            'If txt_long.Text = "80" Then lonng = "2050"
+            'If txt_long.Text = "82" Then lonng = "2100"
+            'If txt_long.Text = "84" Then lonng = "2150"
+            'If txt_long.Text = "86" Then lonng = "2200"
+            wid = txt_width.Text
+
+
+            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
+
+
+            If txt_width.TextLength = 1 Then
+                txt_width.Text = "000" & txt_width.Text
+            ElseIf txt_width.TextLength = 2 Then
+                txt_width.Text = "00" & txt_width.Text
+            ElseIf txt_width.TextLength = 3 Then
+                txt_width.Text = "0" & txt_width.Text
+            End If
+
+        ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
+            lonng = txt_long.Text
+            wid = txt_width.Text
+
+            If txt_width.TextLength = 1 Then
+                txt_width.Text = "000" & txt_width.Text
+            ElseIf txt_width.TextLength = 2 Then
+                txt_width.Text = "00" & txt_width.Text
+            ElseIf txt_width.TextLength = 3 Then
+                txt_width.Text = "0" & txt_width.Text
+            End If
+        End If
 
         gen_item_code()
         gen_item_des()
-    End Sub
-    Private Sub txt_width_LostFocus(sender As Object, e As EventArgs) Handles txt_width.LostFocus
-        If txt_fn_find_inch_mm.Text = "มิล" Then
-            If txt_width.Text.Length = 1 Then
-                txt_width.Text = "000" + txt_width.Text
-            End If
-            If txt_width.Text.Length = 2 Then
-                txt_width.Text = "00" + txt_width.Text
-            End If
-            If txt_width.Text.Length = 3 Then
-                txt_width.Text = "0" + txt_width.Text
-            End If
-            gen_item_code()
-            gen_item_des()
-        Else
-            gen_item_code()
-            gen_item_des()
-        End If
+
     End Sub
     Private Sub txt_fn_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_fn_find_inch_mm.SelectedIndexChanged
 
-        If txt_fn_find_inch_mm.Text = "มิล" Then
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Or txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
             txt_sub_desc.Enabled = False
 
             txt_customer.Enabled = True
             txt_pono.Enabled = True
-            txt_type.Enabled = True
             txt_width.Enabled = True
             txt_workinch.Enabled = True
             txt_cut.Enabled = True
@@ -1143,7 +1218,6 @@ Public Class frm_input
 
             txt_customer.Enabled = True
             txt_pono.Enabled = True
-            txt_type.Enabled = True
             txt_width.Enabled = True
             txt_workinch.Enabled = True
             txt_cut.Enabled = True
@@ -1152,24 +1226,101 @@ Public Class frm_input
         End If
 
     End Sub
-    Private Sub txt_paper_5_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_5.LostFocus
-        txt_paper_5.Text = txt_paper_5.Text.ToUpper()
-    End Sub
-    Private Sub txt_paper_4_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_4.LostFocus
-        txt_paper_4.Text = txt_paper_4.Text.ToUpper()
-    End Sub
-    Private Sub txt_paper_3_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_3.LostFocus
-        txt_paper_3.Text = txt_paper_3.Text.ToUpper()
-    End Sub
-    Private Sub txt_paper_2_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_2.LostFocus
-        txt_paper_2.Text = txt_paper_2.Text.ToUpper()
-    End Sub
-    Private Sub txt_paper_1_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_1.LostFocus
-        txt_paper_1.Text = txt_paper_1.Text.ToUpper()
-    End Sub
+
     Private Sub txt_long_LostFocus(sender As Object, e As EventArgs) Handles txt_long.LostFocus
+
+        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+            If txt_width.Text = "36" Then wid = "0930"
+            If txt_width.Text = "38" Then wid = "0980"
+            If txt_width.Text = "40" Then wid = "1030"
+            If txt_width.Text = "42" Then wid = "1080"
+            If txt_width.Text = "44" Then wid = "1130"
+            If txt_width.Text = "46" Then wid = "1180"
+            If txt_width.Text = "48" Then wid = "1230"
+            If txt_width.Text = "50" Then wid = "1280"
+            If txt_width.Text = "52" Then wid = "1330"
+            If txt_width.Text = "54" Then wid = "1390"
+            If txt_width.Text = "56" Then wid = "1440"
+            If txt_width.Text = "58" Then wid = "1490"
+            If txt_width.Text = "60" Then wid = "1540"
+            If txt_width.Text = "62" Then wid = "1590"
+            If txt_width.Text = "64" Then wid = "1640"
+            If txt_width.Text = "66" Then wid = "1690"
+            If txt_width.Text = "68" Then wid = "1740"
+            If txt_width.Text = "70" Then wid = "1790"
+            If txt_width.Text = "72" Then wid = "1850"
+            If txt_width.Text = "74" Then wid = "1900"
+            If txt_width.Text = "76" Then wid = "1950"
+            If txt_width.Text = "78" Then wid = "2000"
+            If txt_width.Text = "80" Then wid = "2050"
+            If txt_width.Text = "82" Then wid = "2100"
+            If txt_width.Text = "84" Then wid = "2150"
+            If txt_width.Text = "86" Then wid = "2200"
+
+            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
+
+        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+
+            If txt_width.Text = "36" Then wid = "0930"
+            If txt_width.Text = "38" Then wid = "0980"
+            If txt_width.Text = "40" Then wid = "1030"
+            If txt_width.Text = "42" Then wid = "1080"
+            If txt_width.Text = "44" Then wid = "1130"
+            If txt_width.Text = "46" Then wid = "1180"
+            If txt_width.Text = "48" Then wid = "1230"
+            If txt_width.Text = "50" Then wid = "1280"
+            If txt_width.Text = "52" Then wid = "1330"
+            If txt_width.Text = "54" Then wid = "1390"
+            If txt_width.Text = "56" Then wid = "1440"
+            If txt_width.Text = "58" Then wid = "1490"
+            If txt_width.Text = "60" Then wid = "1540"
+            If txt_width.Text = "62" Then wid = "1590"
+            If txt_width.Text = "64" Then wid = "1640"
+            If txt_width.Text = "66" Then wid = "1690"
+            If txt_width.Text = "68" Then wid = "1740"
+            If txt_width.Text = "70" Then wid = "1790"
+            If txt_width.Text = "72" Then wid = "1850"
+            If txt_width.Text = "74" Then wid = "1900"
+            If txt_width.Text = "76" Then wid = "1950"
+            If txt_width.Text = "78" Then wid = "2000"
+            If txt_width.Text = "80" Then wid = "2050"
+            If txt_width.Text = "82" Then wid = "2100"
+            If txt_width.Text = "84" Then wid = "2150"
+            If txt_width.Text = "86" Then wid = "2200"
+
+            'wid = Math.Round(CDbl(Val(txt_width.Text)) * 25.4)
+            lonng = txt_long.Text
+
+            If txt_long.TextLength = 1 Then
+                txt_long.Text = "000" & txt_long.Text
+            ElseIf txt_long.TextLength = 2 Then
+                txt_long.Text = "00" & txt_long.Text
+            ElseIf txt_long.TextLength = 3 Then
+                txt_long.Text = "0" & txt_long.Text
+            End If
+
+        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
+
+            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
+
+            wid = txt_width.Text
+        ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
+
+            lonng = txt_long.Text
+            wid = txt_width.Text
+
+            If txt_long.TextLength = 1 Then
+                txt_long.Text = "000" & txt_long.Text
+            ElseIf txt_long.TextLength = 2 Then
+                txt_long.Text = "00" & txt_long.Text
+            ElseIf txt_long.TextLength = 3 Then
+                txt_long.Text = "0" & txt_long.Text
+            End If
+        End If
+
         gen_item_code()
         gen_item_des()
+
     End Sub
     Private Sub txt_stampline_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_stampline.SelectedIndexChanged
         gen_item_code()
@@ -1195,25 +1346,25 @@ Public Class frm_input
             connection.Open()
             Dim sql As String
             sql = "
-                        SELECT  * 
-                        FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount]
-                        WHERE   [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[Customer_Code]     LIKE    '%" + txt_customer.SelectedValue + "%'
-                        AND     (
-                                [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[MeterStart]        >       '" + txt_meth2.Text + "'
-                                AND
-                                [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[MeterEnd]          <       '" + txt_meth2.Text + "'
-                                )
-                        "
+                    SELECT  * 
+                    FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount]
+                    WHERE   [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[Customer_Code]     LIKE    '%" + txt_customer.SelectedValue + "%'
+                    AND     (
+                            [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[MeterStart]        >       '" + txt_meth2.Text + "'
+                            AND
+                            [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[MeterEnd]          <       '" + txt_meth2.Text + "'
+                            )
+                    "
             Dim sqlcmd As New SqlCommand(sql, setup_conf.connection)
             Dim myreader As SqlDataReader
             myreader = sqlcmd.ExecuteReader()
             myreader.Read()
             If myreader.HasRows Then
-                find_discount = myreader.Item("Discount").ToString
+                discount = myreader.Item("Discount").ToString
             End If
             connection.Close()
 
-            txt_discount.Text = find_discount
+            txt_discount.Text = discount & " %"
 
             gen_item_code()
             gen_item_des()
@@ -1222,57 +1373,468 @@ Public Class frm_input
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
+
+
+    Dim tz As Double
+
+    Dim c_width As Double
+    Dim c_long As Double
+    Dim PL As Double
     Sub get_price_mm()
-
-        Dim tz As Double
-
-        Dim c_width As Double
-        Dim c_long As Double
-        Dim PL As Double
 
         c_width = CDbl(Val(txt_width.Text))
         c_long = CDbl(Val(txt_long.Text))
-
         PL = CDbl(Val(txt_pl.Text))
-
         tz = (((c_width * c_long) / 1000000) * 10.76)
 
-        txt_price.Text = Math.Round((tz * PL), 2)
-    End Sub
-    Sub get_meter_discount()
-        Dim HS As Double
 
-        txt_met.Text = ((txt_long.Text * txt_count_cut.Text) / 1000) / HS
-    End Sub
-    Private Sub txt_pl_TextChanged(sender As Object, e As EventArgs) Handles txt_pl.TextChanged
-        get_price_mm()
-        ' get_meter_discount()
-    End Sub
+        'txt_price.Text = Math.Round((tz * PL), 2)
 
-    Private Sub txt_cut_small_TextChanged(sender As Object, e As EventArgs) Handles txt_cut_small.TextChanged
-        If txt_cut_small.Text <> "" Then
 
-            Dim cut
-            Dim x5 = (Integer.Parse(txt_cut_small.Text) * 5) + 26
-            Dim x4 = (Integer.Parse(txt_cut_small.Text) * 4) + 26
-            Dim x3 = (Integer.Parse(txt_cut_small.Text) * 3) + 26
-            Dim x2 = (Integer.Parse(txt_cut_small.Text) * 2) + 26
-            Dim x1 = (Integer.Parse(txt_cut_small.Text) * 1) + 26
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+            Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl.Text)))
+            txt_price.Text = Math.Round(xx - (xx * discount / 100), 2)
+        End If
 
-            If x5 <= 2200 Then
-                cut = 5
-            ElseIf x5 >= 2200 And x4 <= 2200 Then
-                cut = 4
-            ElseIf x5 >= 2200 And x4 >= 2200 And x3 <= 2200 Then
-                cut = 3
-            ElseIf x5 >= 2200 And x4 >= 2200 And x3 >= 2200 And x2 <= 2200 Then
-                cut = 2
-            Else
-                cut = 1
-            End If
-
-            txt_cut.Text = cut
+        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+            Dim xx = (((c_width * c_long) / 144) * CDbl(Val(txt_pl.Text)))
+            txt_price.Text = Math.Round(xx - ((xx * discount) / 100), 2)
         End If
     End Sub
 
+
+    Private Sub txt_pl_TextChanged(sender As Object, e As EventArgs) Handles txt_pl.TextChanged
+        get_price_mm()
+    End Sub
+
+
+
+
+    Dim m
+    Dim cut As Integer
+    Dim cutcut As Integer
+    Dim Trim As Integer
+
+
+    Private Sub txt_paper_5_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_5.LostFocus
+        txt_paper_5.CharacterCasing = CharacterCasing.Upper
+    End Sub
+
+    Private Sub txt_paper_4_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_4.LostFocus
+        txt_paper_4.CharacterCasing = CharacterCasing.Upper
+    End Sub
+
+    Private Sub txt_paper_3_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_3.LostFocus
+        txt_paper_3.CharacterCasing = CharacterCasing.Upper
+    End Sub
+
+    Private Sub txt_paper_2_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_2.LostFocus
+        txt_paper_2.CharacterCasing = CharacterCasing.Upper
+    End Sub
+
+    Private Sub txt_paper_1_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_1.LostFocus
+        txt_paper_1.CharacterCasing = CharacterCasing.Upper
+    End Sub
+
+    Private Sub txt_customer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_customer.SelectedIndexChanged
+        lb_cuscode.Text = txt_customer.SelectedValue.ToString()
+
+        get_discounts()
+    End Sub
+
+    Dim mw
+    Dim mww
+    Dim S
+    Dim DK
+    Dim HK
+    Private Sub txt_count_TextChanged(sender As Object, e As EventArgs) Handles txt_count.TextChanged
+
+
+
+
+
+        Dim x_final As Integer = 26
+
+
+        Dim x1 = (Integer.Parse(txt_cut_small.Text) * 1) + x_final
+        Dim x2 = (Integer.Parse(txt_cut_small.Text) * 2) + x_final
+        Dim x3 = (Integer.Parse(txt_cut_small.Text) * 3) + x_final
+        Dim x4 = (Integer.Parse(txt_cut_small.Text) * 4) + x_final
+        Dim x5 = (Integer.Parse(txt_cut_small.Text) * 5) + x_final
+
+        Dim y1 = (Integer.Parse(txt_width.Text) * 1) + x_final
+        Dim y2 = (Integer.Parse(txt_width.Text) * 2) + x_final
+        Dim y3 = (Integer.Parse(txt_width.Text) * 3) + x_final
+        Dim y4 = (Integer.Parse(txt_width.Text) * 4) + x_final
+        Dim y5 = (Integer.Parse(txt_width.Text) * 5) + x_final
+
+        If x5 < 2200 Or x5 < 2161 Then 'x5
+            cut = 5
+        ElseIf x5 >= 2200 And x4 <= 2200 Then 'x4
+            cut = 4
+        ElseIf x5 >= 2200 And x4 >= 2200 And x3 <= 2200 Then 'x3
+            cut = 3
+        ElseIf x5 >= 2200 And x4 >= 2200 And x3 >= 2200 And x2 <= 2200 Then 'x2 
+            cut = 2
+        Else 'x1
+            cut = 1
+        End If
+
+        If x5 < 2200 Then
+            m = x5
+        Else
+            If x4 < 2200 Then
+                m = x4
+            Else
+                If x3 < 2200 Then
+                    m = x3
+                Else
+                    If x2 < 2200 Then
+                        m = x2
+                    Else
+                        m = x1
+                    End If
+                End If
+            End If
+        End If
+
+        If y1 > 870 Then
+            HK = y1
+        ElseIf y2 > 870 Then
+            HK = y2
+        ElseIf y3 > 870 Then
+            HK = y3
+        ElseIf y4 > 870 Then
+            HK = y3
+        ElseIf y5 > 870 Then
+            HK = y5
+        End If
+
+        If m < 931 Then
+            m = 930
+        Else
+            If m < 981 Then
+                m = 980
+            Else
+                If m < 1031 Then
+                    m = 1030
+                Else
+                    If m < 1081 Then
+                        m = 1080
+                    Else
+                        If m < 1131 Then
+                            m = 1130
+                        Else
+                            If m < 1181 Then
+                                m = 1180
+                            Else
+                                If m < 1231 Then
+                                    m = 1230
+                                Else
+                                    If m < 1281 Then
+                                        m = 1280
+                                    Else
+                                        If m < 1331 Then
+                                            m = 1330
+                                        Else
+                                            If m < 1391 Then
+                                                m = 1390
+                                            Else
+                                                If m < 1441 Then
+                                                    m = 1440
+                                                Else
+                                                    If m < 1491 Then
+                                                        m = 1490
+                                                    Else
+                                                        If m < 1541 Then
+                                                            m = 1540
+                                                        Else
+                                                            If m < 1591 Then
+                                                                m = 1590
+                                                            Else
+                                                                If m < 1641 Then
+                                                                    m = 1640
+                                                                Else
+                                                                    If m < 1691 Then
+                                                                        m = 1690
+                                                                    Else
+                                                                        If m < 1741 Then
+                                                                            m = 1740
+                                                                        Else
+                                                                            If m < 1791 Then
+                                                                                m = 1790
+                                                                            Else
+                                                                                If m < 1851 Then
+                                                                                    m = 1850
+                                                                                Else
+                                                                                    If m < 1901 Then
+                                                                                        m = 1900
+                                                                                    Else
+                                                                                        If m < 1951 Then
+                                                                                            m = 1950
+                                                                                        Else
+                                                                                            If m < 2001 Then
+                                                                                                m = 2000
+                                                                                            Else
+                                                                                                If m < 2051 Then
+                                                                                                    m = 2050
+                                                                                                Else
+                                                                                                    If m < 2101 Then
+                                                                                                        m = 2100
+                                                                                                    Else
+                                                                                                        If m < 2151 Then
+                                                                                                            m = 2150
+                                                                                                        Else
+                                                                                                            If m < 2201 Then
+                                                                                                                m = 2200
+                                                                                                            End If
+                                                                                                        End If
+                                                                                                    End If
+                                                                                                End If
+                                                                                            End If
+                                                                                        End If
+                                                                                    End If
+                                                                                End If
+                                                                            End If
+                                                                        End If
+                                                                    End If
+                                                                End If
+                                                            End If
+                                                        End If
+                                                    End If
+                                                End If
+                                            End If
+                                        End If
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+
+        If mw < 931 Then
+            mw = 930
+        Else
+            If mw < 981 Then
+                mw = 980
+            Else
+                If mw < 1031 Then
+                    mw = 1030
+                Else
+                    If mw < 1081 Then
+                        mw = 1080
+                    Else
+                        If mw < 1131 Then
+                            mw = 1130
+                        Else
+                            If mw < 1181 Then
+                                mw = 1180
+                            Else
+                                If mw < 1231 Then
+                                    mw = 1230
+                                Else
+                                    If mw < 1281 Then
+                                        mw = 1280
+                                    Else
+                                        If mw < 1331 Then
+                                            mw = 1330
+                                        Else
+                                            If mw < 1391 Then
+                                                mw = 1390
+                                            Else
+                                                If mw < 1441 Then
+                                                    mw = 1440
+                                                Else
+                                                    If mw < 1491 Then
+                                                        mw = 1490
+                                                    Else
+                                                        If mw < 1541 Then
+                                                            mw = 1540
+                                                        Else
+                                                            If mw < 1591 Then
+                                                                mw = 1590
+                                                            Else
+                                                                If mw < 1641 Then
+                                                                    mw = 1640
+                                                                Else
+                                                                    If mw < 1691 Then
+                                                                        mw = 1690
+                                                                    Else
+                                                                        If mw < 1741 Then
+                                                                            mw = 1740
+                                                                        Else
+                                                                            If mw < 1791 Then
+                                                                                mw = 1790
+                                                                            Else
+                                                                                If mw < 1841 Then
+                                                                                    mw = 1840
+                                                                                Else
+                                                                                    If mw < 1891 Then
+                                                                                        mw = 1890
+                                                                                    Else
+                                                                                        If mw < 1941 Then
+                                                                                            mw = 1940
+                                                                                        Else
+                                                                                            If mw < 1991 Then
+                                                                                                mw = 1990
+                                                                                            Else
+                                                                                                If mw < 2041 Then
+                                                                                                    mw = 2040
+                                                                                                Else
+                                                                                                    If mw < 2091 Then
+                                                                                                        mw = 2090
+                                                                                                    Else
+                                                                                                        If mw < 2141 Then
+                                                                                                            mw = 2140
+                                                                                                        Else
+                                                                                                            If mw < 2191 Then
+                                                                                                                mw = 2190
+                                                                                                            End If
+                                                                                                        End If
+                                                                                                    End If
+                                                                                                End If
+                                                                                            End If
+                                                                                        End If
+                                                                                    End If
+                                                                                End If
+                                                                            End If
+                                                                        End If
+                                                                    End If
+                                                                End If
+                                                            End If
+                                                        End If
+                                                    End If
+                                                End If
+                                            End If
+                                        End If
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+
+
+
+        txt_count_cut.Text = txt_count.Text
+        txt_cut.Text = cut
+
+
+
+        Label37.Text = "x1=" & x1 & " | x2=" & x2 & " | x3=" & x3 & " | x4=" & x4 & " | x5=" & x5
+
+        TextBox1.Text = m & " | " & x1 & " " & x2 & " " & x3 & " " & x4 & " " & x5
+        TextBox2.Text = HK & " | " & y1 & " " & y2 & " " & y3 & " " & y4 & " " & y5
+
+        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+            txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+        End If
+
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+            txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+        End If
+
+        get_discounts()
+        get_price_mm()
+        get_mminch()
+
+
+
+
+
+
+
+
+        'txt_price.Text = Math.Round((CDbl(Val(txt_price.Text)) - ((CDbl(Val(txt_price.Text)) * CDbl(Val(txt_discount.Text))) / 100)), 2)
+
+    End Sub
+
+
+    Sub get_discounts()
+
+        connection.Close()
+        connection.Open()
+        Dim sql1 As String
+        If txt_met.Text > 0 Then
+            sql1 = "
+                SELECT  [Discount] 
+                FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
+                WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
+                AND     [Lon_Name]      =   '" & txt_lon.Text & "'
+                AND     [MeterStart]    <   '" & txt_met.Text & "'
+                AND     [MeterEnd]      >   '" & txt_met.Text & "'
+                "
+        Else
+            sql1 = "
+                SELECT  [Discount] 
+                FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
+                WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
+                AND     [Lon_Name]      =   '" & txt_lon.Text & "'
+                "
+        End If
+
+
+
+
+        'TextBox3.Text = sql
+        Dim sqlcmd1 As New SqlCommand(sql1, setup_conf.connection)
+        Dim myreader1 As SqlDataReader
+        myreader1 = sqlcmd1.ExecuteReader()
+        myreader1.Read()
+        If myreader1.HasRows Then
+            discount = myreader1.Item("Discount").ToString
+        End If
+        connection.Close()
+        txt_discount.Text = discount & " %"
+    End Sub
+
+
+
+    Private Sub txt_count_cut_TextChanged(sender As Object, e As EventArgs) Handles txt_count_cut.TextChanged
+
+        find_met()
+
+    End Sub
+
+
+    Private Sub txt_pl_net_TextChanged(sender As Object, e As EventArgs) Handles txt_pl_net.TextChanged
+        If txt_pl_net.Text = "" Then
+            txt_discount.Text = discount & " %"
+            get_price_mm()
+        Else
+            txt_discount.Text = ""
+            Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl_net.Text)))
+            txt_price.Text = Math.Round(xx, 2)
+        End If
+    End Sub
+
+
+    Sub get_mminch()
+        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+            Label41.Text = m
+            Label42.Text = mw
+        ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
+
+        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
+
+        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+
+        End If
+    End Sub
+
+
+
+    Sub find_met()
+        S = Math.Round(HK / CDbl(Val(wid)), 0)
+        DK = Math.Ceiling((CDbl(Val(lonng)) * CDbl(Val(txt_count_cut.Text)) / 1000))
+        txt_met.Text = Math.Round(DK / S)
+    End Sub
+
+    Private Sub txt_item_code_TextChanged(sender As Object, e As EventArgs) Handles txt_item_code.TextChanged
+
+    End Sub
 End Class

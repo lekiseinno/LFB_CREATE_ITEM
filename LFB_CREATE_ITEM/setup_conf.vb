@@ -1,6 +1,8 @@
 ﻿Imports System.Data.SqlClient
 Imports System.IO
 
+Imports Excel = Microsoft.Office.Interop.Excel
+
 Public Module setup_conf
 
     Public fileconn As String = "\Resources\conn.ini"
@@ -80,39 +82,140 @@ Public Module setup_conf
     Sub gen_excel(datagridname, filename)
 
         Try
+            'Dim xlApp As Microsoft.Office.Interop.Excel.Application
+            'Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
+            'Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
+            'Dim misValue As Object = System.Reflection.Missing.Value
+            'Dim i As Integer
+            'Dim j As Integer
+            'xlApp = New Microsoft.Office.Interop.Excel.Application
+            'xlWorkBook = xlApp.Workbooks.Add(misValue)
+            'xlWorkSheet = xlWorkBook.Sheets("sheet1")
+            'xlWorkSheet.Columns.AutoFit()
 
-            'Me.Cursor = Cursors.WaitCursor
+            'For k As Integer = 1 To datagridname.Columns.Count
+            '    xlWorkSheet.Cells(1, k) = datagridname.Columns(k - 1).HeaderText
+            'Next
 
-            Dim xlApp As Microsoft.Office.Interop.Excel.Application
-            Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
-            Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
-            Dim misValue As Object = System.Reflection.Missing.Value
-            Dim i As Integer
-            Dim j As Integer
-            xlApp = New Microsoft.Office.Interop.Excel.Application
-            xlWorkBook = xlApp.Workbooks.Add(misValue)
-            xlWorkSheet = xlWorkBook.Sheets("sheet1")
-            xlWorkSheet.Columns.AutoFit()
+            'For i = 0 To datagridname.RowCount - 1
+            '    For j = 0 To datagridname.ColumnCount - 1
+            '        For k As Integer = 1 To datagridname.Columns.Count
+            '            'xlWorkSheet.Cells(1, k) = datagridname.Columns(k - 1).HeaderText
+            '            xlWorkSheet.Cells(i + 2, j + 1) = datagridname(j, i).Value.ToString()
+            '        Next
+            '    Next
+            'Next
 
-            For i = 0 To datagridname.RowCount - 2
-                For j = 0 To datagridname.ColumnCount - 1
-                    For k As Integer = 1 To datagridname.Columns.Count
-                        xlWorkSheet.Cells(1, k) = datagridname.Columns(k - 1).HeaderText
-                        xlWorkSheet.Cells(i + 2, j + 1) = datagridname(j, i).Value.ToString()
-                    Next
+            'xlWorkSheet.SaveAs((filename))
+            'xlWorkBook.Close()
+            'xlApp.Quit()
+
+            'releaseObject(xlApp)
+            'releaseObject(xlWorkBook)
+            'releaseObject(xlWorkSheet)
+
+
+
+
+
+            Cursor.Current = Cursors.WaitCursor
+
+            If ((datagridname.Columns.Count = 0) Or (datagridname.Rows.Count = 0)) Then
+                Exit Sub
+            End If
+
+            Dim dset As New DataSet
+
+            dset.Tables.Add()
+            For i As Integer = 0 To datagridname.ColumnCount - 1
+                ' ok
+                dset.Tables(0).Columns.Add(datagridname.Columns(i).Name)
+            Next
+
+            Dim dr1 As DataRow
+
+            For i As Integer = 0 To datagridname.RowCount - 1
+                dr1 = dset.Tables(0).NewRow
+                For j As Integer = 0 To datagridname.Columns.Count - 1
+                    dr1(j) = datagridname.Rows(i).Cells(j).Value
+                Next
+                dset.Tables(0).Rows.Add(dr1)
+            Next
+
+            Dim excel As New Microsoft.Office.Interop.Excel.Application
+            Dim wBook As Microsoft.Office.Interop.Excel.Workbook
+            Dim wSheet As Microsoft.Office.Interop.Excel.Worksheet
+
+            wBook = excel.Workbooks.Add()
+            wSheet = wBook.ActiveSheet()
+
+            Dim dt As System.Data.DataTable = dset.Tables(0)
+            Dim dc As System.Data.DataColumn
+            Dim dr As System.Data.DataRow
+
+            Dim colIndex As Integer = 0
+            Dim rowIndex As Integer = 0
+
+
+
+
+
+
+
+
+
+
+
+            For Each dc In dt.Columns
+                colIndex = colIndex + 1
+                excel.Cells(1, colIndex) = dc.ColumnName
+            Next
+
+
+
+
+            For Each dr In dt.Rows
+                rowIndex = rowIndex + 1
+                colIndex = 0
+                For Each dc In dt.Columns
+                    colIndex = colIndex + 1
+                    excel.Cells(rowIndex + 1, colIndex) = dr(dc.ColumnName)
                 Next
             Next
 
-            xlWorkSheet.SaveAs((filename))
-            xlWorkBook.Close()
-            xlApp.Quit()
 
 
-            releaseObject(xlApp)
-            releaseObject(xlWorkBook)
-            releaseObject(xlWorkSheet)
 
 
+            With wSheet.Range("A1", "AZ1")
+                .Font.Bold = True
+                .HorizontalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter
+            End With
+
+            With wSheet.Range("A1", "AZ1")
+                .Font.Size = 10
+            End With
+
+            wSheet.Columns.AutoFit()
+
+            Dim blnFileOpen As Boolean = False
+
+            Try
+                Dim fileTemp As System.IO.FileStream = System.IO.File.OpenWrite(filename)
+                fileTemp.Close()
+            Catch ex As Exception
+                blnFileOpen = False
+            End Try
+
+            If System.IO.File.Exists(filename) Then
+                System.IO.File.Delete(filename)
+            End If
+
+            wBook.SaveAs(filename)
+            excel.Quit()
+            releaseObject(excel)
+            releaseObject(wBook)
+            releaseObject(wSheet)
 
 
         Catch ex As Exception
@@ -138,12 +241,25 @@ Public Module setup_conf
         Dim filePath = "D:\create_item\" + nowstring + "_code.txt"
 
         Using writer As New System.IO.StreamWriter(filePath)
-            For row As Integer = 0 To data_excelfile.DataGrid_codetxt.RowCount - 2
+            For row As Integer = 0 To data_excelfile.DataGrid_codetxt.RowCount - 1
                 For col As Integer = 0 To data_excelfile.DataGrid_codetxt.ColumnCount - 1
                     writer.WriteLine(data_excelfile.DataGrid_codetxt.Rows(row).Cells(col).Value)
                 Next
             Next
         End Using
     End Sub
+
+
+
+
+    'Sub bom_header()
+    '    data_excelfile.DataGrid_bom_header.ColumnCount = 4
+    '    Dim bom_header1 As String()
+    '    Dim bom_header2 As String()
+    '    bom_header1 = New String() {"Production BOM Header", "99000771"}
+    '    bom_header2 = New String() {"", ""}
+    '    data_excelfile.DataGrid_bom_header.Rows.Add(bom_header1)
+    '    data_excelfile.DataGrid_bom_header.Rows.Add(bom_header2)
+    'End Sub
 
 End Module
