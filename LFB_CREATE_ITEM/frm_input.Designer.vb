@@ -115,6 +115,7 @@ Partial Class frm_input
         Me.Label41 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label43 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txt_pono
@@ -822,7 +823,7 @@ Partial Class frm_input
         'txt_fn_find_inch_mm
         '
         Me.txt_fn_find_inch_mm.FormattingEnabled = True
-        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว นิ้ว", "มิล มิล", "นิ้ว มิล", "มิล นิ้ว"})
+        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว นิ้ว", "มิล มิล"})
         Me.txt_fn_find_inch_mm.Location = New System.Drawing.Point(109, 19)
         Me.txt_fn_find_inch_mm.Name = "txt_fn_find_inch_mm"
         Me.txt_fn_find_inch_mm.Size = New System.Drawing.Size(100, 21)
@@ -891,7 +892,6 @@ Partial Class frm_input
         Me.Label37.Size = New System.Drawing.Size(27, 13)
         Me.Label37.TabIndex = 2005
         Me.Label37.Text = "calc"
-        Me.Label37.Visible = False
         '
         'Label38
         '
@@ -901,7 +901,6 @@ Partial Class frm_input
         Me.Label38.Size = New System.Drawing.Size(50, 13)
         Me.Label38.TabIndex = 2006
         Me.Label38.Text = "รวมหาผ่า"
-        Me.Label38.Visible = False
         '
         'Label39
         '
@@ -911,7 +910,6 @@ Partial Class frm_input
         Me.Label39.Size = New System.Drawing.Size(45, 13)
         Me.Label39.TabIndex = 2007
         Me.Label39.Text = "Label39"
-        Me.Label39.Visible = False
         '
         'TextBox1
         '
@@ -920,7 +918,6 @@ Partial Class frm_input
         Me.TextBox1.Size = New System.Drawing.Size(244, 20)
         Me.TextBox1.TabIndex = 2008
         Me.TextBox1.Text = "x"
-        Me.TextBox1.Visible = False
         '
         'TextBox2
         '
@@ -929,7 +926,6 @@ Partial Class frm_input
         Me.TextBox2.Size = New System.Drawing.Size(244, 20)
         Me.TextBox2.TabIndex = 2009
         Me.TextBox2.Text = "y"
-        Me.TextBox2.Visible = False
         '
         'TextBox3
         '
@@ -965,7 +961,18 @@ Partial Class frm_input
         Me.Label43.Size = New System.Drawing.Size(54, 13)
         Me.Label43.TabIndex = 2014
         Me.Label43.Text = "ผ่าหาราคา"
-        Me.Label43.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Green
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.ForeColor = System.Drawing.Color.Black
+        Me.Button1.Location = New System.Drawing.Point(694, 299)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(150, 25)
+        Me.Button1.TabIndex = 2015
+        Me.Button1.Text = "Save"
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'frm_input
         '
@@ -973,6 +980,7 @@ Partial Class frm_input
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightCyan
         Me.ClientSize = New System.Drawing.Size(1153, 326)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label43)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.Label41)
@@ -1166,4 +1174,5 @@ Partial Class frm_input
     Friend WithEvents Label41 As Label
     Friend WithEvents Label42 As Label
     Friend WithEvents Label43 As Label
+    Friend WithEvents Button1 As Button
 End Class

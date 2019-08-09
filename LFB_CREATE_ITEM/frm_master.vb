@@ -171,4 +171,8 @@
         customize_datagrid(data_PL, close_data)
         customize_frm(frm_PL, close_frm)
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        frm_listdata.Show()
+    End Sub
 End Class

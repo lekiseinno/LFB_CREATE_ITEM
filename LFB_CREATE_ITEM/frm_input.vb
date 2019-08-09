@@ -93,38 +93,28 @@ Public Class frm_input
 
     Sub get_item_customer()
         Try
-
             Dim sql As String
-
-            sql = "SELECT * FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer]"
-
+            sql = "SELECT * FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer] "
             Dim query As New SqlCommand(sql, connection)
             Dim dataadapter As New SqlDataAdapter(query)
             Dim dt As New DataTable
             Dim ds As New DataSet
-
             dataadapter.Fill(ds, "Customer_Code")
-
             dt = ds.Tables(0)
-
             Dim idataView As DataView
-
             idataView = New DataView(dt)
-            idataView.Sort = "Customer_Code ASC"
+            idataView.Sort = "Customer_Name ASC"
             dt = idataView.ToTable
             Dim dr As DataRow = dt.NewRow
             dr("Customer_Name") = ""
             dt.Rows.InsertAt(dr, 0)
-
             With txt_customer
                 .DataSource = dt
                 .DisplayMember = "Customer_Name"
                 .ValueMember = "Customer_Code"
             End With
-
             dt = Nothing
             ds = Nothing
-
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
@@ -135,14 +125,13 @@ Public Class frm_input
         Else
             add_data_input_print() 'OK
             add_data_bom_header() 'OK
-            add_data_bom_line() 'OK
-            add_data_defaut_dimension_sheet() 'OK
-            add_data_Item_Unit_Of_Messure_Sheet() 'OK
-            add_data_codetxt() 'OK
-            add_data_item_master() 'OK
+            'add_data_bom_line() 'OK
+            'add_data_defaut_dimension_sheet() 'OK
+            'add_data_Item_Unit_Of_Messure_Sheet() 'OK
+            'add_data_codetxt() 'OK
+            'add_data_item_master() 'OK
         End If
     End Sub
-
     Sub add_data_bom_header()
         data_excelfile.DataGrid_bom_header.ColumnCount = 4
         data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
@@ -776,11 +765,11 @@ Public Class frm_input
         'If minput = "KJ150" Then m_m_m = "J4"
         'If minput = "KJ185" Then m_m_m = "J6"
         'If minput = "KJ230" Then m_m_m = "J8"
-        'If minput = "KL125" Then m_m_m = "L2"
-        'If minput = "KL150" Then m_m_m = "L4"
-        'If minput = "KL175" Then m_m_m = "LF"
-        'If minput = "KL205" Then m_m_m = "L7"
-        If minput = "L250" Then m_m_m = "L9"
+        If (minput = "KL125" Or minput = "L125") Then m_m_m = "L2"
+        If (minput = "KL150" Or minput = "L150") Then m_m_m = "L4"
+        If (minput = "KL175" Or minput = "L175") Then m_m_m = "LF"
+        If (minput = "KL205" Or minput = "L205") Then m_m_m = "L7"
+        If (minput = "KL250" Or minput = "L205") Then m_m_m = "L9"
         'If minput = "KP175" Then m_m_m = "PF"
         'If minput = "KP230" Then m_m_m = "P8"
         'If minput = "KP250" Then m_m_m = "P9"
@@ -843,7 +832,6 @@ Public Class frm_input
         Return m_m_m
 
     End Function
-
     Sub set_field()
 
         txt_paper_1.ReadOnly = False
@@ -919,11 +907,6 @@ Public Class frm_input
 
         txt_paper_5.Focus()
     End Sub
-
-
-
-
-
     Private Sub txt_F1_TextChanged(sender As Object, e As EventArgs) Handles txt_F1.TextChanged
         F1 = txt_F1.Text
         get_cut_small()
@@ -1259,6 +1242,14 @@ Public Class frm_input
 
             lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
 
+
+
+
+
+
+
+
+
         ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
 
             If txt_width.Text = "36" Then wid = "0930"
@@ -1304,6 +1295,20 @@ Public Class frm_input
             lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
 
             wid = txt_width.Text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
 
             lonng = txt_long.Text
@@ -1335,11 +1340,37 @@ Public Class frm_input
         gen_item_des()
     End Sub
     Sub gen_item_code()
-        txt_item_code.Text = txt_lon.Text + get_m(txt_paper_5.Text) & get_m(txt_paper_4.Text) & get_m(txt_paper_3.Text) & get_m(txt_paper_2.Text) & get_m(txt_paper_1.Text) + wid + lonng + txt_stampline.Text
+        txt_item_code.Text = get_lons(txt_lon.Text) + get_m(txt_paper_5.Text) & get_m(txt_paper_4.Text) & get_m(txt_paper_3.Text) & get_m(txt_paper_2.Text) & get_m(txt_paper_1.Text) + wid + lonng + txt_stampline.Text
     End Sub
     Sub gen_item_des()
         txt_desc.Text = txt_width.Text + " x " + txt_long.Text + " " + txt_sub_desc.Text + " " + txt_paper_5.Text + paper_4 + paper_3 + paper_2 + paper_1 + " " + txt_lon.Text
     End Sub
+
+
+    Function get_lons(lon)
+        Dim lon_name As String = ""
+        If lon = "BC" Then
+            lon_name = "D"
+        End If
+        If lon = "AB" Then
+            lon_name = "X"
+        End If
+        If lon = "A" Then
+            lon_name = "A"
+        End If
+        If lon = "B" Then
+            lon_name = "B"
+        End If
+        If lon = "C" Then
+            lon_name = "C"
+        End If
+        If lon = "E" Then
+            lon_name = "E"
+        End If
+        Return lon_name
+    End Function
+
+
     Private Sub txt_meth2_TextChanged(sender As Object, e As EventArgs) Handles txt_meth2.TextChanged
         Try
             connection.Close()
@@ -1393,12 +1424,32 @@ Public Class frm_input
 
         If txt_fn_find_inch_mm.Text = "มิล มิล" Then
             Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl.Text)))
-            txt_price.Text = Math.Round(xx - (xx * discount / 100), 2)
+
+            'txt_price.Text = Math.Round(xx - (xx * discount / 100), 2)
+
+
+            'ok
+            txt_price.Text = (xx - (xx * discount / 100))
+
+
+
+            'Dim tp As Single = (xx - (xx * discount / 100))
+            'Dim first As Int32 = Fix(tp)
+            'Dim second As Int32 = Int((tp - first) * 10)
+            'Dim TPs As String = first & "." & second
+            'Dim dbl As Double = CDbl(TPs)
+            'Dim third As Double = Int((tp - dbl) * 100)
+            'TPs = first & "." & second & third
+            'txt_price.Text = TPs
+
+
+
         End If
 
         If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
             Dim xx = (((c_width * c_long) / 144) * CDbl(Val(txt_pl.Text)))
-            txt_price.Text = Math.Round(xx - ((xx * discount) / 100), 2)
+            'txt_price.Text = Math.Round(xx - ((xx * discount) / 100), 2)
+            txt_price.Text = (xx - ((xx * discount) / 100))
         End If
     End Sub
 
@@ -1406,6 +1457,15 @@ Public Class frm_input
     Private Sub txt_pl_TextChanged(sender As Object, e As EventArgs) Handles txt_pl.TextChanged
         get_price_mm()
     End Sub
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1450,17 +1510,27 @@ Public Class frm_input
     Private Sub txt_count_TextChanged(sender As Object, e As EventArgs) Handles txt_count.TextChanged
 
 
-
-
-
         Dim x_final As Integer = 26
 
+        Dim txet_cut_small = txt_cut_small.Text
 
-        Dim x1 = (Integer.Parse(txt_cut_small.Text) * 1) + x_final
-        Dim x2 = (Integer.Parse(txt_cut_small.Text) * 2) + x_final
-        Dim x3 = (Integer.Parse(txt_cut_small.Text) * 3) + x_final
-        Dim x4 = (Integer.Parse(txt_cut_small.Text) * 4) + x_final
-        Dim x5 = (Integer.Parse(txt_cut_small.Text) * 5) + x_final
+        If txt_cut_small.Text = Nothing Then
+
+            txet_cut_small = 0
+
+        End If
+
+        'Dim x1 = (Integer.Parse(txt_cut_small.Text) * 1) + x_final
+        'Dim x2 = (Integer.Parse(txt_cut_small.Text) * 2) + x_final
+        'Dim x3 = (Integer.Parse(txt_cut_small.Text) * 3) + x_final
+        'Dim x4 = (Integer.Parse(txt_cut_small.Text) * 4) + x_final
+        'Dim x5 = (Integer.Parse(txt_cut_small.Text) * 5) + x_final
+
+        Dim x1 = (Integer.Parse(txet_cut_small) * 1) + x_final
+        Dim x2 = (Integer.Parse(txet_cut_small) * 2) + x_final
+        Dim x3 = (Integer.Parse(txet_cut_small) * 3) + x_final
+        Dim x4 = (Integer.Parse(txet_cut_small) * 4) + x_final
+        Dim x5 = (Integer.Parse(txet_cut_small) * 5) + x_final
 
         Dim y1 = (Integer.Parse(txt_width.Text) * 1) + x_final
         Dim y2 = (Integer.Parse(txt_width.Text) * 2) + x_final
@@ -1747,8 +1817,6 @@ Public Class frm_input
 
 
 
-
-
         'txt_price.Text = Math.Round((CDbl(Val(txt_price.Text)) - ((CDbl(Val(txt_price.Text)) * CDbl(Val(txt_discount.Text))) / 100)), 2)
 
     End Sub
@@ -1759,23 +1827,26 @@ Public Class frm_input
         connection.Close()
         connection.Open()
         Dim sql1 As String
+
+        Dim text_lon As String = txt_lon.Text
         If txt_met.Text > 0 Then
             sql1 = "
-                SELECT  [Discount] 
-                FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
-                WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
-                AND     [Lon_Name]      =   '" & txt_lon.Text & "'
-                AND     [MeterStart]    <   '" & txt_met.Text & "'
-                AND     [MeterEnd]      >   '" & txt_met.Text & "'
-                "
+                    SELECT  [" & text_lon & "]
+                    FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
+                    WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
+                    AND     [MeterStart]    <   '" & txt_met.Text & "'
+                    AND     [MeterEnd]      >   '" & txt_met.Text & "'
+                    "
         Else
             sql1 = "
-                SELECT  [Discount] 
+                SELECT  [" & text_lon & "]
                 FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
                 WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
-                AND     [Lon_Name]      =   '" & txt_lon.Text & "'
                 "
         End If
+
+
+
 
 
 
@@ -1786,7 +1857,7 @@ Public Class frm_input
         myreader1 = sqlcmd1.ExecuteReader()
         myreader1.Read()
         If myreader1.HasRows Then
-            discount = myreader1.Item("Discount").ToString
+            discount = myreader1.Item(text_lon).ToString
         End If
         connection.Close()
         txt_discount.Text = discount & " %"
@@ -1831,10 +1902,34 @@ Public Class frm_input
     Sub find_met()
         S = Math.Round(HK / CDbl(Val(wid)), 0)
         DK = Math.Ceiling((CDbl(Val(lonng)) * CDbl(Val(txt_count_cut.Text)) / 1000))
-        txt_met.Text = Math.Round(DK / S)
-    End Sub
 
-    Private Sub txt_item_code_TextChanged(sender As Object, e As EventArgs) Handles txt_item_code.TextChanged
+        txt_met.Text = Math.Round(DK / S)
+
+        ''287.5
+        'Dim tp As Single = (DK / S)
+
+        'Dim first As Int32 = Fix(tp) '287
+        'Dim second As Int32 = Int((tp - first) * 10) '5
+
+        'Dim TPs As String = first & "." & second
+        'Dim dbl As Double = CDbl(TPs)
+        'Dim third As Double = Int((tp - dbl) * 100)
+        'TPs = first & "." & second & third
+
+
+        'Dim ssss
+
+        'If second >= 5 Then
+        '    ssss = first + 1
+        'ElseIf second < 5 Then
+        '    ssss = first
+        'End If
+
+
+
+
+        'txt_met.Text = ssss
+
 
     End Sub
 End Class

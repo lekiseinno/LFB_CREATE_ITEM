@@ -173,6 +173,12 @@
     <Compile Include="frm_item.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_listdata.Designer.vb">
+      <DependentUpon>frm_listdata.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_listdata.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_PL.Designer.vb">
       <DependentUpon>frm_PL.vb</DependentUpon>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_item.resx">
       <DependentUpon>frm_item.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_listdata.resx">
+      <DependentUpon>frm_listdata.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_PL.resx">
       <DependentUpon>frm_PL.vb</DependentUpon>

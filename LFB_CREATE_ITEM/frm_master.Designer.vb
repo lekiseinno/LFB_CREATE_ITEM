@@ -54,6 +54,7 @@ Partial Class frm_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.btn_item = New System.Windows.Forms.Button()
         Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_input = New System.Windows.Forms.Button()
@@ -66,7 +67,6 @@ Partial Class frm_master
         Me.GB_header = New System.Windows.Forms.GroupBox()
         Me.panel_frm = New System.Windows.Forms.Panel()
         Me.panel_datagrid = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -265,6 +265,20 @@ Partial Class frm_master
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " M e n u "
         '
+        'Button1
+        '
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.Button1.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.Location = New System.Drawing.Point(6, 252)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.Button1.Size = New System.Drawing.Size(172, 50)
+        Me.Button1.TabIndex = 106
+        Me.Button1.Text = "List"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'btn_item
         '
         Me.btn_item.Cursor = System.Windows.Forms.Cursors.Hand
@@ -405,20 +419,6 @@ Partial Class frm_master
         Me.panel_datagrid.Name = "panel_datagrid"
         Me.panel_datagrid.Size = New System.Drawing.Size(1155, 330)
         Me.panel_datagrid.TabIndex = 4
-        '
-        'Button1
-        '
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Button1.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(6, 252)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(172, 50)
-        Me.Button1.TabIndex = 106
-        Me.Button1.Text = "List"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'frm_master
         '
