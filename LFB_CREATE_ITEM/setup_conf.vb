@@ -61,6 +61,9 @@ Public Module setup_conf
         connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
 
         Return connectionstring
+
+
+
     End Function
 
     Function chk_connection()

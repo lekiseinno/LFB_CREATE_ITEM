@@ -115,7 +115,16 @@ Partial Class frm_input
         Me.Label41 = New System.Windows.Forms.Label()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label43 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_save = New System.Windows.Forms.Button()
+        Me.txt_wid_inch_to_mm = New System.Windows.Forms.TextBox()
+        Me.txt_long_inch_to_mm = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtdocnumber = New System.Windows.Forms.TextBox()
+        Me.txt_subsub_dscc = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'txt_pono
@@ -129,6 +138,7 @@ Partial Class frm_input
         '
         'txt_width
         '
+        Me.txt_width.BackColor = System.Drawing.SystemColors.Info
         Me.txt_width.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
         Me.txt_width.Location = New System.Drawing.Point(321, 19)
         Me.txt_width.Name = "txt_width"
@@ -155,6 +165,7 @@ Partial Class frm_input
         '
         'txt_long
         '
+        Me.txt_long.BackColor = System.Drawing.SystemColors.Info
         Me.txt_long.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
         Me.txt_long.Location = New System.Drawing.Point(407, 19)
         Me.txt_long.Name = "txt_long"
@@ -835,7 +846,7 @@ Partial Class frm_input
         Me.txt_sub_desc.Location = New System.Drawing.Point(488, 19)
         Me.txt_sub_desc.Name = "txt_sub_desc"
         Me.txt_sub_desc.Size = New System.Drawing.Size(40, 21)
-        Me.txt_sub_desc.TabIndex = 6
+        Me.txt_sub_desc.TabIndex = 3030
         '
         'Label36
         '
@@ -883,6 +894,7 @@ Partial Class frm_input
         Me.lb_cuscode.Size = New System.Drawing.Size(62, 13)
         Me.lb_cuscode.TabIndex = 2004
         Me.lb_cuscode.Text = "lb_cuscode"
+        Me.lb_cuscode.Visible = False
         '
         'Label37
         '
@@ -918,6 +930,7 @@ Partial Class frm_input
         Me.TextBox1.Size = New System.Drawing.Size(244, 20)
         Me.TextBox1.TabIndex = 2008
         Me.TextBox1.Text = "x"
+        Me.TextBox1.Visible = False
         '
         'TextBox2
         '
@@ -926,6 +939,7 @@ Partial Class frm_input
         Me.TextBox2.Size = New System.Drawing.Size(244, 20)
         Me.TextBox2.TabIndex = 2009
         Me.TextBox2.Text = "y"
+        Me.TextBox2.Visible = False
         '
         'TextBox3
         '
@@ -934,11 +948,12 @@ Partial Class frm_input
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(197, 51)
         Me.TextBox3.TabIndex = 2011
+        Me.TextBox3.Visible = False
         '
         'Label41
         '
         Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(318, 43)
+        Me.Label41.Location = New System.Drawing.Point(345, 5)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(45, 13)
         Me.Label41.TabIndex = 2012
@@ -947,7 +962,7 @@ Partial Class frm_input
         'Label42
         '
         Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(404, 43)
+        Me.Label42.Location = New System.Drawing.Point(426, 5)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(45, 13)
         Me.Label42.TabIndex = 2013
@@ -956,23 +971,95 @@ Partial Class frm_input
         'Label43
         '
         Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(626, 299)
+        Me.Label43.Location = New System.Drawing.Point(626, 276)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(54, 13)
         Me.Label43.TabIndex = 2014
         Me.Label43.Text = "ผ่าหาราคา"
         '
-        'Button1
+        'btn_save
         '
-        Me.Button1.BackColor = System.Drawing.Color.Green
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.ForeColor = System.Drawing.Color.Black
-        Me.Button1.Location = New System.Drawing.Point(694, 299)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(150, 25)
-        Me.Button1.TabIndex = 2015
-        Me.Button1.Text = "Save"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btn_save.BackColor = System.Drawing.Color.Green
+        Me.btn_save.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_save.ForeColor = System.Drawing.Color.Black
+        Me.btn_save.Location = New System.Drawing.Point(694, 299)
+        Me.btn_save.Name = "btn_save"
+        Me.btn_save.Size = New System.Drawing.Size(150, 25)
+        Me.btn_save.TabIndex = 2015
+        Me.btn_save.Text = "Save"
+        Me.btn_save.UseVisualStyleBackColor = False
+        '
+        'txt_wid_inch_to_mm
+        '
+        Me.txt_wid_inch_to_mm.BackColor = System.Drawing.Color.Linen
+        Me.txt_wid_inch_to_mm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_wid_inch_to_mm.Location = New System.Drawing.Point(321, 28)
+        Me.txt_wid_inch_to_mm.Name = "txt_wid_inch_to_mm"
+        Me.txt_wid_inch_to_mm.Size = New System.Drawing.Size(80, 21)
+        Me.txt_wid_inch_to_mm.TabIndex = 2016
+        Me.txt_wid_inch_to_mm.Text = "2000"
+        '
+        'txt_long_inch_to_mm
+        '
+        Me.txt_long_inch_to_mm.BackColor = System.Drawing.Color.Linen
+        Me.txt_long_inch_to_mm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
+        Me.txt_long_inch_to_mm.Location = New System.Drawing.Point(407, 28)
+        Me.txt_long_inch_to_mm.Name = "txt_long_inch_to_mm"
+        Me.txt_long_inch_to_mm.Size = New System.Drawing.Size(80, 21)
+        Me.txt_long_inch_to_mm.TabIndex = 2017
+        Me.txt_long_inch_to_mm.Text = "2000"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(629, 164)
+        Me.TextBox4.Multiline = True
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(197, 51)
+        Me.TextBox4.TabIndex = 2018
+        Me.TextBox4.Visible = False
+        '
+        'txtdocnumber
+        '
+        Me.txtdocnumber.Location = New System.Drawing.Point(1001, 5)
+        Me.txtdocnumber.Name = "txtdocnumber"
+        Me.txtdocnumber.Size = New System.Drawing.Size(100, 20)
+        Me.txtdocnumber.TabIndex = 2019
+        Me.txtdocnumber.Visible = False
+        '
+        'txt_subsub_dscc
+        '
+        Me.txt_subsub_dscc.Location = New System.Drawing.Point(488, 19)
+        Me.txt_subsub_dscc.Name = "txt_subsub_dscc"
+        Me.txt_subsub_dscc.Size = New System.Drawing.Size(40, 20)
+        Me.txt_subsub_dscc.TabIndex = 2020
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(890, 45)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox5.TabIndex = 3031
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(890, 70)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox6.TabIndex = 3032
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(890, 96)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox7.TabIndex = 3033
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(111, 164)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.Size = New System.Drawing.Size(312, 20)
+        Me.TextBox8.TabIndex = 3034
         '
         'frm_input
         '
@@ -980,7 +1067,17 @@ Partial Class frm_input
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightCyan
         Me.ClientSize = New System.Drawing.Size(1153, 326)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.TextBox6)
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.txt_sub_desc)
+        Me.Controls.Add(Me.txt_subsub_dscc)
+        Me.Controls.Add(Me.txtdocnumber)
+        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.txt_long_inch_to_mm)
+        Me.Controls.Add(Me.txt_wid_inch_to_mm)
+        Me.Controls.Add(Me.btn_save)
         Me.Controls.Add(Me.Label43)
         Me.Controls.Add(Me.Label42)
         Me.Controls.Add(Me.Label41)
@@ -995,7 +1092,6 @@ Partial Class frm_input
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txt_exe)
         Me.Controls.Add(Me.Label36)
-        Me.Controls.Add(Me.txt_sub_desc)
         Me.Controls.Add(Me.txt_fn_find_inch_mm)
         Me.Controls.Add(Me.txt_stampline)
         Me.Controls.Add(Me.Label35)
@@ -1150,7 +1246,6 @@ Partial Class frm_input
     Friend WithEvents txt_F7 As TextBox
     Friend WithEvents Label34 As Label
     Friend WithEvents txt_lon As ComboBox
-    Friend WithEvents txt_search_pl As TextBox
     Friend WithEvents txt_F8 As TextBox
     Friend WithEvents txt_duedate As DateTimePicker
     Friend WithEvents txt_count As TextBox
@@ -1174,5 +1269,15 @@ Partial Class frm_input
     Friend WithEvents Label41 As Label
     Friend WithEvents Label42 As Label
     Friend WithEvents Label43 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_save As Button
+    Friend WithEvents txt_wid_inch_to_mm As TextBox
+    Friend WithEvents txt_long_inch_to_mm As TextBox
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents txtdocnumber As TextBox
+    Friend WithEvents txt_subsub_dscc As TextBox
+    Friend WithEvents txt_search_pl As TextBox
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents TextBox8 As TextBox
 End Class

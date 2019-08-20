@@ -4,6 +4,7 @@ Imports Microsoft.Office.Interop
 Imports System
 Imports System.Windows.Forms
 Imports System.Data.SqlClient
+Imports System.Linq.Expressions
 
 Public Class frm_input
 
@@ -11,12 +12,9 @@ Public Class frm_input
     Dim paper_3 As String = ""
     Dim paper_2 As String = ""
     Dim paper_1 As String = ""
-
     Dim wid As String = ""
     Dim lonng As String = ""
-
     Dim cut_total
-
     Dim F1 As Integer
     Dim F2 As Integer
     Dim F3 As Integer
@@ -28,7 +26,6 @@ Public Class frm_input
     Dim discount As Integer
     Dim BA As Double
     Dim unit_height As Double
-
     Dim sql5 As String
     Dim sql4 As String
     Dim sql3 As String
@@ -39,12 +36,10 @@ Public Class frm_input
     Dim desc_bom_Line3 As String
     Dim desc_bom_Line2 As String
     Dim desc_bom_Line1 As String
-
     Dim FG1 As String
     Dim GRAM As String
     Dim GRADE As String
     Dim wei As Double
-
     Dim ww
     Dim grossweight As Double
 
@@ -56,9 +51,6 @@ Public Class frm_input
 
         txt_fn_find_inch_mm.Text = "มิล มิล"
         txt_lon.Text = "B"
-
-
-
 
 
         'txt_item_code.Hide()
@@ -78,6 +70,18 @@ Public Class frm_input
         txt_paper_5.ReadOnly = True
         txt_sub_desc.Enabled = False
 
+        txt_subsub_dscc.Visible = False
+
+
+        'txt_wid_inch_to_mm.Visible = False
+        'txt_long_inch_to_mm.Visible = False
+
+
+        add_head_data_bom_header()
+        add_head_data_bom_line()
+        add_head_data_defaut_dimension_sheet()
+        add_head_data_item_master()
+        add_head_data_Item_Unit_Of_Messure_Sheet()
     End Sub
     Sub get_unit()
         If txt_fn_find_inch_mm.Text = "" Then
@@ -89,8 +93,6 @@ Public Class frm_input
             txt_cut_small.Enabled = False
         End If
     End Sub
-
-
     Sub get_item_customer()
         Try
             Dim sql As String
@@ -123,47 +125,233 @@ Public Class frm_input
         If txt_item_code.Text.Length <> 20 Then
             MsgBox("Please check some field to input data!")
         Else
+
             add_data_input_print() 'OK
             add_data_bom_header() 'OK
-            'add_data_bom_line() 'OK
-            'add_data_defaut_dimension_sheet() 'OK
-            'add_data_Item_Unit_Of_Messure_Sheet() 'OK
-            'add_data_codetxt() 'OK
-            'add_data_item_master() 'OK
+            add_data_bom_line() 'OK
+            add_data_defaut_dimension_sheet() 'OK
+            add_data_Item_Unit_Of_Messure_Sheet() 'OK
+            add_data_codetxt() 'OK
+            add_data_item_master() 'OK
         End If
     End Sub
+
+
+
+    Sub add_head_data_bom_header()
+        data_excelfile.DataGrid_bom_header.ColumnCount = 4
+        'data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
+        'data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
+        'data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
+        'data_excelfile.DataGrid_bom_header.Columns(3).Name = "Status"
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+        row1 = New String() {"Production BOM Header", "99000771", "", ""}
+        row2 = New String() {"", "", "", ""}
+        row3 = New String() {"No.", "Description", "Unit of Measure Code", "Status"}
+        data_excelfile.DataGrid_bom_header.Rows.Add(row1)
+        data_excelfile.DataGrid_bom_header.Rows.Add(row2)
+        data_excelfile.DataGrid_bom_header.Rows.Add(row3)
+    End Sub
+    Sub add_head_data_bom_line()
+        data_excelfile.DataGrid_bom_line.ColumnCount = 20
+        'data_excelfile.DataGrid_bom_line.Columns(0).Name = "Production BOM No."
+        'data_excelfile.DataGrid_bom_line.Columns(1).Name = "Line No."
+        'data_excelfile.DataGrid_bom_line.Columns(2).Name = "Version Code"
+        'data_excelfile.DataGrid_bom_line.Columns(3).Name = "Type"
+        'data_excelfile.DataGrid_bom_line.Columns(4).Name = "No."
+        'data_excelfile.DataGrid_bom_line.Columns(5).Name = "Description"
+        'data_excelfile.DataGrid_bom_line.Columns(6).Name = "Unit of Measure Code"
+        'data_excelfile.DataGrid_bom_line.Columns(7).Name = "Quantity"
+        'data_excelfile.DataGrid_bom_line.Columns(8).Name = "Position"
+        'data_excelfile.DataGrid_bom_line.Columns(9).Name = "Position 2"
+        'data_excelfile.DataGrid_bom_line.Columns(10).Name = "Position 3"
+        'data_excelfile.DataGrid_bom_line.Columns(11).Name = "Production Lead Time"
+        'data_excelfile.DataGrid_bom_line.Columns(12).Name = "Routing Link Code"
+        'data_excelfile.DataGrid_bom_line.Columns(13).Name = "Scrap %"
+        'data_excelfile.DataGrid_bom_line.Columns(14).Name = "Variant Code"
+        'data_excelfile.DataGrid_bom_line.Columns(15).Name = "Comment"
+        'data_excelfile.DataGrid_bom_line.Columns(16).Name = "Starting Date"
+        'data_excelfile.DataGrid_bom_line.Columns(17).Name = "Ending Date"
+        'data_excelfile.DataGrid_bom_line.Columns(18).Name = "Quantity per"
+        'data_excelfile.DataGrid_bom_line.Columns(19).Name = "Ratio"
+
+        Dim row01 As String()
+        Dim row02 As String()
+        Dim row03 As String()
+
+        row01 = New String() {"Production BOM Line", "99000772"}
+        row02 = New String() {"", ""}
+        row03 = New String() {"Production BOM No.", "Line No.", "Version Code", "Type", "No.", "Description", "Unit of Measure Code", "Quantity", "Position", "Position 2", "Position 3", "Production Lead Time", "Routing Link Code", "Scrap %", "Variant Code", "Comment", "Starting Date", "Ending Date", "Quantity per", "Ratio"}
+
+        data_excelfile.DataGrid_bom_line.Rows.Add(row01)
+        data_excelfile.DataGrid_bom_line.Rows.Add(row02)
+        data_excelfile.DataGrid_bom_line.Rows.Add(row03)
+
+
+    End Sub
+    Sub add_head_data_defaut_dimension_sheet()
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+
+        data_excelfile.DataGrid_Default_dimension.ColumnCount = 6
+        'data_excelfile.DataGrid_Default_dimension.Columns(0).Name = "Table ID"
+        'data_excelfile.DataGrid_Default_dimension.Columns(1).Name = "No."
+        'data_excelfile.DataGrid_Default_dimension.Columns(2).Name = "Dimension Code"
+        'data_excelfile.DataGrid_Default_dimension.Columns(3).Name = "Dimension Value Code"
+        'data_excelfile.DataGrid_Default_dimension.Columns(4).Name = "Value Posting"
+        'data_excelfile.DataGrid_Default_dimension.Columns(5).Name = "Table Name"
+
+        row1 = New String() {"Production BOM Line", "352"}
+        row2 = New String() {" ", " "}
+        row3 = New String() {"Table ID", "No.", "Dimension Code", "Dimension Value Code", "Value Posting", "Table Name"}
+        data_excelfile.DataGrid_Default_dimension.Rows.Add(row1)
+        data_excelfile.DataGrid_Default_dimension.Rows.Add(row2)
+        data_excelfile.DataGrid_Default_dimension.Rows.Add(row3)
+    End Sub
+    Sub add_head_data_item_master()
+
+        data_excelfile.DataGrid_Item_master.ColumnCount = 65
+        'data_excelfile.DataGrid_Item_master.Columns(0).Name = "No."
+        'data_excelfile.DataGrid_Item_master.Columns(1).Name = "Description"
+        'data_excelfile.DataGrid_Item_master.Columns(2).Name = "Base Unit of Measure"
+        'data_excelfile.DataGrid_Item_master.Columns(3).Name = "Price Unit Conversion"
+        'data_excelfile.DataGrid_Item_master.Columns(4).Name = "Inventory Posting Group"
+        'data_excelfile.DataGrid_Item_master.Columns(5).Name = "Costing Method"
+        'data_excelfile.DataGrid_Item_master.Columns(6).Name = "Unit Cost"
+        'data_excelfile.DataGrid_Item_master.Columns(7).Name = "Reorder Quantity"
+        'data_excelfile.DataGrid_Item_master.Columns(8).Name = "Gross Weight"
+        'data_excelfile.DataGrid_Item_master.Columns(9).Name = "Net Weight"
+        'data_excelfile.DataGrid_Item_master.Columns(10).Name = "Blocked"
+        'data_excelfile.DataGrid_Item_master.Columns(11).Name = "VAT Bus. Posting Gr. (Price)"
+        'data_excelfile.DataGrid_Item_master.Columns(12).Name = "Gen. Prod. Posting Group"
+        'data_excelfile.DataGrid_Item_master.Columns(13).Name = "VAT Prod. Posting Group"
+        'data_excelfile.DataGrid_Item_master.Columns(14).Name = "Inventory Value Zero"
+        'data_excelfile.DataGrid_Item_master.Columns(15).Name = "Minimum Order Quantity"
+        'data_excelfile.DataGrid_Item_master.Columns(16).Name = "Maximum Order Quantity"
+        'data_excelfile.DataGrid_Item_master.Columns(17).Name = "Safety Lead Time"
+        'data_excelfile.DataGrid_Item_master.Columns(18).Name = "Replenishment System"
+        'data_excelfile.DataGrid_Item_master.Columns(19).Name = "Sales Unit of Measure"
+        'data_excelfile.DataGrid_Item_master.Columns(20).Name = "Purch. Unit of Measure"
+        'data_excelfile.DataGrid_Item_master.Columns(21).Name = "Reordering Policy"
+        'data_excelfile.DataGrid_Item_master.Columns(22).Name = "Include Inventory"
+        'data_excelfile.DataGrid_Item_master.Columns(23).Name = "Manufacturing Policy"
+        'data_excelfile.DataGrid_Item_master.Columns(24).Name = "Item Category Code"
+        'data_excelfile.DataGrid_Item_master.Columns(25).Name = "Product Group Code"
+        'data_excelfile.DataGrid_Item_master.Columns(26).Name = "Item Tracking Code"
+        'data_excelfile.DataGrid_Item_master.Columns(27).Name = "Lot Nos."
+        'data_excelfile.DataGrid_Item_master.Columns(28).Name = "Lonn Code"
+        'data_excelfile.DataGrid_Item_master.Columns(29).Name = "Grade Code"
+        'data_excelfile.DataGrid_Item_master.Columns(30).Name = "Gram Code"
+        'data_excelfile.DataGrid_Item_master.Columns(31).Name = "ผ่า"
+        'data_excelfile.DataGrid_Item_master.Columns(32).Name = "ความกว้าง(นิ้ว)"
+        'data_excelfile.DataGrid_Item_master.Columns(33).Name = "ความกว้าง(มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(34).Name = "ความยาว(นิ้ว)"
+        'data_excelfile.DataGrid_Item_master.Columns(35).Name = "ความยาว(มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(36).Name = "ระยะทับเส้น (F1) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(37).Name = "ระยะทับเส้น (F2) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(38).Name = "ระยะทับเส้น (F3) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(39).Name = "ระยะทับเส้น (F4) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(40).Name = "ระยะทับเส้น (F5) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(41).Name = "ระยะทับเส้น (F6) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(42).Name = "ระยะทับเส้น (F7) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(43).Name = "ระยะทับเส้น (F8) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(44).Name = "น้ำหนัก/แผ่น"
+        'data_excelfile.DataGrid_Item_master.Columns(45).Name = "พื้นที่/แผ่น"
+        'data_excelfile.DataGrid_Item_master.Columns(46).Name = "Shipping Mark"
+        'data_excelfile.DataGrid_Item_master.Columns(47).Name = "Drawing No."
+        'data_excelfile.DataGrid_Item_master.Columns(48).Name = "Drawing Rev."
+        'data_excelfile.DataGrid_Item_master.Columns(49).Name = "Plate No."
+        'data_excelfile.DataGrid_Item_master.Columns(50).Name = "ร่อยต่อ"
+        'data_excelfile.DataGrid_Item_master.Columns(51).Name = "ประเภทบล็อคพิมพ์"
+        'data_excelfile.DataGrid_Item_master.Columns(52).Name = "พื้นที่/กล่อง"
+        'data_excelfile.DataGrid_Item_master.Columns(53).Name = "น้ำหนักกล่อง"
+        'data_excelfile.DataGrid_Item_master.Columns(54).Name = "พื้นที่บล๊อคกล่อง (W)"
+        'data_excelfile.DataGrid_Item_master.Columns(55).Name = "พื้นที่บล๊อคกล่อง (L)"
+        'data_excelfile.DataGrid_Item_master.Columns(56).Name = "พื้นที่บล๊อคกล่อง (M2)"
+        'data_excelfile.DataGrid_Item_master.Columns(57).Name = "M1"
+        'data_excelfile.DataGrid_Item_master.Columns(58).Name = "M2"
+        'data_excelfile.DataGrid_Item_master.Columns(59).Name = "M3"
+        'data_excelfile.DataGrid_Item_master.Columns(60).Name = "M4"
+        'data_excelfile.DataGrid_Item_master.Columns(61).Name = "M5"
+        'data_excelfile.DataGrid_Item_master.Columns(62).Name = "Routing No."
+        'data_excelfile.DataGrid_Item_master.Columns(63).Name = "Production BOM No."
+        'data_excelfile.DataGrid_Item_master.Columns(64).Name = "Overhead Rate"
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+        row1 = New String() {"Item", "27"}
+        row2 = New String() {" ", " "}
+        row3 = New String() {"No.", "Description", "Base Unit of Measure", "Price Unit Conversion", "Inventory Posting Group", "Costing Method", "Unit Cost", "Reorder Quantity", "Gross Weight", "Net Weight", "Blocked", "VAT Bus. Posting Gr. (Price)", "Gen. Prod. Posting Group", "VAT Prod. Posting Group", "Inventory Value Zero", "Minimum Order Quantity", "Maximum Order Quantity", "Safety Lead Time", "Replenishment System", "Sales Unit of Measure", "Purch. Unit of Measure", "Reordering Policy", "Include Inventory", "Manufacturing Policy", "Item Category Code", "Product Group Code", "Item Tracking Code", "Lot Nos.", "Lonn Code", "Grade Code", "Gram Code", "ผ่า", "ความกว้าง(นิ้ว)", "ความกว้าง(มม.)", "ความยาว(นิ้ว)", "ความยาว(มม.)", "ระยะทับเส้น (F1) (มม.)", "ระยะทับเส้น (F2) (มม.)", "ระยะทับเส้น (F3) (มม.)", "ระยะทับเส้น (F4) (มม.)", "ระยะทับเส้น (F5) (มม.)", "ระยะทับเส้น (F6) (มม.)", "ระยะทับเส้น (F7) (มม.)", "ระยะทับเส้น (F8) (มม.)", "น้ำหนัก/แผ่น", "พื้นที่/แผ่น", "Shipping Mark", "Drawing No.", "Drawing Rev.", "Plate No.", "ร่อยต่อ", "ประเภทบล็อคพิมพ์", "พื้นที่/กล่อง", "น้ำหนักกล่อง", "พื้นที่บล๊อคกล่อง (W)", "พื้นที่บล๊อคกล่อง (L)", "พื้นที่บล๊อคกล่อง (M2)", "M1", "M2", "M3", "M4", "M5", "Routing No.", "Production BOM No.", "Overhead Rate"}
+        data_excelfile.DataGrid_Item_master.Rows.Add(row1)
+        data_excelfile.DataGrid_Item_master.Rows.Add(row2)
+        data_excelfile.DataGrid_Item_master.Rows.Add(row3)
+
+    End Sub
+    Sub add_head_data_Item_Unit_Of_Messure_Sheet()
+        data_excelfile.DataGrid_Item_unit.ColumnCount = 7
+        'data_excelfile.DataGrid_Item_unit.Columns(0).Name = "Item No."
+        'data_excelfile.DataGrid_Item_unit.Columns(1).Name = "Code"
+        'data_excelfile.DataGrid_Item_unit.Columns(2).Name = "Qty. per Unit of Measure"
+        'data_excelfile.DataGrid_Item_unit.Columns(3).Name = "Length"
+        'data_excelfile.DataGrid_Item_unit.Columns(4).Name = "Width"
+        'data_excelfile.DataGrid_Item_unit.Columns(5).Name = "Height"
+        'data_excelfile.DataGrid_Item_unit.Columns(6).Name = "Weight"
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+
+        row1 = New String() {"Item Unit of Measure", "5404"}
+        row2 = New String() {" ", " "}
+        row3 = New String() {"Item No.", "Code", "Qty. per Unit of Measure", "Length", "Width", "Code", "Weight"}
+        data_excelfile.DataGrid_Item_unit.Rows.Add(row1)
+        data_excelfile.DataGrid_Item_unit.Rows.Add(row2)
+        data_excelfile.DataGrid_Item_unit.Rows.Add(row3)
+    End Sub
+
+
+
+
+
+
     Sub add_data_bom_header()
         data_excelfile.DataGrid_bom_header.ColumnCount = 4
-        data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
-        data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
-        data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
-        data_excelfile.DataGrid_bom_header.Columns(3).Name = "Status"
+        'data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
+        'data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
+        'data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
+        'data_excelfile.DataGrid_bom_header.Columns(3).Name = "Status"
+        Dim row1 As String()
+        Dim row2 As String()
         Dim row3 As String()
+        row1 = New String() {"Production BOM Header", "id", "", ""}
+        row2 = New String() {"", "", "", ""}
         row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "0"}
         data_excelfile.DataGrid_bom_header.Rows.Add(row3)
     End Sub
     Sub add_data_bom_line()
         data_excelfile.DataGrid_bom_line.ColumnCount = 20
-        data_excelfile.DataGrid_bom_line.Columns(0).Name = "Production BOM No."
-        data_excelfile.DataGrid_bom_line.Columns(1).Name = "Line No."
-        data_excelfile.DataGrid_bom_line.Columns(2).Name = "Version Code"
-        data_excelfile.DataGrid_bom_line.Columns(3).Name = "Type"
-        data_excelfile.DataGrid_bom_line.Columns(4).Name = "No."
-        data_excelfile.DataGrid_bom_line.Columns(5).Name = "Description"
-        data_excelfile.DataGrid_bom_line.Columns(6).Name = "Unit of Measure Code"
-        data_excelfile.DataGrid_bom_line.Columns(7).Name = "Quantity"
-        data_excelfile.DataGrid_bom_line.Columns(8).Name = "Position"
-        data_excelfile.DataGrid_bom_line.Columns(9).Name = "Position 2"
-        data_excelfile.DataGrid_bom_line.Columns(10).Name = "Position 3"
-        data_excelfile.DataGrid_bom_line.Columns(11).Name = "Production Lead Time"
-        data_excelfile.DataGrid_bom_line.Columns(12).Name = "Routing Link Code"
-        data_excelfile.DataGrid_bom_line.Columns(13).Name = "Scrap %"
-        data_excelfile.DataGrid_bom_line.Columns(14).Name = "Variant Code"
-        data_excelfile.DataGrid_bom_line.Columns(15).Name = "Comment"
-        data_excelfile.DataGrid_bom_line.Columns(16).Name = "Starting Date"
-        data_excelfile.DataGrid_bom_line.Columns(17).Name = "Ending Date"
-        data_excelfile.DataGrid_bom_line.Columns(18).Name = "Quantity per"
-        data_excelfile.DataGrid_bom_line.Columns(19).Name = "Ratio"
+        'data_excelfile.DataGrid_bom_line.Columns(0).Name = "Production BOM No."
+        'data_excelfile.DataGrid_bom_line.Columns(1).Name = "Line No."
+        'data_excelfile.DataGrid_bom_line.Columns(2).Name = "Version Code"
+        'data_excelfile.DataGrid_bom_line.Columns(3).Name = "Type"
+        'data_excelfile.DataGrid_bom_line.Columns(4).Name = "No."
+        'data_excelfile.DataGrid_bom_line.Columns(5).Name = "Description"
+        'data_excelfile.DataGrid_bom_line.Columns(6).Name = "Unit of Measure Code"
+        'data_excelfile.DataGrid_bom_line.Columns(7).Name = "Quantity"
+        'data_excelfile.DataGrid_bom_line.Columns(8).Name = "Position"
+        'data_excelfile.DataGrid_bom_line.Columns(9).Name = "Position 2"
+        'data_excelfile.DataGrid_bom_line.Columns(10).Name = "Position 3"
+        'data_excelfile.DataGrid_bom_line.Columns(11).Name = "Production Lead Time"
+        'data_excelfile.DataGrid_bom_line.Columns(12).Name = "Routing Link Code"
+        'data_excelfile.DataGrid_bom_line.Columns(13).Name = "Scrap %"
+        'data_excelfile.DataGrid_bom_line.Columns(14).Name = "Variant Code"
+        'data_excelfile.DataGrid_bom_line.Columns(15).Name = "Comment"
+        'data_excelfile.DataGrid_bom_line.Columns(16).Name = "Starting Date"
+        'data_excelfile.DataGrid_bom_line.Columns(17).Name = "Ending Date"
+        'data_excelfile.DataGrid_bom_line.Columns(18).Name = "Quantity per"
+        'data_excelfile.DataGrid_bom_line.Columns(19).Name = "Ratio"
 
         Dim row01 As String()
         Dim row02 As String()
@@ -352,23 +540,19 @@ Public Class frm_input
 
     End Sub
     Sub add_data_defaut_dimension_sheet()
-        Dim row1 As String()
-        Dim row2 As String()
         Dim row3 As String()
         Dim row4 As String()
         Dim row5 As String()
         Dim row6 As String()
         Dim row7 As String()
 
-
-
         data_excelfile.DataGrid_Default_dimension.ColumnCount = 6
-        data_excelfile.DataGrid_Default_dimension.Columns(0).Name = "Table ID"
-        data_excelfile.DataGrid_Default_dimension.Columns(1).Name = "No."
-        data_excelfile.DataGrid_Default_dimension.Columns(2).Name = "Dimension Code"
-        data_excelfile.DataGrid_Default_dimension.Columns(3).Name = "Dimension Value Code"
-        data_excelfile.DataGrid_Default_dimension.Columns(4).Name = "Value Posting"
-        data_excelfile.DataGrid_Default_dimension.Columns(5).Name = "Table Name"
+        'data_excelfile.DataGrid_Default_dimension.Columns(0).Name = "Table ID"
+        'data_excelfile.DataGrid_Default_dimension.Columns(1).Name = "No."
+        'data_excelfile.DataGrid_Default_dimension.Columns(2).Name = "Dimension Code"
+        'data_excelfile.DataGrid_Default_dimension.Columns(3).Name = "Dimension Value Code"
+        'data_excelfile.DataGrid_Default_dimension.Columns(4).Name = "Value Posting"
+        'data_excelfile.DataGrid_Default_dimension.Columns(5).Name = "Table Name"
 
         connection.Close()
         connection.Open()
@@ -387,25 +571,20 @@ Public Class frm_input
             GRADE = myreader5.Item("f").ToString
         End If
 
-        'row1 = New String() {"Production BOM Line", "99000772"}
-        'row2 = New String() {" ", " "}
         row3 = New String() {"27", txt_item_code.Text, "COSTCENTER", "20102", "", ""}
         row4 = New String() {"27", txt_item_code.Text, "GRADE     ", GRADE, "", ""}
         row5 = New String() {"27", txt_item_code.Text, "GRAM      ", GRAM, "", ""}
         row6 = New String() {"27", txt_item_code.Text, "PPAGE     ", txt_width.Text, "", ""}
         row7 = New String() {"27", txt_item_code.Text, "PROFILE   ", txt_lon.Text, "", ""}
 
-        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row1)
-        'data_excelfile.DataGrid_Default_dimension.Rows.Add(row2)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row3)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row4)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row5)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row6)
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row7)
+
     End Sub
     Sub add_data_item_master()
-
-
         Dim area = Math.Round((txt_cut_small.Text * txt_long.Text) / 1000000 * 10.765, 5)
 
 
@@ -496,71 +675,71 @@ Public Class frm_input
             FG1 = "FG1-SHT"
         End If
         data_excelfile.DataGrid_Item_master.ColumnCount = 65
-        data_excelfile.DataGrid_Item_master.Columns(0).Name = "No."
-        data_excelfile.DataGrid_Item_master.Columns(1).Name = "Description"
-        data_excelfile.DataGrid_Item_master.Columns(2).Name = "Base Unit of Measure"
-        data_excelfile.DataGrid_Item_master.Columns(3).Name = "Price Unit Conversion"
-        data_excelfile.DataGrid_Item_master.Columns(4).Name = "Inventory Posting Group"
-        data_excelfile.DataGrid_Item_master.Columns(5).Name = "Costing Method"
-        data_excelfile.DataGrid_Item_master.Columns(6).Name = "Unit Cost"
-        data_excelfile.DataGrid_Item_master.Columns(7).Name = "Reorder Quantity"
-        data_excelfile.DataGrid_Item_master.Columns(8).Name = "Gross Weight"
-        data_excelfile.DataGrid_Item_master.Columns(9).Name = "Net Weight"
-        data_excelfile.DataGrid_Item_master.Columns(10).Name = "Blocked"
-        data_excelfile.DataGrid_Item_master.Columns(11).Name = "VAT Bus. Posting Gr. (Price)"
-        data_excelfile.DataGrid_Item_master.Columns(12).Name = "Gen. Prod. Posting Group"
-        data_excelfile.DataGrid_Item_master.Columns(13).Name = "VAT Prod. Posting Group"
-        data_excelfile.DataGrid_Item_master.Columns(14).Name = "Inventory Value Zero"
-        data_excelfile.DataGrid_Item_master.Columns(15).Name = "Minimum Order Quantity"
-        data_excelfile.DataGrid_Item_master.Columns(16).Name = "Maximum Order Quantity"
-        data_excelfile.DataGrid_Item_master.Columns(17).Name = "Safety Lead Time"
-        data_excelfile.DataGrid_Item_master.Columns(18).Name = "Replenishment System"
-        data_excelfile.DataGrid_Item_master.Columns(19).Name = "Sales Unit of Measure"
-        data_excelfile.DataGrid_Item_master.Columns(20).Name = "Purch. Unit of Measure"
-        data_excelfile.DataGrid_Item_master.Columns(21).Name = "Reordering Policy"
-        data_excelfile.DataGrid_Item_master.Columns(22).Name = "Include Inventory"
-        data_excelfile.DataGrid_Item_master.Columns(23).Name = "Manufacturing Policy"
-        data_excelfile.DataGrid_Item_master.Columns(24).Name = "Item Category Code"
-        data_excelfile.DataGrid_Item_master.Columns(25).Name = "Product Group Code"
-        data_excelfile.DataGrid_Item_master.Columns(26).Name = "Item Tracking Code"
-        data_excelfile.DataGrid_Item_master.Columns(27).Name = "Lot Nos."
-        data_excelfile.DataGrid_Item_master.Columns(28).Name = "Lonn Code"
-        data_excelfile.DataGrid_Item_master.Columns(29).Name = "Grade Code"
-        data_excelfile.DataGrid_Item_master.Columns(30).Name = "Gram Code"
-        data_excelfile.DataGrid_Item_master.Columns(31).Name = "ผ่า"
-        data_excelfile.DataGrid_Item_master.Columns(32).Name = "ความกว้าง(นิ้ว)"
-        data_excelfile.DataGrid_Item_master.Columns(33).Name = "ความกว้าง(มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(34).Name = "ความยาว(นิ้ว)"
-        data_excelfile.DataGrid_Item_master.Columns(35).Name = "ความยาว(มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(36).Name = "ระยะทับเส้น (F1) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(37).Name = "ระยะทับเส้น (F2) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(38).Name = "ระยะทับเส้น (F3) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(39).Name = "ระยะทับเส้น (F4) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(40).Name = "ระยะทับเส้น (F5) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(41).Name = "ระยะทับเส้น (F6) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(42).Name = "ระยะทับเส้น (F7) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(43).Name = "ระยะทับเส้น (F8) (มม.)"
-        data_excelfile.DataGrid_Item_master.Columns(44).Name = "น้ำหนัก/แผ่น"
-        data_excelfile.DataGrid_Item_master.Columns(45).Name = "พื้นที่/แผ่น"
-        data_excelfile.DataGrid_Item_master.Columns(46).Name = "Shipping Mark"
-        data_excelfile.DataGrid_Item_master.Columns(47).Name = "Drawing No."
-        data_excelfile.DataGrid_Item_master.Columns(48).Name = "Drawing Rev."
-        data_excelfile.DataGrid_Item_master.Columns(49).Name = "Plate No."
-        data_excelfile.DataGrid_Item_master.Columns(50).Name = "ร่อยต่อ"
-        data_excelfile.DataGrid_Item_master.Columns(51).Name = "ประเภทบล็อคพิมพ์"
-        data_excelfile.DataGrid_Item_master.Columns(52).Name = "พื้นที่/กล่อง"
-        data_excelfile.DataGrid_Item_master.Columns(53).Name = "น้ำหนักกล่อง"
-        data_excelfile.DataGrid_Item_master.Columns(54).Name = "พื้นที่บล๊อคกล่อง (W)"
-        data_excelfile.DataGrid_Item_master.Columns(55).Name = "พื้นที่บล๊อคกล่อง (L)"
-        data_excelfile.DataGrid_Item_master.Columns(56).Name = "พื้นที่บล๊อคกล่อง (M2)"
-        data_excelfile.DataGrid_Item_master.Columns(57).Name = "M1"
-        data_excelfile.DataGrid_Item_master.Columns(58).Name = "M2"
-        data_excelfile.DataGrid_Item_master.Columns(59).Name = "M3"
-        data_excelfile.DataGrid_Item_master.Columns(60).Name = "M4"
-        data_excelfile.DataGrid_Item_master.Columns(61).Name = "M5"
-        data_excelfile.DataGrid_Item_master.Columns(62).Name = "Routing No."
-        data_excelfile.DataGrid_Item_master.Columns(63).Name = "Production BOM No."
-        data_excelfile.DataGrid_Item_master.Columns(64).Name = "Overhead Rate"
+        'data_excelfile.DataGrid_Item_master.Columns(0).Name = "No."
+        'data_excelfile.DataGrid_Item_master.Columns(1).Name = "Description"
+        'data_excelfile.DataGrid_Item_master.Columns(2).Name = "Base Unit of Measure"
+        'data_excelfile.DataGrid_Item_master.Columns(3).Name = "Price Unit Conversion"
+        'data_excelfile.DataGrid_Item_master.Columns(4).Name = "Inventory Posting Group"
+        'data_excelfile.DataGrid_Item_master.Columns(5).Name = "Costing Method"
+        'data_excelfile.DataGrid_Item_master.Columns(6).Name = "Unit Cost"
+        'data_excelfile.DataGrid_Item_master.Columns(7).Name = "Reorder Quantity"
+        'data_excelfile.DataGrid_Item_master.Columns(8).Name = "Gross Weight"
+        'data_excelfile.DataGrid_Item_master.Columns(9).Name = "Net Weight"
+        'data_excelfile.DataGrid_Item_master.Columns(10).Name = "Blocked"
+        'data_excelfile.DataGrid_Item_master.Columns(11).Name = "VAT Bus. Posting Gr. (Price)"
+        'data_excelfile.DataGrid_Item_master.Columns(12).Name = "Gen. Prod. Posting Group"
+        'data_excelfile.DataGrid_Item_master.Columns(13).Name = "VAT Prod. Posting Group"
+        'data_excelfile.DataGrid_Item_master.Columns(14).Name = "Inventory Value Zero"
+        'data_excelfile.DataGrid_Item_master.Columns(15).Name = "Minimum Order Quantity"
+        'data_excelfile.DataGrid_Item_master.Columns(16).Name = "Maximum Order Quantity"
+        'data_excelfile.DataGrid_Item_master.Columns(17).Name = "Safety Lead Time"
+        'data_excelfile.DataGrid_Item_master.Columns(18).Name = "Replenishment System"
+        'data_excelfile.DataGrid_Item_master.Columns(19).Name = "Sales Unit of Measure"
+        'data_excelfile.DataGrid_Item_master.Columns(20).Name = "Purch. Unit of Measure"
+        'data_excelfile.DataGrid_Item_master.Columns(21).Name = "Reordering Policy"
+        'data_excelfile.DataGrid_Item_master.Columns(22).Name = "Include Inventory"
+        'data_excelfile.DataGrid_Item_master.Columns(23).Name = "Manufacturing Policy"
+        'data_excelfile.DataGrid_Item_master.Columns(24).Name = "Item Category Code"
+        'data_excelfile.DataGrid_Item_master.Columns(25).Name = "Product Group Code"
+        'data_excelfile.DataGrid_Item_master.Columns(26).Name = "Item Tracking Code"
+        'data_excelfile.DataGrid_Item_master.Columns(27).Name = "Lot Nos."
+        'data_excelfile.DataGrid_Item_master.Columns(28).Name = "Lonn Code"
+        'data_excelfile.DataGrid_Item_master.Columns(29).Name = "Grade Code"
+        'data_excelfile.DataGrid_Item_master.Columns(30).Name = "Gram Code"
+        'data_excelfile.DataGrid_Item_master.Columns(31).Name = "ผ่า"
+        'data_excelfile.DataGrid_Item_master.Columns(32).Name = "ความกว้าง(นิ้ว)"
+        'data_excelfile.DataGrid_Item_master.Columns(33).Name = "ความกว้าง(มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(34).Name = "ความยาว(นิ้ว)"
+        'data_excelfile.DataGrid_Item_master.Columns(35).Name = "ความยาว(มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(36).Name = "ระยะทับเส้น (F1) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(37).Name = "ระยะทับเส้น (F2) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(38).Name = "ระยะทับเส้น (F3) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(39).Name = "ระยะทับเส้น (F4) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(40).Name = "ระยะทับเส้น (F5) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(41).Name = "ระยะทับเส้น (F6) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(42).Name = "ระยะทับเส้น (F7) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(43).Name = "ระยะทับเส้น (F8) (มม.)"
+        'data_excelfile.DataGrid_Item_master.Columns(44).Name = "น้ำหนัก/แผ่น"
+        'data_excelfile.DataGrid_Item_master.Columns(45).Name = "พื้นที่/แผ่น"
+        'data_excelfile.DataGrid_Item_master.Columns(46).Name = "Shipping Mark"
+        'data_excelfile.DataGrid_Item_master.Columns(47).Name = "Drawing No."
+        'data_excelfile.DataGrid_Item_master.Columns(48).Name = "Drawing Rev."
+        'data_excelfile.DataGrid_Item_master.Columns(49).Name = "Plate No."
+        'data_excelfile.DataGrid_Item_master.Columns(50).Name = "ร่อยต่อ"
+        'data_excelfile.DataGrid_Item_master.Columns(51).Name = "ประเภทบล็อคพิมพ์"
+        'data_excelfile.DataGrid_Item_master.Columns(52).Name = "พื้นที่/กล่อง"
+        'data_excelfile.DataGrid_Item_master.Columns(53).Name = "น้ำหนักกล่อง"
+        'data_excelfile.DataGrid_Item_master.Columns(54).Name = "พื้นที่บล๊อคกล่อง (W)"
+        'data_excelfile.DataGrid_Item_master.Columns(55).Name = "พื้นที่บล๊อคกล่อง (L)"
+        'data_excelfile.DataGrid_Item_master.Columns(56).Name = "พื้นที่บล๊อคกล่อง (M2)"
+        'data_excelfile.DataGrid_Item_master.Columns(57).Name = "M1"
+        'data_excelfile.DataGrid_Item_master.Columns(58).Name = "M2"
+        'data_excelfile.DataGrid_Item_master.Columns(59).Name = "M3"
+        'data_excelfile.DataGrid_Item_master.Columns(60).Name = "M4"
+        'data_excelfile.DataGrid_Item_master.Columns(61).Name = "M5"
+        'data_excelfile.DataGrid_Item_master.Columns(62).Name = "Routing No."
+        'data_excelfile.DataGrid_Item_master.Columns(63).Name = "Production BOM No."
+        'data_excelfile.DataGrid_Item_master.Columns(64).Name = "Overhead Rate"
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
@@ -582,13 +761,13 @@ Public Class frm_input
 
 
         data_excelfile.DataGrid_Item_unit.ColumnCount = 7
-        data_excelfile.DataGrid_Item_unit.Columns(0).Name = "Item No."
-        data_excelfile.DataGrid_Item_unit.Columns(1).Name = "Code"
-        data_excelfile.DataGrid_Item_unit.Columns(2).Name = "Qty. per Unit of Measure"
-        data_excelfile.DataGrid_Item_unit.Columns(3).Name = "Length"
-        data_excelfile.DataGrid_Item_unit.Columns(4).Name = "Width"
-        data_excelfile.DataGrid_Item_unit.Columns(5).Name = "Height"
-        data_excelfile.DataGrid_Item_unit.Columns(6).Name = "Weight"
+        'data_excelfile.DataGrid_Item_unit.Columns(0).Name = "Item No."
+        'data_excelfile.DataGrid_Item_unit.Columns(1).Name = "Code"
+        'data_excelfile.DataGrid_Item_unit.Columns(2).Name = "Qty. per Unit of Measure"
+        'data_excelfile.DataGrid_Item_unit.Columns(3).Name = "Length"
+        'data_excelfile.DataGrid_Item_unit.Columns(4).Name = "Width"
+        'data_excelfile.DataGrid_Item_unit.Columns(5).Name = "Height"
+        'data_excelfile.DataGrid_Item_unit.Columns(6).Name = "Weight"
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
@@ -603,43 +782,45 @@ Public Class frm_input
     Sub add_data_input_print()
         data_input.DataGrid_input.ColumnCount = 37
 
-        data_input.DataGrid_input.Columns(0).Name = "Chk1"
-        data_input.DataGrid_input.Columns(1).Name = "Chk2"
-        data_input.DataGrid_input.Columns(2).Name = "No."
-        data_input.DataGrid_input.Columns(3).Name = "Type"
-        data_input.DataGrid_input.Columns(4).Name = "PO"
-        data_input.DataGrid_input.Columns(5).Name = "กว้าง"
-        data_input.DataGrid_input.Columns(6).Name = "หน้าเดินงาน นิ้ว"
-        data_input.DataGrid_input.Columns(7).Name = "ผ่า"
-        data_input.DataGrid_input.Columns(8).Name = "ยาว"
-        data_input.DataGrid_input.Columns(9).Name = "หน้าผ่าเล็ก"
-        data_input.DataGrid_input.Columns(10).Name = "F1"
-        data_input.DataGrid_input.Columns(11).Name = "F2"
-        data_input.DataGrid_input.Columns(12).Name = "F3"
-        data_input.DataGrid_input.Columns(13).Name = "F4"
-        data_input.DataGrid_input.Columns(14).Name = "F5"
-        data_input.DataGrid_input.Columns(15).Name = "F6"
-        data_input.DataGrid_input.Columns(16).Name = "F7"
-        data_input.DataGrid_input.Columns(17).Name = "F8"
-        data_input.DataGrid_input.Columns(18).Name = "CHECKED"
-        data_input.DataGrid_input.Columns(19).Name = "Trim"
-        data_input.DataGrid_input.Columns(20).Name = "CHECKED"
-        data_input.DataGrid_input.Columns(21).Name = "Paper Combination/สั่งผลิต"
-        data_input.DataGrid_input.Columns(22).Name = "ลอน"
-        data_input.DataGrid_input.Columns(23).Name = "จำนวนเต็ม"
-        data_input.DataGrid_input.Columns(24).Name = "จำนวนแผ่นเล็ก"
-        data_input.DataGrid_input.Columns(25).Name = "Due ส่งของ"
-        data_input.DataGrid_input.Columns(26).Name = "P/L"
-        data_input.DataGrid_input.Columns(27).Name = "@special P/ L"
-        data_input.DataGrid_input.Columns(28).Name = "@NET P/ L"
-        data_input.DataGrid_input.Columns(29).Name = "@NET unit Price "
-        data_input.DataGrid_input.Columns(30).Name = "เมตรรวมหาส่วนลด"
-        data_input.DataGrid_input.Columns(31).Name = "เมตรรวม เดินงานพ่วง"
-        data_input.DataGrid_input.Columns(32).Name = "เมตรรวมหาส่วนลด "
-        data_input.DataGrid_input.Columns(33).Name = "Discount"
-        data_input.DataGrid_input.Columns(34).Name = "ส่วนลดเงินสด"
-        data_input.DataGrid_input.Columns(35).Name = "ราคาต่อแผ่น "
-        data_input.DataGrid_input.Columns(36).Name = "หมายเหตุ"
+        data_input.DataGrid_input.Columns(2).Visible = False
+
+        'data_input.DataGrid_input.Columns(0).Name = "Chk1"
+        'data_input.DataGrid_input.Columns(1).Name = "Chk2"
+        'data_input.DataGrid_input.Columns(2).Name = "No."
+        'data_input.DataGrid_input.Columns(3).Name = "Type"
+        'data_input.DataGrid_input.Columns(4).Name = "PO"
+        'data_input.DataGrid_input.Columns(5).Name = "กว้าง"
+        'data_input.DataGrid_input.Columns(6).Name = "หน้าเดินงาน นิ้ว"
+        'data_input.DataGrid_input.Columns(7).Name = "ผ่า"
+        'data_input.DataGrid_input.Columns(8).Name = "ยาว"
+        'data_input.DataGrid_input.Columns(9).Name = "หน้าผ่าเล็ก"
+        'data_input.DataGrid_input.Columns(10).Name = "F1"
+        'data_input.DataGrid_input.Columns(11).Name = "F2"
+        'data_input.DataGrid_input.Columns(12).Name = "F3"
+        'data_input.DataGrid_input.Columns(13).Name = "F4"
+        'data_input.DataGrid_input.Columns(14).Name = "F5"
+        'data_input.DataGrid_input.Columns(15).Name = "F6"
+        'data_input.DataGrid_input.Columns(16).Name = "F7"
+        'data_input.DataGrid_input.Columns(17).Name = "F8"
+        'data_input.DataGrid_input.Columns(18).Name = "CHECKED"
+        'data_input.DataGrid_input.Columns(19).Name = "Trim"
+        'data_input.DataGrid_input.Columns(20).Name = "CHECKED"
+        'data_input.DataGrid_input.Columns(21).Name = "Paper Combination/สั่งผลิต"
+        'data_input.DataGrid_input.Columns(22).Name = "ลอน"
+        'data_input.DataGrid_input.Columns(23).Name = "จำนวนเต็ม"
+        'data_input.DataGrid_input.Columns(24).Name = "จำนวนแผ่นเล็ก"
+        'data_input.DataGrid_input.Columns(25).Name = "Due ส่งของ"
+        'data_input.DataGrid_input.Columns(26).Name = "P/L"
+        'data_input.DataGrid_input.Columns(27).Name = "@special P/ L"
+        'data_input.DataGrid_input.Columns(28).Name = "@NET P/ L"
+        'data_input.DataGrid_input.Columns(29).Name = "@NET unit Price "
+        'data_input.DataGrid_input.Columns(30).Name = "เมตรรวมหาส่วนลด"
+        'data_input.DataGrid_input.Columns(31).Name = "เมตรรวม เดินงานพ่วง"
+        'data_input.DataGrid_input.Columns(32).Name = "เมตรรวมหาส่วนลด "
+        'data_input.DataGrid_input.Columns(33).Name = "Discount"
+        'data_input.DataGrid_input.Columns(34).Name = "ส่วนลดเงินสด"
+        'data_input.DataGrid_input.Columns(35).Name = "ราคาต่อแผ่น "
+        'data_input.DataGrid_input.Columns(36).Name = "หมายเหตุ"
 
 
 
@@ -693,6 +874,15 @@ Public Class frm_input
         row = New String() {txt_item_code.Text}
         data_excelfile.DataGrid_codetxt.Rows.Add(row)
     End Sub
+
+
+
+
+
+
+
+
+
     Function get_m(minput)
         Dim m_m_m As String = ""
         If minput = "" Then m_m_m = "00"
@@ -985,12 +1175,9 @@ Public Class frm_input
         End Try
     End Sub
     Private Sub txt_lon_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_lon.SelectedIndexChanged
-
         set_field()
         gen_item_code()
         get_discounts()
-
-
     End Sub
     Private Sub txt_lon_TextChanged(sender As Object, e As EventArgs) Handles txt_lon.TextChanged
         set_field()
@@ -1029,166 +1216,9 @@ Public Class frm_input
     Sub Concat_pl()
         txt_search_pl.Text = txt_paper_5.Text + txt_paper_4.Text + txt_paper_3.Text + txt_paper_2.Text + txt_paper_1.Text
     End Sub
-
-
-    Private Sub txt_width_LostFocus(sender As Object, e As EventArgs) Handles txt_width.LostFocus
-
-
-
-
-
-        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-            If txt_width.Text = "36" Then wid = "0930"
-            If txt_width.Text = "38" Then wid = "0980"
-            If txt_width.Text = "40" Then wid = "1030"
-            If txt_width.Text = "42" Then wid = "1080"
-            If txt_width.Text = "44" Then wid = "1130"
-            If txt_width.Text = "46" Then wid = "1180"
-            If txt_width.Text = "48" Then wid = "1230"
-            If txt_width.Text = "50" Then wid = "1280"
-            If txt_width.Text = "52" Then wid = "1330"
-            If txt_width.Text = "54" Then wid = "1390"
-            If txt_width.Text = "56" Then wid = "1440"
-            If txt_width.Text = "58" Then wid = "1490"
-            If txt_width.Text = "60" Then wid = "1540"
-            If txt_width.Text = "62" Then wid = "1590"
-            If txt_width.Text = "64" Then wid = "1640"
-            If txt_width.Text = "66" Then wid = "1690"
-            If txt_width.Text = "68" Then wid = "1740"
-            If txt_width.Text = "70" Then wid = "1790"
-            If txt_width.Text = "72" Then wid = "1850"
-            If txt_width.Text = "74" Then wid = "1900"
-            If txt_width.Text = "76" Then wid = "1950"
-            If txt_width.Text = "78" Then wid = "2000"
-            If txt_width.Text = "80" Then wid = "2050"
-            If txt_width.Text = "82" Then wid = "2100"
-            If txt_width.Text = "84" Then wid = "2150"
-            If txt_width.Text = "86" Then wid = "2200"
-
-            'If txt_long.Text = "36" Then lonng = "0930"
-            'If txt_long.Text = "38" Then lonng = "0980"
-            'If txt_long.Text = "40" Then lonng = "1030"
-            'If txt_long.Text = "42" Then lonng = "1080"
-            'If txt_long.Text = "44" Then lonng = "1130"
-            'If txt_long.Text = "46" Then lonng = "1180"
-            'If txt_long.Text = "48" Then lonng = "1230"
-            'If txt_long.Text = "50" Then lonng = "1280"
-            'If txt_long.Text = "52" Then lonng = "1330"
-            'If txt_long.Text = "54" Then lonng = "1390"
-            'If txt_long.Text = "56" Then lonng = "1440"
-            'If txt_long.Text = "58" Then lonng = "1490"
-            'If txt_long.Text = "60" Then lonng = "1540"
-            'If txt_long.Text = "62" Then lonng = "1590"
-            'If txt_long.Text = "64" Then lonng = "1640"
-            'If txt_long.Text = "66" Then lonng = "1690"
-            'If txt_long.Text = "68" Then lonng = "1740"
-            'If txt_long.Text = "70" Then lonng = "1790"
-            'If txt_long.Text = "72" Then lonng = "1850"
-            'If txt_long.Text = "74" Then lonng = "1900"
-            'If txt_long.Text = "76" Then lonng = "1950"
-            'If txt_long.Text = "78" Then lonng = "2000"
-            'If txt_long.Text = "80" Then lonng = "2050"
-            'If txt_long.Text = "82" Then lonng = "2100"
-            'If txt_long.Text = "84" Then lonng = "2150"
-            'If txt_long.Text = "86" Then lonng = "2200"
-
-
-            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
-
-        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
-
-            If txt_width.Text = "36" Then wid = "0930"
-            If txt_width.Text = "38" Then wid = "0980"
-            If txt_width.Text = "40" Then wid = "1030"
-            If txt_width.Text = "42" Then wid = "1080"
-            If txt_width.Text = "44" Then wid = "1130"
-            If txt_width.Text = "46" Then wid = "1180"
-            If txt_width.Text = "48" Then wid = "1230"
-            If txt_width.Text = "50" Then wid = "1280"
-            If txt_width.Text = "52" Then wid = "1330"
-            If txt_width.Text = "54" Then wid = "1390"
-            If txt_width.Text = "56" Then wid = "1440"
-            If txt_width.Text = "58" Then wid = "1490"
-            If txt_width.Text = "60" Then wid = "1540"
-            If txt_width.Text = "62" Then wid = "1590"
-            If txt_width.Text = "64" Then wid = "1640"
-            If txt_width.Text = "66" Then wid = "1690"
-            If txt_width.Text = "68" Then wid = "1740"
-            If txt_width.Text = "70" Then wid = "1790"
-            If txt_width.Text = "72" Then wid = "1850"
-            If txt_width.Text = "74" Then wid = "1900"
-            If txt_width.Text = "76" Then wid = "1950"
-            If txt_width.Text = "78" Then wid = "2000"
-            If txt_width.Text = "80" Then wid = "2050"
-            If txt_width.Text = "82" Then wid = "2100"
-            If txt_width.Text = "84" Then wid = "2150"
-            If txt_width.Text = "86" Then wid = "2200"
-            lonng = txt_long.Text
-
-        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
-
-            'If txt_long.Text = "36" Then lonng = "0930"
-            'If txt_long.Text = "38" Then lonng = "0980"
-            'If txt_long.Text = "40" Then lonng = "1030"
-            'If txt_long.Text = "42" Then lonng = "1080"
-            'If txt_long.Text = "44" Then lonng = "1130"
-            'If txt_long.Text = "46" Then lonng = "1180"
-            'If txt_long.Text = "48" Then lonng = "1230"
-            'If txt_long.Text = "50" Then lonng = "1280"
-            'If txt_long.Text = "52" Then lonng = "1330"
-            'If txt_long.Text = "54" Then lonng = "1390"
-            'If txt_long.Text = "56" Then lonng = "1440"
-            'If txt_long.Text = "58" Then lonng = "1490"
-            'If txt_long.Text = "60" Then lonng = "1540"
-            'If txt_long.Text = "62" Then lonng = "1590"
-            'If txt_long.Text = "64" Then lonng = "1640"
-            'If txt_long.Text = "66" Then lonng = "1690"
-            'If txt_long.Text = "68" Then lonng = "1740"
-            'If txt_long.Text = "70" Then lonng = "1790"
-            'If txt_long.Text = "72" Then lonng = "1850"
-            'If txt_long.Text = "74" Then lonng = "1900"
-            'If txt_long.Text = "76" Then lonng = "1950"
-            'If txt_long.Text = "78" Then lonng = "2000"
-            'If txt_long.Text = "80" Then lonng = "2050"
-            'If txt_long.Text = "82" Then lonng = "2100"
-            'If txt_long.Text = "84" Then lonng = "2150"
-            'If txt_long.Text = "86" Then lonng = "2200"
-            wid = txt_width.Text
-
-
-            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
-
-
-            If txt_width.TextLength = 1 Then
-                txt_width.Text = "000" & txt_width.Text
-            ElseIf txt_width.TextLength = 2 Then
-                txt_width.Text = "00" & txt_width.Text
-            ElseIf txt_width.TextLength = 3 Then
-                txt_width.Text = "0" & txt_width.Text
-            End If
-
-        ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
-            lonng = txt_long.Text
-            wid = txt_width.Text
-
-            If txt_width.TextLength = 1 Then
-                txt_width.Text = "000" & txt_width.Text
-            ElseIf txt_width.TextLength = 2 Then
-                txt_width.Text = "00" & txt_width.Text
-            ElseIf txt_width.TextLength = 3 Then
-                txt_width.Text = "0" & txt_width.Text
-            End If
-        End If
-
-        gen_item_code()
-        gen_item_des()
-
-    End Sub
     Private Sub txt_fn_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_fn_find_inch_mm.SelectedIndexChanged
-
-        If txt_fn_find_inch_mm.Text = "มิล มิล" Or txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
             txt_sub_desc.Enabled = False
-
             txt_customer.Enabled = True
             txt_pono.Enabled = True
             txt_width.Enabled = True
@@ -1196,9 +1226,11 @@ Public Class frm_input
             txt_cut.Enabled = True
             txt_long.Enabled = True
             txt_cut_small.Enabled = True
+
+            txt_wid_inch_to_mm.Visible = False
+            txt_long_inch_to_mm.Visible = False
         Else
             txt_sub_desc.Enabled = True
-
             txt_customer.Enabled = True
             txt_pono.Enabled = True
             txt_width.Enabled = True
@@ -1206,104 +1238,92 @@ Public Class frm_input
             txt_cut.Enabled = True
             txt_long.Enabled = True
             txt_cut_small.Enabled = True
+
+            txt_wid_inch_to_mm.Visible = True
+            txt_long_inch_to_mm.Visible = True
         End If
-
     End Sub
-
-    Private Sub txt_long_LostFocus(sender As Object, e As EventArgs) Handles txt_long.LostFocus
-
+    Sub get_wid_lonng()
         If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-            If txt_width.Text = "36" Then wid = "0930"
-            If txt_width.Text = "38" Then wid = "0980"
-            If txt_width.Text = "40" Then wid = "1030"
-            If txt_width.Text = "42" Then wid = "1080"
-            If txt_width.Text = "44" Then wid = "1130"
-            If txt_width.Text = "46" Then wid = "1180"
-            If txt_width.Text = "48" Then wid = "1230"
-            If txt_width.Text = "50" Then wid = "1280"
-            If txt_width.Text = "52" Then wid = "1330"
-            If txt_width.Text = "54" Then wid = "1390"
-            If txt_width.Text = "56" Then wid = "1440"
-            If txt_width.Text = "58" Then wid = "1490"
-            If txt_width.Text = "60" Then wid = "1540"
-            If txt_width.Text = "62" Then wid = "1590"
-            If txt_width.Text = "64" Then wid = "1640"
-            If txt_width.Text = "66" Then wid = "1690"
-            If txt_width.Text = "68" Then wid = "1740"
-            If txt_width.Text = "70" Then wid = "1790"
-            If txt_width.Text = "72" Then wid = "1850"
-            If txt_width.Text = "74" Then wid = "1900"
-            If txt_width.Text = "76" Then wid = "1950"
-            If txt_width.Text = "78" Then wid = "2000"
-            If txt_width.Text = "80" Then wid = "2050"
-            If txt_width.Text = "82" Then wid = "2100"
-            If txt_width.Text = "84" Then wid = "2150"
-            If txt_width.Text = "86" Then wid = "2200"
-
-            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
 
 
+            'txt_wid_inch_to_mm.Visible = True
+            'txt_long_inch_to_mm.Visible = True
 
+            'txt_width.Visible = False
+            'txt_long.Visible = False
 
-
-
-
-
-
-        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
-
-            If txt_width.Text = "36" Then wid = "0930"
-            If txt_width.Text = "38" Then wid = "0980"
-            If txt_width.Text = "40" Then wid = "1030"
-            If txt_width.Text = "42" Then wid = "1080"
-            If txt_width.Text = "44" Then wid = "1130"
-            If txt_width.Text = "46" Then wid = "1180"
-            If txt_width.Text = "48" Then wid = "1230"
-            If txt_width.Text = "50" Then wid = "1280"
-            If txt_width.Text = "52" Then wid = "1330"
-            If txt_width.Text = "54" Then wid = "1390"
-            If txt_width.Text = "56" Then wid = "1440"
-            If txt_width.Text = "58" Then wid = "1490"
-            If txt_width.Text = "60" Then wid = "1540"
-            If txt_width.Text = "62" Then wid = "1590"
-            If txt_width.Text = "64" Then wid = "1640"
-            If txt_width.Text = "66" Then wid = "1690"
-            If txt_width.Text = "68" Then wid = "1740"
-            If txt_width.Text = "70" Then wid = "1790"
-            If txt_width.Text = "72" Then wid = "1850"
-            If txt_width.Text = "74" Then wid = "1900"
-            If txt_width.Text = "76" Then wid = "1950"
-            If txt_width.Text = "78" Then wid = "2000"
-            If txt_width.Text = "80" Then wid = "2050"
-            If txt_width.Text = "82" Then wid = "2100"
-            If txt_width.Text = "84" Then wid = "2150"
-            If txt_width.Text = "86" Then wid = "2200"
-
-            'wid = Math.Round(CDbl(Val(txt_width.Text)) * 25.4)
-            lonng = txt_long.Text
-
-            If txt_long.TextLength = 1 Then
-                txt_long.Text = "000" & txt_long.Text
-            ElseIf txt_long.TextLength = 2 Then
-                txt_long.Text = "00" & txt_long.Text
-            ElseIf txt_long.TextLength = 3 Then
-                txt_long.Text = "0" & txt_long.Text
-            End If
-
-        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
-
-            lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
-
-            wid = txt_width.Text
+            'If txt_width.Text = "36" Then wid = "0930"
+            'If txt_width.Text = "38" Then wid = "0980"
+            'If txt_width.Text = "40" Then wid = "1030"
+            'If txt_width.Text = "42" Then wid = "1080"
+            'If txt_width.Text = "44" Then wid = "1130"
+            'If txt_width.Text = "46" Then wid = "1180"
+            'If txt_width.Text = "48" Then wid = "1230"
+            'If txt_width.Text = "50" Then wid = "1280"
+            'If txt_width.Text = "52" Then wid = "1330"
+            'If txt_width.Text = "54" Then wid = "1390"
+            'If txt_width.Text = "56" Then wid = "1440"
+            'If txt_width.Text = "58" Then wid = "1490"
+            'If txt_width.Text = "60" Then wid = "1540"
+            'If txt_width.Text = "62" Then wid = "1590"
+            'If txt_width.Text = "64" Then wid = "1640"
+            'If txt_width.Text = "66" Then wid = "1690"
+            'If txt_width.Text = "68" Then wid = "1740"
+            'If txt_width.Text = "70" Then wid = "1790"
+            'If txt_width.Text = "72" Then wid = "1850"
+            'If txt_width.Text = "74" Then wid = "1900"
+            'If txt_width.Text = "76" Then wid = "1950"
+            'If txt_width.Text = "78" Then wid = "2000"
+            'If txt_width.Text = "80" Then wid = "2050"
+            'If txt_width.Text = "82" Then wid = "2100"
+            'If txt_width.Text = "84" Then wid = "2150"
+            'If txt_width.Text = "86" Then wid = "2200"
+            'lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
 
 
 
+            If txt_wid_inch_to_mm.Text = "36" Then wid = "0930"
+            If txt_wid_inch_to_mm.Text = "38" Then wid = "0980"
+            If txt_wid_inch_to_mm.Text = "40" Then wid = "1030"
+            If txt_wid_inch_to_mm.Text = "42" Then wid = "1080"
+            If txt_wid_inch_to_mm.Text = "44" Then wid = "1130"
+            If txt_wid_inch_to_mm.Text = "46" Then wid = "1180"
+            If txt_wid_inch_to_mm.Text = "48" Then wid = "1230"
+            If txt_wid_inch_to_mm.Text = "50" Then wid = "1280"
+            If txt_wid_inch_to_mm.Text = "52" Then wid = "1330"
+            If txt_wid_inch_to_mm.Text = "54" Then wid = "1390"
+            If txt_wid_inch_to_mm.Text = "56" Then wid = "1440"
+            If txt_wid_inch_to_mm.Text = "58" Then wid = "1490"
+            If txt_wid_inch_to_mm.Text = "60" Then wid = "1540"
+            If txt_wid_inch_to_mm.Text = "62" Then wid = "1590"
+            If txt_wid_inch_to_mm.Text = "64" Then wid = "1640"
+            If txt_wid_inch_to_mm.Text = "66" Then wid = "1690"
+            If txt_wid_inch_to_mm.Text = "68" Then wid = "1740"
+            If txt_wid_inch_to_mm.Text = "70" Then wid = "1790"
+            If txt_wid_inch_to_mm.Text = "72" Then wid = "1850"
+            If txt_wid_inch_to_mm.Text = "74" Then wid = "1900"
+            If txt_wid_inch_to_mm.Text = "76" Then wid = "1950"
+            If txt_wid_inch_to_mm.Text = "78" Then wid = "2000"
+            If txt_wid_inch_to_mm.Text = "80" Then wid = "2050"
+            If txt_wid_inch_to_mm.Text = "82" Then wid = "2100"
+            If txt_wid_inch_to_mm.Text = "84" Then wid = "2150"
+            If txt_wid_inch_to_mm.Text = "86" Then wid = "2200"
+
+
+            lonng = Math.Round(CDbl(Val(txt_long_inch_to_mm.Text) + Val(txt_subsub_dscc.Text)) * 25.4)
 
 
 
+            '********************************
+            '********************************
+            '********************************
+            '********************************
+            '********************************
 
 
-
+            txt_long.Text = lonng
+            txt_width.Text = wid
 
 
 
@@ -1311,21 +1331,62 @@ Public Class frm_input
 
         ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
 
+
             lonng = txt_long.Text
             wid = txt_width.Text
 
-            If txt_long.TextLength = 1 Then
-                txt_long.Text = "000" & txt_long.Text
-            ElseIf txt_long.TextLength = 2 Then
-                txt_long.Text = "00" & txt_long.Text
-            ElseIf txt_long.TextLength = 3 Then
-                txt_long.Text = "0" & txt_long.Text
-            End If
-        End If
 
+        End If
+    End Sub
+    Sub add_zero_long()
+        If txt_long.TextLength = 1 Then
+            txt_long.Text = "000" & txt_long.Text
+        ElseIf txt_long.TextLength = 2 Then
+            txt_long.Text = "00" & txt_long.Text
+        ElseIf txt_long.TextLength = 3 Then
+            txt_long.Text = "0" & txt_long.Text
+        End If
+    End Sub
+    Sub add_zero_wid()
+        If txt_width.TextLength = 1 Then
+            txt_width.Text = "000" & txt_width.Text
+        ElseIf txt_width.TextLength = 2 Then
+            txt_width.Text = "00" & txt_width.Text
+        ElseIf txt_width.TextLength = 3 Then
+            txt_width.Text = "0" & txt_width.Text
+        End If
+    End Sub
+    Private Sub txt_width_LostFocus(sender As Object, e As EventArgs) Handles txt_width.LostFocus
+        get_wid_lonng()
+        add_zero_wid()
         gen_item_code()
         gen_item_des()
-
+    End Sub
+    Private Sub txt_long_LostFocus(sender As Object, e As EventArgs) Handles txt_long.LostFocus
+        get_wid_lonng()
+        add_zero_long()
+        gen_item_code()
+        gen_item_des()
+    End Sub
+    Private Sub txt_wid_inch_to_mm_LostFocus(sender As Object, e As EventArgs) Handles txt_wid_inch_to_mm.LostFocus
+        get_wid_lonng()
+        gen_item_code()
+        gen_item_des()
+    End Sub
+    Private Sub txt_long_inch_to_mm_LostFocus(sender As Object, e As EventArgs) Handles txt_long_inch_to_mm.LostFocus
+        get_wid_lonng()
+        gen_item_code()
+        gen_item_des()
+    End Sub
+    Private Sub Txt_width_TextChanged(sender As Object, e As EventArgs) Handles txt_width.TextChanged
+        get_wid_lonng()
+        gen_item_code()
+        gen_item_des()
+    End Sub
+    Private Sub Txt_long_TextChanged(sender As Object, e As EventArgs) Handles txt_long.TextChanged
+        get_wid_lonng()
+        gen_item_code()
+        gen_item_des()
     End Sub
     Private Sub txt_stampline_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_stampline.SelectedIndexChanged
         gen_item_code()
@@ -1335,9 +1396,36 @@ Public Class frm_input
     End Sub
     Private Sub txt_sub_desc_TextChanged(sender As Object, e As EventArgs) Handles txt_sub_desc.TextChanged
         gen_item_des()
+        '***********************************************
+        '***********************************************
+        '***********************************************
+        '***********************************************
+        '***********************************************
+        '***********************************************
+        '***********************************************
+        '***********************************************
+        '***********************************************
+
+
+
+
+
     End Sub
     Private Sub txt_sub_desc_LostFocus(sender As Object, e As EventArgs) Handles txt_sub_desc.LostFocus
-        gen_item_des()
+        If txt_sub_desc.Text IsNot Nothing Then
+            gen_item_des()
+
+            Dim strarr() As String
+            strarr = txt_sub_desc.Text.Split("/")
+            txt_subsub_dscc.Text = (strarr(0) / strarr(1))
+
+            'txt_long_inch_to_mm.Text = txt_long_inch_to_mm.Text + (strarr(0) / strarr(1))
+            get_wid_lonng()
+        End If
+
+
+
+
     End Sub
     Sub gen_item_code()
         txt_item_code.Text = get_lons(txt_lon.Text) + get_m(txt_paper_5.Text) & get_m(txt_paper_4.Text) & get_m(txt_paper_3.Text) & get_m(txt_paper_2.Text) & get_m(txt_paper_1.Text) + wid + lonng + txt_stampline.Text
@@ -1345,8 +1433,6 @@ Public Class frm_input
     Sub gen_item_des()
         txt_desc.Text = txt_width.Text + " x " + txt_long.Text + " " + txt_sub_desc.Text + " " + txt_paper_5.Text + paper_4 + paper_3 + paper_2 + paper_1 + " " + txt_lon.Text
     End Sub
-
-
     Function get_lons(lon)
         Dim lon_name As String = ""
         If lon = "BC" Then
@@ -1369,8 +1455,6 @@ Public Class frm_input
         End If
         Return lon_name
     End Function
-
-
     Private Sub txt_meth2_TextChanged(sender As Object, e As EventArgs) Handles txt_meth2.TextChanged
         Try
             connection.Close()
@@ -1404,120 +1488,84 @@ Public Class frm_input
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
-
-
     Dim tz As Double
-
     Dim c_width As Double
     Dim c_long As Double
     Dim PL As Double
-    Sub get_price_mm()
-
-        c_width = CDbl(Val(txt_width.Text))
-        c_long = CDbl(Val(txt_long.Text))
-        PL = CDbl(Val(txt_pl.Text))
-        tz = (((c_width * c_long) / 1000000) * 10.76)
-
-
-        'txt_price.Text = Math.Round((tz * PL), 2)
-
-
-        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
-            Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl.Text)))
-
-            'txt_price.Text = Math.Round(xx - (xx * discount / 100), 2)
-
-
-            'ok
-            txt_price.Text = (xx - (xx * discount / 100))
-
-
-
-            'Dim tp As Single = (xx - (xx * discount / 100))
-            'Dim first As Int32 = Fix(tp)
-            'Dim second As Int32 = Int((tp - first) * 10)
-            'Dim TPs As String = first & "." & second
-            'Dim dbl As Double = CDbl(TPs)
-            'Dim third As Double = Int((tp - dbl) * 100)
-            'TPs = first & "." & second & third
-            'txt_price.Text = TPs
-
-
-
-        End If
-
-        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-            Dim xx = (((c_width * c_long) / 144) * CDbl(Val(txt_pl.Text)))
-            'txt_price.Text = Math.Round(xx - ((xx * discount) / 100), 2)
-            txt_price.Text = (xx - ((xx * discount) / 100))
-        End If
-    End Sub
-
-
-    Private Sub txt_pl_TextChanged(sender As Object, e As EventArgs) Handles txt_pl.TextChanged
-        get_price_mm()
-    End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
     Dim m
     Dim cut As Integer
     Dim cutcut As Integer
     Dim Trim As Integer
-
-
-    Private Sub txt_paper_5_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_5.LostFocus
-        txt_paper_5.CharacterCasing = CharacterCasing.Upper
-    End Sub
-
-    Private Sub txt_paper_4_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_4.LostFocus
-        txt_paper_4.CharacterCasing = CharacterCasing.Upper
-    End Sub
-
-    Private Sub txt_paper_3_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_3.LostFocus
-        txt_paper_3.CharacterCasing = CharacterCasing.Upper
-    End Sub
-
-    Private Sub txt_paper_2_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_2.LostFocus
-        txt_paper_2.CharacterCasing = CharacterCasing.Upper
-    End Sub
-
-    Private Sub txt_paper_1_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_1.LostFocus
-        txt_paper_1.CharacterCasing = CharacterCasing.Upper
-    End Sub
-
-    Private Sub txt_customer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_customer.SelectedIndexChanged
-        lb_cuscode.Text = txt_customer.SelectedValue.ToString()
-
-        get_discounts()
-    End Sub
-
     Dim mw
     Dim mww
     Dim S
     Dim DK
     Dim HK
+    Sub get_price_mm()
+        c_width = CDbl(Val(txt_width.Text))
+        c_long = CDbl(Val(txt_long.Text))
+        PL = CDbl(Val(txt_pl.Text))
+        tz = (((c_width * c_long) / 1000000) * 10.76)
+
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+
+            'txt_pl_sp
+            If txt_pl_sp.Text IsNot Nothing Then
+                Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl_sp.Text)))
+                txt_price.Text = (xx - (xx * discount / 100))
+            End If
+
+            'net
+            If txt_pl_net.Text IsNot Nothing Then
+                Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl_net.Text)))
+                ' MsgBox(xx)
+                txt_price.Text = xx
+
+            End If
+
+
+            If txt_pl.Text IsNot Nothing Then
+                Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl.Text)))
+                txt_price.Text = (xx - (xx * discount / 100))
+            End If
+
+
+        End If
+
+        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+            'OK mm.
+            Dim xx = (((c_width * c_long) / 144) * CDbl(Val(txt_pl.Text)))
+            txt_price.Text = (xx - ((xx * discount) / 100))
+        End If
+    End Sub
+    Private Sub txt_pl_TextChanged(sender As Object, e As EventArgs) Handles txt_pl.TextChanged
+        get_price_mm()
+    End Sub
+    Private Sub txt_paper_5_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_5.LostFocus
+        txt_paper_5.CharacterCasing = CharacterCasing.Upper
+    End Sub
+    Private Sub txt_paper_4_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_4.LostFocus
+        txt_paper_4.CharacterCasing = CharacterCasing.Upper
+    End Sub
+    Private Sub txt_paper_3_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_3.LostFocus
+        txt_paper_3.CharacterCasing = CharacterCasing.Upper
+    End Sub
+    Private Sub txt_paper_2_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_2.LostFocus
+        txt_paper_2.CharacterCasing = CharacterCasing.Upper
+    End Sub
+    Private Sub txt_paper_1_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_1.LostFocus
+        txt_paper_1.CharacterCasing = CharacterCasing.Upper
+    End Sub
+    Private Sub txt_customer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_customer.SelectedIndexChanged
+        lb_cuscode.Text = txt_customer.SelectedValue.ToString()
+
+        get_discounts()
+    End Sub
     Private Sub txt_count_TextChanged(sender As Object, e As EventArgs) Handles txt_count.TextChanged
-
-
         Dim x_final As Integer = 26
-
         Dim txet_cut_small = txt_cut_small.Text
-
         If txt_cut_small.Text = Nothing Then
-
             txet_cut_small = 0
-
         End If
 
         'Dim x1 = (Integer.Parse(txt_cut_small.Text) * 1) + x_final
@@ -1800,20 +1848,24 @@ Public Class frm_input
         TextBox1.Text = m & " | " & x1 & " " & x2 & " " & x3 & " " & x4 & " " & x5
         TextBox2.Text = HK & " | " & y1 & " " & y2 & " " & y3 & " " & y4 & " " & y5
 
-        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-            txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
-        End If
+        'If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+        '    txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+        'End If
 
-        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
-            txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
-        End If
+        'If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+        '    txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+        'End If
+
+        txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
 
         get_discounts()
         get_price_mm()
+        get_net_pl()
         get_mminch()
 
 
 
+        get_price_sp()
 
 
 
@@ -1821,7 +1873,32 @@ Public Class frm_input
 
     End Sub
 
+    Sub get_price_sp()
+        connection.Close()
+        connection.Open()
+        sql5 = "
+                        SELECT  * 
+                        FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice]
+                        WHERE   [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice].[Customer_Code] =   '" + lb_cuscode.Text + "'
+                        AND     [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice].[GradeGram]     =   '" + txt_search_pl.Text + "'
+                        AND     [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice].[Lon]           =   '" + txt_lon.Text + "'
+                        AND     [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice].[width]         =   '" + txt_width.Text + "'
+                        AND     [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice].[long]          =   '" + txt_long.Text + "'
+                        AND     [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice].[Meth_Start]    >   '" + txt_met.Text + "'
+                        AND     [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_SpecialPrice].[Meth_End]      <   '" + txt_met.Text + "'
+                        "
+        Dim sqlcmd5 As New SqlCommand(sql5, setup_conf.connection)
+        Dim myreader5 As SqlDataReader
+        myreader5 = sqlcmd5.ExecuteReader()
+        myreader5.Read()
+        If myreader5.HasRows Then
+            'desc_bom_Line5 = myreader5.Item("d").ToString
+            'sqmx5 = myreader5.Item("e").ToString
+            txt_pl_sp.Text = myreader5.Item("Price").ToString
+        End If
+        'Qty5 = Math.Round((sqm * sqmx5) / 1000, 5)
 
+    End Sub
     Sub get_discounts()
 
         connection.Close()
@@ -1829,6 +1906,7 @@ Public Class frm_input
         Dim sql1 As String
 
         Dim text_lon As String = txt_lon.Text
+
         If txt_met.Text > 0 Then
             sql1 = "
                     SELECT  [" & text_lon & "]
@@ -1851,7 +1929,7 @@ Public Class frm_input
 
 
 
-        'TextBox3.Text = sql
+        TextBox3.Text = sql1
         Dim sqlcmd1 As New SqlCommand(sql1, setup_conf.connection)
         Dim myreader1 As SqlDataReader
         myreader1 = sqlcmd1.ExecuteReader()
@@ -1862,16 +1940,9 @@ Public Class frm_input
         connection.Close()
         txt_discount.Text = discount & " %"
     End Sub
-
-
-
     Private Sub txt_count_cut_TextChanged(sender As Object, e As EventArgs) Handles txt_count_cut.TextChanged
-
         find_met()
-
     End Sub
-
-
     Private Sub txt_pl_net_TextChanged(sender As Object, e As EventArgs) Handles txt_pl_net.TextChanged
         If txt_pl_net.Text = "" Then
             txt_discount.Text = discount & " %"
@@ -1882,23 +1953,19 @@ Public Class frm_input
             txt_price.Text = Math.Round(xx, 2)
         End If
     End Sub
-
-
     Sub get_mminch()
-        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-            Label41.Text = m
-            Label42.Text = mw
-        ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
 
-        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
+        'If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+        '    Label41.Text = m
+        '    Label42.Text = mw
+        'ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
 
-        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+        'ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
 
-        End If
+        'ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+
+        'End If
     End Sub
-
-
-
     Sub find_met()
         S = Math.Round(HK / CDbl(Val(wid)), 0)
         DK = Math.Ceiling((CDbl(Val(lonng)) * CDbl(Val(txt_count_cut.Text)) / 1000))
@@ -1931,5 +1998,473 @@ Public Class frm_input
         'txt_met.Text = ssss
 
 
+    End Sub
+    Sub get_net_pl()
+
+        connection.Close()
+        connection.Open()
+        Dim sql1 As String
+        Dim netpl
+        Dim colmn As String
+
+
+
+        If txt_met.Text > 1 And txt_met.Text < 249 Then
+            colmn = "1"
+        ElseIf txt_met.Text > 250 And txt_met.Text < 499 Then
+            colmn = "250"
+        ElseIf txt_met.Text > 500 And txt_met.Text < 999 Then
+            colmn = "500"
+        ElseIf txt_met.Text > 1000 And txt_met.Text < 1999 Then
+            colmn = "1000"
+        ElseIf txt_met.Text > 2000 And txt_met.Text < 2999 Then
+            colmn = "2000"
+        ElseIf txt_met.Text > 3000 And txt_met.Text < 3999 Then
+            colmn = "3000"
+        ElseIf txt_met.Text > 4000 And txt_met.Text < 4999 Then
+            colmn = "4000"
+        ElseIf txt_met.Text > 5000 And txt_met.Text < 9999 Then
+            colmn = "5000"
+        ElseIf txt_met.Text > 10000 And txt_met.Text < 19999 Then
+            colmn = "10000"
+        ElseIf txt_met.Text > 20000 Then
+            colmn = "20000"
+        End If
+
+
+
+        sql1 = "
+                SELECT  [" & colmn & "] as 'Net_PL'
+                FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_NetPrice]
+                WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
+                AND     [Item_Code]     =   '" & txt_search_pl.Text & "'
+                "
+
+        TextBox4.Text = sql1
+
+
+        Dim sqlcmd1 As New SqlCommand(sql1, setup_conf.connection)
+        Dim myreader1 As SqlDataReader
+        myreader1 = sqlcmd1.ExecuteReader()
+        myreader1.Read()
+        If myreader1.HasRows Then
+            netpl = myreader1.Item("Net_PL").ToString
+        End If
+        connection.Close()
+        txt_pl_net.Text = netpl
+
+    End Sub
+    Private Sub Btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+        Dim idocnumber As String = ""
+        idocnumber = SaveHead()
+        txtdocnumber.Text = idocnumber
+
+        If txtdocnumber.Text <> "" Then
+            Savedetail(idocnumber)
+            MsgBox("บันทึกสำเร็จ")
+            MsgBox("Docnumber = " & idocnumber)
+
+        End If
+    End Sub
+    Function IgenDocno() As String
+
+        Dim idocnumber As String = ""
+
+
+        Dim isqlupdate As String = ""
+        Dim isqlcomman As String = ""
+        Dim istringcomman As String = ""
+        Dim imonth As String = ""
+        Dim iyear As String = ""
+
+        imonth = Microsoft.VisualBasic.DateAndTime.Month(Now).ToString
+        iyear = Microsoft.VisualBasic.DateAndTime.Year(Now).ToString.Substring(2)
+
+        If imonth.Length < 2 Then
+            imonth = "0" + imonth
+        End If
+
+
+        idocnumber = GenerateDocNumber()
+
+        'isqlcomman = "INSERT INTO LFB_ITEM$_Document_head ([Document_No]) VALUES ('" & idocnumber & "')"
+
+        'isqlupdate = "Select Document_No from LFB_ITEM$_Document_head ORDER BY Date DESC"
+
+
+        'connection.Close()
+        'connection.Open()
+
+        'Dim query As New SqlCommand(isqlcomman, connection)
+
+
+
+        'Try
+        '    query.ExecuteNonQuery()
+
+        'Catch ex As Exception
+
+        '    MsgBox("มีข้อผิดพลาดในการ Run Document_No")
+
+        'End Try
+        'query = Nothing
+
+
+
+        'Dim objCmdupdate As SqlCommand
+
+        'objCmdupdate = New SqlCommand(isqlupdate, connection)
+
+
+        'Try
+        '    idocnumber = objCmdupdate.ExecuteScalar()
+
+        'Catch ex As Exception
+
+        '    MsgBox("มีข้อผิดพลาดในการเรียก Document_No")
+
+        'End Try
+
+
+
+
+        'query = Nothing
+        'objCmdupdate = Nothing
+        'connection.Close()
+
+
+        Return idocnumber
+    End Function
+    Function GenerateDocNumber() As String
+
+        Dim strSeqNo = String.Empty
+        Dim strPrefix = "doc" ' Prefix : IN-
+        Dim intLength = 3 ' Length : IN-XXX
+        Dim intYear = DateTime.Now.Year
+        Dim intMonth = DateTime.Now.Month
+        Dim intSequence = 0
+
+        '     Dim connection = New SqlConnection()
+        Dim objCmd = New SqlCommand()
+        Dim strSQL = String.Empty
+
+
+        connection.Close()
+        connection.Open()
+
+
+
+        '*** Get current sequence
+        strSQL = "SELECT Sequence FROM GenerateDocNo WHERE Year = " & intYear & " AND Month = " & intMonth & " "
+        objCmd = New SqlCommand(strSQL, connection)
+        Dim dr As SqlDataReader = objCmd.ExecuteReader()
+        If dr.HasRows Then
+            dr.Read()
+            intSequence = Convert.ToInt32(dr("Sequence"))
+        End If
+        dr.Close()
+
+        '*** Insert new month (when new month)
+        If intSequence = 0 Then
+            intSequence = 1
+            strSQL = "INSERT INTO GenerateDocNo (Year, Month, Sequence) VALUES (" & intYear & "," & intMonth & "," & intSequence & ");  "
+            objCmd = New SqlCommand(strSQL, connection)
+            objCmd.ExecuteNonQuery()
+        End If
+
+        '*** Update new sequence
+        strSQL = "UPDATE GenerateDocNo SET  Sequence = Sequence + 1 WHERE Year = " & intYear & " AND Month = " & intMonth & "  "
+        objCmd = New SqlCommand(strSQL, connection)
+        objCmd.ExecuteNonQuery()
+
+        '*** Display sequence
+        strSeqNo = String.Format("{0}-{1}{2}-{3}", strPrefix, intYear.ToString.Substring(2),
+                                 intMonth.ToString().PadLeft(2, "0"), intSequence.ToString().PadLeft(intLength, "0"))
+
+        connection.Close()
+        ' connection = Nothing
+
+        Return strSeqNo
+    End Function
+    Function SaveHead() As String
+
+        Dim isqlcomman As String = ""
+        Dim isqldel As String = ""
+
+        Dim idocnumber As String = ""
+        Dim icustno As String = ""
+
+        Dim objCmd = New SqlCommand()
+
+
+
+        icustno = lb_cuscode.Text
+
+
+        If txtdocnumber.Text = "" Then
+
+            idocnumber = IgenDocno()
+
+            isqlcomman = "INSERT INTO LFB_ITEM$_Document_head " &
+           "( [Document_No]" &
+           ",[Customre_Code]" &
+           ",[Date])" &
+            " VALUES ('" & idocnumber & "','" & icustno & "','" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "')"
+
+        Else
+            idocnumber = txtdocnumber.Text
+
+            isqlcomman = " UPDATE LFB_ITEM$_Document_head " &
+       "SET [Customre_Code] = '" & icustno & "'" &
+      ",[Date] = '" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "'" &
+       "WHERE [Document_No] = '" & idocnumber & "'"
+        End If
+
+        '  connection = New SqlConnection(connetionLocal)
+        connection.Open()
+
+        objCmd = New SqlCommand(isqlcomman, connection)
+
+        Try
+
+            objCmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("ไม่สามารถบันทึกได้")
+
+            Return ""
+            Exit Function
+
+        End Try
+        objCmd = Nothing
+
+
+        objCmd = Nothing
+        connection.Close()
+
+
+        Return idocnumber
+
+    End Function
+    Private Sub Savedetail(ByVal idocnumber As String)
+
+        Dim ino As String = ""
+        Dim itype As String = ""
+
+        Dim iPO As String = ""
+        Dim iwidth As String = ""
+        Dim ilong As String = ""
+        Dim iwork_inch As String = ""
+        Dim icut As String = ""
+        Dim icut_small As String = ""
+        Dim iF1 As String = ""
+        Dim iF2 As String = ""
+        Dim iF3 As String = ""
+        Dim iF4 As String = ""
+        Dim iF5 As String = ""
+        Dim iF6 As String = ""
+        Dim iF7 As String = ""
+        Dim iF8 As String = ""
+        Dim iCheckeds As String = ""
+        Dim iTrim As String = ""
+        Dim iChecked As String = ""
+        Dim iPaperCombination As String = ""
+        Dim iLon As String = ""
+        Dim iPL As String = ""
+        Dim ispecialPL As String = ""
+        Dim iNetPL As String = ""
+        Dim iNetUnitPrice As String = ""
+        Dim iMethfinddiscount As String = ""
+        Dim iDiscountmoney As String = ""
+        Dim ipriceunit As String = ""
+        Dim iremark As String = ""
+        Dim idatecreate As Date
+        Dim ilastupdate As Date
+
+
+
+
+
+
+
+
+        connection.Close()
+        connection.Open()
+
+
+        Dim isqldel As String = ""
+        Dim isqlcount As String = ""
+        Dim isqlcomman As String = ""
+
+
+        Dim objCmd = New SqlCommand()
+
+
+        If txtdocnumber.Text <> "" Then
+
+            isqldel = "Delete LFB_ITEM$_Document_line Where [Document_No] = '" & idocnumber & "'"
+            objCmd = New SqlCommand(isqldel, connection)
+
+            Try
+                objCmd.ExecuteNonQuery()
+
+            Catch ex As Exception
+
+                MsgBox("มีข้อผิดพลาดในการลบ LFB_ITEM$_Document_line")
+
+            End Try
+
+            objCmd = Nothing
+
+        End If
+
+
+
+
+        For i As Integer = 0 To data_input.DataGrid_input.RowCount - 1
+            With data_input.DataGrid_input
+
+
+                If .Rows(0).Cells(2).Value = "" Then
+                    MsgBox("ไม่พบรายการายละเอียดสินค้า")
+                    Exit Sub
+                End If
+
+                If .Rows(i).Cells(2).Value = "" Then
+                    Exit For
+                Else
+
+                    ino = i
+                    itype = .Rows(i).Cells(3).Value
+                    iPO = .Rows(i).Cells(4).Value
+                    iwidth = .Rows(i).Cells(5).Value
+                    ilong = .Rows(i).Cells(6).Value
+                    iwork_inch = .Rows(i).Cells(7).Value
+                    icut = .Rows(i).Cells(8).Value
+                    icut_small = .Rows(i).Cells(9).Value
+                    iF1 = .Rows(i).Cells(10).Value
+                    iF2 = .Rows(i).Cells(11).Value
+                    iF3 = .Rows(i).Cells(12).Value
+                    iF4 = .Rows(i).Cells(13).Value
+                    iF5 = .Rows(i).Cells(14).Value
+                    iF6 = .Rows(i).Cells(15).Value
+                    iF7 = .Rows(i).Cells(16).Value
+                    iF8 = .Rows(i).Cells(17).Value
+                    iCheckeds = .Rows(i).Cells(18).Value
+                    iTrim = .Rows(i).Cells(19).Value
+                    iChecked = .Rows(i).Cells(20).Value
+                    iPaperCombination = .Rows(i).Cells(21).Value
+                    iLon = .Rows(i).Cells(22).Value
+                    iPL = .Rows(i).Cells(23).Value
+                    ispecialPL = .Rows(i).Cells(24).Value
+                    iNetPL = .Rows(i).Cells(25).Value
+                    iNetUnitPrice = .Rows(i).Cells(26).Value
+                    iMethfinddiscount = .Rows(i).Cells(27).Value
+                    iDiscountmoney = .Rows(i).Cells(28).Value
+                    ipriceunit = .Rows(i).Cells(29).Value
+                    iremark = .Rows(i).Cells(30).Value
+
+
+
+
+                    isqlcomman = "INSERT INTO [dbo].[LFB_ITEM$_Document_line]" &
+           "([Document_No]" &
+           ",[No_]" &
+           ",[Type]" &
+           ",[PO]" &
+           ",[width]" &
+           ",[long]" &
+           ",[work_inch]" &
+          " ,[cut]" &
+           ",[cut_small]" &
+           ",[F1]" &
+          ",[F2]" &
+           ",[F3]" &
+           ",[F4]" &
+           ",[F5]" &
+           ",[F6]" &
+           ",[F7]" &
+           ",[F8]" &
+           ",[Checkeds]" &
+           ",[Trim]" &
+           ",[Checked]" &
+           ",[Paper Combination]" &
+           ",[Lon]" &
+           ",[PL]" &
+           ",[special PL]" &
+           ",[Net PL]" &
+           ",[Net Unit Price]" &
+           ",[Meth find discount]" &
+           ",[Discount money]" &
+           ",[price unit]" &
+           ",[remark]" &
+           ",[datecreate]" &
+           ",[lastupdate]) " &
+            " VALUES (" &
+           "'" & idocnumber & "'," &
+           "'" & ino & "'," &
+            "'" & itype & "'," &
+           "'" & iPO & "'," &
+            "'" & iwidth & "'," &
+            "'" & ilong & "'," &
+          "'" & iwork_inch & "'," &
+           "'" & icut & "'," &
+            "'" & icut_small & "'," &
+            "'" & iF1 & "'," &
+            "'" & iF2 & "'," &
+            "'" & iF3 & "'," &
+            "'" & iF4 & "'," &
+            "'" & iF5 & "'," &
+            "'" & iF6 & "'," &
+            "'" & iF7 & "'," &
+            "'" & iF8 & "'," &
+            "'" & iCheckeds & "'," &
+            "'" & iTrim & "'," &
+            "'" & iChecked & "'," &
+            "'" & iPaperCombination & "'," &
+            "'" & iLon & "'," &
+            "'" & iPL & "'," &
+            "'" & ispecialPL & "'," &
+            "'" & iNetPL & "'," &
+            "'" & iNetUnitPrice & "'," &
+            "'" & iMethfinddiscount & "'," &
+            "'" & iDiscountmoney & "'," &
+            "'" & ipriceunit & "'," &
+            "'" & iremark & "'," &
+            "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "'," &
+            "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "')"
+
+                End If
+
+
+                objCmd = New SqlCommand(isqlcomman, connection)
+
+                Try
+                    objCmd.ExecuteNonQuery()
+
+                Catch ex As Exception
+
+                    MsgBox("มีข้อผิดพลาดในการบันทึก LFB_ITEM$_Document_line")
+
+                End Try
+
+
+
+
+            End With
+        Next
+
+
+
+        objCmd = Nothing
+        connection.Close()
+
+
+    End Sub
+    Private Sub Btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
+        Me.Controls.Clear() 'removes all the controls on the form
+        InitializeComponent() 'load all the controls again
+        frm_input_Load(e, e)
+        MsgBox("Clear Complete", vbInformation, "")
+        Refresh()
     End Sub
 End Class
