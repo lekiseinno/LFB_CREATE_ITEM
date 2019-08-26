@@ -999,7 +999,7 @@ Partial Class frm_input
         '
         Me.txt_wid_inch_to_mm.BackColor = System.Drawing.Color.Linen
         Me.txt_wid_inch_to_mm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
-        Me.txt_wid_inch_to_mm.Location = New System.Drawing.Point(321, 28)
+        Me.txt_wid_inch_to_mm.Location = New System.Drawing.Point(321, 19)
         Me.txt_wid_inch_to_mm.Name = "txt_wid_inch_to_mm"
         Me.txt_wid_inch_to_mm.Size = New System.Drawing.Size(80, 21)
         Me.txt_wid_inch_to_mm.TabIndex = 2016
@@ -1009,7 +1009,7 @@ Partial Class frm_input
         '
         Me.txt_long_inch_to_mm.BackColor = System.Drawing.Color.Linen
         Me.txt_long_inch_to_mm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
-        Me.txt_long_inch_to_mm.Location = New System.Drawing.Point(407, 28)
+        Me.txt_long_inch_to_mm.Location = New System.Drawing.Point(407, 19)
         Me.txt_long_inch_to_mm.Name = "txt_long_inch_to_mm"
         Me.txt_long_inch_to_mm.Size = New System.Drawing.Size(80, 21)
         Me.txt_long_inch_to_mm.TabIndex = 2017
@@ -1281,7 +1281,6 @@ Partial Class frm_input
     Friend WithEvents txt_duedate As DateTimePicker
     Friend WithEvents txt_count As TextBox
     Friend WithEvents txt_desc As TextBox
-    Friend WithEvents txt_item_code As TextBox
     Friend WithEvents Label35 As Label
     Friend WithEvents txt_stampline As ComboBox
     Friend WithEvents txt_fn_find_inch_mm As ComboBox
@@ -1313,4 +1312,5 @@ Partial Class frm_input
     Friend WithEvents TextBox8 As TextBox
     Friend WithEvents btn_add_price_manual As Button
     Friend WithEvents btn_del_price_manual As Button
+    Friend WithEvents txt_item_code As TextBox
 End Class

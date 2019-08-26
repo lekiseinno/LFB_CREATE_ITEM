@@ -10,5 +10,9 @@
         MsgBox("Create File : Success !")
         Me.Cursor = Cursors.Default
     End Sub
+
+    Private Sub Data_item_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
 
