@@ -125,6 +125,8 @@ Partial Class frm_input
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.btn_add_price_manual = New System.Windows.Forms.Button()
+        Me.btn_del_price_manual = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'txt_pono
@@ -904,6 +906,7 @@ Partial Class frm_input
         Me.Label37.Size = New System.Drawing.Size(27, 13)
         Me.Label37.TabIndex = 2005
         Me.Label37.Text = "calc"
+        Me.Label37.Visible = False
         '
         'Label38
         '
@@ -913,6 +916,7 @@ Partial Class frm_input
         Me.Label38.Size = New System.Drawing.Size(50, 13)
         Me.Label38.TabIndex = 2006
         Me.Label38.Text = "รวมหาผ่า"
+        Me.Label38.Visible = False
         '
         'Label39
         '
@@ -922,6 +926,7 @@ Partial Class frm_input
         Me.Label39.Size = New System.Drawing.Size(45, 13)
         Me.Label39.TabIndex = 2007
         Me.Label39.Text = "Label39"
+        Me.Label39.Visible = False
         '
         'TextBox1
         '
@@ -976,6 +981,7 @@ Partial Class frm_input
         Me.Label43.Size = New System.Drawing.Size(54, 13)
         Me.Label43.TabIndex = 2014
         Me.Label43.Text = "ผ่าหาราคา"
+        Me.Label43.Visible = False
         '
         'btn_save
         '
@@ -1039,6 +1045,7 @@ Partial Class frm_input
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(100, 20)
         Me.TextBox5.TabIndex = 3031
+        Me.TextBox5.Visible = False
         '
         'TextBox6
         '
@@ -1046,6 +1053,7 @@ Partial Class frm_input
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(100, 20)
         Me.TextBox6.TabIndex = 3032
+        Me.TextBox6.Visible = False
         '
         'TextBox7
         '
@@ -1053,6 +1061,7 @@ Partial Class frm_input
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.Size = New System.Drawing.Size(100, 20)
         Me.TextBox7.TabIndex = 3033
+        Me.TextBox7.Visible = False
         '
         'TextBox8
         '
@@ -1061,12 +1070,34 @@ Partial Class frm_input
         Me.TextBox8.Size = New System.Drawing.Size(312, 20)
         Me.TextBox8.TabIndex = 3034
         '
+        'btn_add_price_manual
+        '
+        Me.btn_add_price_manual.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_add_price_manual.Location = New System.Drawing.Point(1076, 141)
+        Me.btn_add_price_manual.Name = "btn_add_price_manual"
+        Me.btn_add_price_manual.Size = New System.Drawing.Size(24, 24)
+        Me.btn_add_price_manual.TabIndex = 3035
+        Me.btn_add_price_manual.Text = "+"
+        Me.btn_add_price_manual.UseVisualStyleBackColor = True
+        '
+        'btn_del_price_manual
+        '
+        Me.btn_del_price_manual.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_del_price_manual.Location = New System.Drawing.Point(1099, 141)
+        Me.btn_del_price_manual.Name = "btn_del_price_manual"
+        Me.btn_del_price_manual.Size = New System.Drawing.Size(24, 24)
+        Me.btn_del_price_manual.TabIndex = 3036
+        Me.btn_del_price_manual.Text = "-"
+        Me.btn_del_price_manual.UseVisualStyleBackColor = True
+        '
         'frm_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightCyan
         Me.ClientSize = New System.Drawing.Size(1153, 326)
+        Me.Controls.Add(Me.btn_del_price_manual)
+        Me.Controls.Add(Me.btn_add_price_manual)
         Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.TextBox7)
         Me.Controls.Add(Me.TextBox6)
@@ -1280,4 +1311,6 @@ Partial Class frm_input
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents TextBox7 As TextBox
     Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents btn_add_price_manual As Button
+    Friend WithEvents btn_del_price_manual As Button
 End Class

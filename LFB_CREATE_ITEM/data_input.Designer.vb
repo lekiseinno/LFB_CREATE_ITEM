@@ -135,6 +135,7 @@ Partial Class data_input
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox1.Size = New System.Drawing.Size(1087, 130)
         Me.TextBox1.TabIndex = 20
+        Me.TextBox1.Visible = False
         '
         'PrintDialog1
         '

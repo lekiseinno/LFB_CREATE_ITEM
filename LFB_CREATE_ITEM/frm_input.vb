@@ -77,7 +77,8 @@ Public Class frm_input
         'txt_long_inch_to_mm.Visible = False
 
 
-        add_head_data_bom_header()
+        add_head_data_bom_header_0()
+        add_head_data_bom_header_1()
         add_head_data_bom_line()
         add_head_data_defaut_dimension_sheet()
         add_head_data_item_master()
@@ -127,7 +128,8 @@ Public Class frm_input
         Else
 
             add_data_input_print() 'OK
-            add_data_bom_header() 'OK
+            add_data_bom_header_0() 'OK
+            add_data_bom_header_1() 'OK
             add_data_bom_line() 'OK
             add_data_defaut_dimension_sheet() 'OK
             add_data_Item_Unit_Of_Messure_Sheet() 'OK
@@ -138,8 +140,8 @@ Public Class frm_input
 
 
 
-    Sub add_head_data_bom_header()
-        data_excelfile.DataGrid_bom_header.ColumnCount = 4
+    Sub add_head_data_bom_header_0()
+        data_excelfile.DataGrid_bom_header_0.ColumnCount = 4
         'data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
         'data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
         'data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
@@ -150,9 +152,25 @@ Public Class frm_input
         row1 = New String() {"Production BOM Header", "99000771", "", ""}
         row2 = New String() {"", "", "", ""}
         row3 = New String() {"No.", "Description", "Unit of Measure Code", "Status"}
-        data_excelfile.DataGrid_bom_header.Rows.Add(row1)
-        data_excelfile.DataGrid_bom_header.Rows.Add(row2)
-        data_excelfile.DataGrid_bom_header.Rows.Add(row3)
+        data_excelfile.DataGrid_bom_header_0.Rows.Add(row1)
+        data_excelfile.DataGrid_bom_header_0.Rows.Add(row2)
+        data_excelfile.DataGrid_bom_header_0.Rows.Add(row3)
+    End Sub
+    Sub add_head_data_bom_header_1()
+        data_excelfile.DataGrid_bom_header_1.ColumnCount = 4
+        'data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
+        'data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
+        'data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
+        'data_excelfile.DataGrid_bom_header.Columns(3).Name = "Status"
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+        row1 = New String() {"Production BOM Header", "99000771", "", ""}
+        row2 = New String() {"", "", "", ""}
+        row3 = New String() {"No.", "Description", "Unit of Measure Code", "Status"}
+        data_excelfile.DataGrid_bom_header_1.Rows.Add(row1)
+        data_excelfile.DataGrid_bom_header_1.Rows.Add(row2)
+        data_excelfile.DataGrid_bom_header_1.Rows.Add(row3)
     End Sub
     Sub add_head_data_bom_line()
         data_excelfile.DataGrid_bom_line.ColumnCount = 20
@@ -316,8 +334,8 @@ Public Class frm_input
 
 
 
-    Sub add_data_bom_header()
-        data_excelfile.DataGrid_bom_header.ColumnCount = 4
+    Sub add_data_bom_header_0()
+        data_excelfile.DataGrid_bom_header_0.ColumnCount = 4
         'data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
         'data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
         'data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
@@ -328,7 +346,21 @@ Public Class frm_input
         row1 = New String() {"Production BOM Header", "id", "", ""}
         row2 = New String() {"", "", "", ""}
         row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "0"}
-        data_excelfile.DataGrid_bom_header.Rows.Add(row3)
+        data_excelfile.DataGrid_bom_header_0.Rows.Add(row3)
+    End Sub
+    Sub add_data_bom_header_1()
+        data_excelfile.DataGrid_bom_header_1.ColumnCount = 4
+        'data_excelfile.DataGrid_bom_header.Columns(0).Name = "No."
+        'data_excelfile.DataGrid_bom_header.Columns(1).Name = "Description"
+        'data_excelfile.DataGrid_bom_header.Columns(2).Name = "Unit of Measure Code"
+        'data_excelfile.DataGrid_bom_header.Columns(3).Name = "Status"
+        Dim row1 As String()
+        Dim row2 As String()
+        Dim row3 As String()
+        row1 = New String() {"Production BOM Header", "id", "", ""}
+        row2 = New String() {"", "", "", ""}
+        row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "1"}
+        data_excelfile.DataGrid_bom_header_1.Rows.Add(row3)
     End Sub
     Sub add_data_bom_line()
         data_excelfile.DataGrid_bom_line.ColumnCount = 20
@@ -1511,13 +1543,13 @@ Public Class frm_input
 
             'txt_pl_sp
             If txt_pl_sp.Text IsNot Nothing Then
-                Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl_sp.Text)))
+                Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
                 txt_price.Text = (xx - (xx * discount / 100))
             End If
 
             'net
             If txt_pl_net.Text IsNot Nothing Then
-                Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl_net.Text)))
+                Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
                 ' MsgBox(xx)
                 txt_price.Text = xx
 
@@ -1525,7 +1557,7 @@ Public Class frm_input
 
 
             If txt_pl.Text IsNot Nothing Then
-                Dim xx = (((c_width * c_long) / 1000000) * 10.765 * CDbl(Val(txt_pl.Text)))
+                Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text)))
                 txt_price.Text = (xx - (xx * discount / 100))
             End If
 
@@ -1534,7 +1566,10 @@ Public Class frm_input
 
         If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
             'OK mm.
-            Dim xx = (((c_width * c_long) / 144) * CDbl(Val(txt_pl.Text)))
+            'Dim xx = (((c_width * c_long) / 144) * CDbl(Val(txt_pl.Text)))
+
+            Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text)))
+            'Dim xx = ((((txt_wid_inch_to_mm.Text * (txt_long_inch_to_mm.Text)) / 144) * CDbl(Val(txt_pl.Text)))
             txt_price.Text = (xx - ((xx * discount) / 100))
         End If
     End Sub
@@ -2466,5 +2501,13 @@ Public Class frm_input
         frm_input_Load(e, e)
         MsgBox("Clear Complete", vbInformation, "")
         Refresh()
+    End Sub
+
+    Private Sub Btn_add_price_manual_Click(sender As Object, e As EventArgs) Handles btn_add_price_manual.Click
+        txt_price.Text = (txt_price.Text + 0.001)
+    End Sub
+
+    Private Sub Btn_del_price_manual_Click(sender As Object, e As EventArgs) Handles btn_del_price_manual.Click
+        txt_price.Text = (txt_price.Text - 0.001)
     End Sub
 End Class

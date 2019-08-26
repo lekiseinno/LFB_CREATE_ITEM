@@ -24,7 +24,7 @@ Partial Class data_excelfile
     Private Sub InitializeComponent()
         Me.lb_search = New System.Windows.Forms.Label()
         Me.txt_search = New System.Windows.Forms.TextBox()
-        Me.DataGrid_bom_header = New System.Windows.Forms.DataGridView()
+        Me.DataGrid_bom_header_0 = New System.Windows.Forms.DataGridView()
         Me.Tab_main = New System.Windows.Forms.TabControl()
         Me.Tab_bom_header = New System.Windows.Forms.TabPage()
         Me.Tab_bom_line = New System.Windows.Forms.TabPage()
@@ -35,10 +35,12 @@ Partial Class data_excelfile
         Me.DataGrid_Item_master = New System.Windows.Forms.DataGridView()
         Me.Tab_item_unit = New System.Windows.Forms.TabPage()
         Me.DataGrid_Item_unit = New System.Windows.Forms.DataGridView()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Tab_Code = New System.Windows.Forms.TabPage()
         Me.DataGrid_codetxt = New System.Windows.Forms.DataGridView()
         Me.btn_to_input = New System.Windows.Forms.Button()
-        CType(Me.DataGrid_bom_header, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Tab_bom_header_1 = New System.Windows.Forms.TabPage()
+        Me.DataGrid_bom_header_1 = New System.Windows.Forms.DataGridView()
+        CType(Me.DataGrid_bom_header_0, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tab_main.SuspendLayout()
         Me.Tab_bom_header.SuspendLayout()
         Me.Tab_bom_line.SuspendLayout()
@@ -49,8 +51,10 @@ Partial Class data_excelfile
         CType(Me.DataGrid_Item_master, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tab_item_unit.SuspendLayout()
         CType(Me.DataGrid_Item_unit, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage1.SuspendLayout()
+        Me.Tab_Code.SuspendLayout()
         CType(Me.DataGrid_codetxt, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Tab_bom_header_1.SuspendLayout()
+        CType(Me.DataGrid_bom_header_1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lb_search
@@ -70,15 +74,15 @@ Partial Class data_excelfile
         Me.txt_search.Size = New System.Drawing.Size(200, 19)
         Me.txt_search.TabIndex = 6
         '
-        'DataGrid_bom_header
+        'DataGrid_bom_header_0
         '
-        Me.DataGrid_bom_header.AllowUserToAddRows = False
-        Me.DataGrid_bom_header.AllowUserToDeleteRows = False
-        Me.DataGrid_bom_header.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_bom_header.Location = New System.Drawing.Point(1, 2)
-        Me.DataGrid_bom_header.Name = "DataGrid_bom_header"
-        Me.DataGrid_bom_header.Size = New System.Drawing.Size(1142, 297)
-        Me.DataGrid_bom_header.TabIndex = 5
+        Me.DataGrid_bom_header_0.AllowUserToAddRows = False
+        Me.DataGrid_bom_header_0.AllowUserToDeleteRows = False
+        Me.DataGrid_bom_header_0.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGrid_bom_header_0.Location = New System.Drawing.Point(1, 2)
+        Me.DataGrid_bom_header_0.Name = "DataGrid_bom_header_0"
+        Me.DataGrid_bom_header_0.Size = New System.Drawing.Size(1142, 297)
+        Me.DataGrid_bom_header_0.TabIndex = 5
         '
         'Tab_main
         '
@@ -87,7 +91,8 @@ Partial Class data_excelfile
         Me.Tab_main.Controls.Add(Me.Tab_default_dimension)
         Me.Tab_main.Controls.Add(Me.Tab_item_master)
         Me.Tab_main.Controls.Add(Me.Tab_item_unit)
-        Me.Tab_main.Controls.Add(Me.TabPage1)
+        Me.Tab_main.Controls.Add(Me.Tab_Code)
+        Me.Tab_main.Controls.Add(Me.Tab_bom_header_1)
         Me.Tab_main.Location = New System.Drawing.Point(1, 1)
         Me.Tab_main.Name = "Tab_main"
         Me.Tab_main.SelectedIndex = 0
@@ -97,7 +102,7 @@ Partial Class data_excelfile
         'Tab_bom_header
         '
         Me.Tab_bom_header.BackColor = System.Drawing.Color.Transparent
-        Me.Tab_bom_header.Controls.Add(Me.DataGrid_bom_header)
+        Me.Tab_bom_header.Controls.Add(Me.DataGrid_bom_header_0)
         Me.Tab_bom_header.Location = New System.Drawing.Point(4, 22)
         Me.Tab_bom_header.Name = "Tab_bom_header"
         Me.Tab_bom_header.Padding = New System.Windows.Forms.Padding(3)
@@ -189,16 +194,16 @@ Partial Class data_excelfile
         Me.DataGrid_Item_unit.Size = New System.Drawing.Size(1142, 297)
         Me.DataGrid_Item_unit.TabIndex = 0
         '
-        'TabPage1
+        'Tab_Code
         '
-        Me.TabPage1.Controls.Add(Me.DataGrid_codetxt)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1145, 301)
-        Me.TabPage1.TabIndex = 5
-        Me.TabPage1.Text = "Code.txt"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.Tab_Code.Controls.Add(Me.DataGrid_codetxt)
+        Me.Tab_Code.Location = New System.Drawing.Point(4, 22)
+        Me.Tab_Code.Name = "Tab_Code"
+        Me.Tab_Code.Padding = New System.Windows.Forms.Padding(3)
+        Me.Tab_Code.Size = New System.Drawing.Size(1145, 301)
+        Me.Tab_Code.TabIndex = 5
+        Me.Tab_Code.Text = "Code.txt"
+        Me.Tab_Code.UseVisualStyleBackColor = True
         '
         'DataGrid_codetxt
         '
@@ -219,6 +224,27 @@ Partial Class data_excelfile
         Me.btn_to_input.Text = "input"
         Me.btn_to_input.UseVisualStyleBackColor = True
         '
+        'Tab_bom_header_1
+        '
+        Me.Tab_bom_header_1.Controls.Add(Me.DataGrid_bom_header_1)
+        Me.Tab_bom_header_1.Location = New System.Drawing.Point(4, 22)
+        Me.Tab_bom_header_1.Name = "Tab_bom_header_1"
+        Me.Tab_bom_header_1.Padding = New System.Windows.Forms.Padding(3)
+        Me.Tab_bom_header_1.Size = New System.Drawing.Size(1145, 301)
+        Me.Tab_bom_header_1.TabIndex = 6
+        Me.Tab_bom_header_1.Text = "BOM H e a d e r 1"
+        Me.Tab_bom_header_1.UseVisualStyleBackColor = True
+        '
+        'DataGrid_bom_header_1
+        '
+        Me.DataGrid_bom_header_1.AllowUserToAddRows = False
+        Me.DataGrid_bom_header_1.AllowUserToDeleteRows = False
+        Me.DataGrid_bom_header_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGrid_bom_header_1.Location = New System.Drawing.Point(1, 2)
+        Me.DataGrid_bom_header_1.Name = "DataGrid_bom_header_1"
+        Me.DataGrid_bom_header_1.Size = New System.Drawing.Size(1142, 297)
+        Me.DataGrid_bom_header_1.TabIndex = 6
+        '
         'data_excelfile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -232,7 +258,7 @@ Partial Class data_excelfile
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "data_excelfile"
         Me.Text = "data_input"
-        CType(Me.DataGrid_bom_header, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGrid_bom_header_0, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tab_main.ResumeLayout(False)
         Me.Tab_bom_header.ResumeLayout(False)
         Me.Tab_bom_line.ResumeLayout(False)
@@ -243,15 +269,17 @@ Partial Class data_excelfile
         CType(Me.DataGrid_Item_master, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tab_item_unit.ResumeLayout(False)
         CType(Me.DataGrid_Item_unit, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage1.ResumeLayout(False)
+        Me.Tab_Code.ResumeLayout(False)
         CType(Me.DataGrid_codetxt, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Tab_bom_header_1.ResumeLayout(False)
+        CType(Me.DataGrid_bom_header_1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents lb_search As Label
     Friend WithEvents txt_search As TextBox
-    Friend WithEvents DataGrid_bom_header As DataGridView
+    Friend WithEvents DataGrid_bom_header_0 As DataGridView
     Friend WithEvents Tab_main As TabControl
     Friend WithEvents Tab_bom_header As TabPage
     Friend WithEvents Tab_bom_line As TabPage
@@ -262,7 +290,9 @@ Partial Class data_excelfile
     Friend WithEvents DataGrid_Default_dimension As DataGridView
     Friend WithEvents DataGrid_Item_master As DataGridView
     Friend WithEvents DataGrid_Item_unit As DataGridView
-    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents Tab_Code As TabPage
     Friend WithEvents DataGrid_codetxt As DataGridView
     Friend WithEvents btn_to_input As Button
+    Friend WithEvents Tab_bom_header_1 As TabPage
+    Friend WithEvents DataGrid_bom_header_1 As DataGridView
 End Class

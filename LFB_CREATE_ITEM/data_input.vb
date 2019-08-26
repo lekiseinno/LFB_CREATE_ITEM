@@ -6,7 +6,8 @@
 
         Dim nowstring = Now.ToString("yyyyMMdd_HHmm")
 
-        setup_conf.gen_excel(data_excelfile.DataGrid_bom_header, "D:\create_item\" + nowstring + "_Bom Header.xlsx")
+        setup_conf.gen_excel(data_excelfile.DataGrid_bom_header_0, "D:\create_item\" + nowstring + "_Bom Header_0.xlsx")
+        setup_conf.gen_excel(data_excelfile.DataGrid_bom_header_1, "D:\create_item\" + nowstring + "_Bom Header_1.xlsx")
         setup_conf.gen_excel(data_excelfile.DataGrid_bom_line, "D:\create_item\" + nowstring + "_Bom Line.xlsx")
         setup_conf.gen_excel(data_excelfile.DataGrid_Default_dimension, "D:\create_item\" + nowstring + "_Default_dimension.xlsx")
         setup_conf.gen_excel(data_excelfile.DataGrid_Item_master, "D:\create_item\" + nowstring + "_Item_master.xlsx")
@@ -36,7 +37,8 @@
 
         Dim nowstring = Now.ToString("yyyyMMdd_HHmm")
 
-        setup_conf.gen_excel(data_excelfile.DataGrid_bom_header, "D:\create_item\" + nowstring + "_Bom Header.csv")
+        setup_conf.gen_excel(data_excelfile.DataGrid_bom_header_0, "D:\create_item\" + nowstring + "_Bom Header_0.csv")
+        setup_conf.gen_excel(data_excelfile.DataGrid_bom_header_1, "D:\create_item\" + nowstring + "_Bom Header_1.csv")
         setup_conf.gen_excel(data_excelfile.DataGrid_bom_line, "D:\create_item\" + nowstring + "_Bom Line.csv")
         setup_conf.gen_excel(data_excelfile.DataGrid_Default_dimension, "D:\create_item\" + nowstring + "_Default_dimension.csv")
         setup_conf.gen_excel(data_excelfile.DataGrid_Item_master, "D:\create_item\" + nowstring + "_Item_master.csv")
@@ -108,6 +110,9 @@
 
     Private Sub DataGrid_input_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrid_input.CellContentClick
 
+        If e.ColumnIndex = 1 Then
+            MsgBox(DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value.ToString())
+        End If
     End Sub
 
     Private Sub Data_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
