@@ -136,7 +136,6 @@ Partial Class frm_input
         Me.txt_pono.Name = "txt_pono"
         Me.txt_pono.Size = New System.Drawing.Size(100, 21)
         Me.txt_pono.TabIndex = 3
-        Me.txt_pono.Text = "000"
         '
         'txt_width
         '
@@ -236,7 +235,6 @@ Partial Class frm_input
         Me.txt_cut_small.Name = "txt_cut_small"
         Me.txt_cut_small.Size = New System.Drawing.Size(80, 21)
         Me.txt_cut_small.TabIndex = 7
-        Me.txt_cut_small.Text = "200"
         '
         'txt_F1
         '
@@ -827,7 +825,7 @@ Partial Class frm_input
         '
         Me.txt_stampline.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.txt_stampline.FormattingEnabled = True
-        Me.txt_stampline.Items.AddRange(New Object() {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"})
+        Me.txt_stampline.Items.AddRange(New Object() {"A", "B", "C", "D", "E", "F", "G", "H", "==========", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "==========", "R", "S", "T", "U", "V", "W", "X", "===========", "Z"})
         Me.txt_stampline.Location = New System.Drawing.Point(715, 70)
         Me.txt_stampline.Name = "txt_stampline"
         Me.txt_stampline.Size = New System.Drawing.Size(128, 21)
@@ -1003,7 +1001,6 @@ Partial Class frm_input
         Me.txt_wid_inch_to_mm.Name = "txt_wid_inch_to_mm"
         Me.txt_wid_inch_to_mm.Size = New System.Drawing.Size(80, 21)
         Me.txt_wid_inch_to_mm.TabIndex = 2016
-        Me.txt_wid_inch_to_mm.Text = "2000"
         '
         'txt_long_inch_to_mm
         '
@@ -1013,7 +1010,6 @@ Partial Class frm_input
         Me.txt_long_inch_to_mm.Name = "txt_long_inch_to_mm"
         Me.txt_long_inch_to_mm.Size = New System.Drawing.Size(80, 21)
         Me.txt_long_inch_to_mm.TabIndex = 2017
-        Me.txt_long_inch_to_mm.Text = "2000"
         '
         'TextBox4
         '

@@ -50,7 +50,7 @@ Public Class frm_input
         txt_customer.Focus()
 
         txt_fn_find_inch_mm.Text = "มิล มิล"
-        txt_lon.Text = "B"
+        txt_lon.Text = "BC"
 
 
         'txt_item_code.Hide()
@@ -597,47 +597,41 @@ Public Class frm_input
 
     End Sub
     Sub add_data_input_print()
-        data_input.DataGrid_input.ColumnCount = 37
+        data_input.DataGrid_input.ColumnCount = 31
 
-        data_input.DataGrid_input.Columns(2).Visible = False
 
         data_input.DataGrid_input.Columns(0).Name = "Check"
-        data_input.DataGrid_input.Columns(1).Name = "Check"
-        data_input.DataGrid_input.Columns(2).Name = "#" '
-        data_input.DataGrid_input.Columns(3).Name = "PO Number" '
-        data_input.DataGrid_input.Columns(4).Name = " "
+        data_input.DataGrid_input.Columns(1).Name = "#"
+        data_input.DataGrid_input.Columns(2).Name = "PO Number"
+        data_input.DataGrid_input.Columns(3).Name = "width icnh"
+        data_input.DataGrid_input.Columns(4).Name = "long inch"
         data_input.DataGrid_input.Columns(5).Name = "width"
-        data_input.DataGrid_input.Columns(6).Name = "workinch"
-        data_input.DataGrid_input.Columns(7).Name = "cut"
-        data_input.DataGrid_input.Columns(8).Name = "long"
-        data_input.DataGrid_input.Columns(9).Name = "cut small"
-        data_input.DataGrid_input.Columns(10).Name = "F1"
-        data_input.DataGrid_input.Columns(11).Name = "F2"
-        data_input.DataGrid_input.Columns(12).Name = "F3"
-        data_input.DataGrid_input.Columns(13).Name = "F4"
-        data_input.DataGrid_input.Columns(14).Name = "F5"
-        data_input.DataGrid_input.Columns(15).Name = "F6"
-        data_input.DataGrid_input.Columns(16).Name = "F7"
-        data_input.DataGrid_input.Columns(17).Name = "F8"
-        data_input.DataGrid_input.Columns(18).Name = "Check"
-        data_input.DataGrid_input.Columns(19).Name = "chk_txt"
-        data_input.DataGrid_input.Columns(20).Name = "Check"
-        data_input.DataGrid_input.Columns(21).Name = "txt_search_pl"
-        data_input.DataGrid_input.Columns(22).Name = "txt_lon"
-        data_input.DataGrid_input.Columns(23).Name = "txt_count"
-        data_input.DataGrid_input.Columns(24).Name = "txt_count_cut"
-        data_input.DataGrid_input.Columns(25).Name = "txt_duedate"
-        data_input.DataGrid_input.Columns(26).Name = "txt_pl"
-        data_input.DataGrid_input.Columns(27).Name = "txt_pl_sp"
-        data_input.DataGrid_input.Columns(28).Name = "txt_pl_net"
-        data_input.DataGrid_input.Columns(29).Name = "txt_net_unit"
-        data_input.DataGrid_input.Columns(30).Name = "txt_met"
-        data_input.DataGrid_input.Columns(31).Name = "txt_meth"
-        data_input.DataGrid_input.Columns(32).Name = "txt_meth2"
-        data_input.DataGrid_input.Columns(33).Name = "txt_discount"
-        data_input.DataGrid_input.Columns(34).Name = "txt_sumdiscount"
-        data_input.DataGrid_input.Columns(35).Name = "txt_price"
-        data_input.DataGrid_input.Columns(36).Name = "txt_note"
+        data_input.DataGrid_input.Columns(6).Name = "long"
+        data_input.DataGrid_input.Columns(7).Name = "Paper Combination"
+        data_input.DataGrid_input.Columns(8).Name = "Lon"
+        data_input.DataGrid_input.Columns(9).Name = "P/L"
+        data_input.DataGrid_input.Columns(10).Name = "cut small"
+        data_input.DataGrid_input.Columns(11).Name = "F1"
+        data_input.DataGrid_input.Columns(12).Name = "F2"
+        data_input.DataGrid_input.Columns(13).Name = "F3"
+        data_input.DataGrid_input.Columns(14).Name = "F4"
+        data_input.DataGrid_input.Columns(15).Name = "F5"
+        data_input.DataGrid_input.Columns(16).Name = "F6"
+        data_input.DataGrid_input.Columns(17).Name = "F7"
+        data_input.DataGrid_input.Columns(18).Name = "F8"
+        data_input.DataGrid_input.Columns(19).Name = "cut"
+        data_input.DataGrid_input.Columns(20).Name = "Trim"
+        data_input.DataGrid_input.Columns(21).Name = "Total"
+        data_input.DataGrid_input.Columns(22).Name = "Meth"
+        data_input.DataGrid_input.Columns(23).Name = "Discount"
+        data_input.DataGrid_input.Columns(24).Name = "@Net P/L"
+        data_input.DataGrid_input.Columns(25).Name = "@Net Unit Price"
+        data_input.DataGrid_input.Columns(26).Name = "Sum Total"
+        data_input.DataGrid_input.Columns(27).Name = "due date"
+        data_input.DataGrid_input.Columns(28).Name = "Total Price"
+        data_input.DataGrid_input.Columns(29).Name = "Money Discount"
+        data_input.DataGrid_input.Columns(30).Name = "Remark"
+
 
 
 
@@ -646,14 +640,15 @@ Public Class frm_input
 
         row = New String() {
                             False,
-                            True,
-                            "1",
+                            " ",
                             txt_pono.Text,
-                            "",
+                            txt_wid_inch_to_mm.Text,
+                            txt_long_inch_to_mm.Text,
                             txt_width.Text,
-                            txt_workinch.Text,
-                            txt_cut.Text,
                             txt_long.Text,
+                            txt_search_pl.Text, 'Paper Combination
+                            txt_lon.Text,
+                            txt_pl.Text,
                             txt_cut_small.Text,
                             txt_F1.Text,
                             txt_F2.Text,
@@ -663,24 +658,17 @@ Public Class frm_input
                             txt_F6.Text,
                             txt_F7.Text,
                             txt_F8.Text,
-                            chk_checked.Text,
-                            txt_chk_txt.Text,
-                            chk_checked.Text,
-                            txt_search_pl.Text,
-                            txt_lon.Text,
+                            txt_cut.Text,
+                            txt_trim.Text,
                             txt_count.Text,
-                            txt_count_cut.Text,
-                            txt_duedate.Value,
-                            txt_pl.Text,
-                            txt_pl_sp.Text,
-                            txt_pl_net.Text,
-                            txt_net_unit.Text,
                             txt_met.Text,
-                            txt_meth.Text,
-                            txt_meth2.Text,
                             txt_discount.Text,
-                            txt_sumdiscount.Text,
+                            txt_pl_net.Text,
+                            txt_pl_sp.Text,
                             txt_price.Text,
+                            txt_duedate.Value,
+                            (txt_price.Text * txt_count.Text),
+                            txt_sumdiscount.Text,
                             txt_note.Text
                             }
         data_input.DataGrid_input.Rows.Add(row)
@@ -993,13 +981,17 @@ Public Class frm_input
         End Try
     End Sub
     Private Sub txt_lon_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_lon.SelectedIndexChanged
+
         set_field()
         gen_item_code()
         get_discounts()
     End Sub
     Private Sub txt_lon_TextChanged(sender As Object, e As EventArgs) Handles txt_lon.TextChanged
+        'set_field()
+        'gen_item_code()
         set_field()
         gen_item_code()
+        get_discounts()
     End Sub
     Private Sub txt_paper_5_TextChanged(sender As Object, e As EventArgs) Handles txt_paper_5.TextChanged
         If txt_paper_5.Text.Length = 4 Then
@@ -2043,8 +2035,8 @@ Public Class frm_input
             isqlcomman = "INSERT INTO LFB_ITEM$_Document_head " &
            "( [Document_No]" &
            ",[Customre_Code]" &
-           ",[Date])" &
-            " VALUES ('" & idocnumber & "','" & icustno & "','" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "')"
+           ",[Date],[DateCreate],[LastUpdate])" &
+            " VALUES ('" & idocnumber & "','" & icustno & "','" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "',GETDATE(),GETDATE())"
 
         Else
             idocnumber = txtdocnumber.Text
@@ -2086,6 +2078,8 @@ Public Class frm_input
         Dim itype As String = ""
 
         Dim iPO As String = ""
+        Dim iwidth_inch As String = ""
+        Dim ilong_inch As String = ""
         Dim iwidth As String = ""
         Dim ilong As String = ""
         Dim iwork_inch As String = ""
@@ -2112,6 +2106,11 @@ Public Class frm_input
         Dim iDiscountmoney As String = ""
         Dim ipriceunit As String = ""
         Dim iremark As String = ""
+        Dim iTotal As String = ""
+        Dim iMeth As String = ""
+        Dim iDiscount As String = ""
+        Dim iDuedate As String = ""
+        Dim iSumTotal As String = ""
         Dim idatecreate As Date
         Dim ilastupdate As Date
 
@@ -2168,105 +2167,107 @@ Public Class frm_input
                     Exit For
                 Else
 
-                    ino = i
-                    itype = .Rows(i).Cells(3).Value
-                    iPO = .Rows(i).Cells(4).Value
+                    ino = (i + 1)
+
+                    iPO = .Rows(i).Cells(2).Value
+                    iwidth_inch = .Rows(i).Cells(3).Value
+                    ilong_inch = .Rows(i).Cells(4).Value
                     iwidth = .Rows(i).Cells(5).Value
                     ilong = .Rows(i).Cells(6).Value
-                    iwork_inch = .Rows(i).Cells(7).Value
-                    icut = .Rows(i).Cells(8).Value
-                    icut_small = .Rows(i).Cells(9).Value
-                    iF1 = .Rows(i).Cells(10).Value
-                    iF2 = .Rows(i).Cells(11).Value
-                    iF3 = .Rows(i).Cells(12).Value
-                    iF4 = .Rows(i).Cells(13).Value
-                    iF5 = .Rows(i).Cells(14).Value
-                    iF6 = .Rows(i).Cells(15).Value
-                    iF7 = .Rows(i).Cells(16).Value
-                    iF8 = .Rows(i).Cells(17).Value
-                    iCheckeds = .Rows(i).Cells(18).Value
-                    iTrim = .Rows(i).Cells(19).Value
-                    iChecked = .Rows(i).Cells(20).Value
-                    iPaperCombination = .Rows(i).Cells(21).Value
-                    iLon = .Rows(i).Cells(22).Value
-                    iPL = .Rows(i).Cells(23).Value
-                    ispecialPL = .Rows(i).Cells(24).Value
-                    iNetPL = .Rows(i).Cells(25).Value
-                    iNetUnitPrice = .Rows(i).Cells(26).Value
-                    iMethfinddiscount = .Rows(i).Cells(27).Value
-                    iDiscountmoney = .Rows(i).Cells(28).Value
-                    ipriceunit = .Rows(i).Cells(29).Value
+                    iPaperCombination = .Rows(i).Cells(7).Value
+                    iLon = .Rows(i).Cells(8).Value
+                    iPL = .Rows(i).Cells(9).Value
+                    icut_small = .Rows(i).Cells(10).Value
+                    iF1 = .Rows(i).Cells(11).Value
+                    iF2 = .Rows(i).Cells(12).Value
+                    iF3 = .Rows(i).Cells(13).Value
+                    iF4 = .Rows(i).Cells(14).Value
+                    iF5 = .Rows(i).Cells(15).Value
+                    iF6 = .Rows(i).Cells(16).Value
+                    iF7 = .Rows(i).Cells(17).Value
+                    iF8 = .Rows(i).Cells(18).Value
+                    icut = .Rows(i).Cells(19).Value
+                    iTrim = .Rows(i).Cells(20).Value
+                    iTotal = .Rows(i).Cells(21).Value
+                    iMeth = .Rows(i).Cells(22).Value
+                    iDiscount = .Rows(i).Cells(23).Value
+                    iNetPL = .Rows(i).Cells(24).Value
+                    iNetUnitPrice = .Rows(i).Cells(25).Value
+                    ipriceunit = .Rows(i).Cells(26).Value
+                    iDuedate = .Rows(i).Cells(27).Value
+                    iSumTotal = .Rows(i).Cells(28).Value
+                    iDiscountmoney = .Rows(i).Cells(29).Value
                     iremark = .Rows(i).Cells(30).Value
 
 
-
-
                     isqlcomman = "INSERT INTO [dbo].[LFB_ITEM$_Document_line]" &
-           "([Document_No]" &
-           ",[No_]" &
-           ",[Type]" &
-           ",[PO]" &
-           ",[width]" &
-           ",[long]" &
-           ",[work_inch]" &
-          " ,[cut]" &
-           ",[cut_small]" &
-           ",[F1]" &
-          ",[F2]" &
-           ",[F3]" &
-           ",[F4]" &
-           ",[F5]" &
-           ",[F6]" &
-           ",[F7]" &
-           ",[F8]" &
-           ",[Checkeds]" &
-           ",[Trim]" &
-           ",[Checked]" &
-           ",[Paper Combination]" &
-           ",[Lon]" &
-           ",[PL]" &
-           ",[special PL]" &
-           ",[Net PL]" &
-           ",[Net Unit Price]" &
-           ",[Meth find discount]" &
-           ",[Discount money]" &
-           ",[price unit]" &
-           ",[remark]" &
-           ",[datecreate]" &
-           ",[lastupdate]) " &
-            " VALUES (" &
-           "'" & idocnumber & "'," &
-           "'" & ino & "'," &
-            "'" & itype & "'," &
-           "'" & iPO & "'," &
-            "'" & iwidth & "'," &
-            "'" & ilong & "'," &
-          "'" & iwork_inch & "'," &
-           "'" & icut & "'," &
-            "'" & icut_small & "'," &
-            "'" & iF1 & "'," &
-            "'" & iF2 & "'," &
-            "'" & iF3 & "'," &
-            "'" & iF4 & "'," &
-            "'" & iF5 & "'," &
-            "'" & iF6 & "'," &
-            "'" & iF7 & "'," &
-            "'" & iF8 & "'," &
-            "'" & iCheckeds & "'," &
-            "'" & iTrim & "'," &
-            "'" & iChecked & "'," &
-            "'" & iPaperCombination & "'," &
-            "'" & iLon & "'," &
-            "'" & iPL & "'," &
-            "'" & ispecialPL & "'," &
-            "'" & iNetPL & "'," &
-            "'" & iNetUnitPrice & "'," &
-            "'" & iMethfinddiscount & "'," &
-            "'" & iDiscountmoney & "'," &
-            "'" & ipriceunit & "'," &
-            "'" & iremark & "'," &
-            "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "'," &
-            "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "')"
+                                    "([Document_No]" &
+                                    ",[No_]" &
+                                    ",[PO]" &
+                                    ",[width_inch]" &
+                                    ",[long_inch]" &
+                                    ",[width]" &
+                                    ",[long]" &
+                                    ",[Paper Combination]" &
+                                    ",[Lon]" &
+                                    ",[PL]" &
+                                    ",[cut_small]" &
+                                    ",[F1]" &
+                                    ",[F2]" &
+                                    ",[F3]" &
+                                    ",[F4]" &
+                                    ",[F5]" &
+                                    ",[F6]" &
+                                    ",[F7]" &
+                                    ",[F8]" &
+                                    ",[cut]" &
+                                    ",[Trim]" &
+                                    ",[Total]" &
+                                    ",[Meth find discount]" &
+                                    ",[Discount]" &
+                                    ",[Net PL]" &
+                                    ",[Net Unit Price]" &
+                                    ",[price unit]" &
+                                    ",[DueDate]" &
+                                    ",[SumTotal]" &
+                                    ",[Discount money]" &
+                                    ",[remark]" &
+                                    ",[datecreate]" &
+                                    ",[lastupdate]" &
+                                ") VALUES (" &
+                                "'" & idocnumber & "'," &
+                                "'" & ino & "'," &
+                                "'" & iPO & "'," &
+                                "'" & iwidth_inch & "'," &
+                                "'" & ilong_inch & "'," &
+                                "'" & iwidth & "'," &
+                                "'" & ilong & "'," &
+                                "'" & iPaperCombination & "'," &
+                                "'" & iLon & "'," &
+                                "'" & iPL & "'," &
+                                "'" & icut_small & "'," &
+                                "'" & iF1 & "'," &
+                                "'" & iF2 & "'," &
+                                "'" & iF3 & "'," &
+                                "'" & iF4 & "'," &
+                                "'" & iF5 & "'," &
+                                "'" & iF6 & "'," &
+                                "'" & iF7 & "'," &
+                                "'" & iF8 & "'," &
+                                "'" & icut & "'," &
+                                "'" & iTrim & "'," &
+                                "'" & iTotal & "'," &
+                                "'" & iMeth & "'," &
+                                "'" & iDiscount & "'," &
+                                "'" & iNetPL & "'," &
+                                "'" & iNetUnitPrice & "'," &
+                                "'" & ipriceunit & "'," &
+                                "'" & iDuedate & "'," &
+                                "'" & iSumTotal & "'," &
+                                "'" & iDiscountmoney & "'," &
+                                "'" & iremark & "'," &
+                                "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "'," &
+                                "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "')"
 
                 End If
 

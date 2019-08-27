@@ -29,8 +29,6 @@ Partial Class data_input
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.DataGrid_input = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.btn_print = New System.Windows.Forms.Button()
         Me.btn_to_excel = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -38,6 +36,7 @@ Partial Class data_input
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
+        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         CType(Me.DataGrid_input, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -56,7 +55,7 @@ Partial Class data_input
         Me.btn_excel.Name = "btn_excel"
         Me.btn_excel.Size = New System.Drawing.Size(130, 22)
         Me.btn_excel.TabIndex = 16
-        Me.btn_excel.Text = "Export Excel (*.xlsx)"
+        Me.btn_excel.Text = "Export Excel (*.xls)"
         Me.btn_excel.UseVisualStyleBackColor = True
         '
         'btn_copy
@@ -89,25 +88,13 @@ Partial Class data_input
         Me.DataGrid_input.AllowUserToAddRows = False
         Me.DataGrid_input.AllowUserToDeleteRows = False
         Me.DataGrid_input.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGrid_input.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
+        Me.DataGrid_input.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1})
         Me.DataGrid_input.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGrid_input.Location = New System.Drawing.Point(0, 22)
         Me.DataGrid_input.Name = "DataGrid_input"
         Me.DataGrid_input.ReadOnly = True
         Me.DataGrid_input.Size = New System.Drawing.Size(1153, 306)
         Me.DataGrid_input.TabIndex = 12
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "chk1"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "chk2"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
         '
         'btn_print
         '
@@ -154,6 +141,12 @@ Partial Class data_input
         'PrintDocument1
         '
         '
+        'Column1
+        '
+        Me.Column1.HeaderText = "chk1"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
         'data_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -186,11 +179,10 @@ Partial Class data_input
     Friend WithEvents DataGrid_input As DataGridView
     Friend WithEvents btn_print As Button
     Friend WithEvents btn_to_excel As Button
-    Friend WithEvents Column1 As DataGridViewCheckBoxColumn
-    Friend WithEvents Column2 As DataGridViewCheckBoxColumn
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents PageSetupDialog1 As PageSetupDialog
+    Friend WithEvents Column1 As DataGridViewCheckBoxColumn
 End Class

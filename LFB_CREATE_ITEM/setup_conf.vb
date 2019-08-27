@@ -85,37 +85,7 @@ Public Module setup_conf
     Sub gen_excel(datagridname, filename)
 
         Try
-            'Dim xlApp As Microsoft.Office.Interop.Excel.Application
-            'Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
-            'Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
-            'Dim misValue As Object = System.Reflection.Missing.Value
-            'Dim i As Integer
-            'Dim j As Integer
-            'xlApp = New Microsoft.Office.Interop.Excel.Application
-            'xlWorkBook = xlApp.Workbooks.Add(misValue)
-            'xlWorkSheet = xlWorkBook.Sheets("sheet1")
-            'xlWorkSheet.Columns.AutoFit()
 
-            'For k As Integer = 1 To datagridname.Columns.Count
-            '    xlWorkSheet.Cells(1, k) = datagridname.Columns(k - 1).HeaderText
-            'Next
-
-            'For i = 0 To datagridname.RowCount - 1
-            '    For j = 0 To datagridname.ColumnCount - 1
-            '        For k As Integer = 1 To datagridname.Columns.Count
-            '            'xlWorkSheet.Cells(1, k) = datagridname.Columns(k - 1).HeaderText
-            '            xlWorkSheet.Cells(i + 2, j + 1) = datagridname(j, i).Value.ToString()
-            '        Next
-            '    Next
-            'Next
-
-            'xlWorkSheet.SaveAs((filename))
-            'xlWorkBook.Close()
-            'xlApp.Quit()
-
-            'releaseObject(xlApp)
-            'releaseObject(xlWorkBook)
-            'releaseObject(xlWorkSheet)
 
 
 
@@ -240,8 +210,13 @@ Public Module setup_conf
 
 
     Sub gen_txt()
-        Dim nowstring = Now.ToString("yyyyMMdd_HHmm")
-        Dim filePath = "D:\create_item\" + nowstring + "_code.txt"
+
+        Dim nowdate = Now.ToString("yyyy-MM-dd")
+        Dim nowtime = Now.ToString("HHmm")
+
+
+
+        Dim filePath = "D:\create_item\" + nowdate + "\" + nowtime + "_code.txt"
 
         Using writer As New System.IO.StreamWriter(filePath)
             For row As Integer = 0 To data_excelfile.DataGrid_codetxt.RowCount - 1
