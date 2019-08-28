@@ -108,12 +108,9 @@ Partial Class frm_input
         Me.lb_cuscode = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.Label38 = New System.Windows.Forms.Label()
-        Me.Label39 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.Label42 = New System.Windows.Forms.Label()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.btn_save = New System.Windows.Forms.Button()
         Me.txt_wid_inch_to_mm = New System.Windows.Forms.TextBox()
@@ -145,7 +142,6 @@ Partial Class frm_input
         Me.txt_width.Name = "txt_width"
         Me.txt_width.Size = New System.Drawing.Size(80, 21)
         Me.txt_width.TabIndex = 4
-        Me.txt_width.Text = "2000"
         '
         'txt_workinch
         '
@@ -172,7 +168,6 @@ Partial Class frm_input
         Me.txt_long.Name = "txt_long"
         Me.txt_long.Size = New System.Drawing.Size(80, 21)
         Me.txt_long.TabIndex = 5
-        Me.txt_long.Text = "2000"
         '
         'Label3
         '
@@ -798,7 +793,6 @@ Partial Class frm_input
         Me.txt_desc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.txt_desc.Location = New System.Drawing.Point(111, 135)
         Me.txt_desc.Name = "txt_desc"
-        Me.txt_desc.ReadOnly = True
         Me.txt_desc.Size = New System.Drawing.Size(312, 26)
         Me.txt_desc.TabIndex = 2002
         '
@@ -834,7 +828,7 @@ Partial Class frm_input
         'txt_fn_find_inch_mm
         '
         Me.txt_fn_find_inch_mm.FormattingEnabled = True
-        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว นิ้ว", "มิล มิล"})
+        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว นิ้ว", "มิล มิล", "นิ้ว มิล", "มิล นิ้ว"})
         Me.txt_fn_find_inch_mm.Location = New System.Drawing.Point(109, 19)
         Me.txt_fn_find_inch_mm.Name = "txt_fn_find_inch_mm"
         Me.txt_fn_find_inch_mm.Size = New System.Drawing.Size(100, 21)
@@ -916,16 +910,6 @@ Partial Class frm_input
         Me.Label38.Text = "รวมหาผ่า"
         Me.Label38.Visible = False
         '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(456, 135)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(45, 13)
-        Me.Label39.TabIndex = 2007
-        Me.Label39.Text = "Label39"
-        Me.Label39.Visible = False
-        '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(602, 111)
@@ -952,24 +936,6 @@ Partial Class frm_input
         Me.TextBox3.Size = New System.Drawing.Size(197, 51)
         Me.TextBox3.TabIndex = 2011
         Me.TextBox3.Visible = False
-        '
-        'Label41
-        '
-        Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(345, 5)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(45, 13)
-        Me.Label41.TabIndex = 2012
-        Me.Label41.Text = "Label41"
-        '
-        'Label42
-        '
-        Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(426, 5)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(45, 13)
-        Me.Label42.TabIndex = 2013
-        Me.Label42.Text = "Label42"
         '
         'Label43
         '
@@ -1106,12 +1072,9 @@ Partial Class frm_input
         Me.Controls.Add(Me.txt_wid_inch_to_mm)
         Me.Controls.Add(Me.btn_save)
         Me.Controls.Add(Me.Label43)
-        Me.Controls.Add(Me.Label42)
-        Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Label39)
         Me.Controls.Add(Me.Label38)
         Me.Controls.Add(Me.Label37)
         Me.Controls.Add(Me.lb_cuscode)
@@ -1288,12 +1251,9 @@ Partial Class frm_input
     Friend WithEvents lb_cuscode As Label
     Friend WithEvents Label37 As Label
     Friend WithEvents Label38 As Label
-    Friend WithEvents Label39 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents Label41 As Label
-    Friend WithEvents Label42 As Label
     Friend WithEvents Label43 As Label
     Friend WithEvents btn_save As Button
     Friend WithEvents txt_wid_inch_to_mm As TextBox

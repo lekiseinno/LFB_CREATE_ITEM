@@ -1039,7 +1039,7 @@ Public Class frm_input
 
             txt_wid_inch_to_mm.Visible = False
             txt_long_inch_to_mm.Visible = False
-        Else
+        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
             txt_sub_desc.Enabled = True
             txt_customer.Enabled = True
             txt_pono.Enabled = True
@@ -1050,6 +1050,32 @@ Public Class frm_input
             txt_cut_small.Enabled = True
 
             txt_wid_inch_to_mm.Visible = True
+            txt_long_inch_to_mm.Visible = True
+
+        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+            txt_sub_desc.Enabled = True
+            txt_customer.Enabled = True
+            txt_pono.Enabled = True
+            txt_width.Enabled = True
+            txt_workinch.Enabled = True
+            txt_cut.Enabled = True
+            txt_long.Enabled = True
+            txt_cut_small.Enabled = True
+
+            txt_wid_inch_to_mm.Visible = True
+            txt_long_inch_to_mm.Visible = False
+
+        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
+            txt_sub_desc.Enabled = True
+            txt_customer.Enabled = True
+            txt_pono.Enabled = True
+            txt_width.Enabled = True
+            txt_workinch.Enabled = True
+            txt_cut.Enabled = True
+            txt_long.Enabled = True
+            txt_cut_small.Enabled = True
+
+            txt_wid_inch_to_mm.Visible = False
             txt_long_inch_to_mm.Visible = True
         End If
     End Sub
@@ -2318,5 +2344,97 @@ Public Class frm_input
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
+    End Sub
+
+
+
+    Private Sub txt_pono_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_pono.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_width_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_width.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_wid_inch_to_mm_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_wid_inch_to_mm.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_long_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_long.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_long_inch_to_mm_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_long_inch_to_mm.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_sub_desc_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_sub_desc.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_cut_small_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_cut_small.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F1_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F1.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F2_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F2.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F3_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F3.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F4_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F4.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F5_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F5.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F6_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F6.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F7_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F7.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
+    End Sub
+
+    Private Sub txt_F8_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F8.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            SendKeys.Send("{TAB}")
+        End If
     End Sub
 End Class
