@@ -23,42 +23,49 @@ Partial Class frm_listdata
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(350, 729)
         Me.DataGridView1.TabIndex = 0
         '
-        'DataGridView2
+        'CrystalReportViewer1
         '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(349, 0)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(659, 729)
-        Me.DataGridView2.TabIndex = 1
+        Me.CrystalReportViewer1.ActiveViewIndex = -1
+        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CrystalReportViewer1.Location = New System.Drawing.Point(347, 0)
+        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(658, 729)
+        Me.CrystalReportViewer1.TabIndex = 2
+        Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
         'frm_listdata
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.ClientSize = New System.Drawing.Size(1008, 729)
-        Me.Controls.Add(Me.DataGridView2)
+        Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "frm_listdata"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_listdata"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
 End Class
