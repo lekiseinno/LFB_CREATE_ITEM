@@ -124,6 +124,9 @@ Partial Class frm_input
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.btn_add_price_manual = New System.Windows.Forms.Button()
         Me.btn_del_price_manual = New System.Windows.Forms.Button()
+        Me.lb_couter_1 = New System.Windows.Forms.Label()
+        Me.lb_couter_2 = New System.Windows.Forms.Label()
+        Me.lb_couter_3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txt_pono
@@ -1052,12 +1055,42 @@ Partial Class frm_input
         Me.btn_del_price_manual.Text = "-"
         Me.btn_del_price_manual.UseVisualStyleBackColor = True
         '
+        'lb_couter_1
+        '
+        Me.lb_couter_1.AutoSize = True
+        Me.lb_couter_1.Location = New System.Drawing.Point(1082, 167)
+        Me.lb_couter_1.Name = "lb_couter_1"
+        Me.lb_couter_1.Size = New System.Drawing.Size(63, 13)
+        Me.lb_couter_1.TabIndex = 3037
+        Me.lb_couter_1.Text = "lb_couter_1"
+        '
+        'lb_couter_2
+        '
+        Me.lb_couter_2.AutoSize = True
+        Me.lb_couter_2.Location = New System.Drawing.Point(1082, 185)
+        Me.lb_couter_2.Name = "lb_couter_2"
+        Me.lb_couter_2.Size = New System.Drawing.Size(63, 13)
+        Me.lb_couter_2.TabIndex = 3038
+        Me.lb_couter_2.Text = "lb_couter_2"
+        '
+        'lb_couter_3
+        '
+        Me.lb_couter_3.AutoSize = True
+        Me.lb_couter_3.Location = New System.Drawing.Point(1082, 203)
+        Me.lb_couter_3.Name = "lb_couter_3"
+        Me.lb_couter_3.Size = New System.Drawing.Size(63, 13)
+        Me.lb_couter_3.TabIndex = 3039
+        Me.lb_couter_3.Text = "lb_couter_3"
+        '
         'frm_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightCyan
         Me.ClientSize = New System.Drawing.Size(1153, 326)
+        Me.Controls.Add(Me.lb_couter_3)
+        Me.Controls.Add(Me.lb_couter_2)
+        Me.Controls.Add(Me.lb_couter_1)
         Me.Controls.Add(Me.btn_del_price_manual)
         Me.Controls.Add(Me.btn_add_price_manual)
         Me.Controls.Add(Me.TextBox8)
@@ -1269,4 +1302,7 @@ Partial Class frm_input
     Friend WithEvents btn_add_price_manual As Button
     Friend WithEvents btn_del_price_manual As Button
     Friend WithEvents txt_item_code As TextBox
+    Friend WithEvents lb_couter_1 As Label
+    Friend WithEvents lb_couter_2 As Label
+    Friend WithEvents lb_couter_3 As Label
 End Class

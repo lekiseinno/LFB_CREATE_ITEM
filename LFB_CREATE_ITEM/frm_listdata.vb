@@ -10,78 +10,68 @@ Public Class frm_listdata
     Sub get_data(datagrid)
         Try
             Dim sql As String
-            sql = "SELECT [Document_No],[Customre_Code],[Date] FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Document_head]"
+            sql = "SELECT TOP 100 [Document_No],[Customre_Code],[Date] FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Document_head] ORDER BY Date DESC"
             Dim query As New SqlCommand(sql, connection)
             Dim dataadapter As New SqlDataAdapter(query)
             Dim ds As New DataSet()
             dataadapter.Fill(ds, "a")
             datagrid.DataSource = ds
             datagrid.DataMember = "a"
-            'datagrid.Columns(0).Width = 150
-            'datagrid.Columns(1).Width = 465
-            'datagrid.Columns(2).Width = 465
-            'customize(datagrid)
+
+            datagrid.Columns.Item(0).Width = 100
+            datagrid.Columns.Item(1).Width = 100
+            datagrid.Columns.Item(2).Width = 80
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+    End Sub
+
+    Sub get_data_filter(datagrid, filter)
+        Try
+            Dim sql As String
+            sql = "SELECT TOP 10 [Document_No],[Customre_Code],[Date] FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Document_head] "
+            sql &= "WHERE   (
+                                [Document_No] LIKE '%" & filter & "%'   
+                                OR
+                                [Customre_Code] LIKE '%" & filter & "%'
+                            )"
+            sql &= "ORDER BY Date DESC"
+            Dim query As New SqlCommand(sql, connection)
+            Dim dataadapter As New SqlDataAdapter(query)
+            Dim ds As New DataSet()
+            dataadapter.Fill(ds, "a")
+            datagrid.DataSource = ds
+            datagrid.DataMember = "a"
+
+
+            datagrid.Columns.Item(0).Width = 100
+            datagrid.Columns.Item(1).Width = 100
+            datagrid.Columns.Item(2).Width = 80
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
 
     Dim select_1
-    Dim select_2
-    Dim select_3
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         Try
             With DataGridView1
                 select_1 = DataGridView1.CurrentRow.Cells(0).Value
             End With
-
-
+            Me.Cursor = Cursors.WaitCursor
             CrytalReport()
-
-            '      Dim sql As String
-
-            '      sql = "SELECT [Document_No]
-            ',[No_]
-            ',[Type]
-            ',[PO]
-            ',[width]
-            ',[long]
-            ',[work_inch]
-            ',[cut]
-            ',[cut_small]
-            ',[F1]
-            ',[F2]
-            ',[F3]
-            ',[F4]
-            ',[F5]
-            ',[F6]
-            ',[F7]
-            ',[F8]
-            ',[Checkeds]
-            ',[Trim]
-            ',[Checked]
-            ',[Paper Combination]
-            ',[Lon]
-            ',[PL]
-            ',[special PL]
-            ',[Net PL]
-            ',[Net Unit Price]
-            ',[Meth find discount]
-            ',[Discount money]
-            ',[price unit]
-            ',[remark]
-            ',[datecreate]
-            ',[lastupdate] "
-            '      sql &= "FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Document_line] "
-            '      sql &= "WHERE [LFB_ITEM$].[dbo].[LFB_ITEM$_Document_line].[Document_No] = '" & select_1 & "' "
-            '      Dim query As New SqlCommand(sql, connection)
-            '      Dim dataadapter As New SqlDataAdapter(query)
-            '      Dim ds As New DataSet()
-            '      dataadapter.Fill(ds, "Type_ID")
-            '      DataGridView2.DataSource = ds
-            '      DataGridView2.DataMember = "Type_ID"
-
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical)
+        End Try
+    End Sub
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        Try
+            With DataGridView1
+                select_1 = DataGridView1.CurrentRow.Cells(0).Value
+            End With
+            Me.Cursor = Cursors.WaitCursor
+            CrytalReport()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
@@ -102,16 +92,8 @@ Public Class frm_listdata
 
         Dim rpt As New ReportDocument()
         Dim directory As String = My.Application.Info.DirectoryPath
-        'rpt.Load(directory & "\\myCrystalReport.rpt")
-        'rpt.Load("E:\PSC_Project\PSC_JOB\PSC_JOB\" & istrreport)
         rpt.Load(directory & "\\" & istrreport)
 
-
-        ''Dim con As New OdbcConnection("DSN=sample;UID=userid;PWD=password;")
-        ''con.Open()
-
-        '  rpt.DataSourceConnections.Item(connStr, "psc_job")
-        ' rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, path)
 
         With crConnectionInfo
             .ServerName = "192.168.110.125"
@@ -119,14 +101,8 @@ Public Class frm_listdata
             .Password = "Inno20i9"
         End With
 
-        'This code works for both user tables and stored 
-        'procedures. Set the CrTables to the Tables collection 
-        'of the report 
-
         CrTables = rpt.Database.Tables
 
-        'Loop through each table in the report and apply the 
-        'LogonInfo information 
 
         For Each CrTable In CrTables
 
@@ -134,13 +110,8 @@ Public Class frm_listdata
             crtableLogoninfo.ConnectionInfo = crConnectionInfo
             CrTable.ApplyLogOnInfo(crtableLogoninfo)
 
-            'crTable.Location = crConnectionInfo.DatabaseName & ".dbo."
-            'CrTable.Location.Substring(CrTable.Location.LastIndexOf(".") + 1)
-
-            'crTable.Location = crConnectionInfo.DatabaseName & ".dbo." &crTable.Location.Substring(crTable.Location.LastIndexOf(".") + 1)
         Next
 
-        'Set the viewer to the report object to be previewed. 
 
 
 
@@ -164,21 +135,19 @@ Public Class frm_listdata
 
         End If
 
-
-
-
-
-        'crParameterValues.Clear()
-        'crParameterValues.Add(crParameterDiscreteValue)
-        'crParameterFieldDefinition.ApplyCurrentValues(crParameterValues)
-
-
-
-        'rpt.SetDataSource("psc_job")
         Me.CrystalReportViewer1.Refresh()
         Me.CrystalReportViewer1.ReportSource = rpt
 
-
+        Me.Cursor = Cursors.Default
     End Sub
+
+    Private Sub Txt_search_doc_TextChanged(sender As Object, e As EventArgs) Handles txt_search_doc.TextChanged
+        If txt_search_doc.Text <> "" Then
+            get_data_filter(DataGridView1, txt_search_doc.Text)
+        Else
+            get_data(DataGridView1)
+        End If
+    End Sub
+
 
 End Class

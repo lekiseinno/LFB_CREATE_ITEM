@@ -140,8 +140,8 @@ Public Module setup_conf
 
 
             For Each dc In dt.Columns
-                colIndex = colIndex + 1
-                excel.Cells(1, colIndex) = dc.ColumnName
+                'colIndex = colIndex + 0
+                'excel.Cells(1, colIndex) = dc.ColumnName
             Next
 
 
@@ -152,7 +152,7 @@ Public Module setup_conf
                 colIndex = 0
                 For Each dc In dt.Columns
                     colIndex = colIndex + 1
-                    excel.Cells(rowIndex + 1, colIndex) = dr(dc.ColumnName)
+                    excel.Cells(rowIndex + 0, colIndex) = dr(dc.ColumnName)
                 Next
             Next
 
@@ -161,7 +161,7 @@ Public Module setup_conf
 
 
             With wSheet.Range("A1", "AZ1")
-                .Font.Bold = True
+                '.Font.Bold = True
                 .HorizontalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter
             End With
 
@@ -215,7 +215,6 @@ Public Module setup_conf
         Dim nowtime = Now.ToString("HHmm")
 
 
-
         Dim filePath = "D:\create_item\" + nowdate + "\" + nowtime + "_code.txt"
 
         Using writer As New System.IO.StreamWriter(filePath)
@@ -227,17 +226,5 @@ Public Module setup_conf
         End Using
     End Sub
 
-
-
-
-    'Sub bom_header()
-    '    data_excelfile.DataGrid_bom_header.ColumnCount = 4
-    '    Dim bom_header1 As String()
-    '    Dim bom_header2 As String()
-    '    bom_header1 = New String() {"Production BOM Header", "99000771"}
-    '    bom_header2 = New String() {"", ""}
-    '    data_excelfile.DataGrid_bom_header.Rows.Add(bom_header1)
-    '    data_excelfile.DataGrid_bom_header.Rows.Add(bom_header2)
-    'End Sub
 
 End Module

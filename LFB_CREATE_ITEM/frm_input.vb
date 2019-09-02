@@ -42,7 +42,25 @@ Public Class frm_input
     Dim wei As Double
     Dim ww
     Dim grossweight As Double
-
+    Dim sub_item_desc
+    Dim tz As Double
+    Dim c_width As Double
+    Dim c_long As Double
+    Dim PL As Double
+    Dim m
+    Dim cut As Integer
+    Dim cutcut As Integer
+    Dim Trim As Integer
+    Dim mw
+    Dim mww
+    Dim S
+    Dim DK
+    Dim HK
+    Dim Price As Double = 0.00
+    Dim Maximum = 0.03
+    Dim couter_add = 3
+    Dim couter = 0
+    Dim couter_del = -3
     Private Sub frm_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         ' setup_conf.bom_header()
@@ -136,9 +154,6 @@ Public Class frm_input
             add_data_item_master() 'OK
         End If
     End Sub
-
-
-
     Sub add_head_data_bom_header_0()
         data_excelfile.DataGrid_bom_header_0.ColumnCount = 4
         Dim row1 As String()
@@ -177,7 +192,6 @@ Public Class frm_input
         data_excelfile.DataGrid_bom_line.Rows.Add(row01)
         data_excelfile.DataGrid_bom_line.Rows.Add(row02)
         data_excelfile.DataGrid_bom_line.Rows.Add(row03)
-
 
     End Sub
     Sub add_head_data_defaut_dimension_sheet()
@@ -221,19 +235,13 @@ Public Class frm_input
         data_excelfile.DataGrid_Item_unit.Rows.Add(row2)
         data_excelfile.DataGrid_Item_unit.Rows.Add(row3)
     End Sub
-
-
-
-
-
-
     Sub add_data_bom_header_0()
         data_excelfile.DataGrid_bom_header_0.ColumnCount = 4
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
-        row1 = New String() {"Production BOM Header", "id", "", ""}
-        row2 = New String() {"", "", "", ""}
+        'row1 = New String() {"Production BOM Header", "id", "", ""}
+        'row2 = New String() {"", "", "", ""}
         row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "0"}
         data_excelfile.DataGrid_bom_header_0.Rows.Add(row3)
     End Sub
@@ -242,14 +250,13 @@ Public Class frm_input
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
-        row1 = New String() {"Production BOM Header", "id", "", ""}
-        row2 = New String() {"", "", "", ""}
+        'row1 = New String() {"Production BOM Header", "id", "", ""}
+        'row2 = New String() {"", "", "", ""}
         row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "1"}
         data_excelfile.DataGrid_bom_header_1.Rows.Add(row3)
     End Sub
     Sub add_data_bom_line()
         data_excelfile.DataGrid_bom_line.ColumnCount = 20
-
         Dim row01 As String()
         Dim row02 As String()
         Dim row1 As String()
@@ -680,15 +687,6 @@ Public Class frm_input
         row = New String() {txt_item_code.Text}
         data_excelfile.DataGrid_codetxt.Rows.Add(row)
     End Sub
-
-
-
-
-
-
-
-
-
     Function get_m(minput)
         Dim m_m_m As String = ""
         If minput = "" Then m_m_m = "00"
@@ -1214,7 +1212,6 @@ Public Class frm_input
         gen_item_code()
     End Sub
 
-    Dim sub_item_desc
     Private Sub txt_sub_desc_TextChanged(sender As Object, e As EventArgs) Handles txt_sub_desc.TextChanged
         gen_item_des()
 
@@ -1315,19 +1312,6 @@ Public Class frm_input
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
-    Dim tz As Double
-    Dim c_width As Double
-    Dim c_long As Double
-    Dim PL As Double
-    Dim m
-    Dim cut As Integer
-    Dim cutcut As Integer
-    Dim Trim As Integer
-    Dim mw
-    Dim mww
-    Dim S
-    Dim DK
-    Dim HK
     Sub get_price_mm()
         c_width = CDbl(Val(txt_width.Text))
         c_long = CDbl(Val(txt_long.Text))
@@ -1339,21 +1323,25 @@ Public Class frm_input
             'txt_pl_sp
             If txt_pl_sp.Text IsNot Nothing Then
                 Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
-                txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
+
             End If
 
             'net
             If txt_pl_net.Text IsNot Nothing Then
                 Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
-                ' MsgBox(xx)
-                txt_price.Text = Math.Round(xx, 2)
+                Price = Math.Round(xx, 2)
+                txt_price.Text = Price
 
             End If
 
 
             If txt_pl.Text IsNot Nothing Then
                 Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text)))
-                txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
+
             End If
 
 
@@ -1366,20 +1354,87 @@ Public Class frm_input
             'txt_pl_sp
             If txt_pl_sp.Text IsNot Nothing Then
                 Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
-                txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
+            End If
+
+            'net
+            If txt_pl_net.Text IsNot Nothing Then
+                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
+                Price = Math.Round(xx, 2)
+                txt_price.Text = Price
+            End If
+
+
+            If txt_pl.Text IsNot Nothing Then
+                Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text))))
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
+            End If
+
+
+        End If
+
+
+        If txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
+
+
+
+            'txt_pl_sp
+            If txt_pl_sp.Text IsNot Nothing Then
+                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
+                'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
             End If
 
             'net
             If txt_pl_net.Text IsNot Nothing Then
                 Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
                 ' MsgBox(xx)
-                txt_price.Text = Math.Round(xx, 2)
+                'txt_price.Text = Math.Round(xx, 2)
+                Price = Math.Round(xx, 2)
+                txt_price.Text = Price
             End If
 
 
             If txt_pl.Text IsNot Nothing Then
                 Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text))))
-                txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
+            End If
+
+
+        End If
+
+        If txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+
+
+
+            'txt_pl_sp
+            If txt_pl_sp.Text IsNot Nothing Then
+                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
+                'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
+            End If
+
+            'net
+            If txt_pl_net.Text IsNot Nothing Then
+                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
+                ' MsgBox(xx)
+                'txt_price.Text = Math.Round(xx, 2)
+                Price = Math.Round(xx, 2)
+                txt_price.Text = Price
+            End If
+
+
+            If txt_pl.Text IsNot Nothing Then
+                Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text))))
+                'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
+                Price = Math.Round((xx - (xx * discount / 100)), 2)
+                txt_price.Text = Price
             End If
 
 
@@ -1699,11 +1754,12 @@ Public Class frm_input
         '    txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
         'End If
 
-        'If txt_fn_find_inch_mm.Text = "มิล มิล" Then
-        '    txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
-        'End If
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+            txt_trim.Text = Math.Ceiling((m - (wid * cut)))
+        End If
 
-        txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+        'txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+
 
         get_discounts()
         get_price_mm()
@@ -1719,7 +1775,6 @@ Public Class frm_input
         'txt_price.Text = Math.Round((CDbl(Val(txt_price.Text)) - ((CDbl(Val(txt_price.Text)) * CDbl(Val(txt_discount.Text))) / 100)), 2)
 
     End Sub
-
     Sub get_price_sp()
         connection.Close()
         connection.Open()
@@ -1916,6 +1971,12 @@ Public Class frm_input
             Savedetail(idocnumber)
             MsgBox("บันทึกสำเร็จ")
             MsgBox("Docnumber = " & idocnumber)
+
+
+            Me.Controls.Clear() 'removes all the controls on the form
+            InitializeComponent() 'load all the controls again
+            frm_input_Load(e, e)
+            Refresh()
 
         End If
     End Sub
@@ -2329,109 +2390,133 @@ Public Class frm_input
         MsgBox("Clear Complete", vbInformation, "")
         Refresh()
     End Sub
-
     Private Sub Btn_add_price_manual_Click(sender As Object, e As EventArgs) Handles btn_add_price_manual.Click
         Try
-            txt_price.Text = (txt_price.Text + 0.01)
+            couter = couter + 1
+
+            If couter <= couter_add Then
+
+                txt_price.Text = (txt_price.Text + 0.01)
+
+                'lb_couter_1.Text = couter
+                'lb_couter_2.Text = couter
+                'lb_couter_3.Text = couter
+
+            Else
+                couter = couter_add
+            End If
+
+
+
+            'If couter <= 3 Then
+            '    cou
+            'End If
+
+            'If txt_price.Text <= (Price + Maximum) Then
+            '    txt_price.Text = (txt_price.Text + 0.01)
+
+            'End If
+
+            'MsgBox(" | txt_price.Text = " & txt_price.Text & vbNewLine & " | Price = " & Price & vbNewLine & " | (Price+0.01) = " & (Price + 0.01) & vbNewLine & " | Price+Maximum = " & (Price + Maximum))
+
+
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
-
     Private Sub Btn_del_price_manual_Click(sender As Object, e As EventArgs) Handles btn_del_price_manual.Click
         Try
-            txt_price.Text = (txt_price.Text - 0.01)
+            couter = couter - 1
+
+            If couter >= couter_del Then
+
+                txt_price.Text = (txt_price.Text - 0.01)
+
+                'lb_couter_1.Text = couter
+                'lb_couter_2.Text = couter
+                'lb_couter_3.Text = couter
+
+            Else
+                couter = couter_del
+            End If
+
+
+            'txt_price.Text = (txt_price.Text - 0.01)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
-
-
-
     Private Sub txt_pono_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_pono.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_width_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_width.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_wid_inch_to_mm_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_wid_inch_to_mm.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_long_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_long.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_long_inch_to_mm_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_long_inch_to_mm.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_sub_desc_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_sub_desc.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_cut_small_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_cut_small.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F1_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F1.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F2_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F2.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F3_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F3.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F4_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F4.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F5_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F5.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F6_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F6.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F7_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F7.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
     End Sub
-
     Private Sub txt_F8_KeyDown(sender As Object, e As KeyEventArgs) Handles txt_F8.KeyDown
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")

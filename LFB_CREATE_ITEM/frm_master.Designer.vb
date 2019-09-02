@@ -54,7 +54,7 @@ Partial Class frm_master
         Me.Progress_system = New System.Windows.Forms.ToolStripProgressBar()
         Me.timer_datenow = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_print_frm = New System.Windows.Forms.Button()
         Me.btn_item = New System.Windows.Forms.Button()
         Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_input = New System.Windows.Forms.Button()
@@ -199,7 +199,7 @@ Partial Class frm_master
         'get_versions
         '
         Me.get_versions.Name = "get_versions"
-        Me.get_versions.Size = New System.Drawing.Size(139, 22)
+        Me.get_versions.Size = New System.Drawing.Size(180, 22)
         Me.get_versions.Text = "get_versions"
         '
         'footer
@@ -253,7 +253,7 @@ Partial Class frm_master
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button1)
+        Me.GroupBox1.Controls.Add(Me.btn_print_frm)
         Me.GroupBox1.Controls.Add(Me.btn_item)
         Me.GroupBox1.Controls.Add(Me.btn_report)
         Me.GroupBox1.Controls.Add(Me.btn_input)
@@ -265,19 +265,19 @@ Partial Class frm_master
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = " M e n u "
         '
-        'Button1
+        'btn_print_frm
         '
-        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Button1.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(6, 252)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
-        Me.Button1.Size = New System.Drawing.Size(172, 50)
-        Me.Button1.TabIndex = 106
-        Me.Button1.Text = "List"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btn_print_frm.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_print_frm.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_print_frm.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.compose1
+        Me.btn_print_frm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_print_frm.Location = New System.Drawing.Point(6, 252)
+        Me.btn_print_frm.Name = "btn_print_frm"
+        Me.btn_print_frm.Padding = New System.Windows.Forms.Padding(25, 0, 0, 0)
+        Me.btn_print_frm.Size = New System.Drawing.Size(172, 50)
+        Me.btn_print_frm.TabIndex = 106
+        Me.btn_print_frm.Text = "Print"
+        Me.btn_print_frm.UseVisualStyleBackColor = True
         '
         'btn_item
         '
@@ -424,6 +424,7 @@ Partial Class frm_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(241, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1350, 729)
         Me.Controls.Add(Me.panel_datagrid)
@@ -433,12 +434,12 @@ Partial Class frm_master
         Me.Controls.Add(Me.GB_header)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.header
-        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(1366, 768)
         Me.MinimumSize = New System.Drawing.Size(1366, 768)
         Me.Name = "frm_master"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LFB ::"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.header.ResumeLayout(False)
         Me.header.PerformLayout()
         Me.footer.ResumeLayout(False)
@@ -493,5 +494,5 @@ Partial Class frm_master
     Friend WithEvents GradeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_supply As Button
     Friend WithEvents btn_item As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btn_print_frm As Button
 End Class
