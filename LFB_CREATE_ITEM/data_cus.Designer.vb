@@ -36,7 +36,7 @@ Partial Class data_cus
         Me.DataGrid_Cus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGrid_Cus.Location = New System.Drawing.Point(0, 22)
         Me.DataGrid_Cus.Name = "DataGrid_Cus"
-        Me.DataGrid_Cus.Size = New System.Drawing.Size(1153, 378)
+        Me.DataGrid_Cus.Size = New System.Drawing.Size(1153, 306)
         Me.DataGrid_Cus.TabIndex = 0
         '
         'txt_search
@@ -87,7 +87,7 @@ Partial Class data_cus
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(1155, 400)
+        Me.ClientSize = New System.Drawing.Size(1155, 328)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btn_excel)
         Me.Controls.Add(Me.btn_copy)

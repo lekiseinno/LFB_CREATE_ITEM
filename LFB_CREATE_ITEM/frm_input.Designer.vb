@@ -1063,6 +1063,7 @@ Partial Class frm_input
         Me.lb_couter_1.Size = New System.Drawing.Size(63, 13)
         Me.lb_couter_1.TabIndex = 3037
         Me.lb_couter_1.Text = "lb_couter_1"
+        Me.lb_couter_1.Visible = False
         '
         'lb_couter_2
         '
@@ -1072,6 +1073,7 @@ Partial Class frm_input
         Me.lb_couter_2.Size = New System.Drawing.Size(63, 13)
         Me.lb_couter_2.TabIndex = 3038
         Me.lb_couter_2.Text = "lb_couter_2"
+        Me.lb_couter_2.Visible = False
         '
         'lb_couter_3
         '
@@ -1081,6 +1083,7 @@ Partial Class frm_input
         Me.lb_couter_3.Size = New System.Drawing.Size(63, 13)
         Me.lb_couter_3.TabIndex = 3039
         Me.lb_couter_3.Text = "lb_couter_3"
+        Me.lb_couter_3.Visible = False
         '
         'frm_input
         '

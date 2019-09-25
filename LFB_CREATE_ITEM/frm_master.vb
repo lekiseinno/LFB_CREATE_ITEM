@@ -1,4 +1,6 @@
-﻿Public Class frm_master
+﻿Imports System.ComponentModel
+
+Public Class frm_master
     Dim close_data()
     Dim close_frm()
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
@@ -132,42 +134,34 @@
 
 
     ' close_data = {data_cus, data_excelfile, data_input, data_item, data_PL}
-    ' close_frm = {frm_cus, frm_excel_file, frm_input, frm_item, frm_PL}
+    ' close_frm = {frm_cus,  frm_input, frm_item, frm_PL}
+
 
 
     Private Sub btn_input_Click(sender As Object, e As EventArgs) Handles btn_input.Click
         close_data = {data_cus, data_excelfile, data_item, data_PL}
-        close_frm = {frm_cus, frm_excel_file, frm_item, frm_PL}
+        close_frm = {frm_cus, frm_item, frm_PL}
         customize_datagrid(data_input, close_data)
         customize_frm(frm_input, close_frm)
     End Sub
 
     Private Sub btn_item_Click(sender As Object, e As EventArgs) Handles btn_item.Click
         close_data = {data_cus, data_excelfile, data_input, data_PL}
-        close_frm = {frm_cus, frm_excel_file, frm_input, frm_PL}
+        close_frm = {frm_cus, frm_input, frm_PL}
         customize_datagrid(data_item, close_data)
         customize_frm(frm_item, close_frm)
     End Sub
 
-    Private Sub btn_excelfile_Click(sender As Object, e As EventArgs) 
-        close_data = {data_cus, data_input, data_item, data_PL}
-        close_frm = {frm_cus, frm_input, frm_item, frm_PL}
-        customize_datagrid(data_excelfile, close_data)
-        customize_frm(frm_excel_file, close_frm)
-    End Sub
-
-
-
     Private Sub btn_cus_Click(sender As Object, e As EventArgs) Handles btn_cus.Click
         close_data = {data_excelfile, data_input, data_item, data_PL}
-        close_frm = {frm_excel_file, frm_input, frm_item, frm_PL}
+        close_frm = {frm_input, frm_item, frm_PL}
         customize_datagrid(data_cus, close_data)
         customize_frm(frm_cus, close_frm)
     End Sub
 
     Private Sub btn_PL_Click(sender As Object, e As EventArgs) Handles btn_PL.Click
         close_data = {data_cus, data_excelfile, data_input, data_item}
-        close_frm = {frm_cus, frm_excel_file, frm_input, frm_item}
+        close_frm = {frm_cus, frm_input, frm_item}
         customize_datagrid(data_PL, close_data)
         customize_frm(frm_PL, close_frm)
     End Sub
@@ -176,7 +170,16 @@
         frm_listdata.Show()
     End Sub
 
-    Private Sub Get_versions_Click(sender As Object, e As EventArgs) Handles get_versions.Click
+    Private Sub Btn_discount_Click(sender As Object, e As EventArgs) Handles btn_discount.Click
+        close_data = {data_cus, data_excelfile, data_input, data_item, data_PL}
+        close_frm = {frm_cus, frm_input, frm_item, frm_PL, frm_listdata}
+        customize_datagrid(data_cus_discount, close_data)
+        customize_frm(frm_cus_discount, close_frm)
+    End Sub
 
+
+
+    Private Sub frm_master_Closed(sender As Object, e As EventArgs) Handles Me.Closed
+        frm_login.Close()
     End Sub
 End Class

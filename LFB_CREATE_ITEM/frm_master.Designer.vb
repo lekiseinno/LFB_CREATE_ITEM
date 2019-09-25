@@ -59,8 +59,8 @@ Partial Class frm_master
         Me.btn_report = New System.Windows.Forms.Button()
         Me.btn_input = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btn_discount = New System.Windows.Forms.Button()
         Me.btn_supply = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.btn_grade_gram = New System.Windows.Forms.Button()
         Me.btn_PL = New System.Windows.Forms.Button()
         Me.btn_cus = New System.Windows.Forms.Button()
@@ -199,7 +199,7 @@ Partial Class frm_master
         'get_versions
         '
         Me.get_versions.Name = "get_versions"
-        Me.get_versions.Size = New System.Drawing.Size(180, 22)
+        Me.get_versions.Size = New System.Drawing.Size(139, 22)
         Me.get_versions.Text = "get_versions"
         '
         'footer
@@ -323,8 +323,8 @@ Partial Class frm_master
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.btn_discount)
         Me.GroupBox2.Controls.Add(Me.btn_supply)
-        Me.GroupBox2.Controls.Add(Me.Button2)
         Me.GroupBox2.Controls.Add(Me.btn_grade_gram)
         Me.GroupBox2.Controls.Add(Me.btn_PL)
         Me.GroupBox2.Controls.Add(Me.btn_cus)
@@ -335,29 +335,29 @@ Partial Class frm_master
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "  C o n f i g  "
         '
+        'btn_discount
+        '
+        Me.btn_discount.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btn_discount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
+        Me.btn_discount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_discount.Location = New System.Drawing.Point(6, 276)
+        Me.btn_discount.Name = "btn_discount"
+        Me.btn_discount.Size = New System.Drawing.Size(160, 30)
+        Me.btn_discount.TabIndex = 105
+        Me.btn_discount.Text = "Customer Discount"
+        Me.btn_discount.UseVisualStyleBackColor = True
+        '
         'btn_supply
         '
         Me.btn_supply.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_supply.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_supply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_supply.Location = New System.Drawing.Point(6, 201)
+        Me.btn_supply.Location = New System.Drawing.Point(6, 204)
         Me.btn_supply.Name = "btn_supply"
         Me.btn_supply.Size = New System.Drawing.Size(160, 30)
         Me.btn_supply.TabIndex = 104
         Me.btn_supply.Text = "Supplier"
         Me.btn_supply.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(6, 53)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(160, 30)
-        Me.Button2.TabIndex = 103
-        Me.Button2.Text = "bbb"
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'btn_grade_gram
         '
@@ -376,7 +376,7 @@ Partial Class frm_master
         Me.btn_PL.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_PL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_PL.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_PL.Location = New System.Drawing.Point(6, 273)
+        Me.btn_PL.Location = New System.Drawing.Point(6, 55)
         Me.btn_PL.Name = "btn_PL"
         Me.btn_PL.Size = New System.Drawing.Size(160, 30)
         Me.btn_PL.TabIndex = 101
@@ -388,7 +388,7 @@ Partial Class frm_master
         Me.btn_cus.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_cus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.btn_cus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_cus.Location = New System.Drawing.Point(6, 237)
+        Me.btn_cus.Location = New System.Drawing.Point(6, 240)
         Me.btn_cus.Name = "btn_cus"
         Me.btn_cus.Size = New System.Drawing.Size(160, 30)
         Me.btn_cus.TabIndex = 100
@@ -488,11 +488,11 @@ Partial Class frm_master
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents client_path_resource As ToolStripMenuItem
     Friend WithEvents client_path_startup As ToolStripMenuItem
-    Friend WithEvents Button2 As Button
     Friend WithEvents btn_grade_gram As Button
     Friend WithEvents ConfigToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GradeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btn_supply As Button
     Friend WithEvents btn_item As Button
     Friend WithEvents btn_print_frm As Button
+    Friend WithEvents btn_discount As Button
 End Class

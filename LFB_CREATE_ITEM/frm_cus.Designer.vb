@@ -67,7 +67,7 @@ Partial Class frm_cus
         Me.btn_save.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btn_save.Image = Global.LFB_CREATE_ITEM.My.Resources.Resources.memorycard
         Me.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btn_save.Location = New System.Drawing.Point(837, 200)
+        Me.btn_save.Location = New System.Drawing.Point(991, 149)
         Me.btn_save.Name = "btn_save"
         Me.btn_save.Padding = New System.Windows.Forms.Padding(20, 0, 0, 0)
         Me.btn_save.Size = New System.Drawing.Size(150, 45)
@@ -117,7 +117,7 @@ Partial Class frm_cus
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1153, 257)
+        Me.ClientSize = New System.Drawing.Size(1153, 326)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)

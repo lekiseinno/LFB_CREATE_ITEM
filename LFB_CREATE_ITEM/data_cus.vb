@@ -19,7 +19,7 @@ Public Class data_cus
             datagrid.Columns(0).Width = 150
             datagrid.Columns(1).Width = 465
             datagrid.Columns(2).Width = 465
-            customize(datagrid)
+            'customize(datagrid)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
@@ -29,7 +29,7 @@ Public Class data_cus
     Sub customize(datagrid)
         For i = 0 To datagrid.Rows.Count - 1
             Dim r As DataGridViewRow = datagrid.Rows(i)
-            r.Height = 500
+            r.Height = 200
         Next
     End Sub
 End Class

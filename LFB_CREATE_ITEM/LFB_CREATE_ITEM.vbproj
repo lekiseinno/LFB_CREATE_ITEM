@@ -32,7 +32,7 @@
     <SuiteName>LFB Project</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -141,6 +141,12 @@
     <Compile Include="data_cus.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="data_cus_discount.Designer.vb">
+      <DependentUpon>data_cus_discount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="data_cus_discount.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="data_excelfile.Designer.vb">
       <DependentUpon>data_excelfile.vb</DependentUpon>
     </Compile>
@@ -171,10 +177,10 @@
     <Compile Include="frm_cus.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_excel_file.Designer.vb">
-      <DependentUpon>frm_excel_file.vb</DependentUpon>
+    <Compile Include="frm_cus_discount.Designer.vb">
+      <DependentUpon>frm_cus_discount.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_excel_file.vb">
+    <Compile Include="frm_cus_discount.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_input.Designer.vb">
@@ -195,6 +201,12 @@
     <Compile Include="frm_listdata.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_login.Designer.vb">
+      <DependentUpon>frm_login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_login.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_PL.Designer.vb">
       <DependentUpon>frm_PL.vb</DependentUpon>
     </Compile>
@@ -206,12 +218,6 @@
     </Compile>
     <Compile Include="frm_master.Designer.vb">
       <DependentUpon>frm_master.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_print.Designer.vb">
-      <DependentUpon>frm_print.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_print.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MSScriptControl\ScriptControl.vb" />
@@ -236,6 +242,9 @@
     <EmbeddedResource Include="data_cus.resx">
       <DependentUpon>data_cus.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="data_cus_discount.resx">
+      <DependentUpon>data_cus_discount.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="data_excelfile.resx">
       <DependentUpon>data_excelfile.vb</DependentUpon>
     </EmbeddedResource>
@@ -251,8 +260,8 @@
     <EmbeddedResource Include="frm_cus.resx">
       <DependentUpon>frm_cus.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_excel_file.resx">
-      <DependentUpon>frm_excel_file.vb</DependentUpon>
+    <EmbeddedResource Include="frm_cus_discount.resx">
+      <DependentUpon>frm_cus_discount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_input.resx">
       <DependentUpon>frm_input.vb</DependentUpon>
@@ -263,11 +272,11 @@
     <EmbeddedResource Include="frm_listdata.resx">
       <DependentUpon>frm_listdata.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_login.resx">
+      <DependentUpon>frm_login.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_PL.resx">
       <DependentUpon>frm_PL.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_print.resx">
-      <DependentUpon>frm_print.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -304,6 +313,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pricelist-icon.png" />
+    <None Include="Resources\pricelist-Pic.jpg" />
     <Content Include="SqlServerTypes\Loader.cs" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -341,21 +352,6 @@
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x64">
-      <Visible>False</Visible>
-      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.SqlServer.SQLSysClrTypes.12.0.x86">
-      <Visible>False</Visible>
-      <ProductName>Microsoft® System CLR Types for SQL Server® 2014 %28x86%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="SAP.CrystalReports14.NET.2.0">
-      <Visible>False</Visible>
-      <ProductName>SAP Crystal Reports Runtime Engine for .NET Framework</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>

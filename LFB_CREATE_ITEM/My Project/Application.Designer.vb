@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.LFB_CREATE_ITEM.frm_master
+            Me.MainForm = Global.LFB_CREATE_ITEM.frm_login
         End Sub
     End Class
 End Namespace
