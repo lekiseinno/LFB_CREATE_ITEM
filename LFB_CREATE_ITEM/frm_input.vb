@@ -42,7 +42,7 @@ Public Class frm_input
     Dim wei As Double
     Dim ww
     Dim grossweight As Double
-    Dim sub_item_desc
+    Dim sub_item_desc As Double = 0.00
     Dim tz As Double
     Dim c_width As Double
     Dim c_long As Double
@@ -61,19 +61,35 @@ Public Class frm_input
     Dim couter_add = 3
     Dim couter = 0
     Dim couter_del = -3
+
+
+    Dim real_decimal
     Private Sub frm_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        load_frm()
+        add_head_data_bom_header_0()
+        add_head_data_bom_header_1()
+        add_head_data_bom_line()
+        add_head_data_defaut_dimension_sheet()
+        add_head_data_item_master()
+        add_head_data_Item_Unit_Of_Messure_Sheet()
+    End Sub
+    Sub load_frm()
 
-        ' setup_conf.bom_header()
 
-        txt_customer.Focus()
+        lb_real_width.Text = ""
+        lb_real_long.Text = ""
+        lb_real_decimal.Text = ""
+        txt_discount.Text = ""
 
         txt_fn_find_inch_mm.Text = "มิล มิล"
         txt_lon.Text = "BC"
 
+        'txt_wid_inch_to_mm.Visible = False
+        'txt_long_inch_to_mm.Visible = False
 
-        'txt_item_code.Hide()
-        'txt_desc.Hide()
-        ' txt_search_pl.Hide()
+        'txt_width.Visible = False
+        'txt_long.Visible = False
+
 
         get_item_customer()
         get_unit()
@@ -91,31 +107,28 @@ Public Class frm_input
         txt_subsub_dscc.Visible = False
 
 
-        'txt_wid_inch_to_mm.Visible = False
-        'txt_long_inch_to_mm.Visible = False
 
 
-        add_head_data_bom_header_0()
-        add_head_data_bom_header_1()
-        add_head_data_bom_line()
-        add_head_data_defaut_dimension_sheet()
-        add_head_data_item_master()
-        add_head_data_Item_Unit_Of_Messure_Sheet()
+        If txt_customers.Text = "" Then
+            lb_cuscode.Text = ""
+        End If
     End Sub
     Sub get_unit()
         If txt_fn_find_inch_mm.Text = "" Then
-            txt_pono.Enabled = False
-            txt_width.Enabled = False
-            txt_workinch.Enabled = False
-            txt_cut.Enabled = False
-            txt_long.Enabled = False
-            txt_cut_small.Enabled = False
+            'txt_pono.Enabled = False
+            'txt_width.Enabled = False
+            'txt_workinch.Enabled = False
+            'txt_cut.Enabled = False
+            ''txt_long.Enabled = False
+            'txt_cut_small.Enabled = False
         End If
     End Sub
     Sub get_item_customer()
         Try
             Dim sql As String
-            sql = "SELECT * FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer] "
+            sql = " SELECT  *
+                    FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer]
+                    "
             Dim query As New SqlCommand(sql, connection)
             Dim dataadapter As New SqlDataAdapter(query)
             Dim dt As New DataTable
@@ -129,10 +142,11 @@ Public Class frm_input
             Dim dr As DataRow = dt.NewRow
             dr("Customer_Name") = ""
             dt.Rows.InsertAt(dr, 0)
-            With txt_customer
+            With txt_customers
                 .DataSource = dt
                 .DisplayMember = "Customer_Name"
                 .ValueMember = "Customer_Code"
+                .DropDownWidth = 250
             End With
             dt = Nothing
             ds = Nothing
@@ -180,15 +194,12 @@ Public Class frm_input
     End Sub
     Sub add_head_data_bom_line()
         data_excelfile.DataGrid_bom_line.ColumnCount = 20
-
         Dim row01 As String()
         Dim row02 As String()
         Dim row03 As String()
-
         row01 = New String() {"Production BOM Line", "99000772"}
         row02 = New String() {"", ""}
         row03 = New String() {"Production BOM No.", "Line No.", "Version Code", "Type", "No.", "Description", "Unit of Measure Code", "Quantity", "Position", "Position 2", "Position 3", "Production Lead Time", "Routing Link Code", "Scrap %", "Variant Code", "Comment", "Starting Date", "Ending Date", "Quantity per", "Ratio"}
-
         data_excelfile.DataGrid_bom_line.Rows.Add(row01)
         data_excelfile.DataGrid_bom_line.Rows.Add(row02)
         data_excelfile.DataGrid_bom_line.Rows.Add(row03)
@@ -198,9 +209,7 @@ Public Class frm_input
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
-
         data_excelfile.DataGrid_Default_dimension.ColumnCount = 6
-
         row1 = New String() {"Production BOM Line", "352"}
         row2 = New String() {" ", " "}
         row3 = New String() {"Table ID", "No.", "Dimension Code", "Dimension Value Code", "Value Posting", "Table Name"}
@@ -209,7 +218,6 @@ Public Class frm_input
         data_excelfile.DataGrid_Default_dimension.Rows.Add(row3)
     End Sub
     Sub add_head_data_item_master()
-
         data_excelfile.DataGrid_Item_master.ColumnCount = 65
         Dim row1 As String()
         Dim row2 As String()
@@ -227,7 +235,6 @@ Public Class frm_input
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
-
         row1 = New String() {"Item Unit of Measure", "5404"}
         row2 = New String() {" ", " "}
         row3 = New String() {"Item No.", "Code", "Qty. per Unit of Measure", "Length", "Width", "Code", "Weight"}
@@ -240,8 +247,6 @@ Public Class frm_input
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
-        'row1 = New String() {"Production BOM Header", "id", "", ""}
-        'row2 = New String() {"", "", "", ""}
         row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "0"}
         data_excelfile.DataGrid_bom_header_0.Rows.Add(row3)
     End Sub
@@ -250,8 +255,6 @@ Public Class frm_input
         Dim row1 As String()
         Dim row2 As String()
         Dim row3 As String()
-        'row1 = New String() {"Production BOM Header", "id", "", ""}
-        'row2 = New String() {"", "", "", ""}
         row3 = New String() {txt_item_code.Text, txt_desc.Text, "SHT", "1"}
         data_excelfile.DataGrid_bom_header_1.Rows.Add(row3)
     End Sub
@@ -266,16 +269,13 @@ Public Class frm_input
         Dim row5 As String()
         Dim row6 As String()
         Dim row7 As String()
-
         Dim Qty5 As Double
         Dim Qty4 As Double
         Dim Qty3 As Double
         Dim Qty2 As Double
         Dim Qty1 As Double
-
         Dim item_13 As Double = CDbl(Val(wid))
         Dim item_17 As Double = CDbl(Val(lonng))
-
         'w
         Dim sqm As Double = (item_13 * item_17 / 1000000)
         'x
@@ -284,12 +284,8 @@ Public Class frm_input
         Dim sqmx3 As Double
         Dim sqmx2 As Double
         Dim sqmx1 As Double
-
-
         row1 = New String() {txt_item_code.Text, "10000", " ", "item", txt_item_code.Text, "กาวแป้งสูตรsingle ", "KG", " ", " ", " ", " ", " ", "  ", "7", " ", " ", " ", " ", "Qty", " "}
         row2 = New String() {txt_item_code.Text, "20000", " ", "item", txt_item_code.Text, "กาวแผ่น          ", "KG", " ", " ", " ", " ", " ", "  ", "7", " ", " ", " ", " ", "Qty", " "}
-
-
         If txt_paper_5.Text <> "" Then
             connection.Close()
             connection.Open()
@@ -309,7 +305,6 @@ Public Class frm_input
             End If
             Qty5 = Math.Round((sqm * sqmx5) / 1000, 5)
         End If
-
         If txt_paper_4.Text <> "" Then
 
             connection.Close()
@@ -330,7 +325,6 @@ Public Class frm_input
             End If
             Qty4 = Math.Round(((sqm * sqmx4) / 1000) * 1.3, 5)
         End If
-
         If txt_paper_3.Text <> "" Then
             connection.Close()
             connection.Open()
@@ -350,7 +344,6 @@ Public Class frm_input
             End If
             Qty3 = Math.Round((sqm * sqmx3) / 1000, 5)
         End If
-
         If txt_paper_2.Text <> "" Then
             connection.Close()
             connection.Open()
@@ -370,7 +363,6 @@ Public Class frm_input
             End If
             Qty2 = Math.Round(((sqm * sqmx2) / 1000) * 1.4, 5)
         End If
-
         If txt_paper_1.Text <> "" Then
             connection.Close()
             connection.Open()
@@ -391,11 +383,8 @@ Public Class frm_input
             End If
             Qty1 = Math.Round((sqm * sqmx1) / 1000, 5)
         End If
-
-
         'data_excelfile.DataGrid_bom_line.Rows.Add(row01)
         'data_excelfile.DataGrid_bom_line.Rows.Add(row02)
-
         If txt_lon.Text = "A" Or txt_lon.Text = "C" Then
             row3 = New String() {txt_item_code.Text, "30000", " ", "item", txt_item_code.Text, desc_bom_Line5, "KG", " ", " ", " ", " ", " ", "M5", "7", " ", " ", " ", " ", Qty5, " "}
             row6 = New String() {txt_item_code.Text, "40000", " ", "item", txt_item_code.Text, desc_bom_Line2, "KG", " ", " ", " ", " ", " ", "M2", "7", " ", " ", " ", " ", Qty2, " "}
@@ -407,7 +396,6 @@ Public Class frm_input
             data_excelfile.DataGrid_bom_line.Rows.Add(row6)
             data_excelfile.DataGrid_bom_line.Rows.Add(row7)
         End If
-
         If txt_lon.Text = "B" Or txt_lon.Text = "E" Then
             row3 = New String() {txt_item_code.Text, "30000", " ", "item", txt_item_code.Text, desc_bom_Line5, "KG", " ", " ", " ", " ", " ", "M5", "7", " ", " ", " ", " ", Qty5, " "}
             row4 = New String() {txt_item_code.Text, "40000", " ", "item", txt_item_code.Text, desc_bom_Line4, "KG", " ", " ", " ", " ", " ", "M4", "7", " ", " ", " ", " ", Qty4, " "}
@@ -419,7 +407,6 @@ Public Class frm_input
             data_excelfile.DataGrid_bom_line.Rows.Add(row4)
             data_excelfile.DataGrid_bom_line.Rows.Add(row5)
         End If
-
         If txt_lon.Text = "AB" Or txt_lon.Text = "BC" Then
             row3 = New String() {txt_item_code.Text, "30000", " ", "item", txt_item_code.Text, desc_bom_Line5, "KG", " ", " ", " ", " ", " ", "M5", "7", " ", " ", " ", " ", Qty5, " "}
             row4 = New String() {txt_item_code.Text, "40000", " ", "item", txt_item_code.Text, desc_bom_Line4, "KG", " ", " ", " ", " ", " ", "M4", "7", " ", " ", " ", " ", Qty4, " "}
@@ -435,11 +422,6 @@ Public Class frm_input
             data_excelfile.DataGrid_bom_line.Rows.Add(row6)
             data_excelfile.DataGrid_bom_line.Rows.Add(row7)
         End If
-
-
-
-
-
     End Sub
     Sub add_data_defaut_dimension_sheet()
         Dim row3 As String()
@@ -583,12 +565,12 @@ Public Class frm_input
     End Sub
     Sub add_data_Item_Unit_Of_Messure_Sheet()
 
-
-        If txt_cut.Text > 0 Then
+        If txt_cut.Text <> "" And txt_cut.Text > 0 Then
             wei = (txt_cut_small.Text * txt_long.Text) / 1000000 * 10.765
         Else
             wei = 0
         End If
+
 
 
         data_excelfile.DataGrid_Item_unit.ColumnCount = 7
@@ -601,7 +583,6 @@ Public Class frm_input
         'data_excelfile.DataGrid_Item_unit.Rows.Add(row1)
         'data_excelfile.DataGrid_Item_unit.Rows.Add(row2)
         data_excelfile.DataGrid_Item_unit.Rows.Add(row3)
-
     End Sub
     Sub add_data_input_print()
         data_input.DataGrid_input.ColumnCount = 31
@@ -638,9 +619,6 @@ Public Class frm_input
         data_input.DataGrid_input.Columns(28).Name = "Total Price"
         data_input.DataGrid_input.Columns(29).Name = "Money Discount"
         data_input.DataGrid_input.Columns(30).Name = "Remark"
-
-
-
 
 
         Dim row As String()
@@ -689,11 +667,11 @@ Public Class frm_input
     End Sub
     Function get_m(minput)
         Dim m_m_m As String = ""
-        If minput = "" Then m_m_m = "00"
-        If minput = "A125" Then m_m_m = "A2"
-        If minput = "A150" Then m_m_m = "A4"
-        If minput = "A185" Then m_m_m = "A6"
-        If minput = "A230" Then m_m_m = "A8"
+        'If minput = "" Then m_m_m = "00"
+        'If minput = "A125" Then m_m_m = "A2"
+        'If minput = "A150" Then m_m_m = "A4"
+        'If minput = "A185" Then m_m_m = "A6"
+        'If minput = "A230" Then m_m_m = "A8"
         'If minput = "PA125" Then m_m_m = "A2"
         'If minput = "PA150" Then m_m_m = "A4"
         'If minput = "PA185" Then m_m_m = "A6"
@@ -709,12 +687,12 @@ Public Class frm_input
         'If minput = "KA225" Then m_m_m = "AI"
         'If minput = "KA230" Then m_m_m = "A8"
         'If minput = "KA270" Then m_m_m = "BB"
-        If minput = "A230" Then m_m_m = "A8"
-        If minput = "A112" Then m_m_m = "AE"
-        If minput = "A125" Then m_m_m = "A2"
-        If minput = "A150" Then m_m_m = "A4"
-        If minput = "A185" Then m_m_m = "A6"
-        If minput = "A225" Then m_m_m = "AI"
+        'If minput = "A230" Then m_m_m = "A8"
+        'If minput = "A112" Then m_m_m = "AE"
+        'If minput = "A125" Then m_m_m = "A2"
+        'If minput = "A150" Then m_m_m = "A4"
+        'If minput = "A185" Then m_m_m = "A6"
+        'If minput = "A225" Then m_m_m = "AI"
         'If minput = "KN125" Then m_m_m = "A2"
         'If minput = "KN150" Then m_m_m = "A4"
         'If minput = "KN185" Then m_m_m = "A6"
@@ -733,9 +711,9 @@ Public Class frm_input
         'If minput = "AU125" Then m_m_m = "U2"
         'If minput = "AU185" Then m_m_m = "U6"
         'If minput = "AU230" Then m_m_m = "U8"
-        If minput = "I125" Then m_m_m = "I2"
-        If minput = "I150" Then m_m_m = "I4"
-        If minput = "I185" Then m_m_m = "I6"
+        'If minput = "I125" Then m_m_m = "I2"
+        'If minput = "I150" Then m_m_m = "I4"
+        'If minput = "I185" Then m_m_m = "I6"
         'If minput = "KQ125" Then m_m_m = "I2"
         'If minput = "KQ150" Then m_m_m = "I4"
         'If minput = "KQ185" Then m_m_m = "I6"
@@ -759,11 +737,11 @@ Public Class frm_input
         'If minput = "KJ150" Then m_m_m = "J4"
         'If minput = "KJ185" Then m_m_m = "J6"
         'If minput = "KJ230" Then m_m_m = "J8"
-        If (minput = "KL125" Or minput = "L125") Then m_m_m = "L2"
-        If (minput = "KL150" Or minput = "L150") Then m_m_m = "L4"
-        If (minput = "KL175" Or minput = "L175") Then m_m_m = "LF"
-        If (minput = "KL205" Or minput = "L205") Then m_m_m = "L7"
-        If (minput = "KL250" Or minput = "L205") Then m_m_m = "L9"
+        'If (minput = "KL125" Or minput = "L125") Then m_m_m = "L2"
+        'If (minput = "KL150" Or minput = "L150") Then m_m_m = "L4"
+        'If (minput = "KL175" Or minput = "L175") Then m_m_m = "LF"
+        'If (minput = "KL205" Or minput = "L205") Then m_m_m = "L7"
+        'If (minput = "KL250" Or minput = "L250") Then m_m_m = "L9"
         'If minput = "KP175" Then m_m_m = "PF"
         'If minput = "KP230" Then m_m_m = "P8"
         'If minput = "KP250" Then m_m_m = "P9"
@@ -782,17 +760,17 @@ Public Class frm_input
         'If minput = "MK125" Then m_m_m = "K2"
         'If minput = "MK150" Then m_m_m = "K4"
         'If minput = "MK185" Then m_m_m = "K6"
-        If minput = "M100" Then m_m_m = "ME"
-        If minput = "M105" Then m_m_m = "M0"
-        If minput = "M107" Then m_m_m = "M0"
-        If minput = "M110" Then m_m_m = "ML"
-        If minput = "M115" Then m_m_m = "M1"
-        If minput = "M120" Then m_m_m = "MM"
-        If minput = "M125" Then m_m_m = "M2"
-        If minput = "M127" Then m_m_m = "MK"
-        If minput = "M150" Then m_m_m = "M4"
-        If minput = "M185" Then m_m_m = "M6"
-        If minput = "M190" Then m_m_m = "MN"
+        'If minput = "M100" Then m_m_m = "ME"
+        'If minput = "M105" Then m_m_m = "M0"
+        'If minput = "M107" Then m_m_m = "M0"
+        'If minput = "M110" Then m_m_m = "ML"
+        'If minput = "M115" Then m_m_m = "M1"
+        'If minput = "M120" Then m_m_m = "MM"
+        'If minput = "M125" Then m_m_m = "M2"
+        'If minput = "M127" Then m_m_m = "MK"
+        'If minput = "M150" Then m_m_m = "M4"
+        'If minput = "M185" Then m_m_m = "M6"
+        'If minput = "M190" Then m_m_m = "MN"
         'If minput = "CM105" Then m_m_m = "M0"
         'If minput = "CM107" Then m_m_m = "M0"
         'If minput = "CM115" Then m_m_m = "M1"
@@ -822,6 +800,132 @@ Public Class frm_input
         'If minput = "NP210" Then m_m_m = "NP"
         'If minput = "NP220" Then m_m_m = "NH"
         'If minput = "NP280" Then m_m_m = "NJ"
+
+        If minput = "" Then m_m_m = "00"
+        If (minput = "A112" Or minput = "KA112") Then m_m_m = "AE"
+        If (minput = "A125" Or minput = "KA125") Then m_m_m = "A2"
+        If (minput = "A150" Or minput = "KA150") Then m_m_m = "A4"
+        If (minput = "A185" Or minput = "KA185") Then m_m_m = "A6"
+        If (minput = "A225" Or minput = "KA225") Then m_m_m = "AI"
+        If (minput = "A230" Or minput = "KA230") Then m_m_m = "A8"
+        If (minput = "A260" Or minput = "KA260") Then m_m_m = "CL"
+        If (minput = "A270" Or minput = "KA270") Then m_m_m = "BB"
+        If (minput = "I125" Or minput = "KI125") Then m_m_m = "I2"
+        If (minput = "I150" Or minput = "KI150") Then m_m_m = "I4"
+        If (minput = "I185" Or minput = "KI185") Then m_m_m = "I6"
+        If (minput = "KL125" Or minput = "L125") Then m_m_m = "L2"
+        If (minput = "KL150" Or minput = "L150") Then m_m_m = "L4"
+        If (minput = "KL175" Or minput = "L175") Then m_m_m = "LF"
+        If (minput = "KL205" Or minput = "L205") Then m_m_m = "L7"
+        If (minput = "KL250" Or minput = "L250") Then m_m_m = "L9"
+        If (minput = "T125" Or minput = "KT125") Then m_m_m = "T2"
+        If (minput = "T140" Or minput = "KT140") Then m_m_m = "T3"
+        If (minput = "T150" Or minput = "KT150") Then m_m_m = "T4"
+        If (minput = "T175" Or minput = "KT175") Then m_m_m = "TF"
+        If (minput = "T185" Or minput = "KT185") Then m_m_m = "T6"
+        If (minput = "T200" Or minput = "KT200") Then m_m_m = "TG"
+        If (minput = "T250" Or minput = "KT250") Then m_m_m = "T9"
+        If (minput = "K125" Or minput = "KK125") Then m_m_m = "K2"
+        If (minput = "K150" Or minput = "KK150") Then m_m_m = "K4"
+        If (minput = "K185" Or minput = "KK185") Then m_m_m = "K6"
+        If (minput = "I125" Or minput = "KI125") Then m_m_m = "I2"
+        If (minput = "I150" Or minput = "KI150") Then m_m_m = "I4"
+        If (minput = "I185" Or minput = "KI185") Then m_m_m = "I6"
+        If (minput = "J125" Or minput = "KJ125") Then m_m_m = "J2"
+        If (minput = "J150" Or minput = "KJ150") Then m_m_m = "J4"
+        If (minput = "J185" Or minput = "KJ185") Then m_m_m = "J6"
+        If (minput = "J230" Or minput = "KJ230") Then m_m_m = "J8"
+        If (minput = "Q125" Or minput = "KQ125") Then m_m_m = "I2"
+        If (minput = "Q150" Or minput = "KQ150") Then m_m_m = "I4"
+        If (minput = "Q185" Or minput = "KQ185") Then m_m_m = "I6"
+        If (minput = "D125" Or minput = "KD125") Then m_m_m = "D2"
+        If (minput = "D150" Or minput = "KD150") Then m_m_m = "D4"
+        If (minput = "D185" Or minput = "KD185") Then m_m_m = "D6"
+        If (minput = "D250" Or minput = "KD230") Then m_m_m = "D8"
+        If (minput = "P175" Or minput = "KP175") Then m_m_m = "PF"
+        If (minput = "P230" Or minput = "KP230") Then m_m_m = "P8"
+        If (minput = "P250" Or minput = "KP250") Then m_m_m = "P9"
+        If (minput = "X125" Or minput = "KX125") Then m_m_m = "X2"
+        If (minput = "X150" Or minput = "KX150") Then m_m_m = "X4"
+        If (minput = "N125" Or minput = "KN125") Then m_m_m = "A2"
+        If (minput = "N150" Or minput = "KN150") Then m_m_m = "A4"
+        If (minput = "N185" Or minput = "KN185") Then m_m_m = "A6"
+        If (minput = "N230" Or minput = "KN230") Then m_m_m = "A8"
+        If (minput = "U125" Or minput = "KU125") Then m_m_m = "U2"
+        If (minput = "U150" Or minput = "KU150") Then m_m_m = "U4"
+        If (minput = "U185" Or minput = "KU185") Then m_m_m = "U6"
+        If (minput = "U230" Or minput = "KU230") Then m_m_m = "U8"
+        If (minput = "AC125" Or minput = "KAC125") Then m_m_m = "A2"
+        If (minput = "AC150" Or minput = "KAC150") Then m_m_m = "A4"
+        If (minput = "AC185" Or minput = "KAC185") Then m_m_m = "A6"
+        If (minput = "AC230" Or minput = "KAC230") Then m_m_m = "A8"
+        If (minput = "H175" Or minput = "KH175") Then m_m_m = "KF"
+        If (minput = "H200" Or minput = "KH200") Then m_m_m = "KG"
+        If (minput = "H250" Or minput = "KH250") Then m_m_m = "K9"
+        If (minput = "S140" Or minput = "KS140") Then m_m_m = "S3"
+        If (minput = "S150" Or minput = "KS150") Then m_m_m = "S4"
+        If (minput = "S170" Or minput = "KS170") Then m_m_m = "S5"
+
+        If minput = "M100" Then m_m_m = "ME"
+        If minput = "M105" Then m_m_m = "M0"
+        If minput = "M107" Then m_m_m = "M0"
+        If minput = "M110" Then m_m_m = "ML"
+        If minput = "M115" Then m_m_m = "M1"
+        If minput = "M120" Then m_m_m = "MM"
+        If minput = "M125" Then m_m_m = "M2"
+        If minput = "M127" Then m_m_m = "MK"
+        If minput = "M150" Then m_m_m = "M4"
+        If minput = "M185" Then m_m_m = "M6"
+        If minput = "M190" Then m_m_m = "MN"
+
+        If minput = "PA125" Then m_m_m = "A2"
+        If minput = "PA150" Then m_m_m = "A4"
+        If minput = "PA185" Then m_m_m = "A6"
+        If minput = "PA230" Then m_m_m = "A8"
+        If minput = "HA125" Then m_m_m = "A2"
+        If minput = "HA150" Then m_m_m = "A4"
+        If minput = "HA185" Then m_m_m = "A6"
+        If minput = "HA230" Then m_m_m = "A8"
+        If minput = "AU125" Then m_m_m = "U2"
+        If minput = "AU185" Then m_m_m = "U6"
+        If minput = "AU230" Then m_m_m = "U8"
+        If minput = "PI125" Then m_m_m = "I2"
+        If minput = "PI150" Then m_m_m = "I4"
+        If minput = "PI185" Then m_m_m = "I6"
+        If minput = "CI125" Then m_m_m = "I2"
+        If minput = "CI150" Then m_m_m = "I4"
+        If minput = "CI185" Then m_m_m = "I6"
+        If minput = "TPI125" Then m_m_m = "I2"
+        If minput = "TPI150" Then m_m_m = "I4"
+        If minput = "TPI185" Then m_m_m = "I6"
+        If minput = "MK125" Then m_m_m = "K2"
+        If minput = "MK150" Then m_m_m = "K4"
+        If minput = "MK185" Then m_m_m = "K6"
+        If minput = "CM105" Then m_m_m = "M0"
+        If minput = "CM107" Then m_m_m = "M0"
+        If minput = "CM115" Then m_m_m = "M1"
+        If minput = "CM125" Then m_m_m = "M2"
+        If minput = "CM150" Then m_m_m = "M4"
+        If minput = "CM185" Then m_m_m = "M6"
+        If minput = "CM127" Then m_m_m = "MK"
+        If minput = "CM100" Then m_m_m = "ME"
+        If minput = "CM110" Then m_m_m = "ML"
+        If minput = "CM120" Then m_m_m = "MM"
+        If minput = "CM190" Then m_m_m = "MN"
+        If minput = "CJ230" Then m_m_m = "X8"
+        If minput = "S150" Then m_m_m = "S4"
+        If minput = "S140" Then m_m_m = "S3"
+        If minput = "S170" Then m_m_m = "S5"
+        If minput = "TK125" Then m_m_m = "T2"
+        If minput = "TK180" Then m_m_m = "TO"
+        If minput = "TK210" Then m_m_m = "TP"
+        If minput = "MG056" Then m_m_m = "GA"
+        If minput = "SB060" Then m_m_m = "SB"
+        If minput = "NP170" Then m_m_m = "N5"
+        If minput = "NP200" Then m_m_m = "NG"
+        If minput = "NP210" Then m_m_m = "NP"
+        If minput = "NP220" Then m_m_m = "NH"
+        If minput = "NP280" Then m_m_m = "NJ"
 
         Return m_m_m
 
@@ -957,21 +1061,10 @@ Public Class frm_input
                 End If
                 connection.Close()
 
-                If txt_paper_4.Text <> "" Then
-                    paper_4 = "/" + txt_paper_4.Text
-                End If
-                If txt_paper_3.Text <> "" Then
-                    paper_3 = "/" + txt_paper_3.Text
-                End If
-                If txt_paper_2.Text <> "" Then
-                    paper_2 = "/" + txt_paper_2.Text
-                End If
-                If txt_paper_1.Text <> "" Then
-                    paper_1 = "/" + txt_paper_1.Text
-                End If
+
 
                 gen_item_code()
-                gen_item_des()
+                'gen_item_des()
 
             End If
         Catch ex As Exception
@@ -979,117 +1072,103 @@ Public Class frm_input
         End Try
     End Sub
     Private Sub txt_lon_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_lon.SelectedIndexChanged
-
         set_field()
         gen_item_code()
         get_discounts()
     End Sub
     Private Sub txt_lon_TextChanged(sender As Object, e As EventArgs) Handles txt_lon.TextChanged
-        'set_field()
-        'gen_item_code()
         set_field()
         gen_item_code()
         get_discounts()
     End Sub
     Private Sub txt_paper_5_TextChanged(sender As Object, e As EventArgs) Handles txt_paper_5.TextChanged
+        txt_paper_5.CharacterCasing = CharacterCasing.Upper
         If txt_paper_5.Text.Length = 4 Then
             SendKeys.Send("{TAB}")
-            Concat_pl()
         End If
+        Concat_pl()
+        gen_item_des()
     End Sub
     Private Sub txt_paper_4_TextChanged(sender As Object, e As EventArgs) Handles txt_paper_4.TextChanged
+        txt_paper_4.CharacterCasing = CharacterCasing.Upper
         If txt_paper_4.Text.Length = 4 Then
             SendKeys.Send("{TAB}")
-            Concat_pl()
         End If
+        Concat_pl()
+        gen_item_des()
     End Sub
     Private Sub txt_paper_3_TextChanged(sender As Object, e As EventArgs) Handles txt_paper_3.TextChanged
+        txt_paper_3.CharacterCasing = CharacterCasing.Upper
         If txt_paper_3.Text.Length = 4 Then
             SendKeys.Send("{TAB}")
-            Concat_pl()
         End If
+        Concat_pl()
+        gen_item_des()
     End Sub
     Private Sub txt_paper_2_TextChanged(sender As Object, e As EventArgs) Handles txt_paper_2.TextChanged
+        txt_paper_2.CharacterCasing = CharacterCasing.Upper
         If txt_paper_2.Text.Length = 4 Then
             SendKeys.Send("{TAB}")
-            Concat_pl()
         End If
+        Concat_pl()
+        gen_item_des()
     End Sub
     Private Sub txt_paper_1_TextChanged(sender As Object, e As EventArgs) Handles txt_paper_1.TextChanged
+        txt_paper_1.CharacterCasing = CharacterCasing.Upper
         If txt_paper_1.Text.Length = 4 Then
             SendKeys.Send("{TAB}")
-            Concat_pl()
         End If
+        Concat_pl()
+        gen_item_des()
     End Sub
     Sub Concat_pl()
         txt_search_pl.Text = txt_paper_5.Text + txt_paper_4.Text + txt_paper_3.Text + txt_paper_2.Text + txt_paper_1.Text
     End Sub
     Private Sub txt_fn_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_fn_find_inch_mm.SelectedIndexChanged
         If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+
+            'txt_wid_inch_to_mm.Visible = False
+            'txt_long_inch_to_mm.Visible = False
+            'txt_width.Visible = True
+            'txt_long.Visible = True
+
+            txt_width.Enabled = True
+            txt_long.Enabled = True
+            txt_wid_inch_to_mm.Enabled = False
+            txt_long_inch_to_mm.Enabled = False
             txt_sub_desc.Enabled = False
-            txt_customer.Enabled = True
-            txt_pono.Enabled = True
-            txt_width.Enabled = True
-            txt_workinch.Enabled = True
-            txt_cut.Enabled = True
-            txt_long.Enabled = True
-            txt_cut_small.Enabled = True
 
-            txt_wid_inch_to_mm.Visible = False
-            txt_long_inch_to_mm.Visible = False
         ElseIf txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-            txt_sub_desc.Enabled = True
-            txt_customer.Enabled = True
-            txt_pono.Enabled = True
-            txt_width.Enabled = True
-            txt_workinch.Enabled = True
-            txt_cut.Enabled = True
-            txt_long.Enabled = True
-            txt_cut_small.Enabled = True
 
-            txt_wid_inch_to_mm.Visible = True
-            txt_long_inch_to_mm.Visible = True
+            'txt_wid_inch_to_mm.Visible = True
+            'txt_long_inch_to_mm.Visible = True
+            'txt_width.Visible = False
+            'txt_long.Visible = False
+
+            txt_width.Enabled = False
+            txt_long.Enabled = False
+            txt_wid_inch_to_mm.Enabled = True
+            txt_long_inch_to_mm.Enabled = True
+            txt_sub_desc.Enabled = True
 
         ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
-            txt_sub_desc.Enabled = True
-            txt_customer.Enabled = True
-            txt_pono.Enabled = True
-            txt_width.Enabled = True
-            txt_workinch.Enabled = True
-            txt_cut.Enabled = True
+
+
+            'txt_wid_inch_to_mm.Visible = True
+            'txt_long_inch_to_mm.Visible = False
+            'txt_width.Visible = False
+            'txt_long.Visible = True
+
+            txt_width.Enabled = False
             txt_long.Enabled = True
-            txt_cut_small.Enabled = True
+            txt_wid_inch_to_mm.Enabled = True
+            txt_long_inch_to_mm.Enabled = False
+            txt_sub_desc.Enabled = False
 
-            txt_wid_inch_to_mm.Visible = True
-            txt_long_inch_to_mm.Visible = False
-
-        ElseIf txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
-            txt_sub_desc.Enabled = True
-            txt_customer.Enabled = True
-            txt_pono.Enabled = True
-            txt_width.Enabled = True
-            txt_workinch.Enabled = True
-            txt_cut.Enabled = True
-            txt_long.Enabled = True
-            txt_cut_small.Enabled = True
-
-            txt_wid_inch_to_mm.Visible = False
-            txt_long_inch_to_mm.Visible = True
         End If
     End Sub
     Sub get_wid_lonng()
         If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-
-
-            'txt_wid_inch_to_mm.Visible = True
-            'txt_long_inch_to_mm.Visible = True
-
-            'txt_width.Visible = False
-            'txt_long.Visible = False
-
-            'lonng = Math.Round(CDbl(Val(txt_long.Text)) * 25.4)
-
-
 
             If txt_wid_inch_to_mm.Text = "36" Then wid = "0930"
             If txt_wid_inch_to_mm.Text = "38" Then wid = "0980"
@@ -1118,41 +1197,58 @@ Public Class frm_input
             If txt_wid_inch_to_mm.Text = "84" Then wid = "2150"
             If txt_wid_inch_to_mm.Text = "86" Then wid = "2200"
 
-
-            'lonng = (Val(txt_long_inch_to_mm.Text + sub_item_desc) * 25.4)
             Dim tmp_lonng = Math.Round(Val(txt_long_inch_to_mm.Text) * 25.4)
 
             If tmp_lonng.ToString.Length = 3 Then
-                lonng = "0" & Math.Round(Val(txt_long_inch_to_mm.Text) * 25.4)
+                lonng = "0" & Math.Round((Val(txt_long_inch_to_mm.Text) + sub_item_desc) * 25.4)
             ElseIf tmp_lonng.ToString.Length = 4 Then
-                lonng = Math.Round(Val(txt_long_inch_to_mm.Text) * 25.4)
+                lonng = Math.Round((Val(txt_long_inch_to_mm.Text) + sub_item_desc) * 25.4)
             End If
 
-
-
-
-
-            '********************************
-            '********************************
-            '********************************
-            '********************************
-            '********************************
-
-
-            txt_long.Text = lonng
             txt_width.Text = wid
+            txt_long.Text = lonng
+        ElseIf txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
 
+            If txt_wid_inch_to_mm.Text = "36" Then wid = "0930"
+            If txt_wid_inch_to_mm.Text = "38" Then wid = "0980"
+            If txt_wid_inch_to_mm.Text = "40" Then wid = "1030"
+            If txt_wid_inch_to_mm.Text = "42" Then wid = "1080"
+            If txt_wid_inch_to_mm.Text = "44" Then wid = "1130"
+            If txt_wid_inch_to_mm.Text = "46" Then wid = "1180"
+            If txt_wid_inch_to_mm.Text = "48" Then wid = "1230"
+            If txt_wid_inch_to_mm.Text = "50" Then wid = "1280"
+            If txt_wid_inch_to_mm.Text = "52" Then wid = "1330"
+            If txt_wid_inch_to_mm.Text = "54" Then wid = "1390"
+            If txt_wid_inch_to_mm.Text = "56" Then wid = "1440"
+            If txt_wid_inch_to_mm.Text = "58" Then wid = "1490"
+            If txt_wid_inch_to_mm.Text = "60" Then wid = "1540"
+            If txt_wid_inch_to_mm.Text = "62" Then wid = "1590"
+            If txt_wid_inch_to_mm.Text = "64" Then wid = "1640"
+            If txt_wid_inch_to_mm.Text = "66" Then wid = "1690"
+            If txt_wid_inch_to_mm.Text = "68" Then wid = "1740"
+            If txt_wid_inch_to_mm.Text = "70" Then wid = "1790"
+            If txt_wid_inch_to_mm.Text = "72" Then wid = "1850"
+            If txt_wid_inch_to_mm.Text = "74" Then wid = "1900"
+            If txt_wid_inch_to_mm.Text = "76" Then wid = "1950"
+            If txt_wid_inch_to_mm.Text = "78" Then wid = "2000"
+            If txt_wid_inch_to_mm.Text = "80" Then wid = "2050"
+            If txt_wid_inch_to_mm.Text = "82" Then wid = "2100"
+            If txt_wid_inch_to_mm.Text = "84" Then wid = "2150"
+            If txt_wid_inch_to_mm.Text = "86" Then wid = "2200"
 
+            Dim tmp_lonng = Math.Round(Val(txt_long_inch_to_mm.Text) * 25.4)
 
+            If tmp_lonng.ToString.Length = 3 Then
+                lonng = "0" & Math.Round((Val(txt_long_inch_to_mm.Text) + sub_item_desc) * 25.4)
+            ElseIf tmp_lonng.ToString.Length = 4 Then
+                lonng = Math.Round((Val(txt_long_inch_to_mm.Text) + sub_item_desc) * 25.4)
+            End If
 
-
-        ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
-
-
+            txt_width.Text = wid
             lonng = txt_long.Text
+        ElseIf txt_fn_find_inch_mm.Text = "มิล มิล" Then
             wid = txt_width.Text
-
-
+            lonng = txt_long.Text
         End If
     End Sub
     Sub add_zero_long()
@@ -1207,56 +1303,106 @@ Public Class frm_input
     End Sub
     Private Sub txt_stampline_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_stampline.SelectedIndexChanged
         gen_item_code()
+        gen_item_des()
     End Sub
     Private Sub txt_stampline_LostFocus(sender As Object, e As EventArgs) Handles txt_stampline.LostFocus
         gen_item_code()
+        gen_item_des()
     End Sub
 
     Private Sub txt_sub_desc_TextChanged(sender As Object, e As EventArgs) Handles txt_sub_desc.TextChanged
-        gen_item_des()
-
-        If txt_sub_desc.Text = "1/2" Then
+        If txt_sub_desc.Text = "1/1" Then
+            sub_item_desc = 0
+            real_decimal = ""
+        ElseIf txt_sub_desc.Text = "1/2" Then
             sub_item_desc = 0.5
+            real_decimal = " 1/2"
         ElseIf txt_sub_desc.Text = "1/3" Then
             sub_item_desc = 0.33
+            real_decimal = " 1/3"
         ElseIf txt_sub_desc.Text = "1/4" Then
             sub_item_desc = 0.25
+            real_decimal = " 1/4"
         ElseIf txt_sub_desc.Text = "1/5" Then
             sub_item_desc = 0.2
+            real_decimal = " 1/5"
         ElseIf txt_sub_desc.Text = "1/6" Then
             sub_item_desc = 0.167
+            real_decimal = " 1/6"
         ElseIf txt_sub_desc.Text = "1/7" Then
             sub_item_desc = 0.142
+            real_decimal = " 1/7"
         ElseIf txt_sub_desc.Text = "1/8" Then
             sub_item_desc = 0.125
+            real_decimal = " 1/8"
         End If
+        gen_item_code()
 
 
 
     End Sub
     Private Sub txt_sub_desc_LostFocus(sender As Object, e As EventArgs) Handles txt_sub_desc.LostFocus
-        If txt_sub_desc.Text IsNot Nothing Then
+        If txt_sub_desc.Text = "" Then
+            txt_sub_desc.Text = "1/1"
+        Else
             gen_item_des()
-
             Dim strarr() As String
             strarr = txt_sub_desc.Text.Split("/")
             txt_subsub_dscc.Text = (strarr(0) / strarr(1))
 
             get_wid_lonng()
-        Else
-            txt_sub_desc.Text = "1/1"
         End If
-
-
-
-
     End Sub
     Sub gen_item_code()
-        txt_item_code.Text = get_lons(txt_lon.Text) + get_m(txt_paper_5.Text) & get_m(txt_paper_4.Text) & get_m(txt_paper_3.Text) & get_m(txt_paper_2.Text) & get_m(txt_paper_1.Text) + wid + lonng + txt_stampline.Text
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+            txt_item_code.Text = get_lons(txt_lon.Text) + get_m(txt_paper_5.Text) & get_m(txt_paper_4.Text) & get_m(txt_paper_3.Text) & get_m(txt_paper_2.Text) & get_m(txt_paper_1.Text) + wid + lonng + txt_stampline.Text
+        End If
+        If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+            txt_item_code.Text = get_lons(txt_lon.Text) + get_m(txt_paper_5.Text) & get_m(txt_paper_4.Text) & get_m(txt_paper_3.Text) & get_m(txt_paper_2.Text) & get_m(txt_paper_1.Text) + wid + lonng + txt_stampline.Text
+        End If
+        If txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
+            txt_item_code.Text = get_lons(txt_lon.Text) + get_m(txt_paper_5.Text) & get_m(txt_paper_4.Text) & get_m(txt_paper_3.Text) & get_m(txt_paper_2.Text) & get_m(txt_paper_1.Text) + wid + lonng + txt_stampline.Text
+        End If
     End Sub
+
+
+
+
     Sub gen_item_des()
-        txt_desc.Text = txt_width.Text + " x " + txt_long.Text + " " + txt_sub_desc.Text + " " + txt_paper_5.Text + paper_4 + paper_3 + paper_2 + paper_1 + " " + txt_lon.Text
+        'OK
+        'txt_desc.Text = lb_real_width.Text + " x " + lb_real_long.Text + " " + lb_real_decimal.Text + " " + txt_paper_5.Text + paper_4 + paper_3 + paper_2 + paper_1 + " " + txt_lon.Text
+
+
+        txt_desc.Text = lb_real_width.Text + " x " + lb_real_long.Text + real_decimal + " " + get_item_description(txt_paper_5.Text, 1) + get_item_description(txt_paper_4.Text, 2) + get_item_description(txt_paper_3.Text, 3) + get_item_description(txt_paper_2.Text, 4) + get_item_description(txt_paper_1.Text, 5) + " " + txt_lon.Text
+
     End Sub
+    Function get_item_description(input, x)
+        Dim item_description As String = ""
+        Dim s As String
+
+
+
+        If input <> "" Then
+
+            s = input.Substring(0, 1)
+
+            If s = "A" Or s = "T" Or s = "I" Or s = "L" Or s = "K" Or s = "J" Then
+                If x > 1 Then
+                    item_description = "/K" + input
+                Else
+                    item_description = "K" + input
+                End If
+            Else
+                If x > 1 Then
+                    item_description = "/" + input
+                Else
+                    item_description = input
+                End If
+            End If
+        End If
+        Return item_description
+        'Return input
+    End Function
     Function get_lons(lon)
         Dim lon_name As String = ""
         If lon = "BC" Then
@@ -1287,7 +1433,7 @@ Public Class frm_input
             sql = "
                     SELECT  * 
                     FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount]
-                    WHERE   [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[Customer_Code]     LIKE    '%" + txt_customer.SelectedValue + "%'
+                    WHERE   [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[Customer_Code]     LIKE    '%" + txt_customers.SelectedValue + "%'
                     AND     (
                             [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount].[MeterStart]        >       '" + txt_meth2.Text + "'
                             AND
@@ -1306,7 +1452,7 @@ Public Class frm_input
             txt_discount.Text = discount & " %"
 
             gen_item_code()
-            gen_item_des()
+            'gen_item_des()
 
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
@@ -1319,7 +1465,6 @@ Public Class frm_input
         tz = (((c_width * c_long) / 1000000) * 10.76)
 
         If txt_fn_find_inch_mm.Text = "มิล มิล" Then
-
             'txt_pl_sp
             If txt_pl_sp.Text IsNot Nothing Then
                 Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
@@ -1327,7 +1472,6 @@ Public Class frm_input
                 txt_price.Text = Price
 
             End If
-
             'net
             If txt_pl_net.Text IsNot Nothing Then
                 Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
@@ -1335,86 +1479,40 @@ Public Class frm_input
                 txt_price.Text = Price
 
             End If
-
-
             If txt_pl.Text IsNot Nothing Then
                 Dim xx = (((c_width * c_long) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text)))
                 Price = Math.Round((xx - (xx * discount / 100)), 2)
                 txt_price.Text = Price
 
             End If
-
-
         End If
 
         If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-
-
-
             'txt_pl_sp
             If txt_pl_sp.Text IsNot Nothing Then
-                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
+                'Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
+                Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text))))
                 Price = Math.Round((xx - (xx * discount / 100)), 2)
                 txt_price.Text = Price
             End If
-
             'net
             If txt_pl_net.Text IsNot Nothing Then
-                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
+                'Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
+                Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text))))
                 Price = Math.Round(xx, 2)
                 txt_price.Text = Price
             End If
-
-
             If txt_pl.Text IsNot Nothing Then
                 Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text))))
                 Price = Math.Round((xx - (xx * discount / 100)), 2)
                 txt_price.Text = Price
             End If
-
-
-        End If
-
-
-        If txt_fn_find_inch_mm.Text = "มิล นิ้ว" Then
-
-
-
-            'txt_pl_sp
-            If txt_pl_sp.Text IsNot Nothing Then
-                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
-                'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
-                Price = Math.Round((xx - (xx * discount / 100)), 2)
-                txt_price.Text = Price
-            End If
-
-            'net
-            If txt_pl_net.Text IsNot Nothing Then
-                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
-                ' MsgBox(xx)
-                'txt_price.Text = Math.Round(xx, 2)
-                Price = Math.Round(xx, 2)
-                txt_price.Text = Price
-            End If
-
-
-            If txt_pl.Text IsNot Nothing Then
-                Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text))))
-                'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
-                Price = Math.Round((xx - (xx * discount / 100)), 2)
-                txt_price.Text = Price
-            End If
-
-
         End If
 
         If txt_fn_find_inch_mm.Text = "นิ้ว มิล" Then
-
-
-
             'txt_pl_sp
             If txt_pl_sp.Text IsNot Nothing Then
-                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
+                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long.Text)) / 1000000) * 10.76 * CDbl(Val(txt_pl_sp.Text)))
                 'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
                 Price = Math.Round((xx - (xx * discount / 100)), 2)
                 txt_price.Text = Price
@@ -1422,7 +1520,7 @@ Public Class frm_input
 
             'net
             If txt_pl_net.Text IsNot Nothing Then
-                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long_inch_to_mm.Text * 25.4)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
+                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long.Text)) / 1000000) * 10.76 * CDbl(Val(txt_pl_net.Text)))
                 ' MsgBox(xx)
                 'txt_price.Text = Math.Round(xx, 2)
                 Price = Math.Round(xx, 2)
@@ -1431,7 +1529,7 @@ Public Class frm_input
 
 
             If txt_pl.Text IsNot Nothing Then
-                Dim xx = (((txt_wid_inch_to_mm.Text * 25.4) * (((txt_long_inch_to_mm.Text + sub_item_desc) * 25.4) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text))))
+                Dim xx = ((((txt_wid_inch_to_mm.Text * 25.4) * (txt_long.Text)) / 1000000) * 10.76 * CDbl(Val(txt_pl.Text)))
                 'txt_price.Text = Math.Round((xx - (xx * discount / 100)), 2)
                 Price = Math.Round((xx - (xx * discount / 100)), 2)
                 txt_price.Text = Price
@@ -1458,9 +1556,11 @@ Public Class frm_input
     Private Sub txt_paper_1_LostFocus(sender As Object, e As EventArgs) Handles txt_paper_1.LostFocus
         txt_paper_1.CharacterCasing = CharacterCasing.Upper
     End Sub
-    Private Sub txt_customer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_customer.SelectedIndexChanged
-        lb_cuscode.Text = txt_customer.SelectedValue.ToString()
+    Private Sub txt_customers_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_customers.SelectedIndexChanged
+        lb_cuscode.Text = txt_customers.SelectedValue.ToString()
 
+        Label15.Text = txt_customers.Text
+        'lb_search.Hide()
         get_discounts()
     End Sub
     Private Sub txt_count_TextChanged(sender As Object, e As EventArgs) Handles txt_count.TextChanged
@@ -1488,6 +1588,7 @@ Public Class frm_input
         Dim y4 = (Integer.Parse(txt_width.Text) * 4) + x_final
         Dim y5 = (Integer.Parse(txt_width.Text) * 5) + x_final
 
+
         If x5 < 2200 Or x5 < 2161 Then 'x5
             cut = 5
         ElseIf x5 >= 2200 And x4 <= 2200 Then 'x4
@@ -1499,6 +1600,7 @@ Public Class frm_input
         Else 'x1
             cut = 1
         End If
+
 
         If x5 < 2200 Then
             m = x5
@@ -1741,7 +1843,11 @@ Public Class frm_input
 
 
         txt_count_cut.Text = txt_count.Text
-        txt_cut.Text = cut
+
+        If txt_cut_small.Text <> "" And txt_cut_small.Text > 0 Then
+            txt_cut.Text = cut
+        End If
+
 
 
 
@@ -1827,7 +1933,7 @@ Public Class frm_input
 
 
 
-
+        'TextBox3.Text = sql1
 
 
 
@@ -1872,7 +1978,8 @@ Public Class frm_input
         S = Math.Round(HK / CDbl(Val(wid)), 0)
         DK = Math.Ceiling((CDbl(Val(lonng)) * CDbl(Val(txt_count_cut.Text)) / 1000))
 
-        txt_met.Text = Math.Round(DK / S)
+        'txt_met.Text = Math.Round(DK / S)
+        txt_met.Text = Math.Ceiling(DK / S)
 
         ''287.5
         'Dim tp As Single = (DK / S)
@@ -2386,7 +2493,8 @@ Public Class frm_input
     Private Sub Btn_clear_Click(sender As Object, e As EventArgs) Handles btn_clear.Click
         Me.Controls.Clear() 'removes all the controls on the form
         InitializeComponent() 'load all the controls again
-        frm_input_Load(e, e)
+        'frm_input_Load(e, e)
+        load_frm()
         MsgBox("Clear Complete", vbInformation, "")
         Refresh()
     End Sub
@@ -2406,18 +2514,6 @@ Public Class frm_input
                 couter = couter_add
             End If
 
-
-
-            'If couter <= 3 Then
-            '    cou
-            'End If
-
-            'If txt_price.Text <= (Price + Maximum) Then
-            '    txt_price.Text = (txt_price.Text + 0.01)
-
-            'End If
-
-            'MsgBox(" | txt_price.Text = " & txt_price.Text & vbNewLine & " | Price = " & Price & vbNewLine & " | (Price+0.01) = " & (Price + 0.01) & vbNewLine & " | Price+Maximum = " & (Price + Maximum))
 
 
 
@@ -2521,5 +2617,38 @@ Public Class frm_input
         If e.KeyCode = Keys.Enter Then
             SendKeys.Send("{TAB}")
         End If
+    End Sub
+    Private Sub txt_customer_KeyUp(sender As Object, e As KeyEventArgs) Handles txt_customers.KeyUp
+
+        If e.KeyCode = Keys.F2 Then
+            frm_search.Show()
+        End If
+    End Sub
+    Private Sub txt_customers_MouseClick(sender As Object, e As EventArgs) Handles txt_customers.Click
+        lb_search.Hide()
+        'txt_customers.Focus()
+    End Sub
+    Private Sub lb_search_Click(sender As Object, e As EventArgs) Handles lb_search.Click
+        lb_search.Hide()
+        txt_customers.Focus()
+    End Sub
+    Private Sub txt_width_KeyUp(sender As Object, e As KeyEventArgs) Handles txt_width.KeyUp
+        lb_real_width.Text = txt_width.Text
+    End Sub
+    Private Sub txt_long_KeyUp(sender As Object, e As KeyEventArgs) Handles txt_long.KeyUp
+        lb_real_long.Text = txt_long.Text
+    End Sub
+    Private Sub txt_wid_inch_to_mm_KeyUp(sender As Object, e As KeyEventArgs) Handles txt_wid_inch_to_mm.KeyUp
+        lb_real_width.Text = txt_wid_inch_to_mm.Text
+    End Sub
+    Private Sub txt_long_inch_to_mm_KeyUp(sender As Object, e As KeyEventArgs) Handles txt_long_inch_to_mm.KeyUp
+        lb_real_long.Text = txt_long_inch_to_mm.Text
+    End Sub
+    Private Sub txt_sub_desc_KeyUp(sender As Object, e As KeyEventArgs) Handles txt_sub_desc.KeyUp
+        lb_real_decimal.Text = txt_sub_desc.Text
+    End Sub
+
+    Private Sub txt_cut_small_TextChanged(sender As Object, e As EventArgs) Handles txt_cut_small.TextChanged
+
     End Sub
 End Class

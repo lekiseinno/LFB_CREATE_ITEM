@@ -14,7 +14,7 @@ Public Class frm_master
     Private Sub setup_master_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'get_versions.Text = setup_conf.fileserver
-        get_versions.Text = "versions 0.1 [ On Build ]"
+        get_versions.Text = "versions " & GetVersion() & " [ On Build ]"
 
         dev_path_resource.Text = setup_conf.fileconn
         dev_path_startup.Text = setup_conf.fileserver
@@ -27,6 +27,17 @@ Public Class frm_master
 
         set_footers()
     End Sub
+
+    Public Function GetVersion() As String
+        If (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed) Then
+            Dim ver As Version
+            ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion
+            Return String.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision)
+        Else
+            Return "Not Published"
+        End If
+    End Function
+
 
     Private Sub timer_datenow_Tick(sender As Object, e As EventArgs) Handles timer_datenow.Tick
         lb_datenow.Text = Now.ToString("dd-MM-yyyy HH:mm:ss")
@@ -182,4 +193,6 @@ Public Class frm_master
     Private Sub frm_master_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         frm_login.Close()
     End Sub
+
+
 End Class

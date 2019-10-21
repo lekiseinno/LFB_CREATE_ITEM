@@ -80,7 +80,7 @@ Partial Class frm_input
         Me.btn_clear = New System.Windows.Forms.Button()
         Me.btn_add = New System.Windows.Forms.Button()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.txt_customer = New System.Windows.Forms.ComboBox()
+        Me.txt_customers = New System.Windows.Forms.ComboBox()
         Me.txt_paper_5 = New System.Windows.Forms.TextBox()
         Me.txt_paper_4 = New System.Windows.Forms.TextBox()
         Me.txt_paper_3 = New System.Windows.Forms.TextBox()
@@ -121,12 +121,16 @@ Partial Class frm_input
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.btn_add_price_manual = New System.Windows.Forms.Button()
         Me.btn_del_price_manual = New System.Windows.Forms.Button()
         Me.lb_couter_1 = New System.Windows.Forms.Label()
         Me.lb_couter_2 = New System.Windows.Forms.Label()
         Me.lb_couter_3 = New System.Windows.Forms.Label()
+        Me.lb_search = New System.Windows.Forms.Label()
+        Me.lb_real_width = New System.Windows.Forms.Label()
+        Me.lb_real_long = New System.Windows.Forms.Label()
+        Me.lb_real_decimal = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'txt_pono
@@ -152,7 +156,7 @@ Partial Class frm_input
         Me.txt_workinch.Location = New System.Drawing.Point(147, 240)
         Me.txt_workinch.Name = "txt_workinch"
         Me.txt_workinch.Size = New System.Drawing.Size(120, 22)
-        Me.txt_workinch.TabIndex = 26
+        Me.txt_workinch.TabIndex = 2004
         '
         'txt_cut
         '
@@ -161,7 +165,8 @@ Partial Class frm_input
         Me.txt_cut.Location = New System.Drawing.Point(147, 271)
         Me.txt_cut.Name = "txt_cut"
         Me.txt_cut.Size = New System.Drawing.Size(120, 22)
-        Me.txt_cut.TabIndex = 27
+        Me.txt_cut.TabIndex = 2005
+        Me.txt_cut.Text = "0"
         '
         'txt_long
         '
@@ -170,7 +175,7 @@ Partial Class frm_input
         Me.txt_long.Location = New System.Drawing.Point(407, 19)
         Me.txt_long.Name = "txt_long"
         Me.txt_long.Size = New System.Drawing.Size(80, 21)
-        Me.txt_long.TabIndex = 5
+        Me.txt_long.TabIndex = 6
         '
         'Label3
         '
@@ -232,7 +237,8 @@ Partial Class frm_input
         Me.txt_cut_small.Location = New System.Drawing.Point(534, 19)
         Me.txt_cut_small.Name = "txt_cut_small"
         Me.txt_cut_small.Size = New System.Drawing.Size(80, 21)
-        Me.txt_cut_small.TabIndex = 7
+        Me.txt_cut_small.TabIndex = 9
+        Me.txt_cut_small.Text = "0"
         '
         'txt_F1
         '
@@ -241,7 +247,7 @@ Partial Class frm_input
         Me.txt_F1.Location = New System.Drawing.Point(638, 19)
         Me.txt_F1.Name = "txt_F1"
         Me.txt_F1.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F1.TabIndex = 8
+        Me.txt_F1.TabIndex = 10
         '
         'txt_F2
         '
@@ -250,7 +256,7 @@ Partial Class frm_input
         Me.txt_F2.Location = New System.Drawing.Point(680, 19)
         Me.txt_F2.Name = "txt_F2"
         Me.txt_F2.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F2.TabIndex = 9
+        Me.txt_F2.TabIndex = 11
         '
         'txt_F3
         '
@@ -259,7 +265,7 @@ Partial Class frm_input
         Me.txt_F3.Location = New System.Drawing.Point(722, 19)
         Me.txt_F3.Name = "txt_F3"
         Me.txt_F3.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F3.TabIndex = 10
+        Me.txt_F3.TabIndex = 12
         '
         'txt_F4
         '
@@ -268,7 +274,7 @@ Partial Class frm_input
         Me.txt_F4.Location = New System.Drawing.Point(764, 19)
         Me.txt_F4.Name = "txt_F4"
         Me.txt_F4.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F4.TabIndex = 11
+        Me.txt_F4.TabIndex = 13
         '
         'txt_F5
         '
@@ -277,7 +283,7 @@ Partial Class frm_input
         Me.txt_F5.Location = New System.Drawing.Point(806, 19)
         Me.txt_F5.Name = "txt_F5"
         Me.txt_F5.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F5.TabIndex = 12
+        Me.txt_F5.TabIndex = 14
         '
         'Label9
         '
@@ -351,7 +357,7 @@ Partial Class frm_input
         Me.txt_trim.Location = New System.Drawing.Point(147, 212)
         Me.txt_trim.Name = "txt_trim"
         Me.txt_trim.Size = New System.Drawing.Size(120, 22)
-        Me.txt_trim.TabIndex = 25
+        Me.txt_trim.TabIndex = 2003
         '
         'txt_chk_txt
         '
@@ -395,7 +401,7 @@ Partial Class frm_input
         Me.txt_count.Location = New System.Drawing.Point(429, 70)
         Me.txt_count.Name = "txt_count"
         Me.txt_count.Size = New System.Drawing.Size(120, 21)
-        Me.txt_count.TabIndex = 22
+        Me.txt_count.TabIndex = 24
         '
         'Label19
         '
@@ -412,7 +418,7 @@ Partial Class frm_input
         Me.txt_count_cut.Location = New System.Drawing.Point(147, 299)
         Me.txt_count_cut.Name = "txt_count_cut"
         Me.txt_count_cut.Size = New System.Drawing.Size(120, 22)
-        Me.txt_count_cut.TabIndex = 28
+        Me.txt_count_cut.TabIndex = 2006
         '
         'Label20
         '
@@ -439,7 +445,7 @@ Partial Class frm_input
         Me.txt_pl.Location = New System.Drawing.Point(399, 185)
         Me.txt_pl.Name = "txt_pl"
         Me.txt_pl.Size = New System.Drawing.Size(150, 22)
-        Me.txt_pl.TabIndex = 29
+        Me.txt_pl.TabIndex = 2007
         '
         'Label22
         '
@@ -458,7 +464,7 @@ Partial Class frm_input
         Me.txt_pl_sp.Location = New System.Drawing.Point(399, 213)
         Me.txt_pl_sp.Name = "txt_pl_sp"
         Me.txt_pl_sp.Size = New System.Drawing.Size(120, 22)
-        Me.txt_pl_sp.TabIndex = 30
+        Me.txt_pl_sp.TabIndex = 2008
         '
         'Label23
         '
@@ -477,7 +483,7 @@ Partial Class frm_input
         Me.txt_pl_net.Location = New System.Drawing.Point(399, 241)
         Me.txt_pl_net.Name = "txt_pl_net"
         Me.txt_pl_net.Size = New System.Drawing.Size(120, 22)
-        Me.txt_pl_net.TabIndex = 31
+        Me.txt_pl_net.TabIndex = 2009
         '
         'Label24
         '
@@ -496,7 +502,7 @@ Partial Class frm_input
         Me.txt_net_unit.Location = New System.Drawing.Point(399, 269)
         Me.txt_net_unit.Name = "txt_net_unit"
         Me.txt_net_unit.Size = New System.Drawing.Size(120, 22)
-        Me.txt_net_unit.TabIndex = 32
+        Me.txt_net_unit.TabIndex = 2010
         '
         'Label25
         '
@@ -515,7 +521,7 @@ Partial Class frm_input
         Me.txt_met.Location = New System.Drawing.Point(399, 298)
         Me.txt_met.Name = "txt_met"
         Me.txt_met.Size = New System.Drawing.Size(150, 22)
-        Me.txt_met.TabIndex = 33
+        Me.txt_met.TabIndex = 2011
         Me.txt_met.Text = "0"
         '
         'Label26
@@ -535,7 +541,7 @@ Partial Class frm_input
         Me.txt_meth.Location = New System.Drawing.Point(948, 198)
         Me.txt_meth.Name = "txt_meth"
         Me.txt_meth.Size = New System.Drawing.Size(128, 22)
-        Me.txt_meth.TabIndex = 37
+        Me.txt_meth.TabIndex = 2017
         '
         'Label27
         '
@@ -554,7 +560,7 @@ Partial Class frm_input
         Me.txt_meth2.Location = New System.Drawing.Point(948, 226)
         Me.txt_meth2.Name = "txt_meth2"
         Me.txt_meth2.Size = New System.Drawing.Size(128, 22)
-        Me.txt_meth2.TabIndex = 38
+        Me.txt_meth2.TabIndex = 2018
         '
         'Label28
         '
@@ -572,7 +578,7 @@ Partial Class frm_input
         Me.txt_discount.Location = New System.Drawing.Point(948, 170)
         Me.txt_discount.Name = "txt_discount"
         Me.txt_discount.Size = New System.Drawing.Size(128, 22)
-        Me.txt_discount.TabIndex = 36
+        Me.txt_discount.TabIndex = 2016
         '
         'Label29
         '
@@ -590,7 +596,7 @@ Partial Class frm_input
         Me.txt_sumdiscount.Location = New System.Drawing.Point(948, 114)
         Me.txt_sumdiscount.Name = "txt_sumdiscount"
         Me.txt_sumdiscount.Size = New System.Drawing.Size(128, 22)
-        Me.txt_sumdiscount.TabIndex = 34
+        Me.txt_sumdiscount.TabIndex = 2012
         '
         'Label30
         '
@@ -608,7 +614,7 @@ Partial Class frm_input
         Me.txt_price.Location = New System.Drawing.Point(948, 142)
         Me.txt_price.Name = "txt_price"
         Me.txt_price.Size = New System.Drawing.Size(128, 22)
-        Me.txt_price.TabIndex = 35
+        Me.txt_price.TabIndex = 2013
         '
         'Label31
         '
@@ -626,7 +632,7 @@ Partial Class frm_input
         Me.txt_note.Multiline = True
         Me.txt_note.Name = "txt_note"
         Me.txt_note.Size = New System.Drawing.Size(203, 39)
-        Me.txt_note.TabIndex = 39
+        Me.txt_note.TabIndex = 2019
         '
         'btn_clear
         '
@@ -636,7 +642,7 @@ Partial Class frm_input
         Me.btn_clear.Location = New System.Drawing.Point(1001, 299)
         Me.btn_clear.Name = "btn_clear"
         Me.btn_clear.Size = New System.Drawing.Size(150, 25)
-        Me.btn_clear.TabIndex = 42
+        Me.btn_clear.TabIndex = 2022
         Me.btn_clear.Text = "Clear"
         Me.btn_clear.UseVisualStyleBackColor = False
         '
@@ -648,26 +654,25 @@ Partial Class frm_input
         Me.btn_add.Location = New System.Drawing.Point(850, 299)
         Me.btn_add.Name = "btn_add"
         Me.btn_add.Size = New System.Drawing.Size(150, 25)
-        Me.btn_add.TabIndex = 41
+        Me.btn_add.TabIndex = 2021
         Me.btn_add.Text = "Generate"
         Me.btn_add.UseVisualStyleBackColor = False
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(2, 3)
+        Me.Label15.Location = New System.Drawing.Point(5, 39)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(32, 13)
         Me.Label15.TabIndex = 1000
         Me.Label15.Text = "ลูกค้า"
         '
-        'txt_customer
+        'txt_customers
         '
-        Me.txt_customer.FormattingEnabled = True
-        Me.txt_customer.Location = New System.Drawing.Point(5, 19)
-        Me.txt_customer.Name = "txt_customer"
-        Me.txt_customer.Size = New System.Drawing.Size(100, 21)
-        Me.txt_customer.TabIndex = 1
+        Me.txt_customers.Location = New System.Drawing.Point(5, 19)
+        Me.txt_customers.Name = "txt_customers"
+        Me.txt_customers.Size = New System.Drawing.Size(100, 21)
+        Me.txt_customers.TabIndex = 1
         '
         'txt_paper_5
         '
@@ -675,7 +680,7 @@ Partial Class frm_input
         Me.txt_paper_5.Location = New System.Drawing.Point(111, 70)
         Me.txt_paper_5.Name = "txt_paper_5"
         Me.txt_paper_5.Size = New System.Drawing.Size(60, 21)
-        Me.txt_paper_5.TabIndex = 17
+        Me.txt_paper_5.TabIndex = 19
         '
         'txt_paper_4
         '
@@ -683,7 +688,7 @@ Partial Class frm_input
         Me.txt_paper_4.Location = New System.Drawing.Point(175, 70)
         Me.txt_paper_4.Name = "txt_paper_4"
         Me.txt_paper_4.Size = New System.Drawing.Size(60, 21)
-        Me.txt_paper_4.TabIndex = 18
+        Me.txt_paper_4.TabIndex = 20
         '
         'txt_paper_3
         '
@@ -691,7 +696,7 @@ Partial Class frm_input
         Me.txt_paper_3.Location = New System.Drawing.Point(239, 70)
         Me.txt_paper_3.Name = "txt_paper_3"
         Me.txt_paper_3.Size = New System.Drawing.Size(60, 21)
-        Me.txt_paper_3.TabIndex = 19
+        Me.txt_paper_3.TabIndex = 21
         '
         'txt_paper_2
         '
@@ -699,7 +704,7 @@ Partial Class frm_input
         Me.txt_paper_2.Location = New System.Drawing.Point(303, 70)
         Me.txt_paper_2.Name = "txt_paper_2"
         Me.txt_paper_2.Size = New System.Drawing.Size(60, 21)
-        Me.txt_paper_2.TabIndex = 20
+        Me.txt_paper_2.TabIndex = 22
         '
         'txt_paper_1
         '
@@ -707,7 +712,7 @@ Partial Class frm_input
         Me.txt_paper_1.Location = New System.Drawing.Point(367, 70)
         Me.txt_paper_1.Name = "txt_paper_1"
         Me.txt_paper_1.Size = New System.Drawing.Size(56, 21)
-        Me.txt_paper_1.TabIndex = 21
+        Me.txt_paper_1.TabIndex = 23
         '
         'Label32
         '
@@ -725,7 +730,7 @@ Partial Class frm_input
         Me.txt_F6.Location = New System.Drawing.Point(848, 19)
         Me.txt_F6.Name = "txt_F6"
         Me.txt_F6.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F6.TabIndex = 13
+        Me.txt_F6.TabIndex = 15
         '
         'Label33
         '
@@ -743,7 +748,7 @@ Partial Class frm_input
         Me.txt_F7.Location = New System.Drawing.Point(890, 19)
         Me.txt_F7.Name = "txt_F7"
         Me.txt_F7.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F7.TabIndex = 14
+        Me.txt_F7.TabIndex = 16
         '
         'Label34
         '
@@ -761,7 +766,7 @@ Partial Class frm_input
         Me.txt_F8.Location = New System.Drawing.Point(932, 19)
         Me.txt_F8.Name = "txt_F8"
         Me.txt_F8.Size = New System.Drawing.Size(40, 22)
-        Me.txt_F8.TabIndex = 15
+        Me.txt_F8.TabIndex = 17
         '
         'txt_lon
         '
@@ -771,15 +776,15 @@ Partial Class frm_input
         Me.txt_lon.Location = New System.Drawing.Point(5, 70)
         Me.txt_lon.Name = "txt_lon"
         Me.txt_lon.Size = New System.Drawing.Size(100, 21)
-        Me.txt_lon.TabIndex = 16
+        Me.txt_lon.TabIndex = 18
         '
         'txt_search_pl
         '
-        Me.txt_search_pl.Font = New System.Drawing.Font("Microsoft Sans Serif", 4.0!)
-        Me.txt_search_pl.Location = New System.Drawing.Point(111, 93)
+        Me.txt_search_pl.Font = New System.Drawing.Font("Microsoft Sans Serif", 3.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_search_pl.Location = New System.Drawing.Point(111, 95)
         Me.txt_search_pl.Name = "txt_search_pl"
         Me.txt_search_pl.ReadOnly = True
-        Me.txt_search_pl.Size = New System.Drawing.Size(312, 14)
+        Me.txt_search_pl.Size = New System.Drawing.Size(312, 13)
         Me.txt_search_pl.TabIndex = 2000
         '
         'txt_duedate
@@ -788,7 +793,7 @@ Partial Class frm_input
         Me.txt_duedate.Location = New System.Drawing.Point(555, 70)
         Me.txt_duedate.Name = "txt_duedate"
         Me.txt_duedate.Size = New System.Drawing.Size(120, 21)
-        Me.txt_duedate.TabIndex = 23
+        Me.txt_duedate.TabIndex = 25
         Me.txt_duedate.Value = New Date(2019, 4, 1, 0, 0, 0, 0)
         '
         'txt_desc
@@ -796,7 +801,7 @@ Partial Class frm_input
         Me.txt_desc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
         Me.txt_desc.Location = New System.Drawing.Point(111, 135)
         Me.txt_desc.Name = "txt_desc"
-        Me.txt_desc.Size = New System.Drawing.Size(312, 26)
+        Me.txt_desc.Size = New System.Drawing.Size(564, 26)
         Me.txt_desc.TabIndex = 2002
         '
         'txt_item_code
@@ -826,12 +831,12 @@ Partial Class frm_input
         Me.txt_stampline.Location = New System.Drawing.Point(715, 70)
         Me.txt_stampline.Name = "txt_stampline"
         Me.txt_stampline.Size = New System.Drawing.Size(128, 21)
-        Me.txt_stampline.TabIndex = 24
+        Me.txt_stampline.TabIndex = 26
         '
         'txt_fn_find_inch_mm
         '
         Me.txt_fn_find_inch_mm.FormattingEnabled = True
-        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว นิ้ว", "มิล มิล", "นิ้ว มิล", "มิล นิ้ว"})
+        Me.txt_fn_find_inch_mm.Items.AddRange(New Object() {"นิ้ว นิ้ว", "มิล มิล", "นิ้ว มิล"})
         Me.txt_fn_find_inch_mm.Location = New System.Drawing.Point(109, 19)
         Me.txt_fn_find_inch_mm.Name = "txt_fn_find_inch_mm"
         Me.txt_fn_find_inch_mm.Size = New System.Drawing.Size(100, 21)
@@ -843,7 +848,7 @@ Partial Class frm_input
         Me.txt_sub_desc.Location = New System.Drawing.Point(488, 19)
         Me.txt_sub_desc.Name = "txt_sub_desc"
         Me.txt_sub_desc.Size = New System.Drawing.Size(40, 21)
-        Me.txt_sub_desc.TabIndex = 3030
+        Me.txt_sub_desc.TabIndex = 8
         '
         'Label36
         '
@@ -885,18 +890,17 @@ Partial Class frm_input
         '
         'lb_cuscode
         '
-        Me.lb_cuscode.AutoSize = True
-        Me.lb_cuscode.Location = New System.Drawing.Point(1071, 90)
+        Me.lb_cuscode.Location = New System.Drawing.Point(5, 3)
         Me.lb_cuscode.Name = "lb_cuscode"
-        Me.lb_cuscode.Size = New System.Drawing.Size(62, 13)
+        Me.lb_cuscode.Size = New System.Drawing.Size(100, 13)
         Me.lb_cuscode.TabIndex = 2004
         Me.lb_cuscode.Text = "lb_cuscode"
-        Me.lb_cuscode.Visible = False
+        Me.lb_cuscode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(456, 94)
+        Me.Label37.Location = New System.Drawing.Point(817, 99)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(27, 13)
         Me.Label37.TabIndex = 2005
@@ -906,7 +910,7 @@ Partial Class frm_input
         'Label38
         '
         Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(456, 114)
+        Me.Label38.Location = New System.Drawing.Point(712, 136)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(50, 13)
         Me.Label38.TabIndex = 2006
@@ -915,28 +919,28 @@ Partial Class frm_input
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(602, 111)
+        Me.TextBox1.Location = New System.Drawing.Point(1074, 70)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(244, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(26, 20)
         Me.TextBox1.TabIndex = 2008
         Me.TextBox1.Text = "x"
         Me.TextBox1.Visible = False
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(602, 137)
+        Me.TextBox2.Location = New System.Drawing.Point(1115, 70)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(244, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(26, 20)
         Me.TextBox2.TabIndex = 2009
         Me.TextBox2.Text = "y"
         Me.TextBox2.Visible = False
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(629, 221)
+        Me.TextBox3.Location = New System.Drawing.Point(629, 226)
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(197, 51)
+        Me.TextBox3.Size = New System.Drawing.Size(197, 22)
         Me.TextBox3.TabIndex = 2011
         Me.TextBox3.Visible = False
         '
@@ -958,7 +962,7 @@ Partial Class frm_input
         Me.btn_save.Location = New System.Drawing.Point(694, 299)
         Me.btn_save.Name = "btn_save"
         Me.btn_save.Size = New System.Drawing.Size(150, 25)
-        Me.btn_save.TabIndex = 2015
+        Me.btn_save.TabIndex = 2020
         Me.btn_save.Text = "Save"
         Me.btn_save.UseVisualStyleBackColor = False
         '
@@ -966,26 +970,26 @@ Partial Class frm_input
         '
         Me.txt_wid_inch_to_mm.BackColor = System.Drawing.Color.Linen
         Me.txt_wid_inch_to_mm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
-        Me.txt_wid_inch_to_mm.Location = New System.Drawing.Point(321, 19)
+        Me.txt_wid_inch_to_mm.Location = New System.Drawing.Point(321, 40)
         Me.txt_wid_inch_to_mm.Name = "txt_wid_inch_to_mm"
         Me.txt_wid_inch_to_mm.Size = New System.Drawing.Size(80, 21)
-        Me.txt_wid_inch_to_mm.TabIndex = 2016
+        Me.txt_wid_inch_to_mm.TabIndex = 5
         '
         'txt_long_inch_to_mm
         '
         Me.txt_long_inch_to_mm.BackColor = System.Drawing.Color.Linen
         Me.txt_long_inch_to_mm.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.75!)
-        Me.txt_long_inch_to_mm.Location = New System.Drawing.Point(407, 19)
+        Me.txt_long_inch_to_mm.Location = New System.Drawing.Point(407, 40)
         Me.txt_long_inch_to_mm.Name = "txt_long_inch_to_mm"
         Me.txt_long_inch_to_mm.Size = New System.Drawing.Size(80, 21)
-        Me.txt_long_inch_to_mm.TabIndex = 2017
+        Me.txt_long_inch_to_mm.TabIndex = 7
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(629, 164)
+        Me.TextBox4.Location = New System.Drawing.Point(629, 198)
         Me.TextBox4.Multiline = True
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(197, 51)
+        Me.TextBox4.Size = New System.Drawing.Size(197, 22)
         Me.TextBox4.TabIndex = 2018
         Me.TextBox4.Visible = False
         '
@@ -1008,32 +1012,25 @@ Partial Class frm_input
         '
         Me.TextBox5.Location = New System.Drawing.Point(890, 45)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(82, 20)
         Me.TextBox5.TabIndex = 3031
         Me.TextBox5.Visible = False
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(890, 70)
+        Me.TextBox6.Location = New System.Drawing.Point(978, 45)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox6.Size = New System.Drawing.Size(82, 20)
         Me.TextBox6.TabIndex = 3032
         Me.TextBox6.Visible = False
         '
         'TextBox7
         '
-        Me.TextBox7.Location = New System.Drawing.Point(890, 96)
+        Me.TextBox7.Location = New System.Drawing.Point(890, 70)
         Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox7.Size = New System.Drawing.Size(82, 20)
         Me.TextBox7.TabIndex = 3033
         Me.TextBox7.Visible = False
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Location = New System.Drawing.Point(111, 164)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(312, 20)
-        Me.TextBox8.TabIndex = 3034
         '
         'btn_add_price_manual
         '
@@ -1041,7 +1038,7 @@ Partial Class frm_input
         Me.btn_add_price_manual.Location = New System.Drawing.Point(1076, 141)
         Me.btn_add_price_manual.Name = "btn_add_price_manual"
         Me.btn_add_price_manual.Size = New System.Drawing.Size(24, 24)
-        Me.btn_add_price_manual.TabIndex = 3035
+        Me.btn_add_price_manual.TabIndex = 2014
         Me.btn_add_price_manual.Text = "+"
         Me.btn_add_price_manual.UseVisualStyleBackColor = True
         '
@@ -1051,7 +1048,7 @@ Partial Class frm_input
         Me.btn_del_price_manual.Location = New System.Drawing.Point(1099, 141)
         Me.btn_del_price_manual.Name = "btn_del_price_manual"
         Me.btn_del_price_manual.Size = New System.Drawing.Size(24, 24)
-        Me.btn_del_price_manual.TabIndex = 3036
+        Me.btn_del_price_manual.TabIndex = 2015
         Me.btn_del_price_manual.Text = "-"
         Me.btn_del_price_manual.UseVisualStyleBackColor = True
         '
@@ -1085,18 +1082,71 @@ Partial Class frm_input
         Me.lb_couter_3.Text = "lb_couter_3"
         Me.lb_couter_3.Visible = False
         '
+        'lb_search
+        '
+        Me.lb_search.AutoSize = True
+        Me.lb_search.BackColor = System.Drawing.SystemColors.Window
+        Me.lb_search.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.lb_search.Location = New System.Drawing.Point(13, 23)
+        Me.lb_search.Name = "lb_search"
+        Me.lb_search.Size = New System.Drawing.Size(69, 13)
+        Me.lb_search.TabIndex = 3040
+        Me.lb_search.Text = "F2 for search"
+        '
+        'lb_real_width
+        '
+        Me.lb_real_width.AutoSize = True
+        Me.lb_real_width.Location = New System.Drawing.Point(712, 97)
+        Me.lb_real_width.Name = "lb_real_width"
+        Me.lb_real_width.Size = New System.Drawing.Size(69, 13)
+        Me.lb_real_width.TabIndex = 3041
+        Me.lb_real_width.Text = "lb_real_width"
+        '
+        'lb_real_long
+        '
+        Me.lb_real_long.AutoSize = True
+        Me.lb_real_long.Location = New System.Drawing.Point(712, 110)
+        Me.lb_real_long.Name = "lb_real_long"
+        Me.lb_real_long.Size = New System.Drawing.Size(64, 13)
+        Me.lb_real_long.TabIndex = 3042
+        Me.lb_real_long.Text = "lb_real_long"
+        '
+        'lb_real_decimal
+        '
+        Me.lb_real_decimal.AutoSize = True
+        Me.lb_real_decimal.Location = New System.Drawing.Point(712, 123)
+        Me.lb_real_decimal.Name = "lb_real_decimal"
+        Me.lb_real_decimal.Size = New System.Drawing.Size(80, 13)
+        Me.lb_real_decimal.TabIndex = 3043
+        Me.lb_real_decimal.Text = "lb_real_decimal"
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(626, 179)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(45, 13)
+        Me.Label39.TabIndex = 3044
+        Me.Label39.Text = "Label39"
+        Me.Label39.Visible = False
+        '
         'frm_input
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightCyan
         Me.ClientSize = New System.Drawing.Size(1153, 326)
+        Me.Controls.Add(Me.Label39)
+        Me.Controls.Add(Me.lb_real_decimal)
+        Me.Controls.Add(Me.lb_real_long)
+        Me.Controls.Add(Me.lb_real_width)
+        Me.Controls.Add(Me.lb_search)
+        Me.Controls.Add(Me.txt_customers)
         Me.Controls.Add(Me.lb_couter_3)
         Me.Controls.Add(Me.lb_couter_2)
         Me.Controls.Add(Me.lb_couter_1)
         Me.Controls.Add(Me.btn_del_price_manual)
         Me.Controls.Add(Me.btn_add_price_manual)
-        Me.Controls.Add(Me.TextBox8)
         Me.Controls.Add(Me.TextBox7)
         Me.Controls.Add(Me.TextBox6)
         Me.Controls.Add(Me.TextBox5)
@@ -1105,7 +1155,6 @@ Partial Class frm_input
         Me.Controls.Add(Me.txtdocnumber)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.txt_long_inch_to_mm)
-        Me.Controls.Add(Me.txt_wid_inch_to_mm)
         Me.Controls.Add(Me.btn_save)
         Me.Controls.Add(Me.Label43)
         Me.Controls.Add(Me.TextBox3)
@@ -1117,7 +1166,6 @@ Partial Class frm_input
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txt_exe)
-        Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.txt_fn_find_inch_mm)
         Me.Controls.Add(Me.txt_stampline)
         Me.Controls.Add(Me.Label35)
@@ -1137,8 +1185,6 @@ Partial Class frm_input
         Me.Controls.Add(Me.txt_paper_3)
         Me.Controls.Add(Me.txt_paper_4)
         Me.Controls.Add(Me.txt_paper_5)
-        Me.Controls.Add(Me.txt_customer)
-        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.btn_add)
         Me.Controls.Add(Me.btn_clear)
         Me.Controls.Add(Me.Label31)
@@ -1194,8 +1240,11 @@ Partial Class frm_input
         Me.Controls.Add(Me.txt_long)
         Me.Controls.Add(Me.txt_cut)
         Me.Controls.Add(Me.txt_workinch)
-        Me.Controls.Add(Me.txt_width)
         Me.Controls.Add(Me.txt_pono)
+        Me.Controls.Add(Me.Label36)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.txt_wid_inch_to_mm)
+        Me.Controls.Add(Me.txt_width)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frm_input"
         Me.Text = ";"
@@ -1260,7 +1309,6 @@ Partial Class frm_input
     Friend WithEvents btn_clear As Button
     Friend WithEvents btn_add As Button
     Friend WithEvents Label15 As Label
-    Friend WithEvents txt_customer As ComboBox
     Friend WithEvents txt_paper_5 As TextBox
     Friend WithEvents txt_paper_4 As TextBox
     Friend WithEvents txt_paper_3 As TextBox
@@ -1301,11 +1349,16 @@ Partial Class frm_input
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents TextBox7 As TextBox
-    Friend WithEvents TextBox8 As TextBox
     Friend WithEvents btn_add_price_manual As Button
     Friend WithEvents btn_del_price_manual As Button
     Friend WithEvents txt_item_code As TextBox
     Friend WithEvents lb_couter_1 As Label
     Friend WithEvents lb_couter_2 As Label
     Friend WithEvents lb_couter_3 As Label
+    Friend WithEvents txt_customers As ComboBox
+    Friend WithEvents lb_search As Label
+    Friend WithEvents lb_real_width As Label
+    Friend WithEvents lb_real_long As Label
+    Friend WithEvents lb_real_decimal As Label
+    Friend WithEvents Label39 As Label
 End Class

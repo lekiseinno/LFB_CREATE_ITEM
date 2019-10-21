@@ -25,6 +25,7 @@ Partial Class frm_cus_discount
         Me.txt_search = New System.Windows.Forms.TextBox()
         Me.DataGrid_Cus_discount = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.DataGrid_Cus_discount, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -56,11 +57,21 @@ Partial Class frm_cus_discount
         Me.Label1.TabIndex = 23
         Me.Label1.Text = "Search . . ."
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(756, 27)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(385, 287)
+        Me.TextBox1.TabIndex = 24
+        Me.TextBox1.Visible = False
+        '
         'frm_cus_discount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1153, 326)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txt_search)
         Me.Controls.Add(Me.DataGrid_Cus_discount)
@@ -75,4 +86,5 @@ Partial Class frm_cus_discount
     Friend WithEvents txt_search As TextBox
     Friend WithEvents DataGrid_Cus_discount As DataGridView
     Friend WithEvents Label1 As Label
+    Friend WithEvents TextBox1 As TextBox
 End Class

@@ -12,8 +12,19 @@ Public Class frm_login
     End Sub
 
     Private Sub Frm_login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = "Signin System :: v. " & GetVersion()
 
-        lb_version.Text = "Versions. " & GetVersion()
+        get_versions.Text = "versions " & GetVersion() & " [ On Build ]"
+
+        dev_path_resource.Text = setup_conf.fileconn
+        dev_path_startup.Text = setup_conf.fileserver
+
+        client_path_resource.Text = setup_conf.file_resource1
+        client_path_startup.Text = setup_conf.file_resource2
+
+        lb_OnClient.Enabled = False
+        lb_OnDev.Enabled = False
+
     End Sub
 
     Public Function GetVersion() As String
@@ -42,7 +53,6 @@ Public Class frm_login
         Try
             Dim user = txt_username.Text
             Dim pass = txt_password.Text
-            ''dbsql = New SqlConnection("Database=PAIWAN_CAFE;Data Source=RTII-NOTEBOOK;User Id=sa;Password=034413218")
 
             connection.Open()
 
@@ -63,6 +73,28 @@ Public Class frm_login
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
+    End Sub
 
+    Private Sub ConnectDataBaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectDataBaseToolStripMenuItem.Click
+        frm_config_connection.Show()
+
+    End Sub
+
+    Private Sub ConnectionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectionToolStripMenuItem.Click
+        MsgBox(chk_connection())
+    End Sub
+
+    Private Sub dev_path_startup_Click(sender As Object, e As EventArgs) Handles dev_path_startup.Click
+        Process.Start("explorer.exe", (dev_path_startup.Text).Substring(0, (dev_path_startup.Text).Length - 8))
+    End Sub
+
+    Private Sub client_path_resource_Click(sender As Object, e As EventArgs) Handles client_path_resource.Click
+        Process.Start("explorer.exe", (client_path_resource.Text).Substring(0, (client_path_resource.Text).Length - 8))
+        MsgBox((client_path_resource.Text).Substring(0, (client_path_resource.Text).Length - 8))
+    End Sub
+
+    Private Sub client_path_startup_Click(sender As Object, e As EventArgs) Handles client_path_startup.Click
+        Process.Start("explorer.exe", (client_path_startup.Text).Substring(0, (client_path_startup.Text).Length - 8))
+        MsgBox((client_path_startup.Text).Substring(0, (client_path_startup.Text).Length - 8))
     End Sub
 End Class

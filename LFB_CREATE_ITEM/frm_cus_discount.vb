@@ -8,7 +8,26 @@ Public Class frm_cus_discount
     Sub get_data(datagrid)
         Try
             Dim sql As String
-            sql = "SELECT  LFB_ITEM$_Customer.[Customer_Code] ,LFB_ITEM$_Customer.[Customer_Codess] ,LFB_ITEM$_Customer.[Customer_Name] FROM [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer]"
+            If txt_search.Text = "" Then
+                sql = " SELECT  LFB_ITEM$_Customer.[Customer_Code],
+                                LFB_ITEM$_Customer.[Customer_Name]
+                        FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer]
+                      "
+            Else
+                sql = " SELECT  LFB_ITEM$_Customer.[Customer_Code],
+                                LFB_ITEM$_Customer.[Customer_Name]
+                        FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer]
+                        WHERE   (
+                                [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer].[Customer_Code]  LIKE    '%" & txt_search.Text & "%'
+                                OR                                
+                                [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer].[Customer_Name]  LIKE    '%" & txt_search.Text & "%'
+                                )
+                            "
+            End If
+
+            TextBox1.Text = sql
+
+
             Dim query As New SqlCommand(sql, connection)
             Dim dataadapter As New SqlDataAdapter(query)
             Dim ds As New DataSet()
@@ -17,12 +36,15 @@ Public Class frm_cus_discount
             datagrid.DataMember = "Customer_Code"
             datagrid.Columns(0).Width = 150
             datagrid.Columns(1).Width = 465
-            datagrid.Columns(2).Width = 465
             'customize(datagrid)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
     End Sub
+
+
+
+
 
 
     Dim select_1
@@ -49,7 +71,7 @@ Public Class frm_cus_discount
             data_cus_discount.DataGrid_Cus_discount.DataSource = ds
             data_cus_discount.DataGrid_Cus_discount.DataMember = "Customer_Code"
 
-            data_cus_discount.DataGrid_Cus_discount.Columns(0).Width = 150
+            data_cus_discount.DataGrid_Cus_discount.Columns(0).Visible = False
             data_cus_discount.DataGrid_Cus_discount.Columns(1).Width = 150
             data_cus_discount.DataGrid_Cus_discount.Columns(2).Width = 150
             data_cus_discount.DataGrid_Cus_discount.Columns(3).Width = 150
@@ -68,7 +90,10 @@ Public Class frm_cus_discount
         End Try
     End Sub
 
-    Private Sub Txt_search_TextChanged(sender As Object, e As EventArgs) Handles txt_search.TextChanged
+
+    Private Sub txt_search_KeyUp(sender As Object, e As KeyEventArgs) Handles txt_search.KeyUp
+        get_data(DataGrid_Cus_discount)
 
     End Sub
+
 End Class

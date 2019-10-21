@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_login
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frm_login
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_login))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -31,8 +31,27 @@ Partial Class frm_login
         Me.txt_password = New System.Windows.Forms.TextBox()
         Me.txt_username = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lb_version = New System.Windows.Forms.Label()
+        Me.header = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConnectDataBaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConnectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.PathToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lb_OnDev = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.dev_path_resource = New System.Windows.Forms.ToolStripMenuItem()
+        Me.dev_path_startup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.lb_OnClient = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.client_path_resource = New System.Windows.Forms.ToolStripMenuItem()
+        Me.client_path_startup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.get_versions = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
+        Me.header.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -110,20 +129,125 @@ Partial Class frm_login
         '
         Me.Panel1.BackgroundImage = Global.LFB_CREATE_ITEM.My.Resources.Resources.pricelist_Pic
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Location = New System.Drawing.Point(83, 23)
+        Me.Panel1.Location = New System.Drawing.Point(83, 47)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(218, 218)
         Me.Panel1.TabIndex = 1
         '
-        'lb_version
+        'header
         '
-        Me.lb_version.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(222, Byte))
-        Me.lb_version.Location = New System.Drawing.Point(23, 534)
-        Me.lb_version.Name = "lb_version"
-        Me.lb_version.Size = New System.Drawing.Size(338, 23)
-        Me.lb_version.TabIndex = 2
-        Me.lb_version.Text = "lb_version"
-        Me.lb_version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.header.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PathToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.header.Location = New System.Drawing.Point(0, 0)
+        Me.header.Name = "header"
+        Me.header.Size = New System.Drawing.Size(384, 24)
+        Me.header.TabIndex = 2
+        Me.header.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConnectDataBaseToolStripMenuItem, Me.ConnectionToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem, Me.ToolStripSeparator2})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "File"
+        '
+        'ConnectDataBaseToolStripMenuItem
+        '
+        Me.ConnectDataBaseToolStripMenuItem.Name = "ConnectDataBaseToolStripMenuItem"
+        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConnectDataBaseToolStripMenuItem.Text = "Connect DataBase"
+        '
+        'ConnectionToolStripMenuItem
+        '
+        Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConnectionToolStripMenuItem.Text = "Cechk Connection"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
+        '
+        'PathToolStripMenuItem
+        '
+        Me.PathToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lb_OnDev, Me.ToolStripSeparator3, Me.dev_path_resource, Me.dev_path_startup, Me.ToolStripSeparator4, Me.lb_OnClient, Me.ToolStripSeparator5, Me.client_path_resource, Me.client_path_startup})
+        Me.PathToolStripMenuItem.Name = "PathToolStripMenuItem"
+        Me.PathToolStripMenuItem.Size = New System.Drawing.Size(79, 20)
+        Me.PathToolStripMenuItem.Text = "Check Path"
+        '
+        'lb_OnDev
+        '
+        Me.lb_OnDev.Name = "lb_OnDev"
+        Me.lb_OnDev.Size = New System.Drawing.Size(182, 22)
+        Me.lb_OnDev.Text = "On Dev."
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(179, 6)
+        '
+        'dev_path_resource
+        '
+        Me.dev_path_resource.Name = "dev_path_resource"
+        Me.dev_path_resource.Size = New System.Drawing.Size(182, 22)
+        Me.dev_path_resource.Text = "dev_path_resource"
+        '
+        'dev_path_startup
+        '
+        Me.dev_path_startup.Name = "dev_path_startup"
+        Me.dev_path_startup.Size = New System.Drawing.Size(182, 22)
+        Me.dev_path_startup.Text = "dev_path_startup"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(179, 6)
+        '
+        'lb_OnClient
+        '
+        Me.lb_OnClient.Name = "lb_OnClient"
+        Me.lb_OnClient.Size = New System.Drawing.Size(182, 22)
+        Me.lb_OnClient.Text = "On Client"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(179, 6)
+        '
+        'client_path_resource
+        '
+        Me.client_path_resource.Name = "client_path_resource"
+        Me.client_path_resource.Size = New System.Drawing.Size(182, 22)
+        Me.client_path_resource.Text = "client_path_resource"
+        '
+        'client_path_startup
+        '
+        Me.client_path_startup.Name = "client_path_startup"
+        Me.client_path_startup.Size = New System.Drawing.Size(182, 22)
+        Me.client_path_startup.Text = "client_path_startup"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.get_versions})
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'get_versions
+        '
+        Me.get_versions.Name = "get_versions"
+        Me.get_versions.Size = New System.Drawing.Size(180, 22)
+        Me.get_versions.Text = "?"
         '
         'frm_login
         '
@@ -131,18 +255,22 @@ Partial Class frm_login
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(384, 561)
-        Me.Controls.Add(Me.lb_version)
+        Me.Controls.Add(Me.header)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(400, 600)
+        Me.MinimumSize = New System.Drawing.Size(400, 600)
         Me.Name = "frm_login"
-        Me.Padding = New System.Windows.Forms.Padding(20)
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_login"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.header.ResumeLayout(False)
+        Me.header.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -154,5 +282,23 @@ Partial Class frm_login
     Friend WithEvents btn_signin As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents lb_version As Label
+    Friend WithEvents header As MenuStrip
+    Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ConnectDataBaseToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ConnectionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents PathToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents lb_OnDev As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents dev_path_resource As ToolStripMenuItem
+    Friend WithEvents dev_path_startup As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents lb_OnClient As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents client_path_resource As ToolStripMenuItem
+    Friend WithEvents client_path_startup As ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents get_versions As ToolStripMenuItem
 End Class

@@ -33,7 +33,7 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>12</ApplicationRevision>
-    <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
+    <ApplicationVersion>3.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -171,6 +171,12 @@
     <Compile Include="data_PL.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_config_connection.Designer.vb">
+      <DependentUpon>frm_config_connection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_config_connection.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_cus.Designer.vb">
       <DependentUpon>frm_cus.vb</DependentUpon>
     </Compile>
@@ -220,6 +226,12 @@
       <DependentUpon>frm_master.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_search.Designer.vb">
+      <DependentUpon>frm_search.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_search.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MSScriptControl\ScriptControl.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -257,6 +269,9 @@
     <EmbeddedResource Include="data_PL.resx">
       <DependentUpon>data_PL.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_config_connection.resx">
+      <DependentUpon>frm_config_connection.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_cus.resx">
       <DependentUpon>frm_cus.vb</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +293,9 @@
     <EmbeddedResource Include="frm_PL.resx">
       <DependentUpon>frm_PL.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_search.resx">
+      <DependentUpon>frm_search.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -290,9 +308,7 @@
     <EmbeddedResource Include="rpt_1.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\conn.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Content Include="Resources\conn.ini" />
     <Content Include="lisdata.rpt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

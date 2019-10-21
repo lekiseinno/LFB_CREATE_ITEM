@@ -6,64 +6,72 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Public Module setup_conf
 
     Public fileconn As String = "\Resources\conn.ini"
+    Public fileserver As String
 
     'For Dev
-    Public fileserver As String = (Application.StartupPath).Substring(0, (Application.StartupPath).Length - 10) + fileconn
+    'Public fileserver As String = (Application.StartupPath).Substring(0, (Application.StartupPath).Length - 10) + fileconn
 
     'For Client
-    'Public fileserver As String = (Application.StartupPath) & fineconf
-    'Public fileserver As String = My.Application.Info.DirectoryPath & fineconf
+    'Public fileserver As String = (Application.StartupPath) & fileconn
 
     Public file_resource1 As String = (Application.StartupPath) & fileconn
     Public file_resource2 As String = My.Application.Info.DirectoryPath & fileconn
 
     Public connection As SqlConnection = New SqlConnection(get_connectionstring)
 
+
+
+
+    Public Function GetVersion() As String
+        If (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed) Then
+            Dim ver As Version
+            ver = System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion
+            Return String.Format("{0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision)
+        Else
+            Return "Not Published"
+        End If
+    End Function
+
+
+
+
+
+
+
     Public Function get_connectionstring() As String
+
+        If GetVersion() = "Not Published" Then
+            fileserver = (Application.StartupPath).Substring(0, (Application.StartupPath).Length - 10) + fileconn
+        Else
+            fileserver = (Application.StartupPath) & fileconn
+        End If
+
         Dim connectionstring As String = ""
 
-        'Dim SV As String
-        'Dim UA As String
-        'Dim PW As String
-        'Dim DB As String
+        Dim SV As String
+        Dim UA As String
+        Dim PW As String
+        Dim DB As String
 
-        'If File.Exists(fileserver) Then
-        '    Dim line() As String = IO.File.ReadAllLines(fileserver)
-        '    If line.LongLength = 4 Then
-        '        SV = line(0)
-        '        UA = line(1)
-        '        PW = line(2)
-        '        DB = line(3)
-        '        connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
-        '    Else
-        '        Dim objStreamWriter As StreamWriter = New StreamWriter(fileserver)
-        '        objStreamWriter.WriteLine("1")
-        '        objStreamWriter.WriteLine("2")
-        '        objStreamWriter.WriteLine("3")
-        '        objStreamWriter.WriteLine("4")
-        '        objStreamWriter.Close()
-        '    End If
-        'End If
-
-
-        Dim SV As String = "192.168.110.125"
-        Dim UA As String = "innovation"
-        Dim PW As String = "Inno20i9"
-        Dim DB As String = "LFB_ITEM$"
-
-
-
-        'Dim SV As String = "127.0.0.1"
-        'Dim UA As String = "sa"
-        'Dim PW As String = "Passw0rd@1"
-        'Dim DB As String = "LFB_ITEM$"
-
+        If File.Exists(fileserver) Then
+            Dim line() As String = IO.File.ReadAllLines(fileserver)
+            If line.LongLength = 4 Then
+                SV = line(0)
+                UA = line(1)
+                PW = line(2)
+                DB = line(3)
+                connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
+            Else
+                Dim objStreamWriter As StreamWriter = New StreamWriter(fileserver)
+                objStreamWriter.WriteLine("1")
+                objStreamWriter.WriteLine("2")
+                objStreamWriter.WriteLine("3")
+                objStreamWriter.WriteLine("4")
+                objStreamWriter.Close()
+            End If
+        End If
         connectionstring = "Data Source=" & SV & ";Initial Catalog=" & DB & ";Persist Security Info=True;User ID=" & UA & ";Password=" & PW
-
         Return connectionstring
-
-
-
     End Function
 
     Function chk_connection()
@@ -83,13 +91,7 @@ Public Module setup_conf
 
 
     Sub gen_excel(datagridname, filename)
-
         Try
-
-
-
-
-
 
             Cursor.Current = Cursors.WaitCursor
 
@@ -129,23 +131,10 @@ Public Module setup_conf
             Dim colIndex As Integer = 0
             Dim rowIndex As Integer = 0
 
-
-
-
-
-
-
-
-
-
-
             For Each dc In dt.Columns
                 'colIndex = colIndex + 0
                 'excel.Cells(1, colIndex) = dc.ColumnName
             Next
-
-
-
 
             For Each dr In dt.Rows
                 rowIndex = rowIndex + 1
@@ -155,10 +144,6 @@ Public Module setup_conf
                     excel.Cells(rowIndex + 0, colIndex) = dr(dc.ColumnName)
                 Next
             Next
-
-
-
-
 
             With wSheet.Range("A1", "AZ1")
                 '.Font.Bold = True
@@ -190,7 +175,6 @@ Public Module setup_conf
             releaseObject(wBook)
             releaseObject(wSheet)
 
-
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try
@@ -207,13 +191,10 @@ Public Module setup_conf
         End Try
     End Sub
 
-
-
     Sub gen_txt()
 
         Dim nowdate = Now.ToString("yyyy-MM-dd")
         Dim nowtime = Now.ToString("HHmm")
-
 
         Dim filePath = "D:\create_item\" + nowdate + "\" + nowtime + "_code.txt"
 
@@ -225,6 +206,4 @@ Public Module setup_conf
             Next
         End Using
     End Sub
-
-
 End Module
