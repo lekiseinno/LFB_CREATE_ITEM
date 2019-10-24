@@ -36,7 +36,8 @@ Partial Class data_input
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
-        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btn_to_cal = New System.Windows.Forms.Button()
         CType(Me.DataGrid_input, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -107,7 +108,7 @@ Partial Class data_input
         '
         'btn_to_excel
         '
-        Me.btn_to_excel.Location = New System.Drawing.Point(797, 0)
+        Me.btn_to_excel.Location = New System.Drawing.Point(423, 0)
         Me.btn_to_excel.Name = "btn_to_excel"
         Me.btn_to_excel.Size = New System.Drawing.Size(75, 22)
         Me.btn_to_excel.TabIndex = 19
@@ -116,11 +117,11 @@ Partial Class data_input
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(38, 176)
+        Me.TextBox1.Location = New System.Drawing.Point(642, 142)
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBox1.Size = New System.Drawing.Size(1087, 130)
+        Me.TextBox1.Size = New System.Drawing.Size(406, 130)
         Me.TextBox1.TabIndex = 20
         Me.TextBox1.Visible = False
         '
@@ -143,9 +144,20 @@ Partial Class data_input
         '
         'Column1
         '
-        Me.Column1.HeaderText = "chk1"
+        Me.Column1.HeaderText = "Groupsum"
         Me.Column1.Name = "Column1"
         Me.Column1.ReadOnly = True
+        Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'btn_to_cal
+        '
+        Me.btn_to_cal.Location = New System.Drawing.Point(792, 0)
+        Me.btn_to_cal.Name = "btn_to_cal"
+        Me.btn_to_cal.Size = New System.Drawing.Size(75, 22)
+        Me.btn_to_cal.TabIndex = 21
+        Me.btn_to_cal.Text = "calculate"
+        Me.btn_to_cal.UseVisualStyleBackColor = True
         '
         'data_input
         '
@@ -153,6 +165,7 @@ Partial Class data_input
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1155, 328)
+        Me.Controls.Add(Me.btn_to_cal)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.btn_to_excel)
         Me.Controls.Add(Me.btn_print)
@@ -184,5 +197,6 @@ Partial Class data_input
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents PageSetupDialog1 As PageSetupDialog
-    Friend WithEvents Column1 As DataGridViewCheckBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents btn_to_cal As Button
 End Class

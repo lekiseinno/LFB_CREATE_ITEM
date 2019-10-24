@@ -937,12 +937,11 @@ Partial Class frm_input
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(629, 226)
+        Me.TextBox3.Location = New System.Drawing.Point(629, 196)
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(197, 22)
+        Me.TextBox3.Size = New System.Drawing.Size(197, 77)
         Me.TextBox3.TabIndex = 2011
-        Me.TextBox3.Visible = False
         '
         'Label43
         '
@@ -986,7 +985,7 @@ Partial Class frm_input
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(629, 198)
+        Me.TextBox4.Location = New System.Drawing.Point(629, 170)
         Me.TextBox4.Multiline = True
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(197, 22)
@@ -1123,7 +1122,7 @@ Partial Class frm_input
         'Label39
         '
         Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(626, 179)
+        Me.Label39.Location = New System.Drawing.Point(681, 149)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(45, 13)
         Me.Label39.TabIndex = 3044

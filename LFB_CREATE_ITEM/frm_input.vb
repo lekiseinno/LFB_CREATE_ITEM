@@ -82,7 +82,7 @@ Public Class frm_input
         txt_discount.Text = ""
 
         txt_fn_find_inch_mm.Text = "มิล มิล"
-        txt_lon.Text = "BC"
+        ' txt_lon.Text = "BC"
 
         'txt_wid_inch_to_mm.Visible = False
         'txt_long_inch_to_mm.Visible = False
@@ -158,6 +158,7 @@ Public Class frm_input
         If txt_item_code.Text.Length <> 20 Then
             MsgBox("Please check some field to input data!")
         Else
+
             add_data_input_print() 'OK
             add_data_bom_header_0() 'OK
             add_data_bom_header_1() 'OK
@@ -166,7 +167,66 @@ Public Class frm_input
             add_data_Item_Unit_Of_Messure_Sheet() 'OK
             add_data_codetxt() 'OK
             add_data_item_master() 'OK
+            clear_frm()
         End If
+    End Sub
+    Sub clear_frm()
+
+        txt_width.Text = "0"
+        txt_wid_inch_to_mm.Text = "0"
+        txt_long.Text = "0"
+        txt_long_inch_to_mm.Text = "0"
+
+        txt_sub_desc.Text = ""
+        txt_cut_small.Text = "0"
+
+        txt_F1.Text = ""
+        txt_F2.Text = ""
+        txt_F3.Text = ""
+        txt_F4.Text = ""
+        txt_F5.Text = ""
+        txt_F6.Text = ""
+        txt_F7.Text = ""
+        txt_F8.Text = ""
+
+        txt_lon.Text = ""
+
+        txt_paper_5.Text = ""
+        txt_paper_4.Text = ""
+        txt_paper_3.Text = ""
+        txt_paper_2.Text = ""
+        txt_paper_1.Text = ""
+
+        txt_count.Text = "0"
+
+        txt_duedate.Text = ""
+        txt_stampline.Text = ""
+        txt_search_pl.Text = ""
+        txt_item_code.Text = ""
+        txt_desc.Text = ""
+        txt_trim.Text = ""
+        txt_workinch.Text = ""
+        txt_cut.Text = "0"
+        txt_count_cut.Text = "0"
+        txt_pl.Text = ""
+        txt_pl_sp.Text = ""
+        txt_pl_net.Text = ""
+        txt_net_unit.Text = ""
+
+        txt_met.Text = "0"
+        txt_sumdiscount.Text = "0"
+        txt_price.Text = ""
+        txt_discount.Text = "0"
+
+        txt_meth.Text = "0"
+        txt_meth2.Text = "0"
+
+
+        txt_note.Text = ""
+
+
+        lb_real_width.Text = 0
+        lb_real_long.Text = 0
     End Sub
     Sub add_head_data_bom_header_0()
         data_excelfile.DataGrid_bom_header_0.ColumnCount = 4
@@ -585,7 +645,7 @@ Public Class frm_input
         data_excelfile.DataGrid_Item_unit.Rows.Add(row3)
     End Sub
     Sub add_data_input_print()
-        data_input.DataGrid_input.ColumnCount = 31
+        data_input.DataGrid_input.ColumnCount = 32
 
 
         data_input.DataGrid_input.Columns(0).Name = "Check"
@@ -619,16 +679,19 @@ Public Class frm_input
         data_input.DataGrid_input.Columns(28).Name = "Total Price"
         data_input.DataGrid_input.Columns(29).Name = "Money Discount"
         data_input.DataGrid_input.Columns(30).Name = "Remark"
+        data_input.DataGrid_input.Columns(31).Name = "Sum Row"
+        data_input.DataGrid_input.Columns(31).Name = "Sum Group"
 
 
+        Dim isumgroup As Integer = 0
         Dim row As String()
 
         row = New String() {
                             False,
                             " ",
                             txt_pono.Text,
-                            txt_wid_inch_to_mm.Text,
-                            txt_long_inch_to_mm.Text,
+                            lb_real_width.Text,
+                            lb_real_long.Text,
                             txt_width.Text,
                             txt_long.Text,
                             txt_search_pl.Text, 'Paper Combination
@@ -654,8 +717,9 @@ Public Class frm_input
                             txt_duedate.Value,
                             (txt_price.Text * txt_count.Text),
                             txt_sumdiscount.Text,
-                            txt_note.Text
-                            }
+                            txt_note.Text,
+                            ((lb_real_long.Text * txt_count.Text) / txt_cut.Text),
+                             isumgroup}
         data_input.DataGrid_input.Rows.Add(row)
     End Sub
     Sub add_data_codetxt()
@@ -1302,12 +1366,13 @@ Public Class frm_input
         gen_item_des()
     End Sub
     Private Sub txt_stampline_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txt_stampline.SelectedIndexChanged
-        gen_item_code()
-        gen_item_des()
+        'gen_item_code()
+        'gen_item_des()
     End Sub
     Private Sub txt_stampline_LostFocus(sender As Object, e As EventArgs) Handles txt_stampline.LostFocus
         gen_item_code()
         gen_item_des()
+        get_discounts()
     End Sub
 
     Private Sub txt_sub_desc_TextChanged(sender As Object, e As EventArgs) Handles txt_sub_desc.TextChanged
@@ -1563,324 +1628,9 @@ Public Class frm_input
         'lb_search.Hide()
         get_discounts()
     End Sub
-    Private Sub txt_count_TextChanged(sender As Object, e As EventArgs) Handles txt_count.TextChanged
-        Dim x_final As Integer = 26
-        Dim txet_cut_small = txt_cut_small.Text
-        If txt_cut_small.Text = Nothing Then
-            txet_cut_small = 0
-        End If
-
-        'Dim x1 = (Integer.Parse(txt_cut_small.Text) * 1) + x_final
-        'Dim x2 = (Integer.Parse(txt_cut_small.Text) * 2) + x_final
-        'Dim x3 = (Integer.Parse(txt_cut_small.Text) * 3) + x_final
-        'Dim x4 = (Integer.Parse(txt_cut_small.Text) * 4) + x_final
-        'Dim x5 = (Integer.Parse(txt_cut_small.Text) * 5) + x_final
-
-        Dim x1 = (Integer.Parse(txet_cut_small) * 1) + x_final
-        Dim x2 = (Integer.Parse(txet_cut_small) * 2) + x_final
-        Dim x3 = (Integer.Parse(txet_cut_small) * 3) + x_final
-        Dim x4 = (Integer.Parse(txet_cut_small) * 4) + x_final
-        Dim x5 = (Integer.Parse(txet_cut_small) * 5) + x_final
-
-        Dim y1 = (Integer.Parse(txt_width.Text) * 1) + x_final
-        Dim y2 = (Integer.Parse(txt_width.Text) * 2) + x_final
-        Dim y3 = (Integer.Parse(txt_width.Text) * 3) + x_final
-        Dim y4 = (Integer.Parse(txt_width.Text) * 4) + x_final
-        Dim y5 = (Integer.Parse(txt_width.Text) * 5) + x_final
-
-
-        If x5 < 2200 Or x5 < 2161 Then 'x5
-            cut = 5
-        ElseIf x5 >= 2200 And x4 <= 2200 Then 'x4
-            cut = 4
-        ElseIf x5 >= 2200 And x4 >= 2200 And x3 <= 2200 Then 'x3
-            cut = 3
-        ElseIf x5 >= 2200 And x4 >= 2200 And x3 >= 2200 And x2 <= 2200 Then 'x2 
-            cut = 2
-        Else 'x1
-            cut = 1
-        End If
-
-
-        If x5 < 2200 Then
-            m = x5
-        Else
-            If x4 < 2200 Then
-                m = x4
-            Else
-                If x3 < 2200 Then
-                    m = x3
-                Else
-                    If x2 < 2200 Then
-                        m = x2
-                    Else
-                        m = x1
-                    End If
-                End If
-            End If
-        End If
-
-        If y1 > 870 Then
-            HK = y1
-        ElseIf y2 > 870 Then
-            HK = y2
-        ElseIf y3 > 870 Then
-            HK = y3
-        ElseIf y4 > 870 Then
-            HK = y3
-        ElseIf y5 > 870 Then
-            HK = y5
-        End If
-
-        If m < 931 Then
-            m = 930
-        Else
-            If m < 981 Then
-                m = 980
-            Else
-                If m < 1031 Then
-                    m = 1030
-                Else
-                    If m < 1081 Then
-                        m = 1080
-                    Else
-                        If m < 1131 Then
-                            m = 1130
-                        Else
-                            If m < 1181 Then
-                                m = 1180
-                            Else
-                                If m < 1231 Then
-                                    m = 1230
-                                Else
-                                    If m < 1281 Then
-                                        m = 1280
-                                    Else
-                                        If m < 1331 Then
-                                            m = 1330
-                                        Else
-                                            If m < 1391 Then
-                                                m = 1390
-                                            Else
-                                                If m < 1441 Then
-                                                    m = 1440
-                                                Else
-                                                    If m < 1491 Then
-                                                        m = 1490
-                                                    Else
-                                                        If m < 1541 Then
-                                                            m = 1540
-                                                        Else
-                                                            If m < 1591 Then
-                                                                m = 1590
-                                                            Else
-                                                                If m < 1641 Then
-                                                                    m = 1640
-                                                                Else
-                                                                    If m < 1691 Then
-                                                                        m = 1690
-                                                                    Else
-                                                                        If m < 1741 Then
-                                                                            m = 1740
-                                                                        Else
-                                                                            If m < 1791 Then
-                                                                                m = 1790
-                                                                            Else
-                                                                                If m < 1851 Then
-                                                                                    m = 1850
-                                                                                Else
-                                                                                    If m < 1901 Then
-                                                                                        m = 1900
-                                                                                    Else
-                                                                                        If m < 1951 Then
-                                                                                            m = 1950
-                                                                                        Else
-                                                                                            If m < 2001 Then
-                                                                                                m = 2000
-                                                                                            Else
-                                                                                                If m < 2051 Then
-                                                                                                    m = 2050
-                                                                                                Else
-                                                                                                    If m < 2101 Then
-                                                                                                        m = 2100
-                                                                                                    Else
-                                                                                                        If m < 2151 Then
-                                                                                                            m = 2150
-                                                                                                        Else
-                                                                                                            If m < 2201 Then
-                                                                                                                m = 2200
-                                                                                                            End If
-                                                                                                        End If
-                                                                                                    End If
-                                                                                                End If
-                                                                                            End If
-                                                                                        End If
-                                                                                    End If
-                                                                                End If
-                                                                            End If
-                                                                        End If
-                                                                    End If
-                                                                End If
-                                                            End If
-                                                        End If
-                                                    End If
-                                                End If
-                                            End If
-                                        End If
-                                    End If
-                                End If
-                            End If
-                        End If
-                    End If
-                End If
-            End If
-        End If
-
-        If mw < 931 Then
-            mw = 930
-        Else
-            If mw < 981 Then
-                mw = 980
-            Else
-                If mw < 1031 Then
-                    mw = 1030
-                Else
-                    If mw < 1081 Then
-                        mw = 1080
-                    Else
-                        If mw < 1131 Then
-                            mw = 1130
-                        Else
-                            If mw < 1181 Then
-                                mw = 1180
-                            Else
-                                If mw < 1231 Then
-                                    mw = 1230
-                                Else
-                                    If mw < 1281 Then
-                                        mw = 1280
-                                    Else
-                                        If mw < 1331 Then
-                                            mw = 1330
-                                        Else
-                                            If mw < 1391 Then
-                                                mw = 1390
-                                            Else
-                                                If mw < 1441 Then
-                                                    mw = 1440
-                                                Else
-                                                    If mw < 1491 Then
-                                                        mw = 1490
-                                                    Else
-                                                        If mw < 1541 Then
-                                                            mw = 1540
-                                                        Else
-                                                            If mw < 1591 Then
-                                                                mw = 1590
-                                                            Else
-                                                                If mw < 1641 Then
-                                                                    mw = 1640
-                                                                Else
-                                                                    If mw < 1691 Then
-                                                                        mw = 1690
-                                                                    Else
-                                                                        If mw < 1741 Then
-                                                                            mw = 1740
-                                                                        Else
-                                                                            If mw < 1791 Then
-                                                                                mw = 1790
-                                                                            Else
-                                                                                If mw < 1841 Then
-                                                                                    mw = 1840
-                                                                                Else
-                                                                                    If mw < 1891 Then
-                                                                                        mw = 1890
-                                                                                    Else
-                                                                                        If mw < 1941 Then
-                                                                                            mw = 1940
-                                                                                        Else
-                                                                                            If mw < 1991 Then
-                                                                                                mw = 1990
-                                                                                            Else
-                                                                                                If mw < 2041 Then
-                                                                                                    mw = 2040
-                                                                                                Else
-                                                                                                    If mw < 2091 Then
-                                                                                                        mw = 2090
-                                                                                                    Else
-                                                                                                        If mw < 2141 Then
-                                                                                                            mw = 2140
-                                                                                                        Else
-                                                                                                            If mw < 2191 Then
-                                                                                                                mw = 2190
-                                                                                                            End If
-                                                                                                        End If
-                                                                                                    End If
-                                                                                                End If
-                                                                                            End If
-                                                                                        End If
-                                                                                    End If
-                                                                                End If
-                                                                            End If
-                                                                        End If
-                                                                    End If
-                                                                End If
-                                                            End If
-                                                        End If
-                                                    End If
-                                                End If
-                                            End If
-                                        End If
-                                    End If
-                                End If
-                            End If
-                        End If
-                    End If
-                End If
-            End If
-        End If
 
 
 
-        txt_count_cut.Text = txt_count.Text
-
-        If txt_cut_small.Text <> "" And txt_cut_small.Text > 0 Then
-            txt_cut.Text = cut
-        End If
-
-
-
-
-        Label37.Text = "x1=" & x1 & " | x2=" & x2 & " | x3=" & x3 & " | x4=" & x4 & " | x5=" & x5
-
-        TextBox1.Text = m & " | " & x1 & " " & x2 & " " & x3 & " " & x4 & " " & x5
-        TextBox2.Text = HK & " | " & y1 & " " & y2 & " " & y3 & " " & y4 & " " & y5
-
-        'If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
-        '    txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
-        'End If
-
-        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
-            txt_trim.Text = Math.Ceiling((m - (wid * cut)))
-        End If
-
-        'txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
-
-
-        get_discounts()
-        get_price_mm()
-        get_net_pl()
-        get_mminch()
-
-
-
-        get_price_sp()
-
-
-
-        'txt_price.Text = Math.Round((CDbl(Val(txt_price.Text)) - ((CDbl(Val(txt_price.Text)) * CDbl(Val(txt_discount.Text))) / 100)), 2)
-
-    End Sub
     Sub get_price_sp()
         connection.Close()
         connection.Open()
@@ -1909,14 +1659,21 @@ Public Class frm_input
     End Sub
     Sub get_discounts()
 
-        connection.Close()
-        connection.Open()
-        Dim sql1 As String
 
         Dim text_lon As String = txt_lon.Text
 
+        If text_lon = "" Then
+            Exit Sub
+        End If
+
+        connection.Close()
+        connection.Open()
+        Dim sql11 As String
+
+
+
         If txt_met.Text > 0 Then
-            sql1 = "
+            sql11 = "
                     SELECT  [" & text_lon & "]
                     FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
                     WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
@@ -1924,7 +1681,7 @@ Public Class frm_input
                     AND     [MeterEnd]      >   '" & txt_met.Text & "'
                     "
         Else
-            sql1 = "
+            sql11 = "
                 SELECT  [" & text_lon & "]
                 FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
                 WHERE   [Customer_Code] =   '" & lb_cuscode.Text & "'
@@ -1937,8 +1694,11 @@ Public Class frm_input
 
 
 
-        TextBox3.Text = sql1
-        Dim sqlcmd1 As New SqlCommand(sql1, setup_conf.connection)
+        TextBox3.Text = sql11
+
+
+
+        Dim sqlcmd1 As New SqlCommand(sql11, connection)
         Dim myreader1 As SqlDataReader
         myreader1 = sqlcmd1.ExecuteReader()
         myreader1.Read()
@@ -2649,6 +2409,327 @@ Public Class frm_input
     End Sub
 
     Private Sub txt_cut_small_TextChanged(sender As Object, e As EventArgs) Handles txt_cut_small.TextChanged
+
+    End Sub
+
+    Private Sub txt_count_LostFocus(sender As Object, e As EventArgs) Handles txt_count.LostFocus
+
+        Dim x_final As Integer = 26
+        Dim txet_cut_small = txt_cut_small.Text
+        If txt_cut_small.Text = Nothing Then
+            txet_cut_small = 0
+        End If
+
+        'Dim x1 = (Integer.Parse(txt_cut_small.Text) * 1) + x_final
+        'Dim x2 = (Integer.Parse(txt_cut_small.Text) * 2) + x_final
+        'Dim x3 = (Integer.Parse(txt_cut_small.Text) * 3) + x_final
+        'Dim x4 = (Integer.Parse(txt_cut_small.Text) * 4) + x_final
+        'Dim x5 = (Integer.Parse(txt_cut_small.Text) * 5) + x_final
+
+        Dim x1 = (Integer.Parse(txet_cut_small) * 1) + x_final
+        Dim x2 = (Integer.Parse(txet_cut_small) * 2) + x_final
+        Dim x3 = (Integer.Parse(txet_cut_small) * 3) + x_final
+        Dim x4 = (Integer.Parse(txet_cut_small) * 4) + x_final
+        Dim x5 = (Integer.Parse(txet_cut_small) * 5) + x_final
+
+        Dim y1 = (Integer.Parse(txt_width.Text) * 1) + x_final
+        Dim y2 = (Integer.Parse(txt_width.Text) * 2) + x_final
+        Dim y3 = (Integer.Parse(txt_width.Text) * 3) + x_final
+        Dim y4 = (Integer.Parse(txt_width.Text) * 4) + x_final
+        Dim y5 = (Integer.Parse(txt_width.Text) * 5) + x_final
+
+
+        If x5 < 2200 Or x5 < 2161 Then 'x5
+            cut = 5
+        ElseIf x5 >= 2200 And x4 <= 2200 Then 'x4
+            cut = 4
+        ElseIf x5 >= 2200 And x4 >= 2200 And x3 <= 2200 Then 'x3
+            cut = 3
+        ElseIf x5 >= 2200 And x4 >= 2200 And x3 >= 2200 And x2 <= 2200 Then 'x2 
+            cut = 2
+        Else 'x1
+            cut = 1
+        End If
+
+
+        If x5 < 2200 Then
+            m = x5
+        Else
+            If x4 < 2200 Then
+                m = x4
+            Else
+                If x3 < 2200 Then
+                    m = x3
+                Else
+                    If x2 < 2200 Then
+                        m = x2
+                    Else
+                        m = x1
+                    End If
+                End If
+            End If
+        End If
+
+        If y1 > 870 Then
+            HK = y1
+        ElseIf y2 > 870 Then
+            HK = y2
+        ElseIf y3 > 870 Then
+            HK = y3
+        ElseIf y4 > 870 Then
+            HK = y3
+        ElseIf y5 > 870 Then
+            HK = y5
+        End If
+
+        If m < 931 Then
+            m = 930
+        Else
+            If m < 981 Then
+                m = 980
+            Else
+                If m < 1031 Then
+                    m = 1030
+                Else
+                    If m < 1081 Then
+                        m = 1080
+                    Else
+                        If m < 1131 Then
+                            m = 1130
+                        Else
+                            If m < 1181 Then
+                                m = 1180
+                            Else
+                                If m < 1231 Then
+                                    m = 1230
+                                Else
+                                    If m < 1281 Then
+                                        m = 1280
+                                    Else
+                                        If m < 1331 Then
+                                            m = 1330
+                                        Else
+                                            If m < 1391 Then
+                                                m = 1390
+                                            Else
+                                                If m < 1441 Then
+                                                    m = 1440
+                                                Else
+                                                    If m < 1491 Then
+                                                        m = 1490
+                                                    Else
+                                                        If m < 1541 Then
+                                                            m = 1540
+                                                        Else
+                                                            If m < 1591 Then
+                                                                m = 1590
+                                                            Else
+                                                                If m < 1641 Then
+                                                                    m = 1640
+                                                                Else
+                                                                    If m < 1691 Then
+                                                                        m = 1690
+                                                                    Else
+                                                                        If m < 1741 Then
+                                                                            m = 1740
+                                                                        Else
+                                                                            If m < 1791 Then
+                                                                                m = 1790
+                                                                            Else
+                                                                                If m < 1851 Then
+                                                                                    m = 1850
+                                                                                Else
+                                                                                    If m < 1901 Then
+                                                                                        m = 1900
+                                                                                    Else
+                                                                                        If m < 1951 Then
+                                                                                            m = 1950
+                                                                                        Else
+                                                                                            If m < 2001 Then
+                                                                                                m = 2000
+                                                                                            Else
+                                                                                                If m < 2051 Then
+                                                                                                    m = 2050
+                                                                                                Else
+                                                                                                    If m < 2101 Then
+                                                                                                        m = 2100
+                                                                                                    Else
+                                                                                                        If m < 2151 Then
+                                                                                                            m = 2150
+                                                                                                        Else
+                                                                                                            If m < 2201 Then
+                                                                                                                m = 2200
+                                                                                                            End If
+                                                                                                        End If
+                                                                                                    End If
+                                                                                                End If
+                                                                                            End If
+                                                                                        End If
+                                                                                    End If
+                                                                                End If
+                                                                            End If
+                                                                        End If
+                                                                    End If
+                                                                End If
+                                                            End If
+                                                        End If
+                                                    End If
+                                                End If
+                                            End If
+                                        End If
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+
+        If mw < 931 Then
+            mw = 930
+        Else
+            If mw < 981 Then
+                mw = 980
+            Else
+                If mw < 1031 Then
+                    mw = 1030
+                Else
+                    If mw < 1081 Then
+                        mw = 1080
+                    Else
+                        If mw < 1131 Then
+                            mw = 1130
+                        Else
+                            If mw < 1181 Then
+                                mw = 1180
+                            Else
+                                If mw < 1231 Then
+                                    mw = 1230
+                                Else
+                                    If mw < 1281 Then
+                                        mw = 1280
+                                    Else
+                                        If mw < 1331 Then
+                                            mw = 1330
+                                        Else
+                                            If mw < 1391 Then
+                                                mw = 1390
+                                            Else
+                                                If mw < 1441 Then
+                                                    mw = 1440
+                                                Else
+                                                    If mw < 1491 Then
+                                                        mw = 1490
+                                                    Else
+                                                        If mw < 1541 Then
+                                                            mw = 1540
+                                                        Else
+                                                            If mw < 1591 Then
+                                                                mw = 1590
+                                                            Else
+                                                                If mw < 1641 Then
+                                                                    mw = 1640
+                                                                Else
+                                                                    If mw < 1691 Then
+                                                                        mw = 1690
+                                                                    Else
+                                                                        If mw < 1741 Then
+                                                                            mw = 1740
+                                                                        Else
+                                                                            If mw < 1791 Then
+                                                                                mw = 1790
+                                                                            Else
+                                                                                If mw < 1841 Then
+                                                                                    mw = 1840
+                                                                                Else
+                                                                                    If mw < 1891 Then
+                                                                                        mw = 1890
+                                                                                    Else
+                                                                                        If mw < 1941 Then
+                                                                                            mw = 1940
+                                                                                        Else
+                                                                                            If mw < 1991 Then
+                                                                                                mw = 1990
+                                                                                            Else
+                                                                                                If mw < 2041 Then
+                                                                                                    mw = 2040
+                                                                                                Else
+                                                                                                    If mw < 2091 Then
+                                                                                                        mw = 2090
+                                                                                                    Else
+                                                                                                        If mw < 2141 Then
+                                                                                                            mw = 2140
+                                                                                                        Else
+                                                                                                            If mw < 2191 Then
+                                                                                                                mw = 2190
+                                                                                                            End If
+                                                                                                        End If
+                                                                                                    End If
+                                                                                                End If
+                                                                                            End If
+                                                                                        End If
+                                                                                    End If
+                                                                                End If
+                                                                            End If
+                                                                        End If
+                                                                    End If
+                                                                End If
+                                                            End If
+                                                        End If
+                                                    End If
+                                                End If
+                                            End If
+                                        End If
+                                    End If
+                                End If
+                            End If
+                        End If
+                    End If
+                End If
+            End If
+        End If
+
+
+
+        txt_count_cut.Text = txt_count.Text
+
+        If txt_cut_small.Text <> "" And txt_cut_small.Text > 0 Then
+            txt_cut.Text = cut
+        End If
+
+
+
+
+        Label37.Text = "x1=" & x1 & " | x2=" & x2 & " | x3=" & x3 & " | x4=" & x4 & " | x5=" & x5
+
+        TextBox1.Text = m & " | " & x1 & " " & x2 & " " & x3 & " " & x4 & " " & x5
+        TextBox2.Text = HK & " | " & y1 & " " & y2 & " " & y3 & " " & y4 & " " & y5
+
+        'If txt_fn_find_inch_mm.Text = "นิ้ว นิ้ว" Then
+        '    txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+        'End If
+
+        If txt_fn_find_inch_mm.Text = "มิล มิล" Then
+            txt_trim.Text = Math.Ceiling((m - (wid * cut)))
+        End If
+
+        'txt_trim.Text = Math.Ceiling((m - (wid * cut)) / 2)
+
+
+        get_discounts()
+        get_price_mm()
+        get_net_pl()
+        get_mminch()
+
+
+
+        get_price_sp()
+
+
+
+        'txt_price.Text = Math.Round((CDbl(Val(txt_price.Text)) - ((CDbl(Val(txt_price.Text)) * CDbl(Val(txt_discount.Text))) / 100)), 2)
+
 
     End Sub
 End Class

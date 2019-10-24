@@ -130,12 +130,56 @@
 
     Private Sub DataGrid_input_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrid_input.CellContentClick
 
-        If e.ColumnIndex = 1 Then
-            MsgBox(DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value.ToString())
-        End If
+        'If e.ColumnIndex = 0 Then
+        '    DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value = True
+        '    MsgBox(DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value.ToString())
+        'Else
+        '    MsgBox(e.ColumnIndex.ToString)
+        'End If
     End Sub
 
     Private Sub Data_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub DataGrid_input_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrid_input.CellClick
+        'If e.ColumnIndex = 0 Then
+        '    If DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value = False Then
+        '        DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value = True
+        '        'กรณี ติ๊กหลังจากใส่ค่าเมตรรวมหาส่วนลด 
+        '        If IsNumeric(frm_input.txt_meth2.Text) = True Then
+        '            DataGrid_input.Item(31, e.RowIndex).Value = frm_input.txt_meth2.Text
+        '        Else
+        '            DataGrid_input.Item(31, e.RowIndex).Value = 0
+        '        End If
+        '    Else
+        '            DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value = False
+        '    End If
+        '    '   MsgBox(DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value.ToString())
+        'End If
+
+
+
+
+
+    End Sub
+
+    Private Sub btn_to_cal_Click(sender As Object, e As EventArgs) Handles btn_to_cal.Click
+
+        For i As Integer = 0 To DataGrid_input.Rows.Count() - 1
+
+            Dim c As Boolean
+            c = DataGrid_input.Rows(i).Cells(0).Value
+            ' if the checkbox cell is checked
+            If c = True Then
+                MessageBox.Show("Checked")
+                ' if not
+            Else
+                MessageBox.Show("Not Checked")
+            End If
+
+
+        Next
 
     End Sub
 End Class
