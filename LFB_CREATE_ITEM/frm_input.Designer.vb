@@ -942,6 +942,7 @@ Partial Class frm_input
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(197, 77)
         Me.TextBox3.TabIndex = 2011
+        Me.TextBox3.Visible = False
         '
         'Label43
         '
@@ -1100,6 +1101,7 @@ Partial Class frm_input
         Me.lb_real_width.Size = New System.Drawing.Size(69, 13)
         Me.lb_real_width.TabIndex = 3041
         Me.lb_real_width.Text = "lb_real_width"
+        Me.lb_real_width.Visible = False
         '
         'lb_real_long
         '
@@ -1109,6 +1111,7 @@ Partial Class frm_input
         Me.lb_real_long.Size = New System.Drawing.Size(64, 13)
         Me.lb_real_long.TabIndex = 3042
         Me.lb_real_long.Text = "lb_real_long"
+        Me.lb_real_long.Visible = False
         '
         'lb_real_decimal
         '
@@ -1118,6 +1121,7 @@ Partial Class frm_input
         Me.lb_real_decimal.Size = New System.Drawing.Size(80, 13)
         Me.lb_real_decimal.TabIndex = 3043
         Me.lb_real_decimal.Text = "lb_real_decimal"
+        Me.lb_real_decimal.Visible = False
         '
         'Label39
         '

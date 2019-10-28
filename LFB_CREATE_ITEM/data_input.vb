@@ -1,5 +1,24 @@
-﻿Public Class data_input
+﻿Imports System.Data.SqlClient
 
+Public Class data_input
+
+    Private Sub Data_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub DataGrid_input_RowPostPaint(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowPostPaintEventArgs) _
+  Handles DataGrid_input.RowPostPaint
+        'สร้างเลขบรรทัด
+        Using b As SolidBrush = New SolidBrush(DataGrid_input.RowHeadersDefaultCellStyle.ForeColor)
+            e.Graphics.DrawString((e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),
+                  sender.DefaultCellStyle.Font,
+                  b,
+                  e.RowBounds.Location.X + 40,
+                  e.RowBounds.Location.Y + 3,
+                  New StringFormat(StringFormatFlags.DirectionRightToLeft))
+        End Using
+        'Me.DataGrid_input("Index", e.RowIndex).Value = e.RowIndex
+    End Sub
     Private Sub btn_excel_Click(sender As Object, e As EventArgs) Handles btn_excel.Click
 
         Me.Cursor = Cursors.WaitCursor
@@ -128,19 +147,9 @@
         e.Graphics.DrawImage(bm, 0, 0)
     End Sub
 
-    Private Sub DataGrid_input_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrid_input.CellContentClick
 
-        'If e.ColumnIndex = 0 Then
-        '    DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value = True
-        '    MsgBox(DataGrid_input.Item(e.ColumnIndex, e.RowIndex).Value.ToString())
-        'Else
-        '    MsgBox(e.ColumnIndex.ToString)
-        'End If
-    End Sub
 
-    Private Sub Data_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    End Sub
 
     Private Sub DataGrid_input_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrid_input.CellClick
         'If e.ColumnIndex = 0 Then
@@ -166,20 +175,113 @@
 
     Private Sub btn_to_cal_Click(sender As Object, e As EventArgs) Handles btn_to_cal.Click
 
-        For i As Integer = 0 To DataGrid_input.Rows.Count() - 1
+        Dim ilon As String = ""
+        For Each v As String In
+        From row
+        In DataGrid_input.Rows
+        Group By val = DirectCast(row, DataGridViewRow).Cells("Group").Value
+        Into Group
+        Where val IsNot Nothing
+        Select str = val.ToString
 
-            Dim c As Boolean
-            c = DataGrid_input.Rows(i).Cells(0).Value
-            ' if the checkbox cell is checked
-            If c = True Then
-                MessageBox.Show("Checked")
-                ' if not
-            Else
-                MessageBox.Show("Not Checked")
-            End If
+
+
+            Dim barCount = DataGrid_input.Rows.
+                             Cast(Of DataGridViewRow)().
+                             Where(Function(row) CStr(row.Cells(0).Value) = v.ToString).
+                             Sum(Function(row) CInt(row.Cells(31).Value))
+
+
+            For i As Integer = 0 To DataGrid_input.RowCount - 1
+
+                If v.ToString <> "" Then
+
+                    If DataGrid_input.Rows(i).Cells(0).Value = v.ToString Then
+
+                        ilon = DataGrid_input.Rows(i).Cells(8).Value
+
+                        DataGrid_input.Rows(i).Cells(32).Value = barCount
+
+                        DataGrid_input.Rows(i).Cells(23).Value = get_discounts(barCount, ilon)
+
+                    End If
+
+                End If
+
+
+
+
+            Next
+
+            '   MsgBox(barCount)
+
 
 
         Next
 
+
+
     End Sub
+
+    Function get_discounts(ByVal imeth As Integer, ByVal vlon As String) As String
+
+
+
+        '  Dim text_lon As String = frm_input.txt_lon.Text
+        Dim cuscode As String = frm_input.lb_cuscode.Text
+        Dim discount As Integer = 0
+
+        If vlon = "" Then
+            Return discount & " %"
+            Exit Function
+        End If
+
+        connection.Close()
+        connection.Open()
+
+
+        Dim sql11 As String
+
+
+
+        If imeth > 0 Then
+            sql11 = "
+                    SELECT  [" & vlon & "]
+                    FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
+                    WHERE   [Customer_Code] =   '" & cuscode & "'
+                    AND     [MeterStart]    <   '" & imeth & "'
+                    AND     [MeterEnd]      >   '" & imeth & "'
+                    "
+        Else
+            sql11 = "
+                SELECT  [" & vlon & "]
+                FROM    [LFB_ITEM$].[dbo].[LFB_ITEM$_Customer_Discount] 
+                WHERE   [Customer_Code] =   '" & cuscode & "'
+                "
+        End If
+
+
+
+        'TextBox3.Text = sql1
+
+
+
+        frm_input.TextBox3.Text = sql11
+
+
+
+        Dim sqlcmd1 As New SqlCommand(sql11, connection)
+        Dim myreader1 As SqlDataReader
+        myreader1 = sqlcmd1.ExecuteReader()
+        myreader1.Read()
+        If myreader1.HasRows Then
+            discount = myreader1.Item(vlon).ToString
+        End If
+        connection.Close()
+
+        'txt_discount.Text = discount & " %"
+        Return discount & " %"
+    End Function
+
 End Class
+

@@ -67,6 +67,8 @@ Partial Class frm_master
         Me.GB_header = New System.Windows.Forms.GroupBox()
         Me.panel_frm = New System.Windows.Forms.Panel()
         Me.panel_datagrid = New System.Windows.Forms.Panel()
+        Me.New_Document = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.header.SuspendLayout()
         Me.footer.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -85,7 +87,7 @@ Partial Class frm_master
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConnectDataBaseToolStripMenuItem, Me.ConnectionToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem, Me.ToolStripSeparator2})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.New_Document, Me.ToolStripSeparator6, Me.ConnectDataBaseToolStripMenuItem, Me.ConnectionToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem, Me.ToolStripSeparator2})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -93,30 +95,30 @@ Partial Class frm_master
         'ConnectDataBaseToolStripMenuItem
         '
         Me.ConnectDataBaseToolStripMenuItem.Name = "ConnectDataBaseToolStripMenuItem"
-        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.ConnectDataBaseToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConnectDataBaseToolStripMenuItem.Text = "Connect DataBase"
         '
         'ConnectionToolStripMenuItem
         '
         Me.ConnectionToolStripMenuItem.Name = "ConnectionToolStripMenuItem"
-        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.ConnectionToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConnectionToolStripMenuItem.Text = "Cechk Connection"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(169, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(169, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(177, 6)
         '
         'ConfigToolStripMenuItem
         '
@@ -420,6 +422,17 @@ Partial Class frm_master
         Me.panel_datagrid.Size = New System.Drawing.Size(1155, 330)
         Me.panel_datagrid.TabIndex = 4
         '
+        'New_Document
+        '
+        Me.New_Document.Name = "New_Document"
+        Me.New_Document.Size = New System.Drawing.Size(180, 22)
+        Me.New_Document.Text = "New..."
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(177, 6)
+        '
         'frm_master
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -495,4 +508,6 @@ Partial Class frm_master
     Friend WithEvents btn_item As Button
     Friend WithEvents btn_print_frm As Button
     Friend WithEvents btn_discount As Button
+    Friend WithEvents New_Document As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
 End Class

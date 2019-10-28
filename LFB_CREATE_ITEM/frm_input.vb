@@ -65,7 +65,7 @@ Public Class frm_input
 
     Dim real_decimal
     Private Sub frm_input_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        load_frm()
+        'load_frm()
         add_head_data_bom_header_0()
         add_head_data_bom_header_1()
         add_head_data_bom_line()
@@ -158,7 +158,6 @@ Public Class frm_input
         If txt_item_code.Text.Length <> 20 Then
             MsgBox("Please check some field to input data!")
         Else
-
             add_data_input_print() 'OK
             add_data_bom_header_0() 'OK
             add_data_bom_header_1() 'OK
@@ -167,7 +166,7 @@ Public Class frm_input
             add_data_Item_Unit_Of_Messure_Sheet() 'OK
             add_data_codetxt() 'OK
             add_data_item_master() 'OK
-            clear_frm()
+            'clear_frm()
         End If
     End Sub
     Sub clear_frm()
@@ -227,6 +226,8 @@ Public Class frm_input
 
         lb_real_width.Text = 0
         lb_real_long.Text = 0
+
+
     End Sub
     Sub add_head_data_bom_header_0()
         data_excelfile.DataGrid_bom_header_0.ColumnCount = 4
@@ -645,11 +646,10 @@ Public Class frm_input
         data_excelfile.DataGrid_Item_unit.Rows.Add(row3)
     End Sub
     Sub add_data_input_print()
-        data_input.DataGrid_input.ColumnCount = 32
+        data_input.DataGrid_input.ColumnCount = 33
 
-
-        data_input.DataGrid_input.Columns(0).Name = "Check"
-        data_input.DataGrid_input.Columns(1).Name = "#"
+        data_input.DataGrid_input.Columns(0).Name = "Group"
+        data_input.DataGrid_input.Columns(1).Name = "Item code"
         data_input.DataGrid_input.Columns(2).Name = "PO Number"
         data_input.DataGrid_input.Columns(3).Name = "width icnh"
         data_input.DataGrid_input.Columns(4).Name = "long inch"
@@ -680,15 +680,27 @@ Public Class frm_input
         data_input.DataGrid_input.Columns(29).Name = "Money Discount"
         data_input.DataGrid_input.Columns(30).Name = "Remark"
         data_input.DataGrid_input.Columns(31).Name = "Sum Row"
-        data_input.DataGrid_input.Columns(31).Name = "Sum Group"
+        data_input.DataGrid_input.Columns(32).Name = "Sum Group"
+
+        Dim icut As Integer = 0
+
+
+        If txt_cut.Text = 0 Then
+            icut = 1
+        Else
+            icut = txt_cut.Text
+        End If
+
+
+        Dim isumrow As Integer = Math.Round((lb_real_long.Text * txt_count.Text) / icut) / 1000
 
 
         Dim isumgroup As Integer = 0
         Dim row As String()
 
         row = New String() {
-                            False,
-                            " ",
+                            "",
+                            txt_item_code.Text,
                             txt_pono.Text,
                             lb_real_width.Text,
                             lb_real_long.Text,
@@ -718,7 +730,7 @@ Public Class frm_input
                             (txt_price.Text * txt_count.Text),
                             txt_sumdiscount.Text,
                             txt_note.Text,
-                            ((lb_real_long.Text * txt_count.Text) / txt_cut.Text),
+                            isumrow,
                              isumgroup}
         data_input.DataGrid_input.Rows.Add(row)
     End Sub
@@ -731,139 +743,7 @@ Public Class frm_input
     End Sub
     Function get_m(minput)
         Dim m_m_m As String = ""
-        'If minput = "" Then m_m_m = "00"
-        'If minput = "A125" Then m_m_m = "A2"
-        'If minput = "A150" Then m_m_m = "A4"
-        'If minput = "A185" Then m_m_m = "A6"
-        'If minput = "A230" Then m_m_m = "A8"
-        'If minput = "PA125" Then m_m_m = "A2"
-        'If minput = "PA150" Then m_m_m = "A4"
-        'If minput = "PA185" Then m_m_m = "A6"
-        'If minput = "PA230" Then m_m_m = "A8"
-        'If minput = "HA125" Then m_m_m = "A2"
-        'If minput = "HA150" Then m_m_m = "A4"
-        'If minput = "HA185" Then m_m_m = "A6"
-        'If minput = "HA230" Then m_m_m = "A8"
-        'If minput = "KA112" Then m_m_m = "AE"
-        'If minput = "KA125" Then m_m_m = "A2"
-        'If minput = "KA150" Then m_m_m = "A4"
-        'If minput = "KA185" Then m_m_m = "A6"
-        'If minput = "KA225" Then m_m_m = "AI"
-        'If minput = "KA230" Then m_m_m = "A8"
-        'If minput = "KA270" Then m_m_m = "BB"
-        'If minput = "A230" Then m_m_m = "A8"
-        'If minput = "A112" Then m_m_m = "AE"
-        'If minput = "A125" Then m_m_m = "A2"
-        'If minput = "A150" Then m_m_m = "A4"
-        'If minput = "A185" Then m_m_m = "A6"
-        'If minput = "A225" Then m_m_m = "AI"
-        'If minput = "KN125" Then m_m_m = "A2"
-        'If minput = "KN150" Then m_m_m = "A4"
-        'If minput = "KN185" Then m_m_m = "A6"
-        'If minput = "KN230" Then m_m_m = "A8"
-        'If minput = "KU125" Then m_m_m = "U2"
-        'If minput = "KU150" Then m_m_m = "U4"
-        'If minput = "KU185" Then m_m_m = "U6"
-        'If minput = "KU230" Then m_m_m = "U8"
-        'If minput = "KAC125" Then m_m_m = "A2"
-        'If minput = "KAC150" Then m_m_m = "A4"
-        'If minput = "KAC185" Then m_m_m = "A6"
-        'If minput = "KAC230" Then m_m_m = "A8"
-        'If minput = "KH175" Then m_m_m = "KF"
-        'If minput = "KH200" Then m_m_m = "KG"
-        'If minput = "KH250" Then m_m_m = "K9"
-        'If minput = "AU125" Then m_m_m = "U2"
-        'If minput = "AU185" Then m_m_m = "U6"
-        'If minput = "AU230" Then m_m_m = "U8"
-        'If minput = "I125" Then m_m_m = "I2"
-        'If minput = "I150" Then m_m_m = "I4"
-        'If minput = "I185" Then m_m_m = "I6"
-        'If minput = "KQ125" Then m_m_m = "I2"
-        'If minput = "KQ150" Then m_m_m = "I4"
-        'If minput = "KQ185" Then m_m_m = "I6"
-        'If minput = "PI125" Then m_m_m = "I2"
-        'If minput = "PI150" Then m_m_m = "I4"
-        'If minput = "PI185" Then m_m_m = "I6"
-        'If minput = "CI125" Then m_m_m = "I2"
-        'If minput = "CI150" Then m_m_m = "I4"
-        'If minput = "CI185" Then m_m_m = "I6"
-        'If minput = "TPI125" Then m_m_m = "I2"
-        'If minput = "TPI150" Then m_m_m = "I4"
-        'If minput = "TPI185" Then m_m_m = "I6"
-        'If minput = "KI125" Then m_m_m = "I2"
-        'If minput = "KI150" Then m_m_m = "I4"
-        'If minput = "KI185" Then m_m_m = "I6"
-        'If minput = "KD125" Then m_m_m = "D2"
-        'If minput = "KD150" Then m_m_m = "D4"
-        'If minput = "KD185" Then m_m_m = "D6"
-        'If minput = "KD230" Then m_m_m = "D8"
-        'If minput = "KJ125" Then m_m_m = "J2"
-        'If minput = "KJ150" Then m_m_m = "J4"
-        'If minput = "KJ185" Then m_m_m = "J6"
-        'If minput = "KJ230" Then m_m_m = "J8"
-        'If (minput = "KL125" Or minput = "L125") Then m_m_m = "L2"
-        'If (minput = "KL150" Or minput = "L150") Then m_m_m = "L4"
-        'If (minput = "KL175" Or minput = "L175") Then m_m_m = "LF"
-        'If (minput = "KL205" Or minput = "L205") Then m_m_m = "L7"
-        'If (minput = "KL250" Or minput = "L250") Then m_m_m = "L9"
-        'If minput = "KP175" Then m_m_m = "PF"
-        'If minput = "KP230" Then m_m_m = "P8"
-        'If minput = "KP250" Then m_m_m = "P9"
-        'If minput = "KT125" Then m_m_m = "T2"
-        'If minput = "KT140" Then m_m_m = "T3"
-        'If minput = "KT150" Then m_m_m = "T4"
-        'If minput = "KT175" Then m_m_m = "TF"
-        'If minput = "KT185" Then m_m_m = "T6"
-        'If minput = "KT200" Then m_m_m = "TG"
-        'If minput = "KT250" Then m_m_m = "T9"
-        'If minput = "KK125" Then m_m_m = "K2"
-        'If minput = "KK150" Then m_m_m = "K4"
-        'If minput = "KK185" Then m_m_m = "K6"
-        'If minput = "KX125" Then m_m_m = "X2"
-        'If minput = "KX150" Then m_m_m = "X4"
-        'If minput = "MK125" Then m_m_m = "K2"
-        'If minput = "MK150" Then m_m_m = "K4"
-        'If minput = "MK185" Then m_m_m = "K6"
-        'If minput = "M100" Then m_m_m = "ME"
-        'If minput = "M105" Then m_m_m = "M0"
-        'If minput = "M107" Then m_m_m = "M0"
-        'If minput = "M110" Then m_m_m = "ML"
-        'If minput = "M115" Then m_m_m = "M1"
-        'If minput = "M120" Then m_m_m = "MM"
-        'If minput = "M125" Then m_m_m = "M2"
-        'If minput = "M127" Then m_m_m = "MK"
-        'If minput = "M150" Then m_m_m = "M4"
-        'If minput = "M185" Then m_m_m = "M6"
-        'If minput = "M190" Then m_m_m = "MN"
-        'If minput = "CM105" Then m_m_m = "M0"
-        'If minput = "CM107" Then m_m_m = "M0"
-        'If minput = "CM115" Then m_m_m = "M1"
-        'If minput = "CM125" Then m_m_m = "M2"
-        'If minput = "CM150" Then m_m_m = "M4"
-        'If minput = "CM185" Then m_m_m = "M6"
-        'If minput = "CM127" Then m_m_m = "MK"
-        'If minput = "CM100" Then m_m_m = "ME"
-        'If minput = "CM110" Then m_m_m = "ML"
-        'If minput = "CM120" Then m_m_m = "MM"
-        'If minput = "CM190" Then m_m_m = "MN"
-        'If minput = "CJ230" Then m_m_m = "X8"
-        'If minput = "S150" Then m_m_m = "S4"
-        'If minput = "S140" Then m_m_m = "S3"
-        'If minput = "S170" Then m_m_m = "S5"
-        'If minput = "KS140" Then m_m_m = "S3"
-        'If minput = "KS150" Then m_m_m = "S4"
-        'If minput = "KS170" Then m_m_m = "S5"
-        'If minput = "KA260" Then m_m_m = "CL"
-        'If minput = "TK125" Then m_m_m = "T2"
-        'If minput = "TK180" Then m_m_m = "TO"
-        'If minput = "TK210" Then m_m_m = "TP"
-        'If minput = "MG056" Then m_m_m = "GA"
-        'If minput = "SB060" Then m_m_m = "SB"
-        'If minput = "NP170" Then m_m_m = "N5"
-        'If minput = "NP200" Then m_m_m = "NG"
-        'If minput = "NP210" Then m_m_m = "NP"
-        'If minput = "NP220" Then m_m_m = "NH"
-        'If minput = "NP280" Then m_m_m = "NJ"
+
 
         If minput = "" Then m_m_m = "00"
         If (minput = "A112" Or minput = "KA112") Then m_m_m = "AE"
@@ -1841,9 +1721,12 @@ Public Class frm_input
 
 
             Me.Controls.Clear() 'removes all the controls on the form
-            InitializeComponent() 'load all the controls again
-            frm_input_Load(e, e)
-            Refresh()
+
+
+            'InitializeComponent() 'load all the controls again
+            'frm_input_Load(e, e)
+            'Refresh()
+
 
         End If
     End Sub
@@ -2068,7 +1951,8 @@ Public Class frm_input
         Dim idatecreate As Date
         Dim ilastupdate As Date
 
-
+        Dim isumrow As Double = 0
+        Dim isumgroup As Integer = 0
 
 
 
@@ -2152,7 +2036,8 @@ Public Class frm_input
                     iSumTotal = .Rows(i).Cells(28).Value
                     iDiscountmoney = .Rows(i).Cells(29).Value
                     iremark = .Rows(i).Cells(30).Value
-
+                    isumrow = .Rows(i).Cells(31).Value
+                    isumgroup = .Rows(i).Cells(32).Value
 
                     isqlcomman = "INSERT INTO [dbo].[LFB_ITEM$_Document_line]" &
                                     "([Document_No]" &
@@ -2186,6 +2071,8 @@ Public Class frm_input
                                     ",[SumTotal]" &
                                     ",[Discount money]" &
                                     ",[remark]" &
+                                    ",[sumrow]" &
+                                    ",[sumgroup]" &
                                     ",[datecreate]" &
                                     ",[lastupdate]" &
                                 ") VALUES (" &
@@ -2220,6 +2107,8 @@ Public Class frm_input
                                 "'" & iSumTotal & "'," &
                                 "'" & iDiscountmoney & "'," &
                                 "'" & iremark & "'," &
+                                 "'" & isumrow & "'," &
+                                  "'" & isumgroup & "'," &
                                 "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "'," &
                                 "'" & Now.ToString("yyyy-MM-dd HH:mm:ss") & "')"
 
@@ -2254,7 +2143,7 @@ Public Class frm_input
         Me.Controls.Clear() 'removes all the controls on the form
         InitializeComponent() 'load all the controls again
         'frm_input_Load(e, e)
-        load_frm()
+        'load_frm()
         MsgBox("Clear Complete", vbInformation, "")
         Refresh()
     End Sub
@@ -2729,6 +2618,12 @@ Public Class frm_input
 
 
         'txt_price.Text = Math.Round((CDbl(Val(txt_price.Text)) - ((CDbl(Val(txt_price.Text)) * CDbl(Val(txt_discount.Text))) / 100)), 2)
+
+
+    End Sub
+
+    Private Sub btn_new_Click(sender As Object, e As EventArgs)
+
 
 
     End Sub
